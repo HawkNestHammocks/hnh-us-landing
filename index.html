@@ -75,24 +75,21 @@ img{max-width:100%;height:auto;display:block}
 .mobile-only{display:none}
 .desktop-only{display:block}
 
-/* Mobile circle callouts overlaying image */
-.mobile-callouts{display:none;position:absolute;inset:0;pointer-events:none}
-.m-callout{position:absolute;pointer-events:auto;display:flex;flex-direction:column;align-items:center}
-.m-callout-bubble{background:rgba(255,255,255,.95);width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 16px rgba(0,0,0,.2);border:2px solid var(--orange);backdrop-filter:blur(4px)}
-.m-callout-bubble svg{width:24px;height:24px}
-.m-callout-label{background:rgba(255,255,255,.92);font-size:.6rem;font-weight:700;color:var(--navy);padding:3px 8px;border-radius:4px;margin-top:3px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.1);text-align:center;line-height:1.2}
-.m-callout-arrow{width:2px;height:14px;background:var(--orange);margin-top:2px}
-.mc1{top:5%;right:8%;animation:floatIn .4s .6s both}
-.mc2{top:40%;right:5%;animation:floatIn .4s .8s both}
-.mc3{bottom:15%;right:12%;animation:floatIn .4s 1s both}
-.mc4{top:8%;left:6%;animation:floatIn .4s 1.2s both}
+/* Mobile circle callouts — 2 rows above/below image */
+.mobile-callouts{display:none;margin-top:10px}
+.m-callout-row{display:flex;justify-content:center;gap:8px;margin:6px 0}
+.m-callout{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.95);padding:6px 10px;border-radius:20px;box-shadow:0 2px 10px rgba(0,0,0,.12);border:1.5px solid var(--orange)}
+.m-callout svg{width:16px;height:16px;flex-shrink:0}
+.m-callout-label{font-size:.65rem;font-weight:700;color:var(--navy);line-height:1.2;white-space:nowrap}
+.m-callout-top{margin-bottom:8px}
+.m-callout-bottom{margin-top:8px}
 
 /* Hero price strip */
-.hero-price-strip{display:flex;align-items:center;gap:10px;background:var(--navy);color:#fff;padding:10px 18px;border-radius:8px;margin-bottom:16px;animation:fadeInUp .6s .3s both;box-shadow:0 4px 16px rgba(0,0,0,.15)}
-.hero-price-strip .hp-old{text-decoration:line-through;color:#94a3b8;font-size:.95rem}
-.hero-price-strip .hp-new{font-size:1.4rem;font-weight:900;color:var(--orange)}
-.hero-price-strip .hp-save{background:#16a34a;color:#fff;font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.5px}
-.hero-price-strip .hp-free{font-size:.75rem;color:#94a3b8}
+.hero-price-strip{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#1a2332 0%,#2c3e50 100%);color:#fff;padding:7px 14px;border-radius:6px;margin-bottom:12px;animation:fadeInUp .6s .3s both;box-shadow:0 3px 12px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1)}
+.hero-price-strip .hp-old{text-decoration:line-through;color:#94a3b8;font-size:.8rem}
+.hero-price-strip .hp-new{font-size:1.1rem;font-weight:900;color:var(--orange)}
+.hero-price-strip .hp-save{background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:8px;text-transform:uppercase;letter-spacing:.5px}
+.hero-price-strip .hp-free{font-size:.65rem;color:#94a3b8}
 
 /* TRUST BAR */
 .trust-bar{background:var(--white);padding:32px 0;border-bottom:1px solid var(--light-gray)}
@@ -234,7 +231,6 @@ img{max-width:100%;height:auto;display:block}
   .desktop-only{display:none!important}
   .mobile-only{display:flex!important}
   .mobile-callouts{display:block!important}
-  .hero-callouts-mobile{display:none!important}
   .hero{padding:40px 0 30px}
   .solution-grid,.features-grid,.test-grid{grid-template-columns:1fr}
   .trust-grid{grid-template-columns:repeat(2,1fr);gap:12px}
@@ -294,27 +290,35 @@ img{max-width:100%;height:auto;display:block}
     <div class="hero-callout callout-1 desktop-only"><span class="callout-icon">🌧️</span> Integrated Rain Fly</div>
     <div class="hero-callout callout-2 desktop-only"><span class="callout-icon">🏔️</span> Hang It or Ground It</div>
     <div class="hero-callout callout-3 desktop-only"><span class="callout-icon">🪶</span> Only 4 lbs Total</div>
-    <!-- Mobile: circle bubble callouts overlaying image -->
+    <!-- Mobile: pill callouts in rows above/below image -->
     <div class="mobile-callouts">
-      <div class="m-callout mc1">
-        <div class="m-callout-bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div class="m-callout-arrow"></div>
-        <div class="m-callout-label">Patent-Pending<br>Spreader Bars</div>
+      <div class="m-callout-row m-callout-top">
+        <div class="m-callout" style="animation:floatIn .4s .5s both">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span class="m-callout-label">Patent-Pending</span>
+        </div>
+        <div class="m-callout" style="animation:floatIn .4s .7s both">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          <span class="m-callout-label">Rain Fly</span>
+        </div>
+        <div class="m-callout" style="animation:floatIn .4s .9s both">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>
+          <span class="m-callout-label">Hang or Ground</span>
+        </div>
       </div>
-      <div class="m-callout mc2">
-        <div class="m-callout-bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
-        <div class="m-callout-arrow"></div>
-        <div class="m-callout-label">Integrated<br>Rain Fly</div>
-      </div>
-      <div class="m-callout mc3">
-        <div class="m-callout-bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg></div>
-        <div class="m-callout-arrow"></div>
-        <div class="m-callout-label">Hang It or<br>Ground It</div>
-      </div>
-      <div class="m-callout mc4">
-        <div class="m-callout-bubble"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8L2 22"/><path d="M17.5 15H9"/></svg></div>
-        <div class="m-callout-arrow"></div>
-        <div class="m-callout-label">Only<br>4 lbs</div>
+      <div class="m-callout-row m-callout-bottom">
+        <div class="m-callout" style="animation:floatIn .4s 1.1s both">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8L2 22"/><path d="M17.5 15H9"/></svg>
+          <span class="m-callout-label">Only 4 lbs</span>
+        </div>
+        <div class="m-callout" style="animation:floatIn .4s 1.3s both">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span class="m-callout-label">5-Min Setup</span>
+        </div>
+        <div class="m-callout" style="animation:floatIn .4s 1.5s both">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M8 12l2 2 4-4"/></svg>
+          <span class="m-callout-label">500 lb Capacity</span>
+        </div>
       </div>
     </div>
   </div>
