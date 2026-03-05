@@ -41,7 +41,7 @@ img{max-width:100%;height:auto;display:block}
 @keyframes flagWave{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
 
 /* LOGO NAV */
-.logo-bar{background:linear-gradient(180deg,var(--navy) 0%,#0f1721 100%);padding:12px 0;border-bottom:3px solid rgba(212,168,67,.4);box-shadow:0 4px 30px rgba(0,0,0,.5)}
+.logo-bar{background:linear-gradient(180deg,#1e293b 0%,#0c1118 100%);padding:14px 0;border-bottom:3px solid rgba(212,168,67,.5);box-shadow:0 6px 40px rgba(0,0,0,.6),0 2px 8px rgba(0,0,0,.3);position:relative;z-index:100}
 .logo-bar .container{display:flex;align-items:center;justify-content:space-between}
 .logo-mark{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
 .logo-mark img{height:44px;width:auto;border-radius:6px}
@@ -71,6 +71,8 @@ img{max-width:100%;height:auto;display:block}
 .callout-3{bottom:6%;left:5%;animation:floatIn .5s 1.3s both}
 .callout-4{top:2%;left:5%;animation:floatIn .5s .7s both}
 .callout-icon{margin-right:6px}
+.mobile-only{display:none}
+.desktop-only{display:block}
 
 /* TRUST BAR */
 .trust-bar{background:var(--white);padding:32px 0;border-bottom:1px solid var(--light-gray)}
@@ -209,7 +211,10 @@ img{max-width:100%;height:auto;display:block}
   .hero h1{font-size:1.8rem}
   .hero-layout{grid-template-columns:1fr;gap:30px}
   .hero-image-wrap{order:-1}
-  .hero-callout{display:none}
+  .desktop-only{display:none!important}
+  .mobile-only{display:flex!important}
+  .hero-callouts-mobile .hero-callout{position:static;display:inline-block;white-space:normal;font-size:.72rem;padding:7px 12px;border-left:3px solid var(--orange);background:var(--white);border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+  .hero-callouts-mobile{flex-wrap:wrap;gap:6px}
   .hero{padding:40px 0 30px}
   .solution-grid,.features-grid,.test-grid{grid-template-columns:1fr}
   .trust-grid{grid-template-columns:repeat(2,1fr);gap:12px}
@@ -266,10 +271,18 @@ img{max-width:100%;height:auto;display:block}
   </div>
   <div class="hero-image-wrap">
     <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749" alt="Hawk Nest All-Season Hammock Tent V.3 complete kit">
-    <div class="hero-callout callout-4"><span class="callout-icon">🔒</span> Patent-Pending Spreader Bars</div>
-    <div class="hero-callout callout-1"><span class="callout-icon">🌧️</span> Integrated Rain Fly</div>
-    <div class="hero-callout callout-2"><span class="callout-icon">🏔️</span> Hang It or Ground It</div>
-    <div class="hero-callout callout-3"><span class="callout-icon">🪶</span> Only 4 lbs Total</div>
+    <!-- Desktop: absolute positioned callouts -->
+    <div class="hero-callout callout-4 desktop-only"><span class="callout-icon">🔒</span> Patent-Pending Spreader Bars</div>
+    <div class="hero-callout callout-1 desktop-only"><span class="callout-icon">🌧️</span> Integrated Rain Fly</div>
+    <div class="hero-callout callout-2 desktop-only"><span class="callout-icon">🏔️</span> Hang It or Ground It</div>
+    <div class="hero-callout callout-3 desktop-only"><span class="callout-icon">🪶</span> Only 4 lbs Total</div>
+    <!-- Mobile: inline callouts below image -->
+    <div class="hero-callouts-mobile mobile-only" style="margin-top:12px">
+      <div class="hero-callout"><span class="callout-icon">🔒</span> Patent-Pending Spreader Bars</div>
+      <div class="hero-callout"><span class="callout-icon">🌧️</span> Integrated Rain Fly</div>
+      <div class="hero-callout"><span class="callout-icon">🏔️</span> Hang It or Ground It</div>
+      <div class="hero-callout"><span class="callout-icon">🪶</span> Only 4 lbs Total</div>
+    </div>
   </div>
 </div>
 </div>
