@@ -31,38 +31,46 @@ img{max-width:100%;height:auto;display:block}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes slideUp{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideInLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
 @keyframes pulse-btn{0%,100%{box-shadow:0 4px 14px rgba(232,96,28,.35)}50%{box-shadow:0 4px 28px rgba(232,96,28,.6)}}
 @keyframes countPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
-@keyframes floatIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes floatIn{from{opacity:0;transform:translateY(10px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes glow{0%,100%{box-shadow:0 0 8px rgba(212,168,67,.3)}50%{box-shadow:0 0 20px rgba(212,168,67,.6)}}
+@keyframes flagWave{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
 
 /* LOGO NAV */
-.logo-bar{background:var(--navy);padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.logo-bar{background:linear-gradient(180deg,var(--navy) 0%,#1e293b 100%);padding:12px 0;border-bottom:2px solid rgba(212,168,67,.3);box-shadow:0 2px 20px rgba(0,0,0,.3)}
 .logo-bar .container{display:flex;align-items:center;justify-content:space-between}
 .logo-mark{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
-.logo-mark img{height:40px;width:auto}
-.logo-bar-right{display:flex;align-items:center;gap:18px}
-.logo-bar-right a{color:var(--gold);font-size:.85rem;font-weight:600;text-decoration:none;transition:color .2s}
-.logo-bar-right a:hover{color:#fff}
+.logo-mark img{height:44px;width:auto;border-radius:6px}
+.nav-cta{background:var(--orange);color:#fff;font-size:.85rem;font-weight:700;padding:10px 22px;border-radius:6px;text-decoration:none;transition:all .2s;box-shadow:0 2px 10px rgba(232,96,28,.3)}
+.nav-cta:hover{background:var(--orange-hover);transform:translateY(-1px);box-shadow:0 4px 16px rgba(232,96,28,.4)}
 
-/* HERO - New Design */
-.hero{background:var(--light);padding:60px 0 40px;position:relative}
-.hero-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.hero-text{animation:slideUp .8s .2s both}
-.hero h1{font-size:2.4rem;font-weight:900;line-height:1.1;margin-bottom:16px;color:var(--navy)}
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--light) 0%,#eee9df 50%,var(--light) 100%);padding:70px 0 50px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(232,96,28,.06) 0%,transparent 70%);pointer-events:none}
+.hero-layout{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.hero-text{animation:slideInLeft .8s .2s both}
+.hero-flag{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px;border-radius:20px;margin-bottom:18px;animation:fadeIn .6s both}
+.hero-flag span{font-size:1.1rem;animation:flagWave 1s ease-in-out infinite}
+.hero h1{font-size:2.5rem;font-weight:900;line-height:1.08;margin-bottom:16px;color:var(--navy)}
+.hero h1 em{font-style:normal;color:var(--orange)}
 .hero-sub{font-size:1.05rem;color:#4b5563;margin-bottom:24px;line-height:1.7}
 .hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
-.hero-badge{background:var(--white);border:1px solid var(--light-gray);border-radius:8px;padding:8px 14px;font-size:.85rem;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:6px}
+.hero-badge{background:var(--white);border:1px solid var(--light-gray);border-radius:8px;padding:8px 14px;font-size:.82rem;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:6px;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:transform .2s}
+.hero-badge:hover{transform:translateY(-2px)}
 .hero-cta{animation:fadeInUp .8s .6s both}
 .hero-price{margin-bottom:16px}
-.hero-image-wrap{position:relative;animation:fadeIn 1s .3s both}
-.hero-image-wrap img{border-radius:16px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.12)}
-/* Feature callouts on hero image */
-.hero-callout{position:absolute;background:var(--white);border-radius:8px;padding:8px 14px;font-size:.78rem;font-weight:600;color:var(--navy);box-shadow:0 4px 16px rgba(0,0,0,.12);white-space:nowrap;animation:floatIn .5s both}
-.hero-callout::before{content:'';position:absolute;width:8px;height:8px;background:var(--orange);border-radius:50%}
-.callout-1{top:15%;right:-10px;animation-delay:.8s}.callout-1::before{left:-14px;top:50%;transform:translateY(-50%)}
-.callout-2{bottom:30%;right:-10px;animation-delay:1s}.callout-2::before{left:-14px;top:50%;transform:translateY(-50%)}
-.callout-3{bottom:10%;left:10px;animation-delay:1.2s}.callout-3::before{left:50%;top:-12px;transform:translateX(-50%)}
-.callout-4{top:5%;left:10px;animation-delay:.6s}.callout-4::before{right:-14px;top:50%;transform:translateY(-50%)}
+.hero-image-wrap{position:relative;animation:slideInRight .8s .3s both}
+.hero-image-wrap>img{border-radius:16px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.15)}
+.hero-callout{position:absolute;background:var(--white);border-radius:10px;padding:10px 16px;font-size:.78rem;font-weight:700;color:var(--navy);box-shadow:0 4px 20px rgba(0,0,0,.12);white-space:nowrap;border-left:3px solid var(--orange);backdrop-filter:blur(4px)}
+.callout-1{top:12%;right:-16px;animation:floatIn .5s .9s both}
+.callout-2{bottom:28%;right:-16px;animation:floatIn .5s 1.1s both}
+.callout-3{bottom:8%;left:8px;animation:floatIn .5s 1.3s both}
+.callout-4{top:3%;left:8px;animation:floatIn .5s .7s both}
+.callout-icon{margin-right:6px}
 
 /* TRUST BAR */
 .trust-bar{background:var(--white);padding:32px 0;border-bottom:1px solid var(--light-gray)}
@@ -73,32 +81,45 @@ img{max-width:100%;height:auto;display:block}
 .trust-label{font-size:.9rem;font-weight:700;color:var(--navy)}
 
 /* VALUE STACK */
-.value-stack{background:linear-gradient(135deg,var(--navy),#2c3e50);color:#fff;padding:80px 0}
+.value-stack{background:linear-gradient(135deg,var(--navy),#2c3e50);color:#fff;padding:80px 0;position:relative;overflow:hidden}
+.value-stack::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
 .value-stack .section-eyebrow{color:var(--gold)}
 .value-stack .section-title{color:#fff}
 .value-stack-sub{color:#94a3b8;margin-bottom:40px;font-size:1.05rem}
-.stack-table{width:100%;max-width:650px;margin:0 auto 40px}
-.stack-row{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.1);font-size:1.05rem}
-.stack-row.free{transition:background .2s}
-.stack-row.free:hover{background:rgba(255,255,255,.05)}
-.stack-row .stack-thumb{width:48px;height:48px;border-radius:8px;object-fit:cover;margin-right:14px;flex-shrink:0}
+.stack-table{width:100%;max-width:680px;margin:0 auto 40px;position:relative;z-index:1}
+.stack-row{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.1);font-size:1.05rem;transition:all .25s;cursor:default}
+.stack-row.free{cursor:pointer;border-radius:6px}
+.stack-row.free:hover{background:rgba(255,255,255,.08);transform:translateX(4px)}
+.stack-row .stack-thumb{width:48px;height:48px;border-radius:8px;object-fit:cover;margin-right:14px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.2)}
 .stack-row .stack-label{display:flex;align-items:center}
 .stack-val{font-weight:700;white-space:nowrap}
 .stack-row.free .stack-val{color:#4ade80}
 .stack-row.total{border-top:2px solid var(--gold);border-bottom:none;padding-top:20px;margin-top:8px}
-.stack-row.total .stack-val{font-size:1.8rem;color:var(--gold)}
+.stack-row.total .stack-val{font-size:1.8rem;color:var(--gold);animation:glow 2s infinite}
 .stack-row.you-pay{background:rgba(232,96,28,.15);border-radius:8px;border-bottom:none;margin-top:12px;animation:countPulse 3s infinite}
 .stack-row.you-pay .stack-val{font-size:2rem;color:var(--orange)}
+.stack-tap-hint{text-align:center;font-size:.8rem;color:#64748b;margin-top:8px;font-style:italic}
 .value-cta{text-align:center;margin-top:36px}
+
+/* STACK POPUP */
+.stack-popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);animation:fadeIn .2s both}
+.stack-popup-overlay.show{display:flex}
+.stack-popup{background:var(--white);border-radius:16px;max-width:420px;width:90%;padding:32px;text-align:center;position:relative;animation:slideUp .3s both;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.stack-popup-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--gray);transition:color .2s}
+.stack-popup-close:hover{color:var(--text)}
+.stack-popup img{width:120px;height:120px;object-fit:cover;border-radius:12px;margin:0 auto 16px;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.stack-popup h3{font-size:1.2rem;color:var(--navy);margin-bottom:8px}
+.stack-popup p{font-size:.95rem;color:#4b5563;line-height:1.6}
+.stack-popup .popup-value{display:inline-block;margin-top:12px;font-size:1rem;font-weight:700;color:#16a34a;background:#f0fdf4;padding:6px 16px;border-radius:20px}
 
 /* URGENCY / TIMELINE */
 .urgency{background:var(--white)}
 .timeline{max-width:600px;margin:40px auto 0;position:relative;padding-left:40px}
-.timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:3px;background:var(--light-gray)}
+.timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--orange),var(--light-gray) 60%,#ef4444)}
 .tl-item{position:relative;padding-bottom:32px;transition:transform .3s}
 .tl-item:hover{transform:translateX(4px)}
 .tl-item:last-child{padding-bottom:0}
-.tl-dot{position:absolute;left:-33px;top:4px;width:14px;height:14px;border-radius:50%;border:3px solid var(--orange);background:var(--white)}
+.tl-dot{position:absolute;left:-33px;top:4px;width:14px;height:14px;border-radius:50%;border:3px solid var(--orange);background:var(--white);transition:all .3s}
 .tl-item.active .tl-dot{background:var(--orange);box-shadow:0 0 0 4px rgba(232,96,28,.25)}
 .tl-item.red .tl-dot{border-color:#ef4444;background:#ef4444;box-shadow:0 0 0 4px rgba(239,68,68,.2)}
 .tl-label{font-weight:700;color:var(--navy);font-size:1rem}
@@ -129,8 +150,8 @@ img{max-width:100%;height:auto;display:block}
 /* FEATURES */
 .features{background:var(--white)}
 .features-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:40px}
-.feature-card{background:var(--light);border-radius:12px;padding:36px 28px;transition:transform .25s,box-shadow .25s}
-.feature-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.feature-card{background:var(--light);border-radius:12px;padding:36px 28px;transition:transform .25s,box-shadow .25s;border:1px solid transparent}
+.feature-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,.08);border-color:rgba(232,96,28,.15)}
 .feature-card h3{font-size:1.2rem;margin-bottom:6px;color:var(--navy)}
 .feature-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--orange);margin-bottom:10px}
 .feature-card p{font-size:.95rem;color:#4b5563}
@@ -140,7 +161,7 @@ img{max-width:100%;height:auto;display:block}
 .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px}
 .step{text-align:center;padding:24px 16px;transition:transform .2s}
 .step:hover{transform:translateY(-4px)}
-.step-num{width:56px;height:56px;border-radius:50%;background:var(--orange);color:#fff;font-size:1.4rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.step-num{width:56px;height:56px;border-radius:50%;background:var(--orange);color:#fff;font-size:1.4rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 4px 14px rgba(232,96,28,.3)}
 .step h3{font-size:1.05rem;margin-bottom:8px;color:var(--navy)}
 .step p{font-size:.9rem;color:var(--gray)}
 
@@ -179,6 +200,10 @@ img{max-width:100%;height:auto;display:block}
 .sticky-bar-text .price-old{color:#94a3b8;font-size:.85rem}
 .sticky-bar .btn{padding:12px 28px;font-size:.95rem;box-shadow:none;animation:none}
 
+/* WARRANTY ICON */
+.warranty-icon{width:48px;height:48px;flex-shrink:0;margin-right:14px;display:flex;align-items:center;justify-content:center}
+.warranty-icon svg{width:40px;height:40px}
+
 /* MOBILE */
 @media(max-width:768px){
   .hero h1{font-size:1.8rem}
@@ -195,7 +220,8 @@ img{max-width:100%;height:auto;display:block}
   .btn{width:100%;padding:16px 24px;font-size:1.05rem}
   .stack-row{font-size:.95rem;padding:12px 16px}
   .stack-row .stack-thumb{width:36px;height:36px}
-  .logo-mark img{height:32px}
+  .logo-mark img{height:34px}
+  .stack-popup{padding:24px 20px}
 }
 </style>
 </head>
@@ -207,25 +233,23 @@ img{max-width:100%;height:auto;display:block}
   <a href="#" class="logo-mark">
     <img src="https://hawknesthammocks.ca/cdn/shop/files/Untitled_design_3_001ffe6f-f724-46b9-b784-c4b24d50360a.png" alt="Hawk Nest Hammocks logo">
   </a>
-  <div class="logo-bar-right">
-    <a href="#offer">Pre-Order</a>
-    <a href="#faq-section">FAQ</a>
-  </div>
+  <a href="#offer" class="nav-cta">PRE-ORDER NOW →</a>
 </div>
 </div>
 
-<!-- HERO — Product-focused with callouts -->
+<!-- HERO -->
 <section class="hero" id="hero">
 <div class="container">
 <div class="hero-layout">
   <div class="hero-text">
-    <div class="section-eyebrow">Now Available in the USA</div>
-    <h1>The Most Comfortable Hammock Sleep You've Ever Had — Guaranteed.</h1>
-    <p class="hero-sub">The Hawk Nest All-Season Hammock Tent V.3 — patent-pending spreader bar design for unreal comfort. 400+ five-star reviews. Now shipping to all 50 states.</p>
+    <div class="hero-flag"><span>🇺🇸</span> NOW AVAILABLE IN THE USA</div>
+    <h1>The Most <em>Comfortable</em> Sleep You'll Ever Have Outdoors — Guaranteed.</h1>
+    <p class="hero-sub">Why sleep on the cold, hard ground when you can sleep suspended in comfort? The Hawk Nest V.3 with patent-pending spreader bar system gives you ample interior space for the ultimate outdoor sleep. 400+ five-star reviews. Now shipping to all 50 states.</p>
     <div class="hero-badges">
       <span class="hero-badge">⭐ 400+ 5-Star Reviews</span>
       <span class="hero-badge">🔒 Patent Pending</span>
       <span class="hero-badge">🪶 Only 4 lbs</span>
+      <span class="hero-badge">⏱️ 5-Min Setup</span>
     </div>
     <div class="hero-cta">
       <a href="#offer" class="btn">SEE WHAT'S INCLUDED</a>
@@ -234,10 +258,10 @@ img{max-width:100%;height:auto;display:block}
   </div>
   <div class="hero-image-wrap">
     <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749" alt="Hawk Nest All-Season Hammock Tent V.3 complete kit">
-    <div class="hero-callout callout-4">Patent-Pending Spreader Bars</div>
-    <div class="hero-callout callout-1">Integrated Rain Fly</div>
-    <div class="hero-callout callout-2">All-Season Ready</div>
-    <div class="hero-callout callout-3">5-Minute Solo Setup</div>
+    <div class="hero-callout callout-4"><span class="callout-icon">🔒</span> Patent-Pending Spreader Bars</div>
+    <div class="hero-callout callout-1"><span class="callout-icon">🌧️</span> Integrated Rain Fly</div>
+    <div class="hero-callout callout-2"><span class="callout-icon">🏔️</span> Hang It or Ground It</div>
+    <div class="hero-callout callout-3"><span class="callout-icon">🪶</span> Only 4 lbs Total</div>
   </div>
 </div>
 </div>
@@ -264,23 +288,26 @@ img{max-width:100%;height:auto;display:block}
   <p class="value-stack-sub">We're loading up this first US batch with bonuses that won't be available at full price.</p>
 </div>
 <div class="stack-table fade-in">
-  <div class="stack-row">
-    <span class="stack-label">Hawk Nest All-Season Hammock Tent V.3</span>
-    <span class="stack-val">$229</span>
+  <div class="stack-row free" onclick="showPopup('hammock')">
+    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749" alt="Hawk Nest V.3"> Hawk Nest All-Season Hammock Tent V.3</span>
+    <span class="stack-val" style="color:#fff">$229</span>
   </div>
-  <div class="stack-row free">
+  <div class="stack-row free" onclick="showPopup('bottom')">
     <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190" alt="Waterproof bottom"> Waterproof Bottom Upgrade</span>
     <span class="stack-val"><s style="color:#94a3b8">$29</s> FREE</span>
   </div>
-  <div class="stack-row free">
+  <div class="stack-row free" onclick="showPopup('bag')">
     <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669" alt="Carrying bag"> Waterproof Carrying Bag Upgrade</span>
     <span class="stack-val"><s style="color:#94a3b8">$19</s> FREE</span>
   </div>
-  <div class="stack-row free">
-    <span class="stack-label">5-Year Extended Warranty</span>
+  <div class="stack-row free" onclick="showPopup('warranty')">
+    <span class="stack-label">
+      <span class="warranty-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 4L6 12v12c0 11.1 7.7 21.5 18 24 10.3-2.5 18-12.9 18-24V12L24 4z" fill="#d4a843" opacity=".9"/><path d="M24 8L10 14.5v9.5c0 9.3 6.5 18 14 20 7.5-2 14-10.7 14-20v-9.5L24 8z" fill="#1a2332"/><path d="M21 24l-4-4 2-2 2 2 6-6 2 2-8 8z" fill="#d4a843"/></svg></span>
+      5-Year Extended Warranty
+    </span>
     <span class="stack-val"><s style="color:#94a3b8">$29</s> FREE</span>
   </div>
-  <div class="stack-row free">
+  <div class="stack-row free" onclick="showPopup('gridless')">
     <span class="stack-label"><img class="stack-thumb" src="gridless_icon.png" alt="Gridless app" style="border-radius:12px"> 3 Months Gridless Premium</span>
     <span class="stack-val"><s style="color:#94a3b8">$30</s> FREE</span>
   </div>
@@ -297,12 +324,18 @@ img{max-width:100%;height:auto;display:block}
     <span class="stack-val">$179</span>
   </div>
 </div>
+<p class="stack-tap-hint">Tap any item above to learn more</p>
 <div class="value-cta fade-in">
   <a href="#" class="btn" style="font-size:1.2rem;padding:20px 48px">GET THE FULL BUNDLE — $179</a>
   <span class="btn-sub" style="color:#94a3b8">Save $157 · Free shipping · 30-day guarantee</span>
 </div>
 </div>
 </section>
+
+<!-- STACK POPUPS -->
+<div class="stack-popup-overlay" id="popupOverlay" onclick="closePopup(event)">
+<div class="stack-popup" id="popupContent"></div>
+</div>
 
 <!-- URGENCY / TIMELINE -->
 <section class="section urgency">
@@ -345,13 +378,13 @@ img{max-width:100%;height:auto;display:block}
 <div class="container">
 <div class="fade-in">
   <div class="section-eyebrow">The Real Problem</div>
-  <h2 class="section-title">"I've Got Back Pain — A Comfortable Night Camping Isn't In The Cards For Me."</h2>
+  <h2 class="section-title">"Sleeping On The Ground Ruins My Back — I'm Done Camping."</h2>
   <div class="problem-text">
     <p>Sound familiar? You're not alone.</p>
-    <p>Every year, millions of Americans give up camping — not because they don't love the outdoors, but because sleeping on the ground destroys their back.</p>
-    <p><strong>Traditional tents?</strong> You're lying on rocks, roots, and cold hard earth. Wake up stiffer than when you went to bed.</p>
-    <p><strong>Regular hammocks?</strong> Your spine curves into a banana. Your shoulders pinch. You toss and turn all night — if you sleep at all.</p>
-    <p><strong>You shouldn't have to choose between loving the outdoors and waking up pain-free.</strong></p>
+    <p>Every year, millions of Americans give up camping — not because they don't love the outdoors, but because sleeping on the ground destroys their body. Rocks, roots, cold hard earth. You wake up stiffer than when you went to bed.</p>
+    <p><strong>What if you didn't have to sleep on the ground at all?</strong></p>
+    <p>Sleeping off the ground, suspended in a hammock, is arguably the most comfortable sleep you can get outdoors — <strong>better than you'd get at home.</strong> But regular hammocks squeeze your shoulders and curve your spine into a banana shape. Not exactly comfortable either.</p>
+    <p><strong>That's exactly why we built the Hawk Nest.</strong></p>
   </div>
 </div>
 </div>
@@ -362,14 +395,14 @@ img{max-width:100%;height:auto;display:block}
 <div class="container">
 <div class="fade-in">
   <div class="section-eyebrow">Meet The Hawk Nest</div>
-  <h2 class="section-title">The Most Comfortable Hammock Sleep — Period.</h2>
+  <h2 class="section-title">The Most Comfortable Way To Sleep Outdoors — Period.</h2>
   <div class="solution-grid">
     <div>
-      <p style="color:#4b5563;margin-bottom:24px;font-size:1.05rem">The Hawk Nest is the result of 3 years of obsessive engineering by a Canadian outdoor company that refused to accept "uncomfortable" as the price of camping. Our patent-pending spreader bar design creates a wide, gently arched sleeping surface that eliminates the "banana effect" — so you sleep comfortably on your back or side, all night long.</p>
+      <p style="color:#4b5563;margin-bottom:24px;font-size:1.05rem">The Hawk Nest is the result of 3 years of obsessive engineering by a Canadian outdoor company that refused to accept "uncomfortable" as the price of camping. Our patent-pending spreader bar system gives you wide shoulder spread and holds up the rain fly and mosquito net — giving you the most interior space of any hammock tent on the market.</p>
       <ul class="benefit-list">
-        <li><span class="benefit-icon">🏕️</span><strong>Incredibly comfortable sleep</strong> — Spreader bars eliminate the "banana effect." Sleep naturally on your back or side.</li>
+        <li><span class="benefit-icon">🏕️</span><strong>Incredibly comfortable sleep</strong> — Sleep off the ground, suspended in comfort. The most comfortable outdoor sleep you'll ever have.</li>
         <li><span class="benefit-icon">🏔️</span><strong>Hammock + tent in one</strong> — Hang it or set it on the ground. No trees? No problem.</li>
-        <li><span class="benefit-icon">🌧️</span><strong>All-season ready</strong> — Rain fly + sleeping pad pocket keeps you warm and dry.</li>
+        <li><span class="benefit-icon">🌧️</span><strong>All-season ready</strong> — Rain fly + sleeping pad pocket keeps you warm and dry in any weather.</li>
         <li><span class="benefit-icon">⚡</span><strong>5-minute solo setup</strong> — 4 simple steps. No partner needed.</li>
         <li><span class="benefit-icon">🪶</span><strong>4 lbs total weight</strong> — Lighter than most 1-person tents.</li>
       </ul>
@@ -409,8 +442,8 @@ img{max-width:100%;height:auto;display:block}
   <div class="features-grid">
     <div class="feature-card fade-in">
       <span class="feature-tag">Patent Pending</span>
-      <h3>Spreader Bar Comfort System</h3>
-      <p>Our spreader bars create a wide, gently arched sleeping surface that eliminates the "banana effect" — giving you the most comfortable hammock sleep imaginable. Sleep on your back or side naturally.</p>
+      <h3>Spreader Bar System</h3>
+      <p>Our patent-pending spreader bars give you wide shoulder spread and hold up the rain fly and mosquito net — maximizing your interior space for the most comfortable hammock sleep imaginable.</p>
     </div>
     <div class="feature-card fade-in">
       <span class="feature-tag">Two Shelters In One</span>
@@ -452,7 +485,7 @@ img{max-width:100%;height:auto;display:block}
     <div class="step fade-in">
       <div class="step-num">3</div>
       <h3>Spread Out</h3>
-      <p>Insert the lightweight spreader bars to create your wide, comfortable sleeping surface.</p>
+      <p>Insert the lightweight spreader bars for wide shoulder spread and maximum interior space.</p>
     </div>
     <div class="step fade-in">
       <div class="step-num">4</div>
@@ -474,7 +507,6 @@ img{max-width:100%;height:auto;display:block}
   <div class="section-eyebrow" style="text-align:center">What Campers Are Saying</div>
   <h2 class="section-title" style="text-align:center">400+ Five-Star Reviews (And Counting)</h2>
 
-  <!-- Judge.me Widget -->
   <div style="text-align:center;margin-bottom:30px">
     <div class="jdgm-widget jdgm-review-widget" data-id="hawk-nest-all-season-hammock-tent" data-product-title="Hawk Nest All-Season Hammock Tent"></div>
     <div id="judgeme_product_reviews" data-id="hawk-nest-all-season-hammock-tent"></div>
@@ -583,6 +615,63 @@ img{max-width:100%;height:auto;display:block}
 </footer>
 
 <script>
+// Popup data
+const popupData = {
+  hammock: {
+    img: 'https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749',
+    title: 'Hawk Nest™ All-Season Hammock Tent V.3',
+    desc: 'Our flagship product — the most comfortable way to sleep outdoors. Patent-pending spreader bar system, integrated rain fly, sleeping pad pocket, and mosquito net. Hang it from trees or set it up on the ground. Weighs just 4 lbs and sets up in under 5 minutes.',
+    value: '$229 Value'
+  },
+  bottom: {
+    img: 'https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190',
+    title: 'Waterproof Bottom Upgrade',
+    desc: 'Upgraded waterproof layer on the bottom of your hammock for extra protection against moisture, dew, and wet conditions. Perfect for ground camping or humid environments.',
+    value: '$29 Value — FREE'
+  },
+  bag: {
+    img: 'https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669',
+    title: 'Waterproof Carrying Bag Upgrade',
+    desc: 'Upgraded waterproof carrying bag keeps your Hawk Nest protected during transport. Water-resistant material ensures your gear stays dry even in wet conditions.',
+    value: '$19 Value — FREE'
+  },
+  warranty: {
+    img: null,
+    svg: '<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100px;height:100px"><path d="M60 10L15 30v25c0 27.6 19.2 53.5 45 60 25.8-6.5 45-32.4 45-60V30L60 10z" fill="#d4a843" opacity=".9"/><path d="M60 20L25 36v19c0 23.3 16.2 45 35 50 18.8-5 35-26.7 35-50V36L60 20z" fill="#1a2332"/><text x="60" y="62" text-anchor="middle" fill="#d4a843" font-family="Inter,sans-serif" font-weight="800" font-size="18">5 YR</text><path d="M48 72l-8-8 4-4 4 4 12-12 4 4-16 16z" fill="#d4a843"/></svg>',
+    title: '5-Year Extended Warranty',
+    desc: 'Full coverage for 5 years. If anything goes wrong with your Hawk Nest — stitching, fabric, hardware, zippers — we\'ll replace it. No questions asked. We stand behind our product because we know it\'s built to last.',
+    value: '$29 Value — FREE'
+  },
+  gridless: {
+    img: 'gridless_icon.png',
+    title: '3 Months Gridless Premium',
+    desc: 'Gridless is a gamified offline survival and camping education app with 600+ articles, emergency guides, gear checklists, and a quiz game. Your 3-month Premium subscription gives you full offline access — perfect for backcountry trips with your Hawk Nest.',
+    value: '$30 Value — FREE'
+  }
+};
+
+function showPopup(id) {
+  const d = popupData[id];
+  const overlay = document.getElementById('popupOverlay');
+  const content = document.getElementById('popupContent');
+  let imgHtml = d.img ? `<img src="${d.img}" alt="${d.title}" style="${id==='gridless'?'border-radius:16px;':''}">` : (d.svg || '');
+  content.innerHTML = `
+    <button class="stack-popup-close" onclick="closePopup()">&times;</button>
+    ${imgHtml}
+    <h3>${d.title}</h3>
+    <p>${d.desc}</p>
+    <div class="popup-value">${d.value}</div>
+  `;
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePopup(e) {
+  if (e && e.target !== e.currentTarget && !e.target.classList.contains('stack-popup-close')) return;
+  document.getElementById('popupOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
 // FAQ Accordion
 document.querySelectorAll('.faq-q').forEach(btn=>{
   btn.addEventListener('click',()=>{
@@ -618,6 +707,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 // Judge.me init
 window.jdgm=window.jdgm||{};
 window.jdgm.SHOP_DOMAIN='hawknesthammocks.ca';
+
+// Close popup on Escape
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup()});
 </script>
 </body>
 </html>
