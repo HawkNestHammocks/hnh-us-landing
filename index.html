@@ -4,18 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hawk Nest™ All-Season Hammock Tent — Now Available in the USA</title>
-<meta name="description" content="The flattest, most comfortable hammock tent ever made. Patent pending. 400+ five-star reviews. Now shipping to all 50 US states. Pre-order for $179.">
+<meta name="description" content="The most comfortable hammock tent ever made. Patent pending. 400+ five-star reviews. Now shipping to all 50 US states. Pre-order for $179.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.judge.me/widget_preloader.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--navy:#1a2332;--green:#2d5016;--gold:#d4a843;--orange:#e8601c;--orange-hover:#d4550f;--light:#f8f6f1;--white:#ffffff;--gray:#6b7280;--light-gray:#e5e7eb;--text:#1f2937}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text);line-height:1.6;overflow-x:hidden}
 img{max-width:100%;height:auto;display:block}
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
-.btn{display:inline-block;background:var(--orange);color:#fff;font-size:1.15rem;font-weight:700;padding:18px 40px;border-radius:8px;text-decoration:none;text-align:center;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;letter-spacing:0.3px;box-shadow:0 4px 14px rgba(232,96,28,.35)}
-.btn:hover{background:var(--orange-hover);transform:translateY(-2px);box-shadow:0 6px 20px rgba(232,96,28,.45)}
+.btn{display:inline-block;background:var(--orange);color:#fff;font-size:1.15rem;font-weight:700;padding:18px 40px;border-radius:8px;text-decoration:none;text-align:center;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;letter-spacing:0.3px;box-shadow:0 4px 14px rgba(232,96,28,.35);animation:pulse-btn 2.5s infinite}
+.btn:hover{background:var(--orange-hover);transform:translateY(-2px);box-shadow:0 6px 20px rgba(232,96,28,.45);animation:none}
 .btn-sub{display:block;text-align:center;font-size:.85rem;color:var(--gray);margin-top:10px}
 .section{padding:80px 0}
 .section-eyebrow{text-transform:uppercase;font-size:.8rem;font-weight:700;letter-spacing:2px;color:var(--orange);margin-bottom:12px}
@@ -26,25 +27,73 @@ img{max-width:100%;height:auto;display:block}
 .price-new{font-size:2rem;font-weight:800;color:var(--navy)}
 .product-img{border-radius:12px;object-fit:cover;width:100%}
 
+/* ANIMATIONS */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse-btn{0%,100%{box-shadow:0 4px 14px rgba(232,96,28,.35)}50%{box-shadow:0 4px 28px rgba(232,96,28,.6)}}
+@keyframes countPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+
+/* LOGO NAV */
+.logo-bar{background:var(--navy);padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.logo-bar .container{display:flex;align-items:center;justify-content:space-between}
+.logo-mark{display:flex;align-items:center;gap:10px;color:#fff;font-size:1.15rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none}
+.logo-mark svg{width:28px;height:28px}
+.logo-bar-right{display:flex;align-items:center;gap:18px}
+.logo-bar-right a{color:var(--gold);font-size:.85rem;font-weight:600;text-decoration:none;transition:color .2s}
+.logo-bar-right a:hover{color:#fff}
+
 /* HERO */
-.hero{background:linear-gradient(135deg,var(--navy) 0%,#2c3e50 100%);color:#fff;padding:60px 0 80px;position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(transparent,rgba(26,35,50,.3))}
-.hero .section-eyebrow{color:var(--gold)}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-.hero h1{font-size:2.6rem;font-weight:800;line-height:1.15;margin-bottom:16px;color:#fff}
-.hero-sub{font-size:1.05rem;color:#cbd5e1;margin-bottom:24px;line-height:1.7}
-.hero-bullets{list-style:none;margin-bottom:28px}
-.hero-bullets li{padding:6px 0;font-size:1rem;color:#e2e8f0}
-.hero-bullets li::before{content:'✅ ';margin-right:4px}
+.hero{position:relative;overflow:hidden;min-height:520px;display:flex;align-items:center;background:#111}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,35,50,.82) 0%,rgba(26,35,50,.45) 100%)}
+.hero-content{position:relative;z-index:1;padding:80px 0 90px;max-width:650px}
+.hero .section-eyebrow{color:var(--gold);animation:fadeIn 1s .2s both}
+.hero h1{font-size:2.8rem;font-weight:900;line-height:1.1;margin-bottom:18px;color:#fff;animation:slideUp .8s .4s both}
+.hero-sub{font-size:1.1rem;color:#cbd5e1;margin-bottom:28px;line-height:1.7;animation:fadeInUp .8s .6s both}
+.hero-cta{animation:fadeInUp .8s .8s both}
 .hero-price{margin-bottom:20px}
-.hero-img{position:relative;z-index:1}
-.hero-img img{border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
 
 /* TRUST BAR */
-.trust-bar{background:var(--light);padding:24px 0;border-bottom:1px solid var(--light-gray)}
+.trust-bar{background:var(--white);padding:32px 0;border-bottom:1px solid var(--light-gray)}
 .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
-.trust-item{font-size:.85rem;font-weight:600;color:var(--navy)}
-.trust-icon{font-size:1.4rem;display:block;margin-bottom:4px}
+.trust-card{background:var(--light);border-radius:12px;padding:22px 16px;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .25s,box-shadow .25s}
+.trust-card:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,.1)}
+.trust-icon{font-size:2rem;display:block;margin-bottom:8px}
+.trust-label{font-size:.9rem;font-weight:700;color:var(--navy)}
+
+/* VALUE STACK */
+.value-stack{background:linear-gradient(135deg,var(--navy),#2c3e50);color:#fff;padding:80px 0}
+.value-stack .section-eyebrow{color:var(--gold)}
+.value-stack .section-title{color:#fff}
+.value-stack-sub{color:#94a3b8;margin-bottom:40px;font-size:1.05rem}
+.stack-table{width:100%;max-width:650px;margin:0 auto 40px}
+.stack-row{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.1);font-size:1.05rem}
+.stack-row.free{transition:background .2s}
+.stack-row.free:hover{background:rgba(255,255,255,.05)}
+.stack-row .stack-thumb{width:48px;height:48px;border-radius:8px;object-fit:cover;margin-right:14px;flex-shrink:0}
+.stack-row .stack-label{display:flex;align-items:center}
+.stack-val{font-weight:700;white-space:nowrap}
+.stack-row.free .stack-val{color:#4ade80}
+.stack-row.total{border-top:2px solid var(--gold);border-bottom:none;padding-top:20px;margin-top:8px}
+.stack-row.total .stack-val{font-size:1.8rem;color:var(--gold)}
+.stack-row.you-pay{background:rgba(232,96,28,.15);border-radius:8px;border-bottom:none;margin-top:12px;animation:countPulse 3s infinite}
+.stack-row.you-pay .stack-val{font-size:2rem;color:var(--orange)}
+.value-cta{text-align:center;margin-top:36px}
+
+/* URGENCY / TIMELINE */
+.urgency{background:var(--white)}
+.timeline{max-width:600px;margin:40px auto 0;position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:3px;background:var(--light-gray)}
+.tl-item{position:relative;padding-bottom:32px;transition:transform .3s}
+.tl-item:hover{transform:translateX(4px)}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:-33px;top:4px;width:14px;height:14px;border-radius:50%;border:3px solid var(--orange);background:var(--white)}
+.tl-item.active .tl-dot{background:var(--orange);box-shadow:0 0 0 4px rgba(232,96,28,.25)}
+.tl-item.red .tl-dot{border-color:#ef4444;background:#ef4444;box-shadow:0 0 0 4px rgba(239,68,68,.2)}
+.tl-label{font-weight:700;color:var(--navy);font-size:1rem}
+.tl-desc{color:var(--gray);font-size:.9rem;margin-top:2px}
 
 /* PROBLEM */
 .problem{background:var(--white)}
@@ -57,74 +106,50 @@ img{max-width:100%;height:auto;display:block}
 .solution{background:var(--light)}
 .solution-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-top:30px}
 .benefit-list{list-style:none}
-.benefit-list li{padding:14px 0;border-bottom:1px solid var(--light-gray);font-size:1rem}
+.benefit-list li{padding:14px 0;border-bottom:1px solid var(--light-gray);font-size:1rem;transition:transform .2s}
+.benefit-list li:hover{transform:translateX(6px)}
 .benefit-list li:last-child{border-bottom:none}
 .benefit-icon{font-size:1.3rem;margin-right:10px}
 
 /* GALLERY */
 .gallery{background:var(--white);padding:60px 0}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
-.gallery-grid img{border-radius:10px;aspect-ratio:1;object-fit:cover;transition:transform .3s;cursor:pointer}
-.gallery-grid img:hover{transform:scale(1.03)}
+.gallery-grid img{border-radius:10px;aspect-ratio:1;object-fit:cover;transition:transform .3s,box-shadow .3s;cursor:pointer}
+.gallery-grid img:hover{transform:scale(1.04);box-shadow:0 8px 30px rgba(0,0,0,.15)}
 
 /* FEATURES */
 .features{background:var(--white)}
 .features-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:40px}
-.feature-card{background:var(--light);border-radius:12px;padding:36px 28px;transition:transform .2s}
-.feature-card:hover{transform:translateY(-4px)}
+.feature-card{background:var(--light);border-radius:12px;padding:36px 28px;transition:transform .25s,box-shadow .25s}
+.feature-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,.08)}
 .feature-card h3{font-size:1.2rem;margin-bottom:6px;color:var(--navy)}
 .feature-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--orange);margin-bottom:10px}
 .feature-card p{font-size:.95rem;color:#4b5563}
-.feature-img{border-radius:10px;margin-bottom:16px;aspect-ratio:16/10;object-fit:cover;width:100%}
-
-/* VALUE STACK */
-.value-stack{background:linear-gradient(135deg,var(--navy),#2c3e50);color:#fff;padding:80px 0}
-.value-stack .section-eyebrow{color:var(--gold)}
-.value-stack .section-title{color:#fff}
-.value-stack-sub{color:#94a3b8;margin-bottom:40px;font-size:1.05rem}
-.stack-table{width:100%;max-width:600px;margin:0 auto 40px}
-.stack-row{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.1);font-size:1.05rem}
-.stack-row.free .stack-val{color:#4ade80}
-.stack-val{font-weight:700;white-space:nowrap}
-.stack-row.total{border-top:2px solid var(--gold);border-bottom:none;padding-top:20px;margin-top:8px}
-.stack-row.total .stack-val{font-size:1.8rem;color:var(--gold)}
-.stack-row.you-pay{background:rgba(232,96,28,.15);border-radius:8px;border-bottom:none;margin-top:12px}
-.stack-row.you-pay .stack-val{font-size:2rem;color:var(--orange)}
-.value-cta{text-align:center;margin-top:36px}
 
 /* HOW IT WORKS */
 .how{background:var(--white)}
 .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px}
-.step{text-align:center;padding:24px 16px}
+.step{text-align:center;padding:24px 16px;transition:transform .2s}
+.step:hover{transform:translateY(-4px)}
 .step-num{width:56px;height:56px;border-radius:50%;background:var(--orange);color:#fff;font-size:1.4rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
 .step h3{font-size:1.05rem;margin-bottom:8px;color:var(--navy)}
 .step p{font-size:.9rem;color:var(--gray)}
 
-/* TESTIMONIALS */
-.testimonials{background:var(--light)}
+/* REVIEWS */
+.reviews{background:var(--light)}
 .test-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
-.test-card{background:var(--white);border-radius:12px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.test-card{background:var(--white);border-radius:12px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s}
+.test-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
 .test-stars{color:var(--gold);font-size:1.1rem;margin-bottom:10px}
 .test-quote{font-size:1rem;color:#374151;margin-bottom:14px;font-style:italic;line-height:1.6}
 .test-name{font-size:.85rem;font-weight:700;color:var(--navy)}
 .test-loc{font-size:.8rem;color:var(--gray)}
 
-/* URGENCY */
-.urgency{background:var(--white)}
-.timeline{max-width:600px;margin:40px auto 0;position:relative;padding-left:40px}
-.timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:3px;background:var(--light-gray)}
-.tl-item{position:relative;padding-bottom:32px}
-.tl-item:last-child{padding-bottom:0}
-.tl-dot{position:absolute;left:-33px;top:4px;width:14px;height:14px;border-radius:50%;border:3px solid var(--orange);background:var(--white)}
-.tl-item.active .tl-dot{background:var(--orange)}
-.tl-item.red .tl-dot{border-color:#ef4444;background:#ef4444}
-.tl-label{font-weight:700;color:var(--navy);font-size:1rem}
-.tl-desc{color:var(--gray);font-size:.9rem;margin-top:2px}
-
 /* FAQ */
 .faq{background:var(--light)}
 .faq-list{max-width:700px;margin:40px auto 0}
-.faq-item{background:var(--white);border-radius:8px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.faq-item{background:var(--white);border-radius:8px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 4px 16px rgba(0,0,0,.08)}
 .faq-q{width:100%;padding:18px 24px;font-size:1rem;font-weight:600;color:var(--navy);background:none;border:none;cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;font-family:inherit}
 .faq-q::after{content:'+';font-size:1.4rem;font-weight:300;color:var(--gray);transition:transform .2s}
 .faq-item.open .faq-q::after{content:'−'}
@@ -143,50 +168,59 @@ img{max-width:100%;height:auto;display:block}
 .sticky-bar.show{transform:translateY(0)}
 .sticky-bar-text{color:#fff;font-size:.95rem;font-weight:600}
 .sticky-bar-text .price-old{color:#94a3b8;font-size:.85rem}
-.sticky-bar .btn{padding:12px 28px;font-size:.95rem;box-shadow:none}
+.sticky-bar .btn{padding:12px 28px;font-size:.95rem;box-shadow:none;animation:none}
 
 /* MOBILE */
 @media(max-width:768px){
-  .hero-grid,.solution-grid,.features-grid,.test-grid{grid-template-columns:1fr}
-  .trust-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .hero h1{font-size:2rem}
+  .hero-content{padding:50px 0 60px}
+  .solution-grid,.features-grid,.test-grid{grid-template-columns:1fr}
+  .trust-grid{grid-template-columns:repeat(2,1fr);gap:12px}
   .steps-grid{grid-template-columns:repeat(2,1fr)}
   .gallery-grid{grid-template-columns:repeat(2,1fr)}
-  .hero h1{font-size:1.8rem}
   .section-title{font-size:1.7rem}
   .section{padding:60px 0}
-  .hero{padding:40px 0 60px}
   .btn{width:100%;padding:16px 24px;font-size:1.05rem}
   .stack-row{font-size:.95rem;padding:12px 16px}
-  .hero-img{order:-1}
+  .stack-row .stack-thumb{width:36px;height:36px}
+  .logo-mark{font-size:.95rem;letter-spacing:1px}
 }
 </style>
 </head>
 <body>
 
+<!-- LOGO NAV -->
+<div class="logo-bar">
+<div class="container">
+  <a href="#" class="logo-mark">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4L2 26h28L16 4z" fill="#d4a843" opacity=".9"/><path d="M16 10l-8 16h16L16 10z" fill="#1a2332"/><path d="M10 26l6-10 6 10" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
+    HAWK NEST HAMMOCKS
+  </a>
+  <div class="logo-bar-right">
+    <a href="#offer">Pre-Order</a>
+    <a href="#faq-section">FAQ</a>
+  </div>
+</div>
+</div>
+
 <!-- HERO -->
 <section class="hero" id="hero">
+<div class="hero-bg">
+  <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749" alt="Hawk Nest Hammock Tent complete kit">
+</div>
 <div class="container">
-<div class="hero-grid">
-<div>
+<div class="hero-content">
   <div class="section-eyebrow">🇺🇸 NOW AVAILABLE IN THE USA — First Batch Pre-Order</div>
-  <h1>They Said Camping With Back Pain Was Off The Table. We Disagree.</h1>
-  <p class="hero-sub">The Hawk Nest All-Season Hammock Tent V.3 gives you the flattest, most comfortable sleep you've ever had outdoors — hanging or on the ground. 400+ five-star reviews. Patent pending. Now shipping to all 50 states.</p>
-  <ul class="hero-bullets">
-    <li>Sleeps flat like a bed — back, side, or stomach</li>
-    <li>Sets up in under 5 minutes, solo</li>
-    <li>Works as a hammock OR ground tent</li>
-    <li>All-season: rain, wind, cold — you're covered</li>
-  </ul>
-  <div class="hero-price">
-    <span class="price-old">$229</span>
-    <span class="price-new" style="color:#fff">$179 USD</span>
+  <h1>The Most Comfortable Hammock Sleep You've Ever Had — Guaranteed.</h1>
+  <p class="hero-sub">The Hawk Nest All-Season Hammock Tent V.3 — patent-pending spreader bar design for unreal comfort. 400+ five-star reviews. Now shipping to all 50 states.</p>
+  <div class="hero-cta">
+    <div class="hero-price">
+      <span class="price-old" style="color:#94a3b8">$229</span>
+      <span class="price-new" style="color:#fff">$179 USD</span>
+    </div>
+    <a href="#offer" class="btn">CLAIM YOUR HAWK NEST — $179</a>
+    <span class="btn-sub" style="color:#94a3b8">Free shipping to all 50 states · 30-day risk-free trial</span>
   </div>
-  <a href="#offer" class="btn">CLAIM YOUR HAWK NEST — $179</a>
-  <span class="btn-sub" style="color:#94a3b8">Free shipping to all 50 states · 60-day risk-free trial</span>
-</div>
-<div class="hero-img">
-  <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_25.png?v=1760652105" alt="Hawk Nest Hammock Tent hanging in forest" class="product-img" style="min-height:380px;object-fit:cover">
-</div>
 </div>
 </div>
 </section>
@@ -194,103 +228,11 @@ img{max-width:100%;height:auto;display:block}
 <!-- TRUST BAR -->
 <section class="trust-bar">
 <div class="container">
-<div class="trust-grid">
-  <div class="trust-item"><span class="trust-icon">⭐</span>400+ 5-Star Reviews</div>
-  <div class="trust-item"><span class="trust-icon">🚚</span>Free US Shipping</div>
-  <div class="trust-item"><span class="trust-icon">🔒</span>Patent Pending Design</div>
-  <div class="trust-item"><span class="trust-icon">✅</span>60-Day Money-Back Guarantee</div>
-</div>
-</div>
-</section>
-
-<!-- PROBLEM -->
-<section class="section problem">
-<div class="container">
-<div class="fade-in">
-  <div class="section-eyebrow">The Real Problem</div>
-  <h2 class="section-title">"I've Got Back Pain — A Comfortable Night Camping Isn't In The Cards For Me."</h2>
-  <div class="problem-text">
-    <p>Sound familiar? You're not alone.</p>
-    <p>Every year, millions of Americans give up camping — not because they don't love the outdoors, but because sleeping on the ground destroys their back.</p>
-    <p><strong>Traditional tents?</strong> You're lying on rocks, roots, and cold hard earth. Wake up stiffer than when you went to bed.</p>
-    <p><strong>Regular hammocks?</strong> Your spine curves into a banana. Your shoulders pinch. You toss and turn all night — if you sleep at all.</p>
-    <p><strong>You shouldn't have to choose between loving the outdoors and waking up pain-free.</strong></p>
-  </div>
-</div>
-</div>
-</section>
-
-<!-- SOLUTION -->
-<section class="section solution">
-<div class="container">
-<div class="fade-in">
-  <div class="section-eyebrow">Meet The Hawk Nest</div>
-  <h2 class="section-title">Pack The Comfort Of Your Bed On The Trail</h2>
-  <div class="solution-grid">
-    <div>
-      <p style="color:#4b5563;margin-bottom:24px;font-size:1.05rem">The Hawk Nest is the result of 3 years of obsessive engineering by a Canadian outdoor company that refused to accept "uncomfortable" as the price of camping. Our patent-pending spreader bar design keeps the hammock body flat and wide — so you sleep naturally.</p>
-      <ul class="benefit-list">
-        <li><span class="benefit-icon">🛏️</span><strong>Flat sleep surface</strong> — Spreader bars eliminate the "banana effect." Sleep like a real bed.</li>
-        <li><span class="benefit-icon">🏔️</span><strong>Hammock + tent in one</strong> — Hang it or set it on the ground. No trees? No problem.</li>
-        <li><span class="benefit-icon">🌧️</span><strong>All-season ready</strong> — Rain fly + sleeping pad pocket keeps you warm and dry.</li>
-        <li><span class="benefit-icon">⚡</span><strong>5-minute solo setup</strong> — 4 simple steps. No partner needed.</li>
-        <li><span class="benefit-icon">🪶</span><strong>4 lbs total weight</strong> — Lighter than most 1-person tents.</li>
-      </ul>
-    </div>
-    <div>
-      <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_20.png?v=1760652105" alt="Couple relaxing in Hawk Nest hammock tent" class="product-img" style="border-radius:12px">
-    </div>
-  </div>
-</div>
-</div>
-</section>
-
-<!-- PHOTO GALLERY -->
-<section class="gallery">
-<div class="container">
-  <div style="text-align:center" class="fade-in">
-    <div class="section-eyebrow">See It In Action</div>
-    <h2 class="section-title">Built For Real Adventures</h2>
-  </div>
-  <div class="gallery-grid fade-in">
-    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_e1cdf286-8de3-46cd-8e74-d939ec5e2832.png?v=1755024737" alt="Hawk Nest complete kit flat lay">
-    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_26.png?v=1760652105" alt="Inside view of Hawk Nest hammock tent">
-    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Giveaway_5.png?v=1760652105" alt="Hawk Nest set up on snowy ground">
-    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_23.png?v=1760652105" alt="Hawk Nest hammock tent in forest">
-    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_34.png?v=1760652105" alt="Man relaxing in Hawk Nest hammock">
-    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Mattress_Pocket.png?v=1760652105" alt="Mattress pocket feature close-up">
-  </div>
-</div>
-</section>
-
-<!-- FEATURES -->
-<section class="section features">
-<div class="container">
-<div class="fade-in">
-  <div class="section-eyebrow">Built Different</div>
-  <h2 class="section-title">Why 400+ Campers Gave Us Five Stars</h2>
-  <div class="features-grid">
-    <div class="feature-card fade-in">
-      <span class="feature-tag">Patent Pending</span>
-      <h3>Flat-Lay Spreader Bar System</h3>
-      <p>Our spreader bars keep the hammock body taut and flat — giving you a sleeping surface that rivals your mattress at home. Sleep on your back, side, or stomach.</p>
-    </div>
-    <div class="feature-card fade-in">
-      <span class="feature-tag">Two Shelters In One</span>
-      <h3>Hang It or Ground It</h3>
-      <p>Trees everywhere? Hang it. Open meadow? Lay it flat as a tent. One product, every terrain, zero excuses.</p>
-    </div>
-    <div class="feature-card fade-in">
-      <span class="feature-tag">Rain · Wind · Cold</span>
-      <h3>All-Season Weather Protection</h3>
-      <p>Integrated rain fly sheds water. Sleeping pad pocket adds insulation. Ripstop fabric blocks wind. Camp spring through winter.</p>
-    </div>
-    <div class="feature-card fade-in">
-      <span class="feature-tag">4 lbs. That's It.</span>
-      <h3>Ultralight &amp; Ultra-Packable</h3>
-      <p>Total kit: 4 lbs, packs to 16.5" × 5.5". Lighter and smaller than most 1-person tents. Forget it's there until you need it.</p>
-    </div>
-  </div>
+<div class="trust-grid fade-in">
+  <div class="trust-card"><span class="trust-icon">⭐</span><span class="trust-label">400+ 5-Star Reviews</span></div>
+  <div class="trust-card"><span class="trust-icon">🚚</span><span class="trust-label">Free US Shipping</span></div>
+  <div class="trust-card"><span class="trust-icon">🔒</span><span class="trust-label">Patent Pending Design</span></div>
+  <div class="trust-card"><span class="trust-icon">✅</span><span class="trust-label">30-Day Money-Back Guarantee</span></div>
 </div>
 </div>
 </section>
@@ -305,27 +247,35 @@ img{max-width:100%;height:auto;display:block}
 </div>
 <div class="stack-table fade-in">
   <div class="stack-row">
-    <span>🏕️ Hawk Nest All-Season Hammock Tent V.3</span>
+    <span class="stack-label">🏕️ Hawk Nest All-Season Hammock Tent V.3</span>
     <span class="stack-val">$229</span>
   </div>
   <div class="stack-row free">
-    <span>💧 Waterproof Bottom Upgrade</span>
+    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190" alt="Waterproof bottom">💧 Waterproof Bottom Upgrade</span>
     <span class="stack-val"><s style="color:#94a3b8">$29</s> FREE</span>
   </div>
   <div class="stack-row free">
-    <span>🎒 Waterproof Carrying Bag</span>
+    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669" alt="Carrying bag">🎒 Waterproof Carrying Bag</span>
     <span class="stack-val"><s style="color:#94a3b8">$19</s> FREE</span>
   </div>
   <div class="stack-row free">
-    <span>🛡️ 5-Year Extended Warranty</span>
+    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide.png?v=1754937603" alt="Rain fly">🛡️ Rain Fly</span>
     <span class="stack-val"><s style="color:#94a3b8">$39</s> FREE</span>
   </div>
   <div class="stack-row free">
-    <span>📱 3 Months Gridless Premium</span>
+    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Sleeping_Pad_optimized_aspect_ratio.png?v=1738095879" alt="Sleeping pad">🛏️ Sleeping Pad Pocket</span>
     <span class="stack-val"><s style="color:#94a3b8">$30</s> FREE</span>
   </div>
   <div class="stack-row free">
-    <span>🚚 Standard US Shipping</span>
+    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Strap_Product_Photo.png?v=1731955678" alt="Tree straps">🔗 Heavy-Duty Tree Straps</span>
+    <span class="stack-val">FREE</span>
+  </div>
+  <div class="stack-row free">
+    <span class="stack-label">📱 3 Months Gridless Premium</span>
+    <span class="stack-val"><s style="color:#94a3b8">$30</s> FREE</span>
+  </div>
+  <div class="stack-row free">
+    <span class="stack-label">🚚 Standard US Shipping</span>
     <span class="stack-val">FREE</span>
   </div>
   <div class="stack-row total">
@@ -339,83 +289,12 @@ img{max-width:100%;height:auto;display:block}
 </div>
 <div class="value-cta fade-in">
   <a href="#" class="btn" style="font-size:1.2rem;padding:20px 48px">GET THE FULL BUNDLE — $179</a>
-  <span class="btn-sub" style="color:#94a3b8">Save $167 · Free shipping · 60-day guarantee</span>
+  <span class="btn-sub" style="color:#94a3b8">Save $167 · Free shipping · 30-day guarantee</span>
 </div>
 </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="section how">
-<div class="container">
-<div class="fade-in">
-  <div class="section-eyebrow" style="text-align:center">Easy As 1-2-3-4</div>
-  <h2 class="section-title" style="text-align:center">Set Up Your Hawk Nest In Under 5 Minutes</h2>
-  <div class="steps-grid">
-    <div class="step fade-in">
-      <div class="step-num">1</div>
-      <h3>Strap Up</h3>
-      <p>Wrap the included tree straps around two anchor points and lock them in.</p>
-    </div>
-    <div class="step fade-in">
-      <div class="step-num">2</div>
-      <h3>Clip In</h3>
-      <p>Clip the hammock body into the straps using the built-in carabiners. 10 seconds.</p>
-    </div>
-    <div class="step fade-in">
-      <div class="step-num">3</div>
-      <h3>Spread Out</h3>
-      <p>Insert the lightweight spreader bars to create your flat, wide sleeping surface.</p>
-    </div>
-    <div class="step fade-in">
-      <div class="step-num">4</div>
-      <h3>Cover Up</h3>
-      <p>Attach the rain fly for full weather protection. Optional: add your sleeping pad for insulation.</p>
-    </div>
-  </div>
-</div>
-<div style="text-align:center;margin-top:40px" class="fade-in">
-  <a href="#offer" class="btn">ORDER YOURS NOW — $179</a>
-</div>
-</div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="section testimonials">
-<div class="container">
-<div class="fade-in">
-  <div class="section-eyebrow" style="text-align:center">What Campers Are Saying</div>
-  <h2 class="section-title" style="text-align:center">400+ Five-Star Reviews (And Counting)</h2>
-  <div class="test-grid">
-    <div class="test-card fade-in">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"Finally, camping doesn't wreck my back. I've had two disc surgeries and was convinced my camping days were over. First night in the Hawk Nest I slept 8 hours straight. Unreal."</p>
-      <div class="test-name">[Customer Name]</div>
-      <div class="test-loc">Verified Buyer</div>
-    </div>
-    <div class="test-card fade-in">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"Set it up in 4 minutes on my first try. My buddy was still fighting his tent poles when I was already lying down with a beer. Worth every penny."</p>
-      <div class="test-name">[Customer Name]</div>
-      <div class="test-loc">Verified Buyer</div>
-    </div>
-    <div class="test-card fade-in">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"Used it in a full-on rainstorm in Algonquin Park. Bone dry inside. The rain fly is legit. I've spent way more on tents that leaked worse."</p>
-      <div class="test-name">[Customer Name]</div>
-      <div class="test-loc">Verified Buyer</div>
-    </div>
-    <div class="test-card fade-in">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"4 pounds. I weighed it myself because I didn't believe it. Lighter than my old tent and 10x more comfortable. This thing is a game changer for backpacking."</p>
-      <div class="test-name">[Customer Name]</div>
-      <div class="test-loc">Verified Buyer</div>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-
-<!-- URGENCY -->
+<!-- URGENCY / TIMELINE -->
 <section class="section urgency">
 <div class="container">
 <div class="fade-in">
@@ -451,8 +330,178 @@ img{max-width:100%;height:auto;display:block}
 </div>
 </section>
 
+<!-- PROBLEM -->
+<section class="section problem">
+<div class="container">
+<div class="fade-in">
+  <div class="section-eyebrow">The Real Problem</div>
+  <h2 class="section-title">"I've Got Back Pain — A Comfortable Night Camping Isn't In The Cards For Me."</h2>
+  <div class="problem-text">
+    <p>Sound familiar? You're not alone.</p>
+    <p>Every year, millions of Americans give up camping — not because they don't love the outdoors, but because sleeping on the ground destroys their back.</p>
+    <p><strong>Traditional tents?</strong> You're lying on rocks, roots, and cold hard earth. Wake up stiffer than when you went to bed.</p>
+    <p><strong>Regular hammocks?</strong> Your spine curves into a banana. Your shoulders pinch. You toss and turn all night — if you sleep at all.</p>
+    <p><strong>You shouldn't have to choose between loving the outdoors and waking up pain-free.</strong></p>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- SOLUTION -->
+<section class="section solution">
+<div class="container">
+<div class="fade-in">
+  <div class="section-eyebrow">Meet The Hawk Nest</div>
+  <h2 class="section-title">The Most Comfortable Hammock Sleep — Period.</h2>
+  <div class="solution-grid">
+    <div>
+      <p style="color:#4b5563;margin-bottom:24px;font-size:1.05rem">The Hawk Nest is the result of 3 years of obsessive engineering by a Canadian outdoor company that refused to accept "uncomfortable" as the price of camping. Our patent-pending spreader bar design creates a wide, gently arched sleeping surface that eliminates the "banana effect" — so you sleep comfortably on your back or side, all night long.</p>
+      <ul class="benefit-list">
+        <li><span class="benefit-icon">🏕️</span><strong>Incredibly comfortable sleep</strong> — Spreader bars eliminate the "banana effect." Sleep naturally on your back or side.</li>
+        <li><span class="benefit-icon">🏔️</span><strong>Hammock + tent in one</strong> — Hang it or set it on the ground. No trees? No problem.</li>
+        <li><span class="benefit-icon">🌧️</span><strong>All-season ready</strong> — Rain fly + sleeping pad pocket keeps you warm and dry.</li>
+        <li><span class="benefit-icon">⚡</span><strong>5-minute solo setup</strong> — 4 simple steps. No partner needed.</li>
+        <li><span class="benefit-icon">🪶</span><strong>4 lbs total weight</strong> — Lighter than most 1-person tents.</li>
+      </ul>
+    </div>
+    <div>
+      <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_20.png?v=1772739749" alt="Couple relaxing in Hawk Nest hammock tent" class="product-img" style="border-radius:12px">
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section class="gallery">
+<div class="container">
+  <div style="text-align:center" class="fade-in">
+    <div class="section-eyebrow">See It In Action</div>
+    <h2 class="section-title">Built For Real Adventures</h2>
+  </div>
+  <div class="gallery-grid fade-in">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_25.png?v=1772739749" alt="Hawk Nest hammock in forest">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_26.png?v=1772739749" alt="Inside view of Hawk Nest hammock tent">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Giveaway_5.png?v=1772739749" alt="Hawk Nest set up on snowy ground">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitled-_1000-x-750-px_l.jpg?v=1772739749" alt="Hawk Nest hammock in forest setting">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_34.png?v=1772739749" alt="Man relaxing in Hawk Nest hammock">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_20.png?v=1772739749" alt="Couple in Hawk Nest hammock">
+  </div>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section class="section features">
+<div class="container">
+<div class="fade-in">
+  <div class="section-eyebrow">Built Different</div>
+  <h2 class="section-title">Why 400+ Campers Gave Us Five Stars</h2>
+  <div class="features-grid">
+    <div class="feature-card fade-in">
+      <span class="feature-tag">Patent Pending</span>
+      <h3>Spreader Bar Comfort System</h3>
+      <p>Our spreader bars create a wide, gently arched sleeping surface that eliminates the "banana effect" — giving you the most comfortable hammock sleep imaginable. Sleep on your back or side naturally.</p>
+    </div>
+    <div class="feature-card fade-in">
+      <span class="feature-tag">Two Shelters In One</span>
+      <h3>Hang It or Ground It</h3>
+      <p>Trees everywhere? Hang it. Open meadow? Set it up on the ground as a tent. One product, every terrain, zero excuses.</p>
+    </div>
+    <div class="feature-card fade-in">
+      <span class="feature-tag">Rain · Wind · Cold</span>
+      <h3>All-Season Weather Protection</h3>
+      <p>Integrated rain fly sheds water. Sleeping pad pocket adds insulation. Ripstop fabric blocks wind. Camp spring through winter.</p>
+    </div>
+    <div class="feature-card fade-in">
+      <span class="feature-tag">4 lbs. That's It.</span>
+      <h3>Ultralight &amp; Ultra-Packable</h3>
+      <p>Total kit: 4 lbs, packs to 16.5" × 5.5". Lighter and smaller than most 1-person tents. Forget it's there until you need it.</p>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section how">
+<div class="container">
+<div class="fade-in">
+  <div class="section-eyebrow" style="text-align:center">Easy As 1-2-3-4</div>
+  <h2 class="section-title" style="text-align:center">Set Up Your Hawk Nest In Under 5 Minutes</h2>
+  <div class="steps-grid">
+    <div class="step fade-in">
+      <div class="step-num">1</div>
+      <h3>Strap Up</h3>
+      <p>Wrap the included tree straps around two anchor points and lock them in.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">2</div>
+      <h3>Clip In</h3>
+      <p>Clip the hammock body into the straps using the built-in carabiners. 10 seconds.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">3</div>
+      <h3>Spread Out</h3>
+      <p>Insert the lightweight spreader bars to create your wide, comfortable sleeping surface.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">4</div>
+      <h3>Cover Up</h3>
+      <p>Attach the rain fly for full weather protection. Optional: add your sleeping pad for insulation.</p>
+    </div>
+  </div>
+</div>
+<div style="text-align:center;margin-top:40px" class="fade-in">
+  <a href="#offer" class="btn">ORDER YOURS NOW — $179</a>
+</div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews" id="reviews">
+<div class="container">
+<div class="fade-in">
+  <div class="section-eyebrow" style="text-align:center">What Campers Are Saying</div>
+  <h2 class="section-title" style="text-align:center">400+ Five-Star Reviews (And Counting)</h2>
+
+  <!-- Judge.me Widget -->
+  <div style="text-align:center;margin-bottom:30px">
+    <div class="jdgm-widget jdgm-review-widget" data-id="hawk-nest-all-season-hammock-tent" data-product-title="Hawk Nest All-Season Hammock Tent"></div>
+    <div id="judgeme_product_reviews" data-id="hawk-nest-all-season-hammock-tent"></div>
+  </div>
+
+  <div class="test-grid">
+    <div class="test-card fade-in">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-quote">"Finally, camping doesn't wreck my back. I've had two disc surgeries and was convinced my camping days were over. First night in the Hawk Nest I slept 8 hours straight. Unreal."</p>
+      <div class="test-name">[Customer Name]</div>
+      <div class="test-loc">Verified Buyer</div>
+    </div>
+    <div class="test-card fade-in">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-quote">"Set it up in 4 minutes on my first try. My buddy was still fighting his tent poles when I was already lying down with a beer. Worth every penny."</p>
+      <div class="test-name">[Customer Name]</div>
+      <div class="test-loc">Verified Buyer</div>
+    </div>
+    <div class="test-card fade-in">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-quote">"Used it in a full-on rainstorm in Algonquin Park. Bone dry inside. The rain fly is legit. I've spent way more on tents that leaked worse."</p>
+      <div class="test-name">[Customer Name]</div>
+      <div class="test-loc">Verified Buyer</div>
+    </div>
+    <div class="test-card fade-in">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-quote">"4 pounds. I weighed it myself because I didn't believe it. Lighter than my old tent and 10x more comfortable. This thing is a game changer for backpacking."</p>
+      <div class="test-name">[Customer Name]</div>
+      <div class="test-loc">Verified Buyer</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
 <!-- FAQ -->
-<section class="section faq">
+<section class="section faq" id="faq-section">
 <div class="container">
 <div class="fade-in">
   <div class="section-eyebrow" style="text-align:center">Questions?</div>
@@ -468,7 +517,7 @@ img{max-width:100%;height:auto;display:block}
     </div>
     <div class="faq-item">
       <button class="faq-q">What if I don't like it?</button>
-      <div class="faq-a"><p>We offer a 60-day money-back guarantee. Try it on a camping trip. If you're not sleeping better than ever, send it back for a full refund. No questions asked.</p></div>
+      <div class="faq-a"><p>We offer a 30-day money-back guarantee. Try it on a camping trip. If you're not sleeping better than ever, send it back for a full refund. No questions asked.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q">How much weight can it hold?</button>
@@ -507,7 +556,7 @@ img{max-width:100%;height:auto;display:block}
   </div>
   <div style="font-size:.9rem;color:var(--gold);margin-bottom:28px"><em>Includes $167 in free bonuses</em></div>
   <a href="#" class="btn" style="font-size:1.2rem;padding:20px 52px">ORDER MY HAWK NEST — $179</a>
-  <p class="guarantee-text">🛡️ 60-Day Money-Back Guarantee · 5-Year Extended Warranty Included</p>
+  <p class="guarantee-text">🛡️ 30-Day Money-Back Guarantee · 5-Year Extended Warranty Included</p>
 </div>
 </section>
 
@@ -555,11 +604,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
   });
 });
+
+// Judge.me init
+window.jdgm=window.jdgm||{};
+window.jdgm.SHOP_DOMAIN='hawknesthammocks.ca';
 </script>
 </body>
 </html>
-<!-- v2 -->
-<!-- deployed -->
-<!-- v3 -->
-<!-- v4 -->
-<!-- v5 -->
