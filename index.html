@@ -102,11 +102,8 @@ img{max-width:100%;height:auto;display:block}
 .hero-price-strip .hp-save{background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:8px;text-transform:uppercase;letter-spacing:.5px}
 .hero-price-strip .hp-free{font-size:.85rem;font-weight:800;color:#4ade80;text-align:center;letter-spacing:.3px;text-transform:uppercase;white-space:nowrap}
 
-/* Star rating badge */
-.hero-stars{display:none;align-items:center;gap:6px;margin-bottom:6px;cursor:pointer;transition:transform .2s}
-.hero-stars:hover{transform:scale(1.03)}
-.hero-stars .stars{color:var(--gold);font-size:1rem;letter-spacing:2px;text-shadow:0 1px 3px rgba(212,168,67,.4)}
-.hero-stars .star-count{font-size:.72rem;font-weight:800;color:var(--navy);background:var(--white);padding:3px 10px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+/* Social proof bar */
+.viewing-badge{font-size:.65rem;font-weight:600;color:#16a34a;display:flex;align-items:center}
 
 /* (old guarantee styles removed) */
 
@@ -233,12 +230,12 @@ img{max-width:100%;height:auto;display:block}
 .guarantee-text{font-size:.85rem;color:#94a3b8;margin-top:16px}
 
 /* STICKY BAR */
-.sticky-bar{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(180deg,#1e293b,#0c1118);padding:10px 16px;display:flex;justify-content:center;align-items:center;gap:12px;z-index:1000;transform:translateY(100%);transition:transform .3s ease;box-shadow:0 -4px 24px rgba(0,0,0,.4)}
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(180deg,#1e293b,#0c1118);padding:0;z-index:1000;transform:translateY(100%);transition:transform .3s ease;box-shadow:0 -4px 24px rgba(0,0,0,.4);display:flex;flex-direction:column}
 .sticky-bar.show{transform:translateY(0)}
-.sticky-bar-left{display:flex;flex-direction:column;gap:2px}
+.sticky-bar-main{display:flex;justify-content:center;align-items:center;gap:14px;padding:10px 16px}
 .sticky-bar-text{color:#fff;font-size:.85rem;font-weight:700}
 .sticky-bar-text .price-old{color:#94a3b8;font-size:.75rem}
-.sticky-bar-urgency{font-size:.65rem;color:#4ade80;font-weight:600;display:flex;align-items:center;gap:4px}
+.sticky-bar-urgency{background:rgba(74,222,128,.1);border-top:1px solid rgba(74,222,128,.2);padding:5px 16px;text-align:center;font-size:.65rem;color:#4ade80;font-weight:600;display:flex;align-items:center;justify-content:center;gap:4px}
 .sticky-bar-urgency .dot{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:pulse-dot 1.5s infinite}
 @keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
 .sticky-bar .btn{padding:10px 20px;font-size:.85rem;box-shadow:none;animation:none;white-space:nowrap}
@@ -255,7 +252,7 @@ img{max-width:100%;height:auto;display:block}
   .desktop-only{display:none!important}
   .mobile-only{display:flex!important}
   .mobile-callouts{display:flex!important;justify-content:center}
-  .hero-stars{display:flex!important}
+  .hero-social-proof{display:flex!important}
   .hero{padding:40px 0 30px}
   .solution-grid,.features-grid,.test-grid{grid-template-columns:1fr}
   .trust-grid{grid-template-columns:repeat(2,1fr);gap:12px}
@@ -305,11 +302,14 @@ img{max-width:100%;height:auto;display:block}
     </div>
   </div>
   <div class="hero-image-wrap">
-    <!-- Star rating - taps to scroll to reviews -->
-    <a href="#reviews" class="hero-stars" onclick="event.preventDefault();document.getElementById('reviews').scrollIntoView({behavior:'smooth'})">
-      <span class="stars">★★★★★</span>
-      <span class="star-count">4.8/5 — 400+ Reviews</span>
-    </a>
+    <!-- Viewer count + Star rating -->
+    <div class="hero-social-proof" style="display:none;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+      <span class="viewing-badge"><span class="dot" style="width:6px;height:6px;background:#4ade80;border-radius:50%;display:inline-block;animation:pulse-dot 1.5s infinite;margin-right:4px"></span><span id="viewerCountTop">47</span> people viewing now</span>
+      <a href="#reviews" class="hero-stars-link" onclick="event.preventDefault();document.getElementById('reviews').scrollIntoView({behavior:'smooth'})" style="display:flex;align-items:center;gap:6px;text-decoration:none">
+        <span class="stars" style="color:#f59e0b;font-size:1.1rem;letter-spacing:1px">★★★★★</span>
+        <span style="font-size:.72rem;font-weight:800;color:var(--navy)">4.8/5 — 529 Reviews</span>
+      </a>
+    </div>
     <!-- Mobile: 4 callout bubbles ABOVE hero image -->
     <div class="mobile-callouts">
       <div class="m-callout-row">
@@ -443,7 +443,7 @@ img{max-width:100%;height:auto;display:block}
 <!-- LIFESTYLE PHOTO -->
 <section style="padding:0;background:var(--white)">
 <div class="container" style="padding:0 20px">
-  <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_34.png?v=1772739749" alt="Customer enjoying Hawk Nest hammock tent in nature" style="width:100%;border-radius:0;max-height:400px;object-fit:cover">
+  <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_34.png?v=1772739749" alt="Customer enjoying Hawk Nest hammock tent in nature" style="width:100%;border-radius:12px;max-height:400px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,.12)">
 </div>
 </section>
 
@@ -579,7 +579,7 @@ img{max-width:100%;height:auto;display:block}
 <div class="container">
 <div class="fade-in">
   <div class="section-eyebrow" style="text-align:center">What Campers Are Saying</div>
-  <h2 class="section-title" style="text-align:center">400+ Five-Star Reviews (And Counting)</h2>
+  <h2 class="section-title" style="text-align:center">529 Five-Star Reviews (And Counting)</h2>
 
   <div style="text-align:center;margin-bottom:30px">
     <div class="jdgm-widget jdgm-review-widget" data-id="hawk-nest-all-season-hammock-tent" data-product-title="Hawk Nest All-Season Hammock Tent"></div>
@@ -617,6 +617,9 @@ img{max-width:100%;height:auto;display:block}
       <div class="test-name">Chris M.</div>
       <div class="test-loc">Verified Buyer · Judge.me</div>
     </div>
+  </div>
+  <div style="text-align:center;margin-top:30px" class="fade-in">
+    <a href="https://hawknesthammocks.ca/products/hawk-nest%E2%84%A2-all-season-hammock-tent-v-2-aj" target="_blank" style="display:inline-block;background:var(--white);color:var(--navy);font-size:.95rem;font-weight:700;padding:14px 32px;border-radius:8px;text-decoration:none;border:2px solid var(--navy);transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.06)">View All 529 Reviews →</a>
   </div>
 </div>
 </div>
@@ -684,11 +687,11 @@ img{max-width:100%;height:auto;display:block}
 
 <!-- STICKY BAR -->
 <div class="sticky-bar" id="stickyBar">
-  <div class="sticky-bar-left">
+  <div class="sticky-bar-main">
     <span class="sticky-bar-text"><span class="price-old">$336</span> <strong style="color:var(--orange)">$179</strong> + Free Shipping</span>
-    <span class="sticky-bar-urgency"><span class="dot"></span> <span id="viewerCount">47</span> people viewing this right now</span>
+    <a href="#offer" class="btn">PRE-ORDER</a>
   </div>
-  <a href="#offer" class="btn">PRE-ORDER</a>
+  <div class="sticky-bar-urgency"><span class="dot"></span> <span id="viewerCount">47</span> people viewing this right now</div>
 </div>
 
 <!-- FOOTER -->
@@ -795,7 +798,9 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup()});
 
 // Viewer count - subtle fluctuation
 const vc=document.getElementById('viewerCount');
-if(vc){setInterval(()=>{const base=42+Math.floor(Math.random()*18);vc.textContent=base},8000)}
+const vt=document.getElementById('viewerCountTop');
+function updateViewers(){const base=42+Math.floor(Math.random()*18);if(vc)vc.textContent=base;if(vt)vt.textContent=base}
+setInterval(updateViewers,8000)
 </script>
 </body>
 </html>
