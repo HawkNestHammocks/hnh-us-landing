@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.judge.me/widget_preloader.js"></script>
+<script src="https://cdn.judge.me/assets/installed.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{overflow-x:hidden;max-width:100vw}
@@ -94,13 +95,18 @@ img{max-width:100%;height:auto;display:block}
 .hero-guarantee.open .hero-guarantee-tooltip{display:block}
 
 /* Hero price strip */
-.hero-price-strip{display:flex;flex-direction:column;gap:6px;background:linear-gradient(135deg,#1a2332 0%,#2c3e50 100%);color:#fff;padding:10px 16px;border-radius:8px;margin-bottom:14px;animation:fadeInUp .6s .3s both;box-shadow:0 3px 12px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);width:100%}
-.hp-row{display:flex;align-items:center;justify-content:space-between;width:100%}
-.hp-row-left{display:flex;align-items:center;gap:8px}
-.hero-price-strip .hp-old{text-decoration:line-through;color:#94a3b8;font-size:.9rem}
-.hero-price-strip .hp-new{font-size:1.3rem;font-weight:900;color:var(--orange)}
-.hero-price-strip .hp-save{background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:8px;text-transform:uppercase;letter-spacing:.5px}
-.hero-price-strip .hp-free{font-size:1rem;font-weight:800;color:#4ade80;text-align:center;letter-spacing:.3px;text-transform:uppercase}
+.hero-price-strip{display:flex;flex-direction:column;gap:4px;background:linear-gradient(135deg,#1a2332 0%,#2c3e50 100%);color:#fff;padding:10px 16px;border-radius:8px;margin-bottom:14px;animation:fadeInUp .6s .3s both;box-shadow:0 3px 12px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);width:100%}
+.hp-row{display:flex;align-items:center;justify-content:center;gap:12px;width:100%}
+.hero-price-strip .hp-old{text-decoration:line-through;color:#94a3b8;font-size:.95rem}
+.hero-price-strip .hp-new{font-size:1.4rem;font-weight:900;color:var(--orange)}
+.hero-price-strip .hp-save{background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:8px;text-transform:uppercase;letter-spacing:.5px}
+.hero-price-strip .hp-free{font-size:.85rem;font-weight:800;color:#4ade80;text-align:center;letter-spacing:.3px;text-transform:uppercase;white-space:nowrap}
+
+/* Star rating badge */
+.hero-stars{display:none;align-items:center;gap:6px;margin-bottom:6px;cursor:pointer;transition:transform .2s}
+.hero-stars:hover{transform:scale(1.03)}
+.hero-stars .stars{color:var(--gold);font-size:.9rem;letter-spacing:1px}
+.hero-stars .star-count{font-size:.7rem;font-weight:700;color:var(--navy)}
 
 /* (old guarantee styles removed) */
 
@@ -244,6 +250,7 @@ img{max-width:100%;height:auto;display:block}
   .desktop-only{display:none!important}
   .mobile-only{display:flex!important}
   .mobile-callouts{display:flex!important;justify-content:center}
+  .hero-stars{display:flex!important}
   .hero{padding:40px 0 30px}
   .solution-grid,.features-grid,.test-grid{grid-template-columns:1fr}
   .trust-grid{grid-template-columns:repeat(2,1fr);gap:12px}
@@ -279,10 +286,8 @@ img{max-width:100%;height:auto;display:block}
     <div class="hero-flag"><span>🇺🇸</span> NOW AVAILABLE IN THE USA</div>
     <div class="hero-price-strip">
       <div class="hp-row">
-        <div class="hp-row-left">
-          <span class="hp-old">$336 value</span>
-          <span class="hp-new">$179</span>
-        </div>
+        <span class="hp-old">$336 value</span>
+        <span class="hp-new">$179</span>
         <span class="hp-save">Save $157</span>
       </div>
       <div class="hp-free">+ 4 FREE UPGRADES INCLUDED</div>
@@ -301,6 +306,11 @@ img{max-width:100%;height:auto;display:block}
     </div>
   </div>
   <div class="hero-image-wrap">
+    <!-- Star rating - taps to scroll to reviews -->
+    <a href="#reviews" class="hero-stars" onclick="event.preventDefault();document.getElementById('reviews').scrollIntoView({behavior:'smooth'})">
+      <span class="stars">★★★★★</span>
+      <span class="star-count">4.8/5 — 400+ Reviews</span>
+    </a>
     <!-- Mobile: 4 callout bubbles ABOVE hero image -->
     <div class="mobile-callouts">
       <div class="m-callout-row">
