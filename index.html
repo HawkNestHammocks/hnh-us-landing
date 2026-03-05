@@ -105,8 +105,8 @@ img{max-width:100%;height:auto;display:block}
 /* Star rating badge */
 .hero-stars{display:none;align-items:center;gap:6px;margin-bottom:6px;cursor:pointer;transition:transform .2s}
 .hero-stars:hover{transform:scale(1.03)}
-.hero-stars .stars{color:var(--gold);font-size:.9rem;letter-spacing:1px}
-.hero-stars .star-count{font-size:.7rem;font-weight:700;color:var(--navy)}
+.hero-stars .stars{color:var(--gold);font-size:1rem;letter-spacing:2px;text-shadow:0 1px 3px rgba(212,168,67,.4)}
+.hero-stars .star-count{font-size:.72rem;font-weight:800;color:var(--navy);background:var(--white);padding:3px 10px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
 
 /* (old guarantee styles removed) */
 
@@ -294,15 +294,9 @@ img{max-width:100%;height:auto;display:block}
     </div>
     <h1>The Most <em>Comfortable</em> Sleep You'll Ever Have Outdoors — Guaranteed.</h1>
     <p class="hero-sub">Why sleep on the cold, hard ground when you can sleep suspended in comfort? The Hawk Nest V.3 with patent-pending spreader bar system gives you ample interior space for the ultimate outdoor sleep. 400+ five-star reviews. Now shipping to all 50 states.</p>
-    <div class="hero-badges">
-      <span class="hero-badge">⭐ 400+ 5-Star Reviews</span>
-      <span class="hero-badge">🔒 Patent Pending</span>
-      <span class="hero-badge">🪶 Only 4 lbs</span>
-      <span class="hero-badge">⏱️ 5-Min Setup</span>
-    </div>
+    <!-- badges removed per feedback -->
     <div class="hero-cta">
       <a href="#offer" class="btn">CLAIM YOUR BUNDLE — $179</a>
-      <span class="btn-sub">Free shipping to all 50 states · 30-day risk-free trial</span>
     </div>
   </div>
   <div class="hero-image-wrap">
@@ -348,17 +342,7 @@ img{max-width:100%;height:auto;display:block}
 </div>
 </section>
 
-<!-- TRUST BAR -->
-<section class="trust-bar">
-<div class="container">
-<div class="trust-grid fade-in">
-  <div class="trust-card"><span class="trust-icon">⭐</span><span class="trust-label">400+ 5-Star Reviews</span></div>
-  <div class="trust-card"><span class="trust-icon">🚚</span><span class="trust-label">Free US Shipping</span></div>
-  <div class="trust-card"><span class="trust-icon">🔒</span><span class="trust-label">Patent Pending Design</span></div>
-  <div class="trust-card"><span class="trust-icon">✅</span><span class="trust-label">30-Day Money-Back Guarantee</span></div>
-</div>
-</div>
-</section>
+<!-- trust bar removed per feedback -->
 
 <!-- VALUE STACK -->
 <section class="value-stack" id="offer">
@@ -382,10 +366,7 @@ img{max-width:100%;height:auto;display:block}
     <span class="stack-val"><s style="color:#94a3b8">$19</s> FREE</span>
   </div>
   <div class="stack-row free" onclick="showPopup('warranty')">
-    <span class="stack-label">
-      <span class="warranty-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 4L6 12v12c0 11.1 7.7 21.5 18 24 10.3-2.5 18-12.9 18-24V12L24 4z" fill="#d4a843" opacity=".9"/><path d="M24 8L10 14.5v9.5c0 9.3 6.5 18 14 20 7.5-2 14-10.7 14-20v-9.5L24 8z" fill="#1a2332"/><path d="M21 24l-4-4 2-2 2 2 6-6 2 2-8 8z" fill="#d4a843"/></svg></span>
-      5-Year Extended Warranty
-    </span>
+    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Bottom_Upgrade_1.png?v=1741284804" alt="5-Year Warranty"> 5-Year Extended Warranty</span>
     <span class="stack-val"><s style="color:#94a3b8">$29</s> FREE</span>
   </div>
   <div class="stack-row free" onclick="showPopup('gridless')">
@@ -717,8 +698,7 @@ const popupData = {
     value: '$19 Value — FREE'
   },
   warranty: {
-    img: null,
-    svg: '<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100px;height:100px"><path d="M60 10L15 30v25c0 27.6 19.2 53.5 45 60 25.8-6.5 45-32.4 45-60V30L60 10z" fill="#d4a843" opacity=".9"/><path d="M60 20L25 36v19c0 23.3 16.2 45 35 50 18.8-5 35-26.7 35-50V36L60 20z" fill="#1a2332"/><text x="60" y="62" text-anchor="middle" fill="#d4a843" font-family="Inter,sans-serif" font-weight="800" font-size="18">5 YR</text><path d="M48 72l-8-8 4-4 4 4 12-12 4 4-16 16z" fill="#d4a843"/></svg>',
+    img: 'https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Bottom_Upgrade_1.png?v=1741284804',
     title: '5-Year Extended Warranty',
     desc: 'Full coverage for 5 years. If anything goes wrong with your Hawk Nest — stitching, fabric, hardware, zippers — we\'ll replace it. No questions asked. We stand behind our product because we know it\'s built to last.',
     value: '$29 Value — FREE'
