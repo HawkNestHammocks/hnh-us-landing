@@ -76,12 +76,22 @@ img{max-width:100%;height:auto;display:block}
 .mobile-only{display:none}
 .desktop-only{display:block}
 
-/* Mobile callouts — row of bubbles overlaying hero image */
-.mobile-callouts{display:none;position:absolute;top:10px;left:0;right:0;z-index:3;pointer-events:none}
-.m-callout-row{display:flex;justify-content:center;gap:6px;padding:0 8px}
-.m-callout-bubble{display:flex;align-items:center;gap:3px;background:rgba(26,35,50,.85);padding:5px 8px;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.25);backdrop-filter:blur(6px);pointer-events:auto}
-.m-callout-bubble svg{width:12px;height:12px;flex-shrink:0}
-.m-callout-bubble span{font-size:.55rem;font-weight:700;color:#fff;line-height:1.1;white-space:nowrap}
+/* Mobile callouts — row between nav and image */
+.mobile-callouts{display:none;margin-bottom:8px}
+.m-callout-row{display:flex;justify-content:center;gap:5px}
+.m-callout-bubble{display:flex;align-items:center;gap:3px;background:rgba(26,35,50,.9);padding:4px 7px;border-radius:12px;box-shadow:0 0 8px rgba(232,96,28,.3),0 2px 8px rgba(0,0,0,.2);backdrop-filter:blur(4px);animation:calloutGlow 2s ease-in-out infinite}
+.m-callout-bubble svg{width:11px;height:11px;flex-shrink:0}
+.m-callout-bubble span{font-size:.5rem;font-weight:700;color:#fff;line-height:1;white-space:nowrap}
+@keyframes calloutGlow{0%,100%{box-shadow:0 0 6px rgba(232,96,28,.25),0 2px 6px rgba(0,0,0,.15)}50%{box-shadow:0 0 14px rgba(232,96,28,.5),0 2px 10px rgba(0,0,0,.2)}}
+
+/* Guarantee - small shaking shield icon, tap to expand */
+@keyframes shake{0%,100%{transform:rotate(0)}25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}
+.hero-guarantee{position:absolute;bottom:10px;right:10px;z-index:2;cursor:pointer}
+.hero-guarantee-icon{width:36px;height:36px;background:rgba(255,255,255,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,.2);border:2px solid var(--gold);animation:shake 2s ease-in-out infinite}
+.hero-guarantee-icon svg{width:20px;height:20px}
+.hero-guarantee-tooltip{display:none;position:absolute;bottom:44px;right:0;background:var(--white);border-radius:10px;padding:12px 14px;box-shadow:0 6px 24px rgba(0,0,0,.2);border:1.5px solid var(--gold);min-width:180px;animation:floatIn .2s both}
+.hero-guarantee-tooltip span{font-size:.7rem;font-weight:700;color:var(--navy);line-height:1.3}
+.hero-guarantee.open .hero-guarantee-tooltip{display:block}
 
 /* Hero price strip */
 .hero-price-strip{display:flex;flex-direction:column;gap:6px;background:linear-gradient(135deg,#1a2332 0%,#2c3e50 100%);color:#fff;padding:10px 16px;border-radius:8px;margin-bottom:14px;animation:fadeInUp .6s .3s both;box-shadow:0 3px 12px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);width:100%}
@@ -236,9 +246,7 @@ img{max-width:100%;height:auto;display:block}
   .hero-image-wrap{order:-1}
   .desktop-only{display:none!important}
   .mobile-only{display:flex!important}
-  .mobile-callouts{display:block!important}
-  .hero-guarantee{bottom:8px;right:8px;max-width:160px;padding:8px 10px}
-  .hero-guarantee span{font-size:.6rem}
+  .mobile-callouts{display:flex!important;justify-content:center}
   .hero{padding:40px 0 30px}
   .solution-grid,.features-grid,.test-grid{grid-template-columns:1fr}
   .trust-grid{grid-template-columns:repeat(2,1fr);gap:12px}
@@ -319,10 +327,14 @@ img{max-width:100%;height:auto;display:block}
         </div>
       </div>
     </div>
-    <!-- Guarantee bubble -->
-    <div class="hero-guarantee">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#d4a843" opacity=".9"/><path d="M9 12l2 2 4-4" stroke="#1a2332" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Best Sleep Outdoors<br>Guaranteed or<br>Your Money Back</span>
+    <!-- Guarantee shield - tap to expand -->
+    <div class="hero-guarantee" onclick="this.classList.toggle('open')">
+      <div class="hero-guarantee-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#d4a843" opacity=".9"/><path d="M9 12l2 2 4-4" stroke="#1a2332" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="hero-guarantee-tooltip">
+        <span>Your Best Sleep Outdoors — Guaranteed or Your Money Back. 30-day risk-free trial.</span>
+      </div>
     </div>
   </div>
 </div>
