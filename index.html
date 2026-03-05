@@ -33,27 +33,36 @@ img{max-width:100%;height:auto;display:block}
 @keyframes slideUp{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse-btn{0%,100%{box-shadow:0 4px 14px rgba(232,96,28,.35)}50%{box-shadow:0 4px 28px rgba(232,96,28,.6)}}
 @keyframes countPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+@keyframes floatIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
 /* LOGO NAV */
 .logo-bar{background:var(--navy);padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1)}
 .logo-bar .container{display:flex;align-items:center;justify-content:space-between}
-.logo-mark{display:flex;align-items:center;gap:10px;color:#fff;font-size:1.15rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none}
-.logo-mark svg{width:28px;height:28px}
+.logo-mark{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+.logo-mark img{height:40px;width:auto}
 .logo-bar-right{display:flex;align-items:center;gap:18px}
 .logo-bar-right a{color:var(--gold);font-size:.85rem;font-weight:600;text-decoration:none;transition:color .2s}
 .logo-bar-right a:hover{color:#fff}
 
-/* HERO */
-.hero{position:relative;overflow:hidden;min-height:520px;display:flex;align-items:center;background:#111}
-.hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,35,50,.82) 0%,rgba(26,35,50,.45) 100%)}
-.hero-content{position:relative;z-index:1;padding:80px 0 90px;max-width:650px}
-.hero .section-eyebrow{color:var(--gold);animation:fadeIn 1s .2s both}
-.hero h1{font-size:2.8rem;font-weight:900;line-height:1.1;margin-bottom:18px;color:#fff;animation:slideUp .8s .4s both}
-.hero-sub{font-size:1.1rem;color:#cbd5e1;margin-bottom:28px;line-height:1.7;animation:fadeInUp .8s .6s both}
-.hero-cta{animation:fadeInUp .8s .8s both}
-.hero-price{margin-bottom:20px}
+/* HERO - New Design */
+.hero{background:var(--light);padding:60px 0 40px;position:relative}
+.hero-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero-text{animation:slideUp .8s .2s both}
+.hero h1{font-size:2.4rem;font-weight:900;line-height:1.1;margin-bottom:16px;color:var(--navy)}
+.hero-sub{font-size:1.05rem;color:#4b5563;margin-bottom:24px;line-height:1.7}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.hero-badge{background:var(--white);border:1px solid var(--light-gray);border-radius:8px;padding:8px 14px;font-size:.85rem;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:6px}
+.hero-cta{animation:fadeInUp .8s .6s both}
+.hero-price{margin-bottom:16px}
+.hero-image-wrap{position:relative;animation:fadeIn 1s .3s both}
+.hero-image-wrap img{border-radius:16px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.12)}
+/* Feature callouts on hero image */
+.hero-callout{position:absolute;background:var(--white);border-radius:8px;padding:8px 14px;font-size:.78rem;font-weight:600;color:var(--navy);box-shadow:0 4px 16px rgba(0,0,0,.12);white-space:nowrap;animation:floatIn .5s both}
+.hero-callout::before{content:'';position:absolute;width:8px;height:8px;background:var(--orange);border-radius:50%}
+.callout-1{top:15%;right:-10px;animation-delay:.8s}.callout-1::before{left:-14px;top:50%;transform:translateY(-50%)}
+.callout-2{bottom:30%;right:-10px;animation-delay:1s}.callout-2::before{left:-14px;top:50%;transform:translateY(-50%)}
+.callout-3{bottom:10%;left:10px;animation-delay:1.2s}.callout-3::before{left:50%;top:-12px;transform:translateX(-50%)}
+.callout-4{top:5%;left:10px;animation-delay:.6s}.callout-4::before{right:-14px;top:50%;transform:translateY(-50%)}
 
 /* TRUST BAR */
 .trust-bar{background:var(--white);padding:32px 0;border-bottom:1px solid var(--light-gray)}
@@ -172,8 +181,11 @@ img{max-width:100%;height:auto;display:block}
 
 /* MOBILE */
 @media(max-width:768px){
-  .hero h1{font-size:2rem}
-  .hero-content{padding:50px 0 60px}
+  .hero h1{font-size:1.8rem}
+  .hero-layout{grid-template-columns:1fr;gap:30px}
+  .hero-image-wrap{order:-1}
+  .hero-callout{display:none}
+  .hero{padding:40px 0 30px}
   .solution-grid,.features-grid,.test-grid{grid-template-columns:1fr}
   .trust-grid{grid-template-columns:repeat(2,1fr);gap:12px}
   .steps-grid{grid-template-columns:repeat(2,1fr)}
@@ -183,7 +195,7 @@ img{max-width:100%;height:auto;display:block}
   .btn{width:100%;padding:16px 24px;font-size:1.05rem}
   .stack-row{font-size:.95rem;padding:12px 16px}
   .stack-row .stack-thumb{width:36px;height:36px}
-  .logo-mark{font-size:.95rem;letter-spacing:1px}
+  .logo-mark img{height:32px}
 }
 </style>
 </head>
@@ -193,8 +205,7 @@ img{max-width:100%;height:auto;display:block}
 <div class="logo-bar">
 <div class="container">
   <a href="#" class="logo-mark">
-    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4L2 26h28L16 4z" fill="#d4a843" opacity=".9"/><path d="M16 10l-8 16h16L16 10z" fill="#1a2332"/><path d="M10 26l6-10 6 10" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
-    HAWK NEST HAMMOCKS
+    <img src="https://hawknesthammocks.ca/cdn/shop/files/Untitled_design_3_001ffe6f-f724-46b9-b784-c4b24d50360a.png" alt="Hawk Nest Hammocks logo">
   </a>
   <div class="logo-bar-right">
     <a href="#offer">Pre-Order</a>
@@ -203,23 +214,30 @@ img{max-width:100%;height:auto;display:block}
 </div>
 </div>
 
-<!-- HERO -->
+<!-- HERO — Product-focused with callouts -->
 <section class="hero" id="hero">
-<div class="hero-bg">
-  <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749" alt="Hawk Nest Hammock Tent complete kit">
-</div>
 <div class="container">
-<div class="hero-content">
-  <div class="section-eyebrow">🇺🇸 NOW AVAILABLE IN THE USA — First Batch Pre-Order</div>
-  <h1>The Most Comfortable Hammock Sleep You've Ever Had — Guaranteed.</h1>
-  <p class="hero-sub">The Hawk Nest All-Season Hammock Tent V.3 — patent-pending spreader bar design for unreal comfort. 400+ five-star reviews. Now shipping to all 50 states.</p>
-  <div class="hero-cta">
-    <div class="hero-price">
-      <span class="price-old" style="color:#94a3b8">$229</span>
-      <span class="price-new" style="color:#fff">$179 USD</span>
+<div class="hero-layout">
+  <div class="hero-text">
+    <div class="section-eyebrow">Now Available in the USA</div>
+    <h1>The Most Comfortable Hammock Sleep You've Ever Had — Guaranteed.</h1>
+    <p class="hero-sub">The Hawk Nest All-Season Hammock Tent V.3 — patent-pending spreader bar design for unreal comfort. 400+ five-star reviews. Now shipping to all 50 states.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">⭐ 400+ 5-Star Reviews</span>
+      <span class="hero-badge">🔒 Patent Pending</span>
+      <span class="hero-badge">🪶 Only 4 lbs</span>
     </div>
-    <a href="#offer" class="btn">CLAIM YOUR HAWK NEST — $179</a>
-    <span class="btn-sub" style="color:#94a3b8">Free shipping to all 50 states · 30-day risk-free trial</span>
+    <div class="hero-cta">
+      <a href="#offer" class="btn">SEE WHAT'S INCLUDED</a>
+      <span class="btn-sub">Free shipping to all 50 states · 30-day risk-free trial</span>
+    </div>
+  </div>
+  <div class="hero-image-wrap">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749" alt="Hawk Nest All-Season Hammock Tent V.3 complete kit">
+    <div class="hero-callout callout-4">Patent-Pending Spreader Bars</div>
+    <div class="hero-callout callout-1">Integrated Rain Fly</div>
+    <div class="hero-callout callout-2">All-Season Ready</div>
+    <div class="hero-callout callout-3">5-Minute Solo Setup</div>
   </div>
 </div>
 </div>
@@ -247,49 +265,41 @@ img{max-width:100%;height:auto;display:block}
 </div>
 <div class="stack-table fade-in">
   <div class="stack-row">
-    <span class="stack-label">🏕️ Hawk Nest All-Season Hammock Tent V.3</span>
+    <span class="stack-label">Hawk Nest All-Season Hammock Tent V.3</span>
     <span class="stack-val">$229</span>
   </div>
   <div class="stack-row free">
-    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190" alt="Waterproof bottom">💧 Waterproof Bottom Upgrade</span>
+    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190" alt="Waterproof bottom"> Waterproof Bottom Upgrade</span>
     <span class="stack-val"><s style="color:#94a3b8">$29</s> FREE</span>
   </div>
   <div class="stack-row free">
-    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669" alt="Carrying bag">🎒 Waterproof Carrying Bag</span>
+    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669" alt="Carrying bag"> Waterproof Carrying Bag Upgrade</span>
     <span class="stack-val"><s style="color:#94a3b8">$19</s> FREE</span>
   </div>
   <div class="stack-row free">
-    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide.png?v=1754937603" alt="Rain fly">🛡️ Rain Fly</span>
-    <span class="stack-val"><s style="color:#94a3b8">$39</s> FREE</span>
+    <span class="stack-label">5-Year Extended Warranty</span>
+    <span class="stack-val"><s style="color:#94a3b8">$29</s> FREE</span>
   </div>
   <div class="stack-row free">
-    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Sleeping_Pad_optimized_aspect_ratio.png?v=1738095879" alt="Sleeping pad">🛏️ Sleeping Pad Pocket</span>
+    <span class="stack-label"><img class="stack-thumb" src="gridless_icon.png" alt="Gridless app" style="border-radius:12px"> 3 Months Gridless Premium</span>
     <span class="stack-val"><s style="color:#94a3b8">$30</s> FREE</span>
   </div>
   <div class="stack-row free">
-    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Strap_Product_Photo.png?v=1731955678" alt="Tree straps">🔗 Heavy-Duty Tree Straps</span>
-    <span class="stack-val">FREE</span>
-  </div>
-  <div class="stack-row free">
-    <span class="stack-label">📱 3 Months Gridless Premium</span>
-    <span class="stack-val"><s style="color:#94a3b8">$30</s> FREE</span>
-  </div>
-  <div class="stack-row free">
-    <span class="stack-label">🚚 Standard US Shipping</span>
+    <span class="stack-label">Standard US Shipping</span>
     <span class="stack-val">FREE</span>
   </div>
   <div class="stack-row total">
     <span>Total Value</span>
-    <span class="stack-val">$346</span>
+    <span class="stack-val">$336</span>
   </div>
   <div class="stack-row you-pay">
-    <span style="font-weight:700;font-size:1.2rem">🔥 You Pay Today</span>
+    <span style="font-weight:700;font-size:1.2rem">You Pay Today</span>
     <span class="stack-val">$179</span>
   </div>
 </div>
 <div class="value-cta fade-in">
   <a href="#" class="btn" style="font-size:1.2rem;padding:20px 48px">GET THE FULL BUNDLE — $179</a>
-  <span class="btn-sub" style="color:#94a3b8">Save $167 · Free shipping · 30-day guarantee</span>
+  <span class="btn-sub" style="color:#94a3b8">Save $157 · Free shipping · 30-day guarantee</span>
 </div>
 </div>
 </section>
@@ -298,28 +308,28 @@ img{max-width:100%;height:auto;display:block}
 <section class="section urgency">
 <div class="container">
 <div class="fade-in">
-  <div class="section-eyebrow">⚠️ Limited First Batch</div>
+  <div class="section-eyebrow">Limited First Batch</div>
   <h2 class="section-title">This Is Our First-Ever US Launch. Stock Is Limited.</h2>
   <p style="color:#4b5563;max-width:650px;margin-bottom:10px;font-size:1.05rem">We're a Canadian company that spent 3 years perfecting this hammock for the harsh Canadian wilderness. Now we're finally bringing it south of the border — but this first batch is limited.</p>
   <div class="timeline fade-in">
     <div class="tl-item active">
       <div class="tl-dot"></div>
-      <div class="tl-label">🟢 Now — Lock In Your Pre-Order</div>
+      <div class="tl-label">Now — Lock In Your Pre-Order</div>
       <div class="tl-desc">$179 price + all free bonuses secured</div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
-      <div class="tl-label">📦 Est. July 1 — Priority Orders Arrive</div>
+      <div class="tl-label">Est. July 1 — Priority Orders Arrive</div>
       <div class="tl-desc">$15–20 upgrade at checkout</div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
-      <div class="tl-label">📦 Est. July 15 — Standard Orders Arrive</div>
+      <div class="tl-label">Est. July 15 — Standard Orders Arrive</div>
       <div class="tl-desc">Free shipping — included with every pre-order</div>
     </div>
     <div class="tl-item red">
       <div class="tl-dot"></div>
-      <div class="tl-label">🔴 After Launch — $229. Bonuses Gone.</div>
+      <div class="tl-label">After Launch — $229. Bonuses Gone.</div>
       <div class="tl-desc">Next shipment won't arrive until fall</div>
     </div>
   </div>
@@ -554,15 +564,15 @@ img{max-width:100%;height:auto;display:block}
     <span class="price-new" style="color:#fff;font-size:2.2rem">$179 USD</span>
     <span style="color:#94a3b8;font-size:1rem"> + Free Shipping</span>
   </div>
-  <div style="font-size:.9rem;color:var(--gold);margin-bottom:28px"><em>Includes $167 in free bonuses</em></div>
+  <div style="font-size:.9rem;color:var(--gold);margin-bottom:28px"><em>Includes free bonuses worth $157</em></div>
   <a href="#" class="btn" style="font-size:1.2rem;padding:20px 52px">ORDER MY HAWK NEST — $179</a>
-  <p class="guarantee-text">🛡️ 30-Day Money-Back Guarantee · 5-Year Extended Warranty Included</p>
+  <p class="guarantee-text">30-Day Money-Back Guarantee · 5-Year Extended Warranty Included</p>
 </div>
 </section>
 
 <!-- STICKY BAR -->
 <div class="sticky-bar" id="stickyBar">
-  <span class="sticky-bar-text">🏕️ Hawk Nest V.3 — <span class="price-old">$229</span> <strong>$179</strong> + Free Shipping</span>
+  <span class="sticky-bar-text">Hawk Nest V.3 — <span class="price-old">$229</span> <strong>$179</strong> + Free Shipping</span>
   <a href="#offer" class="btn" style="padding:12px 28px;font-size:.95rem">PRE-ORDER NOW</a>
 </div>
 
