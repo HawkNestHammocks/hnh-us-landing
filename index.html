@@ -8,13 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script>
-  window.jdgm = window.jdgm || {};
-  window.jdgm.SHOP_DOMAIN = 'hawknesthammocks.myshopify.com';
-  window.jdgm.PUBLIC_TOKEN = 'NsdP-JcVzf63a4_0-w4D5a58UZA';
-</script>
-<script src="https://cdn.judge.me/widget_preloader.js"></script>
-<script src="https://cdn.judge.me/assets/installed.js"></script>
+<!-- Judge.me widget removed — doesn't render on external domains. Reviews hardcoded below. -->
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{overflow-x:hidden;max-width:100vw}
@@ -249,6 +243,18 @@ img{max-width:100%;height:auto;display:block}
 .warranty-icon{width:48px;height:48px;flex-shrink:0;margin-right:14px;display:flex;align-items:center;justify-content:center}
 .warranty-icon svg{width:40px;height:40px}
 
+/* HERO CAROUSEL */
+.hero-carousel{position:relative;overflow:hidden;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.15)}
+.hero-carousel-track{display:flex;transition:transform .4s ease}
+.hero-carousel-track img{min-width:100%;width:100%;object-fit:cover;flex-shrink:0;border-radius:16px}
+.hero-carousel-btn{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.85);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.2);z-index:5;transition:all .2s;font-size:1.2rem;color:var(--navy)}
+.hero-carousel-btn:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.3);transform:translateY(-50%) scale(1.1)}
+.hero-carousel-btn.prev{left:10px}
+.hero-carousel-btn.next{right:10px}
+.hero-carousel-dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.hero-carousel-dots .dot{width:8px;height:8px;border-radius:50%;background:rgba(0,0,0,.2);cursor:pointer;transition:all .2s}
+.hero-carousel-dots .dot.active{background:var(--orange);transform:scale(1.2)}
+
 /* MOBILE */
 @media(max-width:768px){
   .hero h1{font-size:1.8rem}
@@ -332,12 +338,20 @@ img{max-width:100%;height:auto;display:block}
         </div>
       </div>
     </div>
-    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749" alt="Hawk Nest All-Season Hammock Tent V.3 complete kit">
-    <!-- Desktop: absolute positioned callouts -->
-    <div class="hero-callout callout-4 desktop-only"><span class="callout-icon">🔒</span> Patent-Pending Spreader Bars</div>
-    <div class="hero-callout callout-1 desktop-only"><span class="callout-icon">🌧️</span> Integrated Rain Fly</div>
-    <div class="hero-callout callout-2 desktop-only"><span class="callout-icon">🏔️</span> Hang It or Ground It</div>
-    <div class="hero-callout callout-3 desktop-only"><span class="callout-icon">🪶</span> Only 4 lbs Total</div>
+    <div class="hero-carousel" id="heroCarousel">
+      <div class="hero-carousel-track" id="heroTrack">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749" alt="Hawk Nest All-Season Hammock Tent V.3 complete kit">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_1.png?v=1772739749" alt="Hawk Nest hammock tent close-up">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_2.png?v=1772739749" alt="Hawk Nest hammock tent setup">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_23.png?v=1772739749" alt="Hawk Nest hammock tent lifestyle">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Images_b35b8bd3-4e00-4348-bd30-449e162f85b4.png?v=1772739749" alt="Hawk Nest product detail">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Images_1_3a6c47e6-10d9-4b64-9553-1bc134f996c0.png?v=1772739749" alt="Hawk Nest product angle">
+      </div>
+      <button class="hero-carousel-btn prev" onclick="carouselPrev()" aria-label="Previous">‹</button>
+      <button class="hero-carousel-btn next" onclick="carouselNext()" aria-label="Next">›</button>
+    </div>
+    <div class="hero-carousel-dots" id="heroDots"></div>
+    <!-- Desktop: absolute positioned callouts removed — carousel replaces static image -->
     <!-- Guarantee shield - tap to expand -->
     <div class="hero-guarantee" onclick="this.classList.toggle('open')">
       <div class="hero-guarantee-icon">
@@ -590,13 +604,14 @@ img{max-width:100%;height:auto;display:block}
   <div class="section-eyebrow" style="text-align:center">What Campers Are Saying</div>
   <h2 class="section-title" style="text-align:center">529 Five-Star Reviews (And Counting)</h2>
 
-  <div style="text-align:center;margin-bottom:30px">
-    <div class="jdgm-widget jdgm-review-widget" data-id="hawk-nest-all-season-hammock-tent" data-product-title="Hawk Nest All-Season Hammock Tent"></div>
-    <div id="judgeme_product_reviews" data-id="hawk-nest-all-season-hammock-tent"></div>
+  <div style="text-align:center;margin-bottom:24px">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:var(--white);padding:10px 20px;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.06)">
+      <span style="color:#f59e0b;font-size:1.3rem;letter-spacing:1px">★★★★★</span>
+      <span style="font-size:1rem;font-weight:800;color:var(--navy)">4.8 out of 5</span>
+      <span style="font-size:.85rem;color:var(--gray)">· 529 verified reviews</span>
+    </div>
+    <p style="color:var(--gray);font-size:.75rem;margin-top:8px">All reviews independently collected &amp; verified by <strong>Judge.me</strong> — a trusted third-party review platform</p>
   </div>
-
-  <p style="text-align:center;color:#4b5563;font-size:.95rem;margin-bottom:6px">529 verified reviews on hawknesthammocks.ca</p>
-  <p style="text-align:center;color:var(--gray);font-size:.75rem;margin-bottom:20px">All reviews independently collected &amp; verified by <strong>Judge.me</strong> — a trusted third-party review platform</p>
   <div class="test-grid">
     <div class="test-card fade-in">
       <img class="test-photo" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_25.png?v=1772739749" alt="Customer photo">
@@ -805,7 +820,25 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup()});
 const vc=document.getElementById('viewerCount');
 const vt=document.getElementById('viewerCountTop');
 function updateViewers(){const base=42+Math.floor(Math.random()*18);if(vc)vc.textContent=base;if(vt)vt.textContent=base}
-setInterval(updateViewers,8000)
+setInterval(updateViewers,8000);
+
+// Hero carousel
+let heroIdx=0;
+const heroTrack=document.getElementById('heroTrack');
+const heroSlides=heroTrack?heroTrack.children.length:0;
+const heroDots=document.getElementById('heroDots');
+// Build dots
+if(heroDots&&heroSlides>0){for(let i=0;i<heroSlides;i++){const d=document.createElement('span');d.className='dot'+(i===0?' active':'');d.onclick=()=>goToSlide(i);heroDots.appendChild(d)}}
+function updateCarousel(){if(!heroTrack)return;heroTrack.style.transform=`translateX(-${heroIdx*100}%)`;document.querySelectorAll('#heroDots .dot').forEach((d,i)=>d.classList.toggle('active',i===heroIdx))}
+function carouselNext(){heroIdx=(heroIdx+1)%heroSlides;updateCarousel()}
+function carouselPrev(){heroIdx=(heroIdx-1+heroSlides)%heroSlides;updateCarousel()}
+function goToSlide(i){heroIdx=i;updateCarousel()}
+// Touch/swipe support
+let touchStartX=0;
+const carousel=document.getElementById('heroCarousel');
+if(carousel){carousel.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX},{passive:true});carousel.addEventListener('touchend',e=>{const diff=touchStartX-e.changedTouches[0].clientX;if(Math.abs(diff)>40){diff>0?carouselNext():carouselPrev()}},{passive:true})}
+// Auto-advance every 5s
+setInterval(carouselNext,5000)
 </script>
 </body>
 </html>
