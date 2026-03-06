@@ -275,7 +275,7 @@ img{max-width:100%;height:auto;display:block}
 }
 
 /* QUIZ OVERLAY */
-.quiz-overlay{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#0a0a0a 0%,#111 50%,#0d0d0d 100%);display:flex;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s;opacity:1;visibility:visible}
+.quiz-overlay{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#0a0a0a 0%,#111 50%,#0d0d0d 100%);display:flex;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s;opacity:1;visibility:visible;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:40px 0}
 .quiz-overlay.hidden{opacity:0;visibility:hidden;pointer-events:none}
 .quiz-box{max-width:560px;width:90%;text-align:center;animation:fadeUp .6s both}
 .quiz-logo{height:50px;border-radius:8px;margin-bottom:24px}
