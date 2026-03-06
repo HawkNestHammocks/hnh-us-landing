@@ -282,7 +282,7 @@ img{max-width:100%;height:auto;display:block}
 }
 
 /* QUIZ OVERLAY */
-.quiz-overlay{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,var(--light) 0%,#eee9df 50%,var(--light) 100%);display:flex;align-items:center;justify-content:center;transition:opacity .6s;opacity:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:40px 0}
+.quiz-overlay{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,var(--light) 0%,#eee9df 50%,var(--light) 100%);display:flex;align-items:center;justify-content:center;transition:opacity .6s;opacity:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:80px 0 40px}
 .quiz-overlay.hidden{opacity:0;pointer-events:none}
 .main-content{display:none}
 .main-content.show{display:block}
@@ -298,8 +298,8 @@ img{max-width:100%;height:auto;display:block}
 .quiz-option{background:var(--white);border:2px solid var(--light-gray);border-radius:10px;padding:16px 20px;font-size:1rem;font-weight:600;color:var(--navy);cursor:pointer;transition:all .2s;text-align:left;display:flex;align-items:center;gap:12px}
 .quiz-option:hover{border-color:var(--orange);background:#fff5f0;transform:translateX(4px)}
 .quiz-option.selected{border-color:var(--orange);background:#fff5f0}
-.quiz-option-icon{width:28px;height:28px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:8px;background:linear-gradient(135deg,#fff5f0,#ffe8db);box-shadow:0 2px 6px rgba(232,96,28,.15)}
-.quiz-option-icon svg{width:16px;height:16px}
+.quiz-header{background:linear-gradient(180deg,#1e293b 0%,#0c1118 100%);padding:14px 20px;display:flex;align-items:center;justify-content:center;position:fixed;top:0;left:0;right:0;z-index:10000;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.quiz-header img{height:36px;border-radius:6px}
 .quiz-step{display:none}
 .quiz-step.active{display:block;animation:fadeInUp .4s both}
 .quiz-loading{text-align:center}
@@ -318,10 +318,13 @@ img{max-width:100%;height:auto;display:block}
 </style>
 </head>
 <body>
+<!-- QUIZ HEADER -->
+<div class="quiz-header" id="quizHeader">
+  <img src="https://hawknesthammocks.ca/cdn/shop/files/Untitled_design_3_001ffe6f-f724-46b9-b784-c4b24d50360a.png" alt="Hawk Nest Hammocks">
+</div>
 <!-- QUIZ OVERLAY -->
 <div class="quiz-overlay" id="quizOverlay">
 <div class="quiz-box">
-  <img src="https://hawknesthammocks.ca/cdn/shop/files/Untitled_design_3_001ffe6f-f724-46b9-b784-c4b24d50360a.png" alt="Hawk Nest" class="quiz-logo">
   <div class="quiz-eyebrow">Early Access Application</div>
   <div class="quiz-title">See If You Qualify For Our US Pre-Order</div>
   <div class="quiz-subtitle">Answer 4 quick questions to check availability. Limited to 500 spots.</div>
@@ -331,40 +334,40 @@ img{max-width:100%;height:auto;display:block}
   <div class="quiz-step active" data-step="1">
     <div class="quiz-question">How often do you camp?</div>
     <div class="quiz-options">
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 20h20L12 2z"/><path d="M12 2v18"/></svg></span> Weekend warrior</div>
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2" stroke-linecap="round"><path d="M12 3l-7 14h14L12 3z"/><path d="M12 17v5"/></svg></span> Monthly</div>
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span> A few times a year</div>
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2" stroke-linecap="round"><path d="M1 6l8-3 6 3 8-3v18l-8 3-6-3-8 3V6z"/></svg></span> Planning my first trip</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">Weekend warrior</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">Monthly</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">A few times a year</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">Planning my first trip</div>
     </div>
   </div>
 
   <div class="quiz-step" data-step="2">
     <div class="quiz-question">What's your biggest camping frustration?</div>
     <div class="quiz-options">
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span> Sleeping on the ground</div>
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2" stroke-linecap="round"><path d="M4 10l2-1 2 1M16 10l2-1 2 1"/><rect x="6" y="6" width="12" height="16" rx="2"/><path d="M9 6V4a3 3 0 0 1 6 0v2"/></svg></span> Heavy gear</div>
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span> Complicated setup</div>
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2" stroke-linecap="round"><path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"/><path d="M8 19v2M12 19v2M16 19v2"/></svg></span> Weather exposure</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">Sleeping on the ground</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">Heavy gear</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">Complicated setup</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">Weather exposure</div>
     </div>
   </div>
 
   <div class="quiz-step" data-step="3">
     <div class="quiz-question">Have you tried hammock camping before?</div>
     <div class="quiz-options">
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="#e8601c" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span> Yes, loved it</div>
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></span> Yes, didn't love it</div>
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span> No, but curious</div>
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span> No</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">Yes, loved it</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">Yes, didn't love it</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">No, but curious</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">No</div>
     </div>
   </div>
 
   <div class="quiz-step" data-step="4">
     <div class="quiz-question">Where do you camp most?</div>
     <div class="quiz-options">
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M2 16l5-5 4 4 4-6 7 7"/><circle cx="8" cy="8" r="2"/></svg></span> National / State Parks</div>
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 22h20L12 2z"/><path d="M12 2l3 7-3 2-3-2 3-7z"/></svg></span> Backcountry</div>
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2" stroke-linecap="round"><path d="M5 17h14v-5l-2-5H7L5 12v5z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg></span> Backyard / Car camping</div>
-      <div class="quiz-option" onclick="quizAnswer(this)"><span class="quiz-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span> All of the above</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">National / State Parks</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">Backcountry</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">Backyard / Car camping</div>
+      <div class="quiz-option" onclick="quizAnswer(this)">All of the above</div>
     </div>
   </div>
 
@@ -1029,6 +1032,7 @@ function quizAnswer(el) {
 function closeQuiz() {
   document.getElementById('mainContent').classList.add('show');
   document.getElementById('quizOverlay').classList.add('hidden');
+  document.getElementById('quizHeader').style.display='none';
   document.body.style.overflow = '';
   setTimeout(() => { document.getElementById('quizOverlay').style.display='none'; }, 600);
 }
