@@ -275,7 +275,9 @@ img{max-width:100%;height:auto;display:block}
 }
 
 /* QUIZ OVERLAY */
-.quiz-overlay{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#0a0a0a 0%,#111 50%,#0d0d0d 100%);display:flex;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s;opacity:1;visibility:visible;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:40px 0}
+.quiz-overlay{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#0a0a0a 0%,#111 50%,#0d0d0d 100%);display:flex;align-items:center;justify-content:center;transition:opacity .6s;opacity:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:40px 0}
+.main-content{display:none}
+.main-content.show{display:block}
 .quiz-overlay.hidden{opacity:0;visibility:hidden;pointer-events:none}
 .quiz-box{max-width:560px;width:90%;text-align:center;animation:fadeUp .6s both}
 .quiz-logo{height:50px;border-radius:8px;margin-bottom:24px}
@@ -384,6 +386,8 @@ img{max-width:100%;height:auto;display:block}
 </div>
 
 
+<!-- MAIN CONTENT (hidden until quiz complete) -->
+<div class="main-content" id="mainContent">
 <!-- NAV -->
 <nav class="nav">
 <div class="container">
@@ -766,6 +770,7 @@ img{max-width:100%;height:auto;display:block}
   <p>&copy; 2026 Hawk Nest Hammocks Inc. All rights reserved.</p>
   <p style="margin-top:8px"><a href="https://hawknesthammocks.ca">hawknesthammocks.ca</a> · <a href="mailto:support@hawknesthammocks.ca">support@hawknesthammocks.ca</a></p>
 </footer>
+</div><!-- end main-content -->
 
 <script>
 // Popup data
@@ -830,9 +835,10 @@ function quizAnswer(el) {
   }, 300);
 }
 function closeQuiz() {
+  document.getElementById('mainContent').classList.add('show');
   document.getElementById('quizOverlay').classList.add('hidden');
   document.body.style.overflow = '';
-  setTimeout(() => { document.getElementById('quizOverlay').style.display='none'; }, 800);
+  setTimeout(() => { document.getElementById('quizOverlay').style.display='none'; }, 600);
 }
 document.body.style.overflow = 'hidden';
 </script>
