@@ -253,7 +253,7 @@ footer a{color:var(--sand);text-decoration:underline}
   <a href="https://hawknesthammocks.ca" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--cream)">
     <img src="https://hawknesthammocks.ca/cdn/shop/files/Untitled_design_3_001ffe6f-f724-46b9-b784-c4b24d50360a.png" alt="Hawk Nest Hammocks" style="height:40px;width:auto;border-radius:6px">
   </a>
-  <a href="https://hawknesthammocks.ca/cart/52795163083049:1,46948621254953:1,46948623810857:1,46871399465257:1,52799135842601:1" target="_blank" style="background:linear-gradient(180deg,var(--rust),var(--rust-dark));color:#fff;font-family:var(--sans);font-size:.8rem;font-weight:700;padding:10px 20px;border-radius:6px;text-decoration:none;box-shadow:0 2px 10px rgba(180,83,9,.3)">Pre-Order Now</a>
+  <a href="#offer" style="background:linear-gradient(180deg,var(--rust),var(--rust-dark));color:#fff;font-family:var(--sans);font-size:.8rem;font-weight:700;padding:10px 20px;border-radius:6px;text-decoration:none;box-shadow:0 2px 10px rgba(180,83,9,.3)">Pre-Order Now</a>
 </nav>
 
 <!-- HERO -->
@@ -593,6 +593,18 @@ footer a{color:var(--sand);text-decoration:underline}
   <p style="margin-top:8px;font-size:.75rem;color:rgba(232,218,200,.5)">Patent pending · Made with Canadian stubbornness</p>
 </footer>
 
+<!-- STICKY BOTTOM BAR -->
+<div id="stickyBar" style="position:fixed;bottom:0;left:0;right:0;z-index:999;background:linear-gradient(180deg,#1a1208,#0f0b04);border-top:1px solid rgba(232,218,200,.15);padding:12px 20px;display:none;align-items:center;justify-content:center;gap:16px;box-shadow:0 -4px 20px rgba(0,0,0,.4);backdrop-filter:blur(10px)">
+  <div style="display:flex;align-items:center;gap:8px">
+    <span style="width:8px;height:8px;background:#4ade80;border-radius:50%;display:inline-block;animation:pulse-dot 1.5s infinite"></span>
+    <span style="font-family:var(--sans);font-size:.8rem;color:var(--sand);font-weight:500"><strong id="stickyViewers">34</strong> people viewing this offer</span>
+  </div>
+  <a href="#offer" style="background:linear-gradient(180deg,var(--rust),var(--rust-dark));color:#fff;font-family:var(--sans);font-size:.8rem;font-weight:700;padding:10px 20px;border-radius:6px;text-decoration:none;white-space:nowrap;box-shadow:0 2px 10px rgba(180,83,9,.3)">Claim Your Offer →</a>
+</div>
+<style>
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
+</style>
+
 <!-- UPGRADE POPUP -->
 <div id="upgradePopup" style="position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)" onclick="this.style.display='none'">
   <div style="background:var(--parchment);border-radius:16px;max-width:400px;width:90%;padding:32px;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.3)" onclick="event.stopPropagation()">
@@ -606,6 +618,30 @@ footer a{color:var(--sand);text-decoration:underline}
 
 <!-- SCRIPTS -->
 <script>
+// Sticky bottom bar — show after scrolling past hero
+(function(){
+  const bar = document.getElementById('stickyBar');
+  const viewerEl = document.getElementById('stickyViewers');
+  let baseCount = 28 + Math.floor(Math.random()*25);
+  viewerEl.textContent = baseCount;
+
+  // Fluctuate viewer count
+  setInterval(() => {
+    baseCount += Math.floor(Math.random()*5) - 2;
+    baseCount = Math.max(18, Math.min(72, baseCount));
+    viewerEl.textContent = baseCount;
+  }, 3000);
+
+  // Show after scrolling past hero
+  const hero = document.querySelector('.hero');
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      bar.style.display = e.isIntersecting ? 'none' : 'flex';
+    });
+  }, {threshold: 0.1});
+  barObserver.observe(hero);
+})();
+
 // Upgrade popup data
 const upgradeData = {
   bottom: {
