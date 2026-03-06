@@ -54,6 +54,7 @@ img{max-width:100%;height:auto;display:block}
   position:relative;
   overflow:hidden;
 }
+.hero h1{word-wrap:break-word;overflow-wrap:break-word;padding:0 8px}
 .hero::before{
   content:'';position:absolute;top:0;left:0;right:0;bottom:0;
   background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence baseFrequency=".7" numOctaves="4" stitchTiles="stitch"/></filter><rect width="200" height="200" filter="url(%23n)" opacity=".04"/></svg>');
@@ -212,15 +213,21 @@ footer a{color:var(--sand);text-decoration:underline}
 
 /* === RESPONSIVE === */
 @media(max-width:768px){
-  .hero h1{font-size:2.2rem}
-  .product-hero{grid-template-columns:1fr;text-align:center}
+  .hero{padding:40px 20px}
+  .hero h1{font-size:1.9rem;padding:0 4px}
+  .hero-sub{font-size:1rem;padding:0 8px}
+  .narrow{padding:0 20px}
+  .wrap{padding:0 20px}
+  .product-hero{grid-template-columns:1fr;text-align:center;padding:0 20px}
   .product-details .price-row{justify-content:center}
-  .chapter-title{font-size:1.6rem}
-  .story-text{font-size:1.1rem}
-  .pull-quote p{font-size:1.2rem}
+  .chapter-title{font-size:1.5rem}
+  .story-text{font-size:1.05rem}
+  .pull-quote{margin-left:20px;margin-right:20px;padding-left:20px}
+  .pull-quote p{font-size:1.15rem}
   .spec-grid{grid-template-columns:1fr 1fr}
-  section{padding:60px 0}
-  .img-break{height:40vh}
+  section{padding:50px 0}
+  .img-break{height:35vh}
+  .upgrade-grid{grid-template-columns:1fr!important}
 }
 @media(max-width:480px){
   .spec-grid{grid-template-columns:1fr}
@@ -229,6 +236,14 @@ footer a{color:var(--sand);text-decoration:underline}
 </style>
 </head>
 <body>
+
+<!-- LOGO BAR -->
+<nav style="background:linear-gradient(180deg,#1a1208 0%,#0f0b04 100%);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,.4)">
+  <a href="https://hawknesthammocks.ca" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--cream)">
+    <img src="https://hawknesthammocks.ca/cdn/shop/files/Untitled_design_3_001ffe6f-f724-46b9-b784-c4b24d50360a.png" alt="Hawk Nest Hammocks" style="height:40px;width:auto;border-radius:6px">
+  </a>
+  <a href="#offer" style="background:linear-gradient(180deg,var(--rust),var(--rust-dark));color:#fff;font-family:var(--sans);font-size:.8rem;font-weight:700;padding:10px 20px;border-radius:6px;text-decoration:none;box-shadow:0 2px 10px rgba(180,83,9,.3)">Pre-Order Now</a>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -258,8 +273,8 @@ footer a{color:var(--sand);text-decoration:underline}
 
 <!-- IMAGE BREAK 1 -->
 <div class="img-break-wrap reveal">
-  <img class="img-break" src="influencer2.jpg" alt="Winter hammock camping in snowy forest" loading="lazy">
-  <div class="img-break-caption">Tested in Canadian winters. Trusted in every season.</div>
+  <img class="img-break" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_34.png?v=1772739749" alt="Hawk Nest hammock tent set up between trees in nature" loading="lazy">
+  <div class="img-break-caption">Your complete shelter system. Set up in under 5 minutes.</div>
 </div>
 
 <!-- CHAPTER 2 -->
@@ -375,7 +390,7 @@ footer a{color:var(--sand);text-decoration:underline}
 </div>
 
 <!-- CHAPTER 5 — THE OFFER -->
-<section class="product-section reveal">
+<section class="product-section reveal" id="offer">
   <div class="narrow" style="text-align:center;margin-bottom:48px">
     <div class="chapter-label">Chapter 5</div>
     <h2 class="chapter-title">Now It's Your Turn<span>Pre-order now. Ships to all 50 states.</span></h2>
@@ -395,17 +410,41 @@ footer a{color:var(--sand);text-decoration:underline}
         <span class="price-new">$179</span>
         <span class="price-save">SAVE $60</span>
       </div>
-      <p class="desc">Everything you need for the best night of sleep you've ever had outdoors. Complete shelter system — nothing else to buy.</p>
-      <ul class="product-includes">
-        <li>Hammock tent with integrated bug net</li>
-        <li>Waterproof rain fly</li>
-        <li>Tree-friendly suspension straps</li>
-        <li>Stuff sack & compression bag</li>
-        <li>Illustrated setup guide</li>
-      </ul>
+      <p class="desc">Everything you need for the best night of sleep you've ever had outdoors — plus 4 exclusive upgrades, on us.</p>
       <a href="#" class="cta-btn">Pre-Order Now — $179</a>
       <span class="cta-sub">Free shipping to all 50 US states</span>
     </div>
+  </div>
+</section>
+
+<!-- FREE UPGRADES -->
+<section class="reveal" style="background:var(--parchment);padding:60px 0">
+  <div class="wrap" style="text-align:center">
+    <div class="chapter-label">Exclusive Pre-Order Bonus</div>
+    <h2 class="chapter-title" style="margin-bottom:3rem">4 Free Upgrades Included<span>$107 in extras — yours at no additional cost</span></h2>
+    <div class="upgrade-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px;margin:0 auto">
+      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:28px 20px;text-align:center">
+        <div style="font-size:2rem;margin-bottom:8px">🛡️</div>
+        <div style="font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--earth);margin-bottom:4px">Waterproof Bottom</div>
+        <div style="font-size:.8rem;color:var(--muted)"><s>$29</s> <span style="color:var(--rust);font-weight:700">FREE</span></div>
+      </div>
+      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:28px 20px;text-align:center">
+        <div style="font-size:2rem;margin-bottom:8px">🎒</div>
+        <div style="font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--earth);margin-bottom:4px">Waterproof Carrying Bag</div>
+        <div style="font-size:.8rem;color:var(--muted)"><s>$19</s> <span style="color:var(--rust);font-weight:700">FREE</span></div>
+      </div>
+      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:28px 20px;text-align:center">
+        <div style="font-size:2rem;margin-bottom:8px">✅</div>
+        <div style="font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--earth);margin-bottom:4px">5-Year Extended Warranty</div>
+        <div style="font-size:.8rem;color:var(--muted)"><s>$29</s> <span style="color:var(--rust);font-weight:700">FREE</span></div>
+      </div>
+      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:28px 20px;text-align:center">
+        <div style="font-size:2rem;margin-bottom:8px">📱</div>
+        <div style="font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--earth);margin-bottom:4px">3 Months Gridless Premium</div>
+        <div style="font-size:.8rem;color:var(--muted)"><s>$30</s> <span style="color:var(--rust);font-weight:700">FREE</span></div>
+      </div>
+    </div>
+    <div style="margin-top:12px;font-size:.85rem;color:var(--muted)">Total value: <strong style="color:var(--earth)">$336</strong> — Yours for <strong style="color:var(--rust);font-size:1.1rem">$179</strong></div>
   </div>
 </section>
 
