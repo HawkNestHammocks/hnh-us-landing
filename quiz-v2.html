@@ -319,12 +319,14 @@ img{max-width:100%;height:auto;display:block}
 <!-- QUIZ OVERLAY -->
 <div class="quiz-overlay" id="quizOverlay">
 <div class="quiz-box">
-  <img src="https://hawknesthammocks.ca/cdn/shop/files/Untitled_design_3_001ffe6f-f724-46b9-b784-c4b24d50360a.png" alt="Hawk Nest" class="quiz-inline-logo">
-  <div class="quiz-eyebrow">Early Access Application</div>
-  <div class="quiz-title">See If You <em>Qualify</em> For Our US Pre-Order</div>
-  <div class="quiz-subtitle">Answer 4 quick questions to check availability. Limited to 500 spots.</div>
-  <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:20px;font-size:.75rem;color:var(--text-dim);font-weight:600"><span style="width:6px;height:6px;background:#4ade80;border-radius:50%;display:inline-block;animation:pulse-dot 1.5s infinite"></span> <span id="quizViewers">53</span> people viewing right now</div>
-  <div class="quiz-progress"><div class="quiz-progress-bar" id="quizProgress"></div></div>
+  <img src="https://hawknesthammocks.ca/cdn/shop/files/Untitled_design_3_001ffe6f-f724-46b9-b784-c4b24d50360a.png" alt="Hawk Nest" class="quiz-inline-logo" style="display:block;margin:0 auto">
+  <div id="quizHeaderText">
+    <div class="quiz-eyebrow">Early Access Application</div>
+    <div class="quiz-title">See If You <em>Qualify</em> For Our US Pre-Order</div>
+    <div class="quiz-subtitle">Answer 4 quick questions to check availability. Limited to 500 spots.</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:14px;font-size:.75rem;color:var(--text-dim);font-weight:600"><span style="width:6px;height:6px;background:#4ade80;border-radius:50%;display:inline-block;animation:pulse-dot 1.5s infinite"></span> <span id="quizViewers">53</span> people viewing right now</div>
+    <div class="quiz-progress"><div class="quiz-progress-bar" id="quizProgress"></div></div>
+  </div>
   
   <div class="quiz-step active" data-step="1">
     <div class="quiz-question">How often do you camp?</div>
@@ -831,6 +833,7 @@ function quizAnswer(el) {
     if (quizStep < totalSteps) {
       document.querySelector('.quiz-step[data-step="'+(quizStep+1)+'"]').classList.add('active');
     } else {
+      document.getElementById('quizHeaderText').style.display='none';
       document.querySelector('.quiz-step[data-step="loading"]').classList.add('active');
       setTimeout(() => {
         document.getElementById('quizSpot').textContent = 47 + Math.floor(Math.random()*143);
