@@ -282,24 +282,28 @@ img{max-width:100%;height:auto;display:block}
 }
 
 /* QUIZ OVERLAY */
-.quiz-overlay{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,var(--light) 0%,#eee9df 50%,var(--light) 100%);display:flex;align-items:center;justify-content:center;transition:opacity .6s;opacity:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:80px 0 40px}
+.quiz-overlay{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,var(--light) 0%,#eee9df 50%,var(--light) 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .6s;opacity:1;padding:16px 0}
 .quiz-overlay.hidden{opacity:0;pointer-events:none}
 .main-content{display:none}
 .main-content.show{display:block}
-.quiz-box{max-width:560px;width:90%;text-align:center;animation:fadeInUp .6s both}
+.quiz-box{max-width:480px;width:92%;text-align:center;animation:fadeInUp .6s both}
+.quiz-inline-logo{height:32px;border-radius:6px;margin-bottom:10px}
 .quiz-logo{height:50px;border-radius:8px;margin-bottom:24px}
-.quiz-eyebrow{text-transform:uppercase;font-size:.7rem;font-weight:700;letter-spacing:2.5px;color:var(--orange);margin-bottom:8px}
-.quiz-title{font-size:1.8rem;font-weight:900;color:var(--navy);margin-bottom:6px;line-height:1.2}
-.quiz-subtitle{font-size:.95rem;color:var(--gray);margin-bottom:32px;line-height:1.5}
-.quiz-progress{width:100%;height:6px;background:var(--light-gray);border-radius:3px;margin-bottom:32px;overflow:hidden}
+.quiz-eyebrow{text-transform:uppercase;font-size:.65rem;font-weight:700;letter-spacing:2.5px;color:var(--orange);margin-bottom:4px}
+.quiz-title{font-size:1.4rem;font-weight:900;color:var(--navy);margin-bottom:4px;line-height:1.2}
+.quiz-subtitle{font-size:.85rem;color:var(--gray);margin-bottom:14px;line-height:1.4}
+.quiz-progress{width:100%;height:4px;background:var(--light-gray);border-radius:3px;margin-bottom:16px;overflow:hidden}
 .quiz-progress-bar{height:100%;background:var(--orange);border-radius:3px;transition:width .4s ease;width:0%}
-.quiz-question{font-size:1.3rem;font-weight:800;color:var(--navy);margin-bottom:24px;animation:fadeInUp .4s both}
-.quiz-options{display:grid;gap:12px;margin-bottom:20px}
-.quiz-option{background:var(--white);border:2px solid var(--light-gray);border-radius:10px;padding:16px 20px;font-size:1rem;font-weight:600;color:var(--navy);cursor:pointer;transition:all .2s;text-align:left;display:flex;align-items:center;gap:12px}
+.quiz-question{font-size:1.1rem;font-weight:800;color:var(--navy);margin-bottom:14px;animation:fadeInUp .4s both}
+.quiz-options{display:grid;gap:8px;margin-bottom:12px}
+.quiz-option{background:var(--white);border:2px solid var(--light-gray);border-left:4px solid var(--light-gray);border-radius:8px;padding:13px 16px;font-size:.95rem;font-weight:600;color:var(--navy);cursor:pointer;transition:all .2s;text-align:left;display:flex;align-items:center;gap:10px}
+.quiz-option:nth-child(1){border-left-color:#e8601c}
+.quiz-option:nth-child(2){border-left-color:#d4a843}
+.quiz-option:nth-child(3){border-left-color:#2d5016}
+.quiz-option:nth-child(4){border-left-color:#1a2332}
 .quiz-option:hover{border-color:var(--orange);background:#fff5f0;transform:translateX(4px)}
 .quiz-option.selected{border-color:var(--orange);background:#fff5f0}
-.quiz-header{background:linear-gradient(180deg,#1e293b 0%,#0c1118 100%);padding:14px 20px;display:flex;align-items:center;justify-content:center;position:fixed;top:0;left:0;right:0;z-index:10000;box-shadow:0 4px 20px rgba(0,0,0,.3)}
-.quiz-header img{height:36px;border-radius:6px}
+/* quiz header removed — logo inline now */
 .quiz-step{display:none}
 .quiz-step.active{display:block;animation:fadeInUp .4s both}
 .quiz-loading{text-align:center}
@@ -318,13 +322,10 @@ img{max-width:100%;height:auto;display:block}
 </style>
 </head>
 <body>
-<!-- QUIZ HEADER -->
-<div class="quiz-header" id="quizHeader">
-  <img src="https://hawknesthammocks.ca/cdn/shop/files/Untitled_design_3_001ffe6f-f724-46b9-b784-c4b24d50360a.png" alt="Hawk Nest Hammocks">
-</div>
 <!-- QUIZ OVERLAY -->
 <div class="quiz-overlay" id="quizOverlay">
 <div class="quiz-box">
+  <img src="https://hawknesthammocks.ca/cdn/shop/files/Untitled_design_3_001ffe6f-f724-46b9-b784-c4b24d50360a.png" alt="Hawk Nest" class="quiz-inline-logo">
   <div class="quiz-eyebrow">Early Access Application</div>
   <div class="quiz-title">See If You Qualify For Our US Pre-Order</div>
   <div class="quiz-subtitle">Answer 4 quick questions to check availability. Limited to 500 spots.</div>
@@ -1032,7 +1033,7 @@ function quizAnswer(el) {
 function closeQuiz() {
   document.getElementById('mainContent').classList.add('show');
   document.getElementById('quizOverlay').classList.add('hidden');
-  document.getElementById('quizHeader').style.display='none';
+  // quiz header removed
   document.body.style.overflow = '';
   setTimeout(() => { document.getElementById('quizOverlay').style.display='none'; }, 600);
 }
