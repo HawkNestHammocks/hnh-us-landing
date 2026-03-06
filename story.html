@@ -157,7 +157,10 @@ img{max-width:100%;height:auto;display:block}
 }
 .review-stars{color:#d4a843;font-size:1.1rem;margin-bottom:12px;letter-spacing:2px}
 .review-text{font-family:var(--serif);font-size:1rem;font-style:italic;line-height:1.6;margin-bottom:16px}
-.review-author{font-family:var(--sans);font-size:.8rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted)}
+.review-author{font-family:var(--sans);font-size:.8rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.verified-badge{display:inline-flex;align-items:center;gap:3px;background:#166534;color:#fff;font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:.5px;text-transform:uppercase}
+.review-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:all .3s}
+.review-dot.active{background:var(--rust);width:24px;border-radius:4px}
 
 /* === PRODUCT SECTION === */
 .product-section{background:var(--cream);padding:80px 0}
@@ -355,38 +358,51 @@ footer a{color:var(--sand);text-decoration:underline}
 
 <!-- REVIEWS -->
 <div class="reviews-strip reveal">
-  <div class="review-scroll">
+  <div class="review-scroll" id="reviewScroll">
     <div class="review-card">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1758763600__img_0734__original.jpeg?auto=format&w=300" alt="Pat's setup in Algonquin" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:14px">
       <div class="review-stars">★★★★★</div>
-      <div class="review-text">"This hammock tent is absolutely amazing. Set it up in minutes, slept like a baby. Best camping purchase I've ever made."</div>
-      <div class="review-author">Mike S.</div>
+      <div class="review-text">"An intense September storm came through in Algonquin Park, followed by rain for most of the day. I was completely dry and comfortable the entire time."</div>
+      <div class="review-author">Pat Christie <span class="verified-badge">✓ Verified Buyer</span></div>
     </div>
     <div class="review-card">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1757347476__20250824_180228__original.jpg?auto=format&w=300" alt="Steve's 200km hike" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:14px">
       <div class="review-stars">★★★★★</div>
-      <div class="review-text">"Game changer. My wife and I both got one and now we can't imagine going back to a regular tent. The comfort is unreal."</div>
-      <div class="review-author">Jordan K.</div>
+      <div class="review-text">"Hiked over 200km in the Québec mountains. And it's still going strong and ready for more. Never sleep on the ground again!"</div>
+      <div class="review-author">Steve Desroches <span class="verified-badge">✓ Verified Buyer</span></div>
     </div>
     <div class="review-card">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1764873077__img_1961_jpg__original.jpeg?auto=format&w=300" alt="Alex's setup" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:14px">
       <div class="review-stars">★★★★★</div>
-      <div class="review-text">"Took it on a 5-day canoe trip. Rain, wind, bugs — didn't matter. I was dry, warm, and comfortable every single night."</div>
-      <div class="review-author">Sarah L.</div>
+      <div class="review-text">"An amazing hammock. Durable for all weather, very comfy, and lightweight to backpack with!"</div>
+      <div class="review-author">Alex Catherwood <span class="verified-badge">✓ Verified Buyer</span></div>
     </div>
     <div class="review-card">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1754702940__img_4610__original.jpeg?auto=format&w=300" alt="Elizabeth's Bay of Fundy setup" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:14px">
       <div class="review-stars">★★★★★</div>
-      <div class="review-text">"I have a bad back and ground sleeping was ruining camping for me. This hammock tent literally saved my favourite hobby."</div>
-      <div class="review-author">Dave R.</div>
+      <div class="review-text">"First trip out with the tent, perched on a cliff overlooking the Bay of Fundy. Solid warm and comfy sleep despite the deep temperature drop at night."</div>
+      <div class="review-author">Elizabeth Boudreau <span class="verified-badge">✓ Verified Buyer</span></div>
     </div>
     <div class="review-card">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1753894672__img_9169__original.jpeg?auto=format&w=300" alt="Brandon's moto-camping trip" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:14px">
       <div class="review-stars">★★★★★</div>
-      <div class="review-text">"Setup in the dark after a long hike. Four minutes, headlamp only. Slept better than I do at home. Not exaggerating."</div>
-      <div class="review-author">Chris M.</div>
+      <div class="review-text">"Just returned from an 8-day moto-camping trip around Quebec and the Gaspe Peninsula. This system exceeded every expectation."</div>
+      <div class="review-author">Brandon Williams <span class="verified-badge">✓ Verified Buyer</span></div>
     </div>
     <div class="review-card">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1754765785__img_9593__original.jpeg?auto=format&w=300" alt="Hailey's kayak trip" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:14px">
       <div class="review-stars">★★★★★</div>
-      <div class="review-text">"My buddy convinced me to try his. I ordered mine the next morning before we even broke camp."</div>
-      <div class="review-author">Tyler B.</div>
+      <div class="review-text">"I ordered a couple of Hawk Nest V.3's after my friend had one and I was not disappointed. Took them on an overnight girls kayaking trip!"</div>
+      <div class="review-author">Hailey Kusche <span class="verified-badge">✓ Verified Buyer</span></div>
+    </div>
+    <div class="review-card">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1755043972__img_9555__original.jpeg?auto=format&w=300" alt="Greg's kayak camping" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:14px">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"This lightweight hammock was easy to set up — first time took about 10 minutes. By the second time, under 5. Perfect for kayak camping."</div>
+      <div class="review-author">Greg Faber <span class="verified-badge">✓ Verified Buyer</span></div>
     </div>
   </div>
+  <div style="text-align:center;margin-top:16px;display:flex;justify-content:center;gap:8px" id="reviewDots"></div>
 </div>
 
 <!-- CHAPTER 5 — THE OFFER -->
@@ -423,24 +439,24 @@ footer a{color:var(--sand);text-decoration:underline}
     <div class="chapter-label">Exclusive Pre-Order Bonus</div>
     <h2 class="chapter-title" style="margin-bottom:3rem">4 Free Upgrades Included<span>$107 in extras — yours at no additional cost</span></h2>
     <div class="upgrade-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px;margin:0 auto">
-      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:28px 20px;text-align:center">
-        <div style="font-size:2rem;margin-bottom:8px">🛡️</div>
-        <div style="font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--earth);margin-bottom:4px">Waterproof Bottom</div>
+      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:center">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190" alt="Waterproof bottom" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px">
+        <div style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--earth);margin-bottom:4px">Waterproof Bottom</div>
         <div style="font-size:.8rem;color:var(--muted)"><s>$29</s> <span style="color:var(--rust);font-weight:700">FREE</span></div>
       </div>
-      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:28px 20px;text-align:center">
-        <div style="font-size:2rem;margin-bottom:8px">🎒</div>
-        <div style="font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--earth);margin-bottom:4px">Waterproof Carrying Bag</div>
+      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:center">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669" alt="Carrying bag" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px">
+        <div style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--earth);margin-bottom:4px">Waterproof Carrying Bag</div>
         <div style="font-size:.8rem;color:var(--muted)"><s>$19</s> <span style="color:var(--rust);font-weight:700">FREE</span></div>
       </div>
-      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:28px 20px;text-align:center">
-        <div style="font-size:2rem;margin-bottom:8px">✅</div>
-        <div style="font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--earth);margin-bottom:4px">5-Year Extended Warranty</div>
+      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:center">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Bottom_Upgrade_1.png?v=1741284804" alt="5-Year Warranty" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px">
+        <div style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--earth);margin-bottom:4px">5-Year Extended Warranty</div>
         <div style="font-size:.8rem;color:var(--muted)"><s>$29</s> <span style="color:var(--rust);font-weight:700">FREE</span></div>
       </div>
-      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:28px 20px;text-align:center">
-        <div style="font-size:2rem;margin-bottom:8px">📱</div>
-        <div style="font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--earth);margin-bottom:4px">3 Months Gridless Premium</div>
+      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:center">
+        <img src="gridless_icon.png" alt="Gridless app" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px;border-radius:16px">
+        <div style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--earth);margin-bottom:4px">3 Months Gridless Premium</div>
         <div style="font-size:.8rem;color:var(--muted)"><s>$30</s> <span style="color:var(--rust);font-weight:700">FREE</span></div>
       </div>
     </div>
@@ -474,12 +490,53 @@ footer a{color:var(--sand);text-decoration:underline}
   <p style="margin-top:8px;font-size:.75rem;color:rgba(232,218,200,.5)">Patent pending · Made with Canadian stubbornness</p>
 </footer>
 
-<!-- REVEAL ANIMATION -->
+<!-- REVEAL ANIMATION + REVIEW CAROUSEL -->
 <script>
+// Reveal on scroll
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Review auto-scroll
+(function(){
+  const scroll = document.getElementById('reviewScroll');
+  const dotsWrap = document.getElementById('reviewDots');
+  if(!scroll) return;
+  const cards = scroll.querySelectorAll('.review-card');
+  let current = 0;
+  // Create dots
+  cards.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'review-dot' + (i===0?' active':'');
+    dot.onclick = () => goTo(i);
+    dotsWrap.appendChild(dot);
+  });
+  function goTo(idx){
+    current = idx;
+    const card = cards[idx];
+    scroll.scrollTo({left: card.offsetLeft - 24, behavior:'smooth'});
+    dotsWrap.querySelectorAll('.review-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
+  }
+  // Auto-advance every 4s
+  let timer = setInterval(() => goTo((current+1)%cards.length), 4000);
+  // Pause on touch/interaction
+  scroll.addEventListener('touchstart', () => clearInterval(timer));
+  scroll.addEventListener('touchend', () => { timer = setInterval(() => goTo((current+1)%cards.length), 4000); });
+  scroll.addEventListener('scroll', () => {
+    // Update dots based on scroll position
+    const scrollLeft = scroll.scrollLeft;
+    let closest = 0, minDist = Infinity;
+    cards.forEach((c, i) => {
+      const dist = Math.abs(c.offsetLeft - 24 - scrollLeft);
+      if(dist < minDist){ minDist = dist; closest = i; }
+    });
+    if(closest !== current){
+      current = closest;
+      dotsWrap.querySelectorAll('.review-dot').forEach((d,i) => d.classList.toggle('active', i===current));
+    }
+  });
+})();
 </script>
 
 </body>
