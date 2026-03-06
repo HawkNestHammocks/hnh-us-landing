@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hawk Nest™ All-Season Hammock Tent — Now Available in the USA</title>
+<meta name="description" content="The most comfortable hammock tent ever made. Patent pending. 400+ five-star reviews. Now shipping to all 50 US states. Pre-order for $179.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{overflow-x:hidden;scroll-behavior:smooth}
+:root{
+  --bg:#0a0a0a;--bg2:#111111;--bg3:#1a1a1a;--bg4:#222;
+  --text:#e8e4df;--text-dim:#9a958e;--text-bright:#fff;
+  --accent:#e8601c;--accent-hover:#ff7a3d;--accent-glow:rgba(232,96,28,.4);
+  --gold:#d4a843;--green:#4ade80;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+.container-narrow{max-width:800px;margin:0 auto;padding:0 20px}
+
+/* TYPOGRAPHY */
+.eyebrow{text-transform:uppercase;font-size:.7rem;font-weight:700;letter-spacing:3px;color:var(--accent);margin-bottom:16px}
+.headline{font-family:var(--serif);font-size:3rem;font-weight:900;line-height:1.08;color:var(--text-bright);margin-bottom:20px}
+.headline em{font-style:italic;color:var(--accent)}
+.subhead{font-size:1.1rem;color:var(--text-dim);line-height:1.7;max-width:600px}
+
+/* BUTTONS */
+.btn{display:inline-block;background:linear-gradient(180deg,#f06d2a 0%,#c94d12 100%);color:#fff;font-size:1.1rem;font-weight:700;padding:18px 44px;border-radius:6px;text-decoration:none;text-align:center;border:none;cursor:pointer;transition:all .25s;letter-spacing:.5px;box-shadow:0 4px 20px var(--accent-glow);position:relative;overflow:hidden}
+.btn:hover{background:linear-gradient(180deg,#ff7a3d 0%,#e8601c 100%);transform:translateY(-2px);box-shadow:0 8px 30px var(--accent-glow)}
+.btn::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transition:left .5s}
+.btn:hover::after{left:100%}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.2);box-shadow:none;font-size:.95rem;padding:14px 32px}
+.btn-ghost:hover{border-color:var(--accent);background:rgba(232,96,28,.1);box-shadow:none}
+.btn-sub{display:block;text-align:center;font-size:.8rem;color:var(--text-dim);margin-top:10px}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse-glow{0%,100%{box-shadow:0 4px 20px var(--accent-glow)}50%{box-shadow:0 4px 40px rgba(232,96,28,.6)}}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,10,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);padding:12px 0;transition:all .3s}
+.nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:38px;border-radius:5px}
+.nav-cta{background:linear-gradient(180deg,#f06d2a,#c94d12);color:#fff;font-size:.8rem;font-weight:700;padding:9px 20px;border-radius:5px;text-decoration:none;transition:all .2s;border:none}
+.nav-cta:hover{background:linear-gradient(180deg,#ff7a3d,#e8601c);transform:translateY(-1px)}
+
+/* HERO — CINEMATIC FULLSCREEN */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:100px 0 60px}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,.95) 0%,rgba(10,10,10,.7) 40%,rgba(10,10,10,.4) 100%);z-index:1}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.5;filter:brightness(.6)}
+.hero-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-text{animation:fadeUp .8s .2s both}
+.hero-flag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:8px 18px;border-radius:30px;margin-bottom:24px;backdrop-filter:blur(8px)}
+.hero-flag span{font-size:1rem}
+.hero .headline{font-size:3.2rem;margin-bottom:20px}
+.hero .subhead{margin-bottom:32px}
+.hero-price-strip{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:14px 22px;border-radius:10px;margin-bottom:28px;backdrop-filter:blur(8px)}
+.hp-old{text-decoration:line-through;color:var(--text-dim);font-size:.95rem}
+.hp-new{font-size:1.8rem;font-weight:900;color:var(--accent)}
+.hp-save{background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;font-size:.65rem;font-weight:700;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
+.hero-carousel-wrap{animation:fadeUp .8s .4s both}
+.hero-carousel{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08)}
+.hero-carousel-track{display:flex;transition:transform .5s ease}
+.hero-carousel-track img{min-width:100%;width:100%;aspect-ratio:1/1;object-fit:cover;flex-shrink:0}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:5;transition:all .2s;color:#fff;font-size:1.2rem}
+.carousel-btn:hover{background:rgba(232,96,28,.8);border-color:var(--accent)}
+.carousel-btn.prev{left:12px}
+.carousel-btn.next{right:12px}
+.carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.carousel-dots .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .3s}
+.carousel-dots .dot.active{background:var(--accent);transform:scale(1.3)}
+
+/* MOBILE CALLOUTS */
+.mobile-callouts{display:none;margin-bottom:10px}
+.m-callout-row{display:flex;justify-content:center;gap:6px;flex-wrap:wrap}
+.m-callout{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:5px 10px;border-radius:20px;backdrop-filter:blur(8px)}
+.m-callout svg{width:12px;height:12px;flex-shrink:0}
+.m-callout span{font-size:.55rem;font-weight:700;color:var(--text-bright);white-space:nowrap;text-transform:uppercase;letter-spacing:.5px}
+
+/* DIVIDER */
+.section-divider{width:60px;height:2px;background:linear-gradient(90deg,var(--accent),transparent);margin:0 auto 40px}
+
+/* STORYTELLING SECTION */
+.story{padding:120px 0;position:relative}
+.story::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent)}
+.story-text{max-width:700px;margin:0 auto;text-align:center}
+.story-text .headline{font-size:2.6rem;margin-bottom:24px}
+.story-text p{font-size:1.1rem;color:var(--text-dim);line-height:1.8;margin-bottom:20px}
+.story-text p strong{color:var(--text-bright);font-weight:700}
+
+/* FULL BLEED IMAGE */
+.full-bleed{position:relative;height:60vh;min-height:400px;overflow:hidden}
+.full-bleed img{width:100%;height:100%;object-fit:cover}
+.full-bleed-overlay{position:absolute;inset:0;background:linear-gradient(0deg,var(--bg) 0%,transparent 40%,transparent 60%,var(--bg) 100%)}
+.full-bleed-text{position:absolute;bottom:60px;left:0;right:0;text-align:center;z-index:2}
+.full-bleed-text .headline{font-size:2.2rem;text-shadow:0 4px 30px rgba(0,0,0,.8)}
+
+/* FEATURES — EDITORIAL GRID */
+.features{padding:100px 0}
+.features-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:60px}
+.feature-card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:40px 32px;transition:all .3s;position:relative;overflow:hidden}
+.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);opacity:0;transition:opacity .3s}
+.feature-card:hover{border-color:rgba(232,96,28,.2);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.feature-card:hover::before{opacity:1}
+.feature-tag{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:14px;display:block}
+.feature-card h3{font-family:var(--serif);font-size:1.4rem;color:var(--text-bright);margin-bottom:10px;font-weight:700}
+.feature-card p{font-size:.95rem;color:var(--text-dim);line-height:1.7}
+
+/* SETUP SECTION */
+.setup{padding:100px 0;background:var(--bg2)}
+.setup-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:40px}
+.setup-gif{border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.06)}
+.setup-gif img{width:100%;display:block}
+.steps{list-style:none;counter-reset:steps}
+.steps li{counter-increment:steps;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:16px;transition:transform .2s}
+.steps li:hover{transform:translateX(6px)}
+.steps li:last-child{border-bottom:none}
+.step-num{width:40px;height:40px;border-radius:50%;background:rgba(232,96,28,.15);border:1px solid rgba(232,96,28,.3);color:var(--accent);font-size:1rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-num::before{content:counter(steps)}
+.step-text h4{font-size:1rem;font-weight:700;color:var(--text-bright);margin-bottom:4px}
+.step-text p{font-size:.9rem;color:var(--text-dim)}
+
+/* VALUE STACK */
+.value-stack{padding:100px 0;background:linear-gradient(180deg,var(--bg) 0%,#0d0d0d 100%);position:relative}
+.value-stack::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(232,96,28,.04) 0%,transparent 70%)}
+.stack-table{max-width:680px;margin:40px auto 0;position:relative}
+.stack-row{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid rgba(255,255,255,.06);font-size:1rem;transition:all .25s;cursor:default}
+.stack-row.free{cursor:pointer;border-radius:6px}
+.stack-row.free:hover{background:rgba(255,255,255,.03);transform:translateX(4px)}
+.stack-row .stack-thumb{width:44px;height:44px;border-radius:8px;object-fit:cover;margin-right:14px;flex-shrink:0;border:1px solid rgba(255,255,255,.08)}
+.stack-row .stack-label{display:flex;align-items:center;color:var(--text)}
+.stack-val{font-weight:700;white-space:nowrap;color:var(--text-dim)}
+.stack-row.free .stack-val{color:var(--green)}
+.stack-row.total{border-top:1px solid var(--gold);border-bottom:none;margin-top:12px;padding-top:20px;background:rgba(212,168,67,.05);border-radius:8px;padding:18px 20px}
+.stack-row.total .stack-val{font-size:1.8rem;font-weight:900;color:var(--gold)}
+.stack-row.you-pay{background:rgba(232,96,28,.1);border:1px solid rgba(232,96,28,.2);border-radius:8px;margin-top:12px;animation:pulse-glow 3s infinite}
+.stack-row.you-pay .stack-val{font-size:2rem;color:var(--accent)}
+.stack-row.you-pay .stack-label{color:var(--text-bright);font-weight:700;font-size:1.15rem}
+.stack-tap{text-align:center;font-size:.75rem;color:var(--text-dim);margin-top:10px;font-style:italic}
+
+/* GALLERY — MASONRY-ISH */
+.gallery{padding:80px 0;background:var(--bg2)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
+.gallery-grid img{border-radius:8px;aspect-ratio:1;object-fit:cover;transition:all .4s;cursor:pointer;filter:brightness(.85);border:1px solid rgba(255,255,255,.04)}
+.gallery-grid img:hover{filter:brightness(1);transform:scale(1.03);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+
+/* REVIEWS */
+.reviews{padding:100px 0;background:var(--bg)}
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+.review-card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:24px;transition:all .3s}
+.review-card:hover{border-color:rgba(212,168,67,.2);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.review-photo{width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:14px;filter:brightness(.9)}
+.review-stars{color:var(--gold);font-size:1rem;letter-spacing:2px;margin-bottom:10px}
+.review-quote{font-size:.95rem;color:var(--text-dim);font-style:italic;line-height:1.6;margin-bottom:14px}
+.review-name{font-size:.82rem;font-weight:700;color:var(--text-bright)}
+.review-loc{font-size:.75rem;color:var(--text-dim)}
+.review-summary{display:inline-flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid rgba(255,255,255,.08);padding:12px 24px;border-radius:10px;margin-bottom:10px}
+.review-summary .stars{color:var(--gold);font-size:1.2rem;letter-spacing:1px}
+.review-summary .rating{font-size:1rem;font-weight:800;color:var(--text-bright)}
+.review-summary .count{font-size:.85rem;color:var(--text-dim)}
+
+/* VIDEO REVIEWS */
+.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:800px;margin:40px auto 0}
+.video-wrap{position:relative;padding-bottom:56.25%;height:0;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+
+/* FAQ */
+.faq{padding:100px 0;background:var(--bg2)}
+.faq-list{max-width:700px;margin:40px auto 0}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.06);overflow:hidden}
+.faq-q{width:100%;padding:20px 0;font-size:1rem;font-weight:600;color:var(--text-bright);background:none;border:none;cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);transition:color .2s}
+.faq-q:hover{color:var(--accent)}
+.faq-q::after{content:'+';font-size:1.4rem;font-weight:300;color:var(--text-dim);transition:transform .3s}
+.faq-item.open .faq-q::after{content:'-';transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a p{font-size:.95rem;color:var(--text-dim);line-height:1.7;padding-bottom:20px}
+
+/* FINAL CTA */
+.final-cta{padding:120px 0;text-align:center;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center bottom,rgba(232,96,28,.08) 0%,transparent 60%)}
+.final-cta .headline{font-size:2.8rem}
+.final-price{margin:24px 0 32px}
+.final-price .old{text-decoration:line-through;color:var(--text-dim);font-size:1rem;margin-right:8px}
+.final-price .new{font-size:2.4rem;font-weight:900;color:var(--text-bright)}
+.final-price .shipping{color:var(--text-dim);font-size:.95rem;margin-left:6px}
+.final-bonuses{color:var(--gold);font-size:.9rem;font-style:italic;margin-bottom:28px}
+.guarantee-text{font-size:.8rem;color:var(--text-dim);margin-top:14px}
+
+/* STICKY BAR */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.06);z-index:1000;transform:translateY(100%);transition:transform .3s;display:flex;flex-direction:column}
+.sticky-bar.show{transform:translateY(0)}
+.sticky-bar-main{display:flex;justify-content:center;align-items:center;gap:14px;padding:10px 16px}
+.sticky-bar-text{color:var(--text);font-size:.85rem;font-weight:700}
+.sticky-bar-text .old{text-decoration:line-through;color:var(--text-dim);font-size:.75rem}
+.sticky-bar .btn{padding:10px 22px;font-size:.85rem;box-shadow:none;white-space:nowrap}
+.sticky-bar-urgency{background:rgba(74,222,128,.05);border-top:1px solid rgba(74,222,128,.1);padding:5px 16px;text-align:center;font-size:.65rem;color:var(--green);font-weight:600;display:flex;align-items:center;justify-content:center;gap:4px}
+.sticky-bar-urgency .dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse-dot 1.5s infinite}
+
+/* POPUP */
+.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);z-index:2000;display:none;align-items:center;justify-content:center}
+.popup-overlay.show{display:flex}
+.popup{background:var(--bg3);border:1px solid rgba(255,255,255,.1);border-radius:16px;max-width:420px;width:90%;padding:32px;text-align:center;position:relative;animation:fadeUp .3s both;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.popup-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-dim);transition:color .2s}
+.popup-close:hover{color:var(--text-bright)}
+.popup img{width:120px;height:120px;object-fit:cover;border-radius:12px;margin:0 auto 16px;border:1px solid rgba(255,255,255,.08)}
+.popup h3{font-size:1.1rem;color:var(--text-bright);margin-bottom:8px;font-family:var(--serif)}
+.popup p{font-size:.9rem;color:var(--text-dim);line-height:1.6}
+.popup .popup-value{display:inline-block;margin-top:12px;font-size:.9rem;font-weight:700;color:var(--green);background:rgba(74,222,128,.1);padding:6px 16px;border-radius:20px}
+
+/* FOOTER */
+.footer{background:var(--bg);border-top:1px solid rgba(255,255,255,.06);color:var(--text-dim);text-align:center;padding:40px 20px 100px;font-size:.8rem}
+.footer a{color:var(--text-dim);text-decoration:none;transition:color .2s}
+.footer a:hover{color:var(--accent)}
+
+/* INFLUENCER STRIP */
+.influencer-strip{padding:0;position:relative}
+.influencer-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.influencer-grid img{width:100%;height:50vh;object-fit:cover;filter:brightness(.7);transition:filter .4s}
+.influencer-grid img:hover{filter:brightness(.9)}
+
+/* TIMELINE */
+.timeline{max-width:600px;margin:40px auto 0;position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),rgba(255,255,255,.1) 60%,#ef4444)}
+.tl-item{position:relative;padding-bottom:32px;transition:transform .3s}
+.tl-item:hover{transform:translateX(4px)}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:-33px;top:4px;width:12px;height:12px;border-radius:50%;border:2px solid var(--accent);background:var(--bg);transition:all .3s}
+.tl-item.active .tl-dot{background:var(--accent);box-shadow:0 0 0 4px rgba(232,96,28,.2)}
+.tl-item.red .tl-dot{border-color:#ef4444;background:#ef4444;box-shadow:0 0 0 4px rgba(239,68,68,.15)}
+.tl-label{font-weight:700;color:var(--text-bright);font-size:.95rem}
+.tl-desc{color:var(--text-dim);font-size:.85rem;margin-top:2px}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero{min-height:auto;padding:80px 0 40px}
+  .hero-content{grid-template-columns:1fr;gap:30px}
+  .hero-carousel-wrap{order:-1}
+  .hero .headline{font-size:2rem}
+  .headline{font-size:2rem}
+  .mobile-callouts{display:flex!important;justify-content:center}
+  .desktop-callouts{display:none!important}
+  .features-grid{grid-template-columns:1fr}
+  .setup-grid{grid-template-columns:1fr}
+  .review-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .video-grid{grid-template-columns:1fr!important}
+  .influencer-grid{grid-template-columns:1fr}
+  .influencer-grid img{height:40vh}
+  .btn{width:100%;padding:16px 24px;font-size:1rem}
+  .stack-row{font-size:.9rem;padding:14px 16px}
+  .stack-row .stack-thumb{width:36px;height:36px}
+  .hero-price-strip{flex-wrap:wrap;gap:8px}
+  .final-cta .headline{font-size:2rem}
+  .full-bleed{height:40vh;min-height:280px}
+  .section-divider{margin:0 auto 30px}
+  .story{padding:80px 0}
+  .story-text .headline{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+<div class="container">
+  <a href="#" class="nav-logo"><img src="https://hawknesthammocks.ca/cdn/shop/files/Untitled_design_3_001ffe6f-f724-46b9-b784-c4b24d50360a.png" alt="Hawk Nest Hammocks"></a>
+  <a href="#offer" class="nav-cta">PRE-ORDER — $179 →</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+<div class="hero-bg"><img src="influencer4.jpg" alt="Hawk Nest in winter mountains"></div>
+<div class="container">
+<div class="hero-content">
+  <div class="hero-text">
+    <div class="hero-flag"><span>🇺🇸</span> NOW AVAILABLE IN THE USA</div>
+    <h1 class="headline">Sleep Like You're <em>Floating</em> Through The Wilderness.</h1>
+    <p class="subhead">The Hawk Nest V.3 — a patent-pending hammock tent that gives you the most comfortable outdoor sleep imaginable. 400+ five-star reviews. Now shipping to all 50 states.</p>
+    <div class="hero-price-strip">
+      <span class="hp-old">$336 value</span>
+      <span class="hp-new">$179</span>
+      <span class="hp-save">Save $157</span>
+    </div>
+    <a href="#offer" class="btn" style="animation:pulse-glow 2.5s infinite">CLAIM YOUR BUNDLE — $179</a>
+    <span class="btn-sub">Free shipping · 30-day money-back guarantee</span>
+  </div>
+  <div class="hero-carousel-wrap">
+    <div class="mobile-callouts">
+      <div class="m-callout-row">
+        <div class="m-callout"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Patent-Pending</span></div>
+        <div class="m-callout"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/></svg><span>4 lbs</span></div>
+        <div class="m-callout"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>5-Min Setup</span></div>
+        <div class="m-callout"><svg viewBox="0 0 24 24" fill="none" stroke="#e8601c" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg><span>500 lbs</span></div>
+      </div>
+    </div>
+    <div class="hero-carousel" id="heroCarousel">
+      <div class="hero-carousel-track" id="heroTrack">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749" alt="Hawk Nest All-Season Hammock Tent V.3">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_1.png?v=1772739749" alt="Hawk Nest close-up">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_2.png?v=1772739749" alt="Hawk Nest setup">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Mattress_Pocket.png?v=1772739749" alt="Sleeping pad pocket">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_23.png?v=1772739749" alt="Hawk Nest lifestyle">
+      </div>
+      <button class="carousel-btn prev" onclick="carouselPrev()" aria-label="Previous">‹</button>
+      <button class="carousel-btn next" onclick="carouselNext()" aria-label="Next">›</button>
+    </div>
+    <div class="carousel-dots" id="heroDots"></div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- STORYTELLING — THE PROBLEM -->
+<section class="story">
+<div class="story-text fade-in">
+  <div class="eyebrow">The Real Problem</div>
+  <div class="section-divider"></div>
+  <h2 class="headline">"I Love The Outdoors.<br>I <em>Hate</em> Sleeping On The Ground."</h2>
+  <p>Sound familiar? You're not alone. Every year, millions of Americans give up camping — not because they don't love the outdoors, but because sleeping on the ground destroys their body.</p>
+  <p>Rocks. Roots. Cold, hard earth. You wake up stiffer than when you went to bed.</p>
+  <p><strong>What if you didn't have to sleep on the ground at all?</strong></p>
+  <p>Sleeping suspended in a hammock is arguably the most comfortable sleep you can get outdoors — better than you'd get at home. But regular hammocks squeeze your shoulders and curve your spine. Not exactly comfortable either.</p>
+  <p><strong>That's exactly why we built the Hawk Nest.</strong></p>
+</div>
+</section>
+
+<!-- FULL BLEED — INFLUENCER -->
+<div class="full-bleed">
+<img src="influencer2.jpg" alt="Hiker with Hawk Nest in winter mountains">
+<div class="full-bleed-overlay"></div>
+<div class="full-bleed-text fade-in">
+  <div class="eyebrow">Meet The Hawk Nest</div>
+  <h2 class="headline">Born In The Canadian Wilderness.<br>Built For <em>Everywhere.</em></h2>
+</div>
+</div>
+
+<!-- SOLUTION — FEATURES -->
+<section class="features">
+<div class="container">
+  <div style="text-align:center" class="fade-in">
+    <div class="eyebrow">Built Different</div>
+    <div class="section-divider"></div>
+    <h2 class="headline">Why 400+ Campers Gave Us <em>Five Stars</em></h2>
+    <p class="subhead" style="margin:0 auto 20px">3 years of obsessive engineering by a Canadian outdoor company that refused to accept "uncomfortable" as the price of camping.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card fade-in">
+      <span class="feature-tag">Patent Pending</span>
+      <h3>Spreader Bar System</h3>
+      <p>Our patent-pending spreader bars give you wide shoulder spread and hold up the rain fly and mosquito net — maximizing your interior space for the most comfortable hammock sleep imaginable.</p>
+    </div>
+    <div class="feature-card fade-in">
+      <span class="feature-tag">Two Shelters In One</span>
+      <h3>Hang It or Ground It</h3>
+      <p>Trees everywhere? Hang it. Open meadow? Set it up on the ground as a tent. One product, every terrain, zero excuses.</p>
+    </div>
+    <div class="feature-card fade-in">
+      <span class="feature-tag">Rain · Wind · Cold</span>
+      <h3>All-Season Weather Protection</h3>
+      <p>Integrated rain fly sheds water. Sleeping pad pocket adds insulation. Ripstop fabric blocks wind. Camp spring through winter.</p>
+    </div>
+    <div class="feature-card fade-in">
+      <span class="feature-tag">4 lbs. That's It.</span>
+      <h3>Ultralight &amp; Ultra-Packable</h3>
+      <p>Total kit: 4 lbs, packs to 16.5" × 5.5". Lighter and smaller than most 1-person tents. Forget it's there until you need it.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SETUP -->
+<section class="setup">
+<div class="container">
+  <div style="text-align:center" class="fade-in">
+    <div class="eyebrow">Easy As 1-2-3-4</div>
+    <div class="section-divider"></div>
+    <h2 class="headline">Set Up In <em>Under 5 Minutes</em></h2>
+  </div>
+  <div class="setup-grid">
+    <div class="setup-gif fade-in">
+      <img src="setup.gif" alt="Hawk Nest setup demonstration">
+    </div>
+    <div class="fade-in">
+      <ul class="steps">
+        <li><div class="step-num"></div><div class="step-text"><h4>Strap Up</h4><p>Wrap the included tree straps around two anchor points and lock them in.</p></div></li>
+        <li><div class="step-num"></div><div class="step-text"><h4>Clip In</h4><p>Clip the hammock body into the straps using the built-in carabiners. 10 seconds.</p></div></li>
+        <li><div class="step-num"></div><div class="step-text"><h4>Spread Out</h4><p>Insert the lightweight spreader bars for wide shoulder spread and maximum interior space.</p></div></li>
+        <li><div class="step-num"></div><div class="step-text"><h4>Cover Up</h4><p>Attach the rain fly for full weather protection. Optional: add your sleeping pad for insulation.</p></div></li>
+      </ul>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:50px" class="fade-in">
+    <a href="#offer" class="btn">ORDER YOURS — $179</a>
+  </div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+<div class="container">
+  <div style="text-align:center" class="fade-in">
+    <div class="eyebrow">See It In Action</div>
+    <div class="section-divider"></div>
+    <h2 class="headline">Built For <em>Real</em> Adventures</h2>
+  </div>
+  <div class="gallery-grid fade-in">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_25.png?v=1772739749" alt="Hawk Nest in forest">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_26.png?v=1772739749" alt="Inside Hawk Nest">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Giveaway_5.png?v=1772739749" alt="Hawk Nest in snow">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitled-_1000-x-750-px_l.jpg?v=1772739749" alt="Hawk Nest forest setting">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_34.png?v=1772739749" alt="Man relaxing in Hawk Nest">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_20.png?v=1772739749" alt="Couple in Hawk Nest">
+  </div>
+</div>
+</section>
+
+<!-- VALUE STACK -->
+<section class="value-stack" id="offer">
+<div class="container">
+  <div style="text-align:center" class="fade-in">
+    <div class="eyebrow">Pre-Order Exclusive</div>
+    <div class="section-divider"></div>
+    <h2 class="headline">Here's Everything You Get <em>Today</em></h2>
+    <p class="subhead" style="margin:0 auto">We're loading up this first US batch with bonuses that won't be available at full price.</p>
+  </div>
+  <div class="stack-table fade-in">
+    <div class="stack-row free" onclick="showPopup('hammock')">
+      <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749" alt="Hawk Nest V.3"> Hawk Nest All-Season Hammock Tent V.3</span>
+      <span class="stack-val" style="color:var(--text)">$229</span>
+    </div>
+    <div class="stack-row free" onclick="showPopup('bottom')">
+      <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190" alt="Waterproof bottom"> Waterproof Bottom Upgrade</span>
+      <span class="stack-val"><s style="color:var(--text-dim)">$29</s> FREE</span>
+    </div>
+    <div class="stack-row free" onclick="showPopup('bag')">
+      <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669" alt="Carrying bag"> Waterproof Carrying Bag Upgrade</span>
+      <span class="stack-val"><s style="color:var(--text-dim)">$19</s> FREE</span>
+    </div>
+    <div class="stack-row free" onclick="showPopup('warranty')">
+      <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Bottom_Upgrade_1.png?v=1741284804" alt="Warranty"> 5-Year Extended Warranty</span>
+      <span class="stack-val"><s style="color:var(--text-dim)">$29</s> FREE</span>
+    </div>
+    <div class="stack-row free" onclick="showPopup('gridless')">
+      <span class="stack-label"><img class="stack-thumb" src="gridless_icon.png" alt="Gridless" style="border-radius:12px"> 3 Months Gridless Premium</span>
+      <span class="stack-val"><s style="color:var(--text-dim)">$30</s> FREE</span>
+    </div>
+    <div class="stack-row free">
+      <span class="stack-label">Standard US Shipping</span>
+      <span class="stack-val">FREE</span>
+    </div>
+    <div class="stack-row total">
+      <span>Total Value</span>
+      <span class="stack-val">$336</span>
+    </div>
+    <div class="stack-row you-pay">
+      <span class="stack-label">You Pay Today</span>
+      <span class="stack-val">$179</span>
+    </div>
+  </div>
+  <p class="stack-tap">Tap any item above to learn more</p>
+  <div style="text-align:center;margin-top:36px" class="fade-in">
+    <a href="#offer" class="btn" style="font-size:1.2rem;padding:20px 48px">GET THE FULL BUNDLE — $179</a>
+    <span class="btn-sub">Save $157 · Free shipping · 30-day guarantee</span>
+  </div>
+</div>
+</section>
+
+<!-- URGENCY TIMELINE -->
+<section style="padding:100px 0;background:var(--bg2)">
+<div class="container">
+  <div class="fade-in">
+    <div class="eyebrow">Limited First Batch</div>
+    <div class="section-divider" style="margin:0 0 20px"></div>
+    <h2 class="headline">Our First-Ever US Launch.<br><em>Stock Is Limited.</em></h2>
+    <p style="color:var(--text-dim);max-width:650px;margin-bottom:10px;font-size:1rem">We're a Canadian company that spent 3 years perfecting this hammock for the harsh Canadian wilderness. Now we're finally bringing it south of the border — but this first batch is limited.</p>
+  </div>
+  <div class="timeline fade-in">
+    <div class="tl-item active"><div class="tl-dot"></div><div class="tl-label">Now — Lock In Your Pre-Order</div><div class="tl-desc">$179 price + all free bonuses secured</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-label">Est. July 1 — Priority Orders Arrive</div><div class="tl-desc">$15–20 upgrade at checkout</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-label">Est. July 15 — Standard Orders Arrive</div><div class="tl-desc">Free shipping — included with every pre-order</div></div>
+    <div class="tl-item red"><div class="tl-dot"></div><div class="tl-label">After Launch — $229. Bonuses Gone.</div><div class="tl-desc">Next shipment won't arrive until fall</div></div>
+  </div>
+  <div style="text-align:center;margin-top:40px" class="fade-in">
+    <a href="#offer" class="btn">LOCK IN $179 BEFORE IT'S GONE</a>
+  </div>
+</div>
+</section>
+
+<!-- INFLUENCER STRIP -->
+<div class="influencer-strip">
+<div class="influencer-grid">
+  <img src="influencer2.jpg" alt="Hiker with Hawk Nest backpack">
+  <img src="influencer4.jpg" alt="Hawk Nest in snowy mountains">
+</div>
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+<div class="container">
+  <div style="text-align:center" class="fade-in">
+    <div class="eyebrow">What Campers Are Saying</div>
+    <div class="section-divider"></div>
+    <h2 class="headline">529 Five-Star Reviews<br><em>(And Counting)</em></h2>
+    <div style="text-align:center;margin-bottom:30px">
+      <div class="review-summary">
+        <span class="stars">★★★★★</span>
+        <span class="rating">4.8 out of 5</span>
+        <span class="count">· 529 verified reviews</span>
+      </div>
+      <p style="color:var(--text-dim);font-size:.72rem;margin-top:8px">All reviews independently collected &amp; verified by <strong style="color:var(--text)">Judge.me</strong></p>
+    </div>
+  </div>
+  <div class="review-grid">
+    <div class="review-card fade-in">
+      <img class="review-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1754849277__img_6940__original.jpeg?auto=format&w=600" alt="Rusty Goat's Hawk Nest">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"The hammock was a total experiment on a canoe trip. It's become an essential part of our gear now — comfortable, easy to set up, and kept me dry through everything."</p>
+      <div class="review-name">Rusty Goat</div>
+      <div class="review-loc">Verified Buyer · Judge.me</div>
+    </div>
+    <div class="review-card fade-in">
+      <img class="review-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1758763600__img_0734__original.jpeg?auto=format&w=600" alt="Pat's Hawk Nest in Algonquin">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"An intense September storm came through in Algonquin Park, followed by rain for most of the day. I was completely dry and comfortable the entire time."</p>
+      <div class="review-name">Pat Christie</div>
+      <div class="review-loc">Verified Buyer · Judge.me</div>
+    </div>
+    <div class="review-card fade-in">
+      <img class="review-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1757347476__20250824_180228__original.jpg?auto=format&w=600" alt="Steve's 200km hike">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"Hiked over 200km in the Québec mountains. And it's still going strong and ready for more. Never sleep on the ground again!"</p>
+      <div class="review-name">Steve Desroches</div>
+      <div class="review-loc">Verified Buyer · Judge.me</div>
+    </div>
+    <div class="review-card fade-in">
+      <img class="review-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1764873077__img_1961_jpg__original.jpeg?auto=format&w=600" alt="Alex's Hawk Nest">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"An amazing hammock. Durable for all weather, very comfy, and lightweight to backpack with!"</p>
+      <div class="review-name">Alex Catherwood</div>
+      <div class="review-loc">Verified Buyer · Judge.me</div>
+    </div>
+    <div class="review-card fade-in">
+      <img class="review-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1754702940__img_4610__original.jpeg?auto=format&w=600" alt="Elizabeth's Bay of Fundy">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"First trip out with the tent, perched on a cliff overlooking the Bay of Fundy. Solid warm and comfy sleep despite the deep temperature drop at night."</p>
+      <div class="review-name">Elizabeth Boudreau</div>
+      <div class="review-loc">Verified Buyer · Judge.me</div>
+    </div>
+    <div class="review-card fade-in">
+      <img class="review-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1753894672__img_9169__original.jpeg?auto=format&w=600" alt="Brandon's moto-camping trip">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"Just returned from an 8-day moto-camping trip around Quebec and the Gaspe Peninsula. This system exceeded every expectation."</p>
+      <div class="review-name">Brandon Williams</div>
+      <div class="review-loc">Verified Buyer · Judge.me</div>
+    </div>
+    <div class="review-card fade-in">
+      <img class="review-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1754765785__img_9593__original.jpeg?auto=format&w=600" alt="Hailey's kayak trip">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"I ordered a couple of Hawk Nest V.3's after my friend had one and I was not disappointed. Took them on an overnight girls kayaking trip!"</p>
+      <div class="review-name">Hailey Kusche</div>
+      <div class="review-loc">Verified Buyer · Judge.me</div>
+    </div>
+    <div class="review-card fade-in">
+      <img class="review-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1755043972__img_9555__original.jpeg?auto=format&w=600" alt="Greg's kayak camping">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"This lightweight hammock was easy to set up — first time took about 10 minutes. By the second time, under 5. Perfect for kayak camping."</p>
+      <div class="review-name">Greg Faber</div>
+      <div class="review-loc">Verified Buyer · Judge.me</div>
+    </div>
+  </div>
+
+  <!-- Video Reviews -->
+  <h3 style="text-align:center;margin-top:60px;margin-bottom:8px;font-family:var(--serif);color:var(--text-bright);font-size:1.4rem">Video Reviews From Real Customers</h3>
+  <div class="section-divider" style="margin-bottom:30px"></div>
+  <div class="video-grid" style="grid-template-columns:1fr 1fr">
+    <div class="video-wrap"><iframe src="https://www.youtube.com/embed/ZuzCfO3jaSw" title="BenVentures Review" allowfullscreen loading="lazy"></iframe></div>
+    <div class="video-wrap"><iframe src="https://www.youtube.com/embed/kDq_FmI6cLU" title="RYAN ON THE RUN Review" allowfullscreen loading="lazy"></iframe></div>
+    <div class="video-wrap"><iframe src="https://www.youtube.com/embed/G7ZBO8Dh0vw" title="ADVENTURE LIFE 613 Review" allowfullscreen loading="lazy"></iframe></div>
+    <div class="video-wrap"><iframe src="https://www.youtube.com/embed/_F6PVFEpczQ" title="BtheNorth Review" allowfullscreen loading="lazy"></iframe></div>
+  </div>
+
+  <div style="text-align:center;margin-top:36px" class="fade-in">
+    <a href="https://hawknesthammocks.ca/products/hawk-nest-all-season-hammock-tent-v-3-us-pre-order" target="_blank" class="btn-ghost" style="display:inline-block;text-decoration:none;color:var(--text-bright)">View All 529 Reviews →</a>
+  </div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq-section">
+<div class="container">
+  <div style="text-align:center" class="fade-in">
+    <div class="eyebrow">Questions?</div>
+    <div class="section-divider"></div>
+    <h2 class="headline">Frequently Asked <em>Questions</em></h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item"><button class="faq-q">When will my Hawk Nest ship?</button><div class="faq-a"><p>Pre-orders ship in early July. Standard shipping (free) arrives around July 15. Priority shipping ($15–20) arrives around July 1.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Is this a pre-order? When do I get charged?</button><div class="faq-a"><p>Yes — this is a pre-order for our first US batch. You're charged today to lock in the $179 price and all free bonuses. Your order ships in July.</p></div></div>
+    <div class="faq-item"><button class="faq-q">What if I don't like it?</button><div class="faq-a"><p>We offer a 30-day money-back guarantee. Try it on a camping trip. If you're not sleeping better than ever, send it back for a full refund. No questions asked.</p></div></div>
+    <div class="faq-item"><button class="faq-q">How much weight can it hold?</button><div class="faq-a"><p>The Hawk Nest supports up to 440 lbs with heavy-duty stitching and components while maintaining an ultralight 4 lb design.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Can I use it in cold weather?</button><div class="faq-a"><p>Yes. The integrated sleeping pad pocket lets you insert your own pad for insulation. Pair with a quality sleeping bag and you're set for 3-season camping.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Do I need special trees or equipment?</button><div class="faq-a"><p>Everything you need is included — straps, carabiners, spreader bars, rain fly. Any two trees about 10–15 feet apart work. No trees? Set it up on the ground as a tent.</p></div></div>
+    <div class="faq-item"><button class="faq-q">What's Gridless Premium?</button><div class="faq-a"><p>Gridless is an offline camping and survival education app. Your free 3-month Premium subscription gives you 600+ offline guides, gear checklists, and emergency references — perfect for pairing with your Hawk Nest adventures.</p></div></div>
+    <div class="faq-item"><button class="faq-q">You're a Canadian company — any issues with US shipping?</button><div class="faq-a"><p>Not at all. This batch ships within the US from our American warehouse. Free standard shipping to all 50 states. Returns are handled through our US return process. Same easy experience as any American brand.</p></div></div>
+  </div>
+</div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+<div class="container fade-in">
+  <h2 class="headline">Your Best Night's Sleep<br>Outdoors <em>Starts Here.</em></h2>
+  <p style="color:var(--text-dim);font-size:1rem;margin-bottom:8px">Hawk Nest All-Season Hammock Tent V.3. Patent pending. 400+ five-star reviews.<br>Now available in the USA for the first time ever.</p>
+  <div class="final-price">
+    <span class="old">$336 value</span>
+    <span class="new">$179 USD</span>
+    <span class="shipping">+ Free Shipping</span>
+  </div>
+  <div class="final-bonuses">Includes free bonuses worth $157</div>
+  <a href="#offer" class="btn" style="font-size:1.2rem;padding:20px 52px">ORDER MY HAWK NEST — $179</a>
+  <p class="guarantee-text">30-Day Money-Back Guarantee · 5-Year Extended Warranty Included</p>
+</div>
+</section>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-bar-main">
+    <span class="sticky-bar-text"><span class="old">$336</span> <strong style="color:var(--accent)">$179</strong> + Free Shipping</span>
+    <a href="#offer" class="btn">PRE-ORDER</a>
+  </div>
+  <div class="sticky-bar-urgency"><span class="dot"></span> <span id="viewerCount">47</span> people viewing this right now</div>
+</div>
+
+<!-- POPUP -->
+<div class="popup-overlay" id="popupOverlay" onclick="closePopup(event)">
+<div class="popup" id="popupContent"></div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>&copy; 2026 Hawk Nest Hammocks Inc. All rights reserved.</p>
+  <p style="margin-top:8px"><a href="https://hawknesthammocks.ca">hawknesthammocks.ca</a> · <a href="mailto:support@hawknesthammocks.ca">support@hawknesthammocks.ca</a></p>
+</footer>
+
+<script>
+// Popup data
+const popupData={
+  hammock:{img:'https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749',title:'Hawk Nest™ All-Season Hammock Tent V.3',desc:'Our flagship product — the most comfortable way to sleep outdoors. Patent-pending spreader bar system, integrated rain fly, sleeping pad pocket, and mosquito net. Hang it from trees or set it up on the ground. Weighs just 4 lbs and sets up in under 5 minutes.',value:'$229 Value'},
+  bottom:{img:'https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190',title:'Waterproof Bottom Upgrade',desc:'Upgraded waterproof layer on the bottom of your hammock for extra protection against moisture, dew, and wet conditions. Perfect for ground camping or humid environments.',value:'$29 Value — FREE'},
+  bag:{img:'https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669',title:'Waterproof Carrying Bag Upgrade',desc:'Upgraded waterproof carrying bag keeps your Hawk Nest protected during transport. Water-resistant material ensures your gear stays dry even in wet conditions.',value:'$19 Value — FREE'},
+  warranty:{img:'https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Bottom_Upgrade_1.png?v=1741284804',title:'5-Year Extended Warranty',desc:"Full coverage for 5 years. If anything goes wrong with your Hawk Nest — stitching, fabric, hardware, zippers — we'll replace it. No questions asked.",value:'$29 Value — FREE'},
+  gridless:{img:'gridless_icon.png',title:'3 Months Gridless Premium',desc:'Gridless is a gamified offline survival and camping education app with 600+ articles, emergency guides, gear checklists, and a quiz game. Your 3-month Premium subscription gives you full offline access.',value:'$30 Value — FREE'}
+};
+function showPopup(id){const d=popupData[id],o=document.getElementById('popupOverlay'),c=document.getElementById('popupContent');c.innerHTML=`<button class="popup-close" onclick="closePopup()">&times;</button><img src="${d.img}" alt="${d.title}"${id==='gridless'?' style="border-radius:16px"':''}><h3>${d.title}</h3><p>${d.desc}</p><div class="popup-value">${d.value}</div>`;o.classList.add('show');document.body.style.overflow='hidden'}
+function closePopup(e){if(e&&e.target!==e.currentTarget&&!e.target.classList.contains('popup-close'))return;document.getElementById('popupOverlay').classList.remove('show');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup()});
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(b=>{b.addEventListener('click',()=>{const i=b.parentElement,w=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open'));if(!w)i.classList.add('open')})});
+
+// Fade-in
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// Sticky bar
+const stickyObs=new IntersectionObserver(([e])=>{document.getElementById('stickyBar').classList.toggle('show',!e.isIntersecting)},{threshold:0});
+stickyObs.observe(document.getElementById('hero'));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}})});
+
+// Carousel
+let idx=0;const track=document.getElementById('heroTrack'),slides=track?track.children.length:0,dots=document.getElementById('heroDots');
+if(dots&&slides>0){for(let i=0;i<slides;i++){const d=document.createElement('span');d.className='dot'+(i===0?' active':'');d.onclick=()=>{idx=i;upd()};dots.appendChild(d)}}
+function upd(){if(!track)return;track.style.transform=`translateX(-${idx*100}%)`;document.querySelectorAll('#heroDots .dot').forEach((d,i)=>d.classList.toggle('active',i===idx))}
+function carouselNext(){idx=(idx+1)%slides;upd()}
+function carouselPrev(){idx=(idx-1+slides)%slides;upd()}
+let tx=0;const car=document.getElementById('heroCarousel');
+if(car){car.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});car.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40){d>0?carouselNext():carouselPrev()}},{passive:true})}
+setInterval(carouselNext,5000);
+
+// Viewer count
+const vc=document.getElementById('viewerCount');
+setInterval(()=>{if(vc)vc.textContent=42+Math.floor(Math.random()*18)},8000);
+</script>
+</body>
+</html>
