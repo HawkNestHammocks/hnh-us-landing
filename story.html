@@ -143,14 +143,14 @@ img{max-width:100%;height:auto;display:block}
   overflow:hidden;
 }
 .review-scroll{
-  display:flex;gap:32px;padding:0 24px;
+  display:flex;gap:20px;padding:0 calc(50vw - 150px);
   overflow-x:auto;scroll-snap-type:x mandatory;
   -webkit-overflow-scrolling:touch;
   scrollbar-width:none;
 }
 .review-scroll::-webkit-scrollbar{display:none}
 .review-card{
-  flex:0 0 320px;scroll-snap-align:start;
+  flex:0 0 300px;scroll-snap-align:center;
   background:rgba(255,255,255,.06);
   border:1px solid rgba(255,255,255,.1);
   border-radius:12px;padding:28px;
@@ -162,6 +162,13 @@ img{max-width:100%;height:auto;display:block}
 .review-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:all .3s}
 .review-dot.active{background:var(--rust);width:24px;border-radius:4px}
 .upgrade-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.1)!important}
+
+/* ALL REVIEWS GRID */
+.all-review-card{background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:left}
+.all-review-img{width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px}
+.all-review-stars{color:#f59e0b;font-size:1rem;letter-spacing:1px;margin-bottom:8px}
+.all-review-body{font-family:var(--serif);font-size:.95rem;font-style:italic;line-height:1.6;color:var(--bark);margin-bottom:12px}
+.all-review-author{font-family:var(--sans);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 
 /* === PRODUCT SECTION === */
 .product-section{background:var(--cream);padding:80px 0}
@@ -441,19 +448,19 @@ footer a{color:var(--sand);text-decoration:underline}
     <h2 class="chapter-title" style="margin-bottom:3rem">4 Free Upgrades Included<span>$107 in extras — yours at no additional cost</span></h2>
     <div class="upgrade-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px;margin:0 auto">
       <div class="upgrade-card" onclick="showUpgrade('bottom')" style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s">
-        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190" alt="Waterproof bottom" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1)">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190" alt="Waterproof bottom" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.12);background:var(--sand);padding:10px">
         <div style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--earth);margin-bottom:4px">Waterproof Bottom</div>
         <div style="font-size:.8rem;color:var(--muted)"><s>$29</s> <span style="color:var(--rust);font-weight:700">FREE</span></div>
         <div style="font-size:.7rem;color:var(--rust);margin-top:6px">Tap for details</div>
       </div>
       <div class="upgrade-card" onclick="showUpgrade('bag')" style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s">
-        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669" alt="Carrying bag" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1)">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669" alt="Carrying bag" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.12);background:var(--sand);padding:10px">
         <div style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--earth);margin-bottom:4px">Waterproof Carrying Bag</div>
         <div style="font-size:.8rem;color:var(--muted)"><s>$19</s> <span style="color:var(--rust);font-weight:700">FREE</span></div>
         <div style="font-size:.7rem;color:var(--rust);margin-top:6px">Tap for details</div>
       </div>
       <div class="upgrade-card" onclick="showUpgrade('warranty')" style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s">
-        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Bottom_Upgrade_1.png?v=1741284804" alt="5-Year Warranty" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1)">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Bottom_Upgrade_1.png?v=1741284804" alt="5-Year Warranty" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.12);background:var(--sand);padding:10px">
         <div style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--earth);margin-bottom:4px">5-Year Extended Warranty</div>
         <div style="font-size:.8rem;color:var(--muted)"><s>$29</s> <span style="color:var(--rust);font-weight:700">FREE</span></div>
         <div style="font-size:.7rem;color:var(--rust);margin-top:6px">Tap for details</div>
@@ -486,6 +493,97 @@ footer a{color:var(--sand);text-decoration:underline}
       <a href="#" class="cta-btn">Pre-Order Your Hawk Nest — $179</a>
       <span class="cta-sub">Limited pre-order pricing · Ships Spring 2026</span>
     </div>
+  </div>
+</section>
+
+<!-- ALL REVIEWS -->
+<section id="all-reviews" style="background:var(--parchment);padding:60px 0">
+  <div class="wrap" style="text-align:center;margin-bottom:32px">
+    <div style="font-size:2.4rem;color:#f59e0b;letter-spacing:2px;margin-bottom:4px">★★★★★</div>
+    <h2 style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--earth);margin-bottom:4px">4.8 out of 5 Stars</h2>
+    <p style="font-size:.95rem;color:var(--muted)">Based on 1,142 verified reviews on <strong>Judge.me</strong></p>
+  </div>
+  <div style="max-width:900px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px" id="allReviewsGrid">
+    
+    <div class="all-review-card">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1768154768__img_9664__original.jpeg?auto=format&w=400" alt="Bob's backyard test" class="all-review-img">
+      <div class="all-review-stars">★★★★★</div>
+      <p class="all-review-body">"Had to try it as soon as I got it. Tested in my backyard, 3°C, raining and wind 15kts. Not the wilderness, but close enough for a trial. Absolutely loved it."</p>
+      <div class="all-review-author">Bob Mackay <span class="verified-badge">✓ Verified</span></div>
+    </div>
+
+    <div class="all-review-card">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1763611408__img_4260__original.jpeg?auto=format&w=400" alt="Jennifer's setup" class="all-review-img">
+      <div class="all-review-stars">★★★★★</div>
+      <p class="all-review-body">"I have not had better sleeps in my own bed at home than hanging in the trees outside in my Hawk Nest Hammock tent. So much better than sleeping in a tent."</p>
+      <div class="all-review-author">Jennifer <span class="verified-badge">✓ Verified</span></div>
+    </div>
+
+    <div class="all-review-card">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1762993637__canoetrip__original.jpg?auto=format&w=400" alt="Justin's canoe trip" class="all-review-img">
+      <div class="all-review-stars">★★★★★</div>
+      <p class="all-review-body">"Love Version 3.0! Subtle but great improvements over the original. Can't wait to get back to Algonquin Park this summer. Best sleep system out there."</p>
+      <div class="all-review-author">Justin Cohen <span class="verified-badge">✓ Verified</span></div>
+    </div>
+
+    <div class="all-review-card">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1761784409__1761784393313-thumbnail__original.png?auto=format&w=400" alt="Maarten's experience" class="all-review-img">
+      <div class="all-review-stars">★★★★★</div>
+      <p class="all-review-body">"Lukas (the owner) is amazing! He's got a fantastic product and 100% product satisfaction guaranteed. On my first night out I noticed the quality immediately."</p>
+      <div class="all-review-author">Maarten Stam <span class="verified-badge">✓ Verified</span></div>
+    </div>
+
+    <div class="all-review-card">
+      <div class="all-review-stars">★★★★★</div>
+      <p class="all-review-body">"I've slept overnight in the hammock both in the rain and in clear skies and have nothing but good things to say. It's easy to set up and incredibly comfortable."</p>
+      <div class="all-review-author">Gavin Ward <span class="verified-badge">✓ Verified</span></div>
+    </div>
+
+    <div class="all-review-card">
+      <div class="all-review-stars">★★★★★</div>
+      <p class="all-review-body">"From setup to relaxing, this hammock is perfection. I left it in my backyard all summer — absolutely durable and stood up to everything nature threw at it."</p>
+      <div class="all-review-author">Laura St-Laurent <span class="verified-badge">✓ Verified</span></div>
+    </div>
+
+    <div class="all-review-card">
+      <div class="all-review-stars">★★★★★</div>
+      <p class="all-review-body">"Love my Hawksnest V3. Just took it out for a two night backcountry camping trip and slept beautifully! Easy to put up and take down."</p>
+      <div class="all-review-author">Cameron Lorentzon <span class="verified-badge">✓ Verified</span></div>
+    </div>
+
+    <div class="all-review-card">
+      <div class="all-review-stars">★★★★★</div>
+      <p class="all-review-body">"Very comfortable, lightweight and easy to set up. Customer service is a cut above to boot!"</p>
+      <div class="all-review-author">John K Thomas <span class="verified-badge">✓ Verified</span></div>
+    </div>
+
+    <div class="all-review-card">
+      <div class="all-review-stars">★★★★★</div>
+      <p class="all-review-body">"Just like the creator said — it's like they looked at others on the market and said 'what can we do better?' Everything about this is thoughtfully designed."</p>
+      <div class="all-review-author">Michael Blecich <span class="verified-badge">✓ Verified</span></div>
+    </div>
+
+    <div class="all-review-card">
+      <div class="all-review-stars">★★★★★</div>
+      <p class="all-review-body">"Surprisingly spacious and very comfortable. Ample storage space. Easy to set up once you get the hang of it. A bonus is the versatility."</p>
+      <div class="all-review-author">Soren Nazarko <span class="verified-badge">✓ Verified</span></div>
+    </div>
+
+    <div class="all-review-card">
+      <div class="all-review-stars">★★★★★</div>
+      <p class="all-review-body">"Ordered one Hawk Nest and my kids thought it was so cool, I had to order each of them one too! Winter birthday presents for the whole family."</p>
+      <div class="all-review-author">Verified Customer <span class="verified-badge">✓ Verified</span></div>
+    </div>
+
+    <div class="all-review-card">
+      <div class="all-review-stars">★★★★★</div>
+      <p class="all-review-body">"Amazing hammock and accessories. The best service and support. So good. I highly recommend everyone get one."</p>
+      <div class="all-review-author">Stephen <span class="verified-badge">✓ Verified</span></div>
+    </div>
+
+  </div>
+  <div style="text-align:center;margin-top:32px">
+    <a href="https://hawknesthammocks.ca" target="_blank" style="font-family:var(--sans);font-size:.85rem;color:var(--rust);text-decoration:underline;font-weight:600">Read all 1,142 reviews on hawknesthammocks.ca →</a>
   </div>
 </section>
 
