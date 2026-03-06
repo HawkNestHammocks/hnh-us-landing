@@ -210,6 +210,16 @@ img{max-width:100%;height:auto;display:block}
 .test-name{font-size:.85rem;font-weight:700;color:var(--navy)}
 .test-loc{font-size:.8rem;color:var(--gray)}
 
+/* REVIEW SLIDER */
+.review-slider{position:relative;overflow:hidden;margin-top:40px}
+.review-track{display:flex;gap:24px;transition:transform .4s ease;padding:4px 0}
+.review-track .test-card{min-width:calc(50% - 12px);flex-shrink:0}
+.review-slider-btn{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.15);z-index:5;font-size:1.2rem;color:var(--navy);transition:all .2s}
+.review-slider-btn:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.25);transform:translateY(-50%) scale(1.1)}
+.review-slider-btn.prev{left:0}
+.review-slider-btn.next{right:0}
+@media(max-width:768px){.review-track .test-card{min-width:85%}}
+
 /* FAQ */
 .faq{background:var(--light)}
 .faq-list{max-width:700px;margin:40px auto 0}
@@ -246,7 +256,7 @@ img{max-width:100%;height:auto;display:block}
 /* HERO CAROUSEL */
 .hero-carousel{position:relative;overflow:hidden;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.15)}
 .hero-carousel-track{display:flex;transition:transform .4s ease}
-.hero-carousel-track img{min-width:100%;width:100%;object-fit:cover;flex-shrink:0;border-radius:16px}
+.hero-carousel-track img{min-width:100%;width:100%;aspect-ratio:1/1;object-fit:cover;flex-shrink:0;border-radius:16px}
 .hero-carousel-btn{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.85);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.2);z-index:5;transition:all .2s;font-size:1.2rem;color:var(--navy)}
 .hero-carousel-btn:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.3);transform:translateY(-50%) scale(1.1)}
 .hero-carousel-btn.prev{left:10px}
@@ -347,6 +357,8 @@ img{max-width:100%;height:auto;display:block}
         <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_23.png?v=1772739749" alt="Hawk Nest hammock tent lifestyle">
         <img src="influencer1.jpg" alt="Influencer with Hawk Nest at Waterton Lakes">
         <img src="influencer2.jpg" alt="Hiker with Hawk Nest backpack in winter mountains">
+        <img src="influencer3.jpg" alt="Hawk Nest hammock tent at alpine lake">
+        <img src="influencer4.jpg" alt="Hawk Nest hammock in snowy winter mountains">
       </div>
       <button class="hero-carousel-btn prev" onclick="carouselPrev()" aria-label="Previous">‹</button>
       <button class="hero-carousel-btn next" onclick="carouselNext()" aria-label="Next">›</button>
@@ -613,35 +625,67 @@ img{max-width:100%;height:auto;display:block}
     </div>
     <p style="color:var(--gray);font-size:.75rem;margin-top:8px">All reviews independently collected &amp; verified by <strong>Judge.me</strong> — a trusted third-party review platform</p>
   </div>
-  <div class="test-grid">
-    <div class="test-card fade-in">
-      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1754849277__img_6940__original.jpeg?auto=format&w=600" alt="Rusty Goat's Hawk Nest on canoe trip">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"The hammock was a total experiment initiated by one of the guys I go on canoe trips with. It's become an essential part of our gear now — comfortable, easy to set up, and kept me dry through everything."</p>
-      <div class="test-name">Rusty Goat</div>
-      <div class="test-loc">Verified Buyer · Judge.me</div>
+  <div class="review-slider" id="reviewSlider">
+    <div class="review-track" id="reviewTrack">
+      <div class="test-card">
+        <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1754849277__img_6940__original.jpeg?auto=format&w=600" alt="Rusty Goat's Hawk Nest on canoe trip">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"The hammock was a total experiment on a canoe trip. It's become an essential part of our gear now — comfortable, easy to set up, and kept me dry through everything."</p>
+        <div class="test-name">Rusty Goat</div>
+        <div class="test-loc">Verified Buyer · Judge.me</div>
+      </div>
+      <div class="test-card">
+        <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1764873077__img_1961_jpg__original.jpeg?auto=format&w=600" alt="Alex Catherwood's Hawk Nest setup">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"An amazing hammock. Durable for all weather, very comfy, and lightweight to backpack with!"</p>
+        <div class="test-name">Alex Catherwood</div>
+        <div class="test-loc">Verified Buyer · Judge.me</div>
+      </div>
+      <div class="test-card">
+        <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1754702940__img_4610__original.jpeg?auto=format&w=600" alt="Elizabeth's Hawk Nest overlooking Bay of Fundy">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"First trip out with the tent, perched on a cliff overlooking the Bay of Fundy. Solid warm and comfy sleep despite the deep temperature drop at night."</p>
+        <div class="test-name">Elizabeth Boudreau</div>
+        <div class="test-loc">Verified Buyer · Judge.me</div>
+      </div>
+      <div class="test-card">
+        <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1753894672__img_9169__original.jpeg?auto=format&w=600" alt="Brandon's Hawk Nest on moto-camping trip">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"Just returned from an 8-day moto-camping trip around Quebec. I purchased this specifically as an upgrade — it exceeded every expectation."</p>
+        <div class="test-name">Brandon Williams</div>
+        <div class="test-loc">Verified Buyer · Judge.me</div>
+      </div>
+      <div class="test-card">
+        <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1754765785__img_9593__original.jpeg?auto=format&w=600" alt="Hailey's kayak camping trip with Hawk Nest">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"I ordered a couple of Hawk Nest V.3's after my friend had one and I was not disappointed. Took them immediately on an overnight girls kayaking trip!"</p>
+        <div class="test-name">Hailey Kusche</div>
+        <div class="test-loc">Verified Buyer · Judge.me</div>
+      </div>
+      <div class="test-card">
+        <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1755043972__img_9555__original.jpeg?auto=format&w=600" alt="Greg's Hawk Nest on kayak trip">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"This lightweight hammock was easy to set up — first time took about 10 minutes. By the second time, it was under 5. Perfect for kayak camping."</p>
+        <div class="test-name">Greg Faber</div>
+        <div class="test-loc">Verified Buyer · Judge.me</div>
+      </div>
+      <div class="test-card">
+        <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1758763600__img_0734__original.jpeg?auto=format&w=600" alt="Pat's Hawk Nest surviving a storm in Algonquin">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"An intense September storm came through in Algonquin Park, followed by rain for most of the day. I was completely dry and comfortable the entire time."</p>
+        <div class="test-name">Pat Christie</div>
+        <div class="test-loc">Verified Buyer · Judge.me</div>
+      </div>
+      <div class="test-card">
+        <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1757347476__20250824_180228__original.jpg?auto=format&w=600" alt="Steve's Hawk Nest after 200km hike">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"Hiked over 200km in the Québec mountains. And it's still going strong and ready for more. Never sleep on the ground again!"</p>
+        <div class="test-name">Steve Desroches</div>
+        <div class="test-loc">Verified Buyer · Judge.me</div>
+      </div>
     </div>
-    <div class="test-card fade-in">
-      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1764873077__img_1961_jpg__original.jpeg?auto=format&w=600" alt="Alex Catherwood's Hawk Nest setup">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"An amazing hammock. Durable for all weather, very comfy, and lightweight to backpack with!"</p>
-      <div class="test-name">Alex Catherwood</div>
-      <div class="test-loc">Verified Buyer · Judge.me</div>
-    </div>
-    <div class="test-card fade-in">
-      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1754702940__img_4610__original.jpeg?auto=format&w=600" alt="Elizabeth's Hawk Nest overlooking Bay of Fundy">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"First trip out with the tent, perched on a cliff overlooking the Bay of Fundy. Solid warm and comfy sleep despite the deep temperature drop at night."</p>
-      <div class="test-name">Elizabeth Boudreau</div>
-      <div class="test-loc">Verified Buyer · Judge.me</div>
-    </div>
-    <div class="test-card fade-in">
-      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1753894672__img_9169__original.jpeg?auto=format&w=600" alt="Brandon's Hawk Nest on moto-camping trip">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"I just returned from an 8-day moto-camping trip around Quebec and the Gaspe Peninsula. I purchased this system specifically for this trip as an upgrade — it exceeded every expectation."</p>
-      <div class="test-name">Brandon Williams</div>
-      <div class="test-loc">Verified Buyer · Judge.me</div>
-    </div>
+    <button class="review-slider-btn prev" onclick="reviewPrev()" aria-label="Previous reviews">‹</button>
+    <button class="review-slider-btn next" onclick="reviewNext()" aria-label="Next reviews">›</button>
   </div>
   <div style="text-align:center;margin-top:30px" class="fade-in">
     <a href="https://hawknesthammocks.ca/products/hawk-nest-all-season-hammock-tent-v-3-us-pre-order" target="_blank" style="display:inline-block;background:var(--white);color:var(--navy);font-size:.95rem;font-weight:700;padding:14px 32px;border-radius:8px;text-decoration:none;border:2px solid var(--navy);transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.06)">View All 529 Reviews →</a>
@@ -839,7 +883,22 @@ let touchStartX=0;
 const carousel=document.getElementById('heroCarousel');
 if(carousel){carousel.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX},{passive:true});carousel.addEventListener('touchend',e=>{const diff=touchStartX-e.changedTouches[0].clientX;if(Math.abs(diff)>40){diff>0?carouselNext():carouselPrev()}},{passive:true})}
 // Auto-advance every 5s
-setInterval(carouselNext,5000)
+setInterval(carouselNext,5000);
+
+// Review slider
+let reviewIdx=0;
+const reviewTrack=document.getElementById('reviewTrack');
+const reviewCards=reviewTrack?reviewTrack.children.length:0;
+const isMobile=window.innerWidth<=768;
+const reviewsPerView=isMobile?1:2;
+const maxReviewIdx=Math.max(0,reviewCards-reviewsPerView);
+function updateReviewSlider(){if(!reviewTrack)return;const cardW=reviewTrack.children[0].offsetWidth+24;reviewTrack.style.transform=`translateX(-${reviewIdx*cardW}px)`}
+function reviewNext(){reviewIdx=reviewIdx>=maxReviewIdx?0:reviewIdx+1;updateReviewSlider()}
+function reviewPrev(){reviewIdx=reviewIdx<=0?maxReviewIdx:reviewIdx-1;updateReviewSlider()}
+// Touch support for review slider
+let rTouchX=0;
+const rSlider=document.getElementById('reviewSlider');
+if(rSlider){rSlider.addEventListener('touchstart',e=>{rTouchX=e.touches[0].clientX},{passive:true});rSlider.addEventListener('touchend',e=>{const diff=rTouchX-e.changedTouches[0].clientX;if(Math.abs(diff)>40){diff>0?reviewNext():reviewPrev()}},{passive:true})}
 </script>
 </body>
 </html>
