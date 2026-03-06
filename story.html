@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Last Tent You'll Ever Buy — Hawk Nest Hammock Tent</title>
+<meta name="description" content="How a Canadian hammock company solved the one problem every camper has. Now available in the USA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --earth:#3b2f1e;
+  --bark:#5c4a32;
+  --sand:#e8dcc8;
+  --cream:#f5f0e6;
+  --parchment:#faf7f0;
+  --rust:#b45309;
+  --rust-dark:#92400e;
+  --forest:#1a3a1a;
+  --slate:#374151;
+  --muted:#6b7280;
+  --serif:'Crimson Pro',Georgia,'Times New Roman',serif;
+  --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--sans);color:var(--earth);line-height:1.7;background:var(--parchment);-webkit-font-smoothing:antialiased}
+
+/* === TYPOGRAPHY === */
+.story-text{font-family:var(--serif);font-size:1.25rem;line-height:1.9;color:var(--bark);max-width:680px;margin:0 auto}
+.story-text p{margin-bottom:1.5em}
+.story-text em{color:var(--rust);font-style:italic}
+.story-text strong{color:var(--earth);font-weight:600}
+.chapter-label{font-family:var(--sans);text-transform:uppercase;font-size:.75rem;font-weight:700;letter-spacing:3px;color:var(--rust);margin-bottom:8px}
+.chapter-title{font-family:var(--serif);font-size:2rem;font-weight:700;line-height:1.25;color:var(--earth);margin-bottom:2rem}
+.chapter-title span{display:block;font-size:1rem;font-weight:400;color:var(--muted);font-style:italic;margin-top:4px}
+
+/* === LAYOUT === */
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+.narrow{max-width:680px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+img{max-width:100%;height:auto;display:block}
+
+/* === HERO === */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;
+  background:linear-gradient(180deg,#1a1208 0%,#2d2111 40%,#3b2f1e 100%);
+  color:var(--cream);
+  padding:60px 24px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence baseFrequency=".7" numOctaves="4" stitchTiles="stitch"/></filter><rect width="200" height="200" filter="url(%23n)" opacity=".04"/></svg>');
+  pointer-events:none;
+}
+.hero-eyebrow{
+  font-family:var(--sans);text-transform:uppercase;font-size:.7rem;
+  font-weight:700;letter-spacing:4px;color:var(--rust);
+  margin-bottom:24px;
+  opacity:0;animation:fadeIn 1s .3s forwards;
+}
+.hero h1{
+  font-family:var(--serif);font-size:clamp(2.4rem,6vw,4rem);
+  font-weight:700;line-height:1.15;max-width:700px;
+  margin-bottom:20px;
+  opacity:0;animation:fadeIn 1s .6s forwards;
+}
+.hero-sub{
+  font-family:var(--serif);font-size:1.2rem;font-style:italic;
+  color:var(--sand);max-width:500px;line-height:1.6;
+  opacity:0;animation:fadeIn 1s .9s forwards;
+}
+.hero-scroll{
+  margin-top:60px;opacity:0;animation:fadeIn 1s 1.2s forwards;
+}
+.hero-scroll span{
+  display:block;font-size:.7rem;text-transform:uppercase;
+  letter-spacing:3px;color:var(--muted);margin-bottom:12px;
+}
+.hero-scroll .arrow{
+  display:inline-block;width:24px;height:24px;
+  border-right:2px solid var(--sand);border-bottom:2px solid var(--sand);
+  transform:rotate(45deg);animation:bounceDown 2s infinite;
+}
+
+/* === FULL-WIDTH IMAGE BREAK === */
+.img-break{
+  width:100%;height:60vh;min-height:300px;max-height:500px;
+  object-fit:cover;
+}
+.img-break-wrap{position:relative;overflow:hidden}
+.img-break-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:40px 24px 20px;
+  background:linear-gradient(transparent,rgba(0,0,0,.6));
+  color:var(--cream);font-family:var(--serif);
+  font-style:italic;font-size:.95rem;text-align:center;
+}
+
+/* === PULL QUOTE === */
+.pull-quote{
+  border-left:3px solid var(--rust);
+  padding:24px 0 24px 32px;margin:3rem auto;
+  max-width:600px;
+}
+.pull-quote p{
+  font-family:var(--serif);font-size:1.5rem;
+  font-style:italic;line-height:1.5;color:var(--earth);
+}
+.pull-quote cite{
+  display:block;margin-top:12px;font-family:var(--sans);
+  font-size:.85rem;font-style:normal;color:var(--muted);
+}
+
+/* === SPEC GRID === */
+.spec-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:24px;margin:3rem 0;
+}
+.spec-card{
+  background:var(--cream);border:1px solid var(--sand);
+  border-radius:12px;padding:28px 24px;text-align:center;
+}
+.spec-card .num{
+  font-family:var(--serif);font-size:2.2rem;font-weight:700;
+  color:var(--earth);line-height:1;
+}
+.spec-card .label{
+  font-size:.8rem;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--muted);margin-top:6px;font-weight:600;
+}
+
+/* === REVIEW STRIP === */
+.reviews-strip{
+  background:var(--earth);color:var(--cream);padding:60px 0;
+  overflow:hidden;
+}
+.review-scroll{
+  display:flex;gap:32px;padding:0 24px;
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.review-scroll::-webkit-scrollbar{display:none}
+.review-card{
+  flex:0 0 320px;scroll-snap-align:start;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:28px;
+}
+.review-stars{color:#d4a843;font-size:1.1rem;margin-bottom:12px;letter-spacing:2px}
+.review-text{font-family:var(--serif);font-size:1rem;font-style:italic;line-height:1.6;margin-bottom:16px}
+.review-author{font-family:var(--sans);font-size:.8rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted)}
+
+/* === PRODUCT SECTION === */
+.product-section{background:var(--cream);padding:80px 0}
+.product-hero{
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;
+  align-items:center;max-width:1000px;margin:0 auto;padding:0 24px;
+}
+.product-img-main{border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.12)}
+.product-details .price-label{font-size:.8rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);font-weight:600}
+.product-details .price-row{display:flex;align-items:baseline;gap:12px;margin:8px 0 4px}
+.product-details .price-old{font-family:var(--serif);font-size:1.3rem;text-decoration:line-through;color:var(--muted)}
+.product-details .price-new{font-family:var(--serif);font-size:2.8rem;font-weight:700;color:var(--earth)}
+.product-details .price-save{background:var(--rust);color:#fff;font-size:.75rem;font-weight:700;padding:4px 10px;border-radius:4px;align-self:center}
+.product-details h2{font-family:var(--serif);font-size:1.8rem;font-weight:700;color:var(--earth);margin-bottom:12px}
+.product-details .desc{font-size:1rem;color:var(--bark);line-height:1.7;margin-bottom:24px}
+.product-includes{list-style:none;margin-bottom:32px}
+.product-includes li{padding:8px 0;border-bottom:1px solid var(--sand);font-size:.95rem;display:flex;align-items:center;gap:10px}
+.product-includes li::before{content:'✓';color:var(--forest);font-weight:700;font-size:1.1rem}
+
+/* === CTA BUTTON === */
+.cta-btn{
+  display:inline-block;
+  background:linear-gradient(180deg,var(--rust) 0%,var(--rust-dark) 100%);
+  color:#fff;font-family:var(--sans);font-size:1.1rem;font-weight:700;
+  padding:18px 48px;border-radius:8px;text-decoration:none;
+  border:none;cursor:pointer;
+  transition:all .2s;
+  box-shadow:0 4px 16px rgba(180,83,9,.3);
+}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(180,83,9,.4)}
+.cta-sub{display:block;font-size:.8rem;color:var(--muted);margin-top:8px;text-align:center}
+
+/* === GUARANTEE === */
+.guarantee-bar{
+  text-align:center;padding:48px 24px;
+  border-top:1px solid var(--sand);border-bottom:1px solid var(--sand);
+  background:var(--parchment);
+}
+.guarantee-bar .icon{font-size:2.5rem;margin-bottom:12px}
+.guarantee-bar h3{font-family:var(--serif);font-size:1.3rem;margin-bottom:8px;color:var(--earth)}
+.guarantee-bar p{font-size:.95rem;color:var(--muted);max-width:500px;margin:0 auto}
+
+/* === FOOTER === */
+footer{background:var(--earth);color:var(--sand);padding:40px 24px;text-align:center;font-size:.85rem}
+footer a{color:var(--sand);text-decoration:underline}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes bounceDown{0%,100%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(45deg) translateY(8px)}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* === RESPONSIVE === */
+@media(max-width:768px){
+  .hero h1{font-size:2.2rem}
+  .product-hero{grid-template-columns:1fr;text-align:center}
+  .product-details .price-row{justify-content:center}
+  .chapter-title{font-size:1.6rem}
+  .story-text{font-size:1.1rem}
+  .pull-quote p{font-size:1.2rem}
+  .spec-grid{grid-template-columns:1fr 1fr}
+  section{padding:60px 0}
+  .img-break{height:40vh}
+}
+@media(max-width:480px){
+  .spec-grid{grid-template-columns:1fr}
+  .review-card{flex:0 0 280px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">A Story 3 Years in the Making</div>
+  <h1>I Spent 200 Nights Sleeping&nbsp;Off&nbsp;the&nbsp;Ground</h1>
+  <p class="hero-sub">This is the story of how a frustrated camper built the hammock tent that 400+ people now call "the best gear purchase I've ever made."</p>
+  <div class="hero-scroll">
+    <span>Read the story</span>
+    <a href="#chapter1"><div class="arrow"></div></a>
+  </div>
+</section>
+
+<!-- CHAPTER 1 -->
+<section id="chapter1" class="reveal">
+  <div class="narrow">
+    <div class="chapter-label">Chapter 1</div>
+    <h2 class="chapter-title">The Problem Nobody Talks About<span>Or: why every camper secretly hates their tent</span></h2>
+    <div class="story-text">
+      <p>You know the feeling. You've hiked all day. Your legs are done. You reach camp, set up your tent on the flattest patch of ground you can find — which isn't flat at all — and crawl inside.</p>
+      <p>A rock digs into your hip. The ground is cold. It rained yesterday, so there's moisture seeping through the floor. By 2 AM you're shifting positions for the hundredth time, staring at the ceiling, wondering why you thought this was fun.</p>
+      <p><strong>Here's the dirty secret of camping:</strong> ground sleeping is objectively terrible. We just accept it because we don't know any better.</p>
+      <p>Traditional hammocks aren't much better. You're curved like a banana, your back is screaming, and if the temperature drops below 50°F, the cold air beneath you turns the hammock into a wind tunnel. Plus — bugs, rain, no privacy. It's a glorified nap, not a shelter.</p>
+      <p>This was the exact frustration that started everything.</p>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE BREAK 1 -->
+<div class="img-break-wrap reveal">
+  <img class="img-break" src="influencer2.jpg" alt="Winter hammock camping in snowy forest" loading="lazy">
+  <div class="img-break-caption">Tested in Canadian winters. Trusted in every season.</div>
+</div>
+
+<!-- CHAPTER 2 -->
+<section class="reveal">
+  <div class="narrow">
+    <div class="chapter-label">Chapter 2</div>
+    <h2 class="chapter-title">What If You Could Sleep <em>Above</em> the Ground?<span>Comfortable. Warm. In any terrain.</span></h2>
+    <div class="story-text">
+      <p>The idea was simple: <em>what if a hammock wasn't shaped like a banana?</em></p>
+      <p>What if you could lie in a hammock the same way you lie in bed — on your back, on your side, however you want — with a full enclosure around you? No bugs. No rain. No cold air underneath.</p>
+      <p>That's what the Hawk Nest Hammock Tent is. It's a complete shelter system that hangs between two trees, keeps you off the ground entirely, and gives you the most comfortable night of sleep you've ever had outdoors.</p>
+      <p>Not "comfortable for camping." Actually comfortable. The kind where you wake up and forget you're not in your bedroom.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<div class="narrow reveal">
+  <div class="pull-quote">
+    <p>"I've been camping for 30 years and this is the first time I've actually slept through the night in the backcountry."</p>
+    <cite>— Michael T., verified customer</cite>
+  </div>
+</div>
+
+<!-- CHAPTER 3 -->
+<section class="reveal">
+  <div class="narrow">
+    <div class="chapter-label">Chapter 3</div>
+    <h2 class="chapter-title">Built in Canada. Tested in the Worst&nbsp;Conditions.<span>Three years of prototypes. Zero shortcuts.</span></h2>
+    <div class="story-text">
+      <p>The Hawk Nest wasn't designed in a corporate office. It was designed in the Canadian wilderness — where winters hit -30°C and summer storms roll in without warning.</p>
+      <p>Every stitch, every material choice, every design decision came from <em>actually sleeping in this thing</em>, night after night, season after season. Not simulated. Not theoretical. Real.</p>
+      <p>The result is a hammock tent that works in the real world:</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPEC GRID -->
+<div class="wrap reveal">
+  <div class="spec-grid">
+    <div class="spec-card">
+      <div class="num">4 min</div>
+      <div class="label">Setup Time</div>
+    </div>
+    <div class="spec-card">
+      <div class="num">6.2 lbs</div>
+      <div class="label">Total Weight</div>
+    </div>
+    <div class="spec-card">
+      <div class="num">400+</div>
+      <div class="label">5-Star Reviews</div>
+    </div>
+    <div class="spec-card">
+      <div class="num">4 Season</div>
+      <div class="label">All-Weather Use</div>
+    </div>
+  </div>
+</div>
+
+<!-- IMAGE BREAK 2 -->
+<div class="img-break-wrap reveal">
+  <img class="img-break" src="influencer4.jpg" alt="Hawk Nest hammock tent setup in snowy forest" loading="lazy">
+  <div class="img-break-caption">Your campsite is wherever two trees are.</div>
+</div>
+
+<!-- CHAPTER 4 -->
+<section class="reveal">
+  <div class="narrow">
+    <div class="chapter-label">Chapter 4</div>
+    <h2 class="chapter-title">Why 400+ Canadians Gave Us Five&nbsp;Stars<span>And why they keep coming back for accessories</span></h2>
+    <div class="story-text">
+      <p>We launched in Canada first. No big marketing budget, no influencer campaigns — just a great product and word of mouth.</p>
+      <p>Within the first year, something unusual happened: our customers started <em>evangelizing</em>. They'd bring the Hawk Nest to campgrounds and within an hour, three people would walk over asking about it. Our return rate is under 2%. Our review average is 4.9 stars.</p>
+      <p>Here's what people keep telling us:</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<div class="reviews-strip reveal">
+  <div class="review-scroll">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"This hammock tent is absolutely amazing. Set it up in minutes, slept like a baby. Best camping purchase I've ever made."</div>
+      <div class="review-author">Mike S.</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Game changer. My wife and I both got one and now we can't imagine going back to a regular tent. The comfort is unreal."</div>
+      <div class="review-author">Jordan K.</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Took it on a 5-day canoe trip. Rain, wind, bugs — didn't matter. I was dry, warm, and comfortable every single night."</div>
+      <div class="review-author">Sarah L.</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"I have a bad back and ground sleeping was ruining camping for me. This hammock tent literally saved my favourite hobby."</div>
+      <div class="review-author">Dave R.</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Setup in the dark after a long hike. Four minutes, headlamp only. Slept better than I do at home. Not exaggerating."</div>
+      <div class="review-author">Chris M.</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"My buddy convinced me to try his. I ordered mine the next morning before we even broke camp."</div>
+      <div class="review-author">Tyler B.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER 5 — THE OFFER -->
+<section class="product-section reveal">
+  <div class="narrow" style="text-align:center;margin-bottom:48px">
+    <div class="chapter-label">Chapter 5</div>
+    <h2 class="chapter-title">Now It's Your Turn<span>Pre-order now. Ships to all 50 states.</span></h2>
+    <div class="story-text" style="text-align:left">
+      <p>After two years of Canadian-only sales, we're finally bringing the Hawk Nest to the United States. And if you're one of the first to pre-order, you'll lock in our best price — <strong>$60 off retail</strong>.</p>
+      <p>This isn't a Kickstarter. This isn't a concept. This is a proven product with 400+ reviews and thousands of nights in the field. You're just getting it before everyone else south of the border does.</p>
+    </div>
+  </div>
+
+  <div class="product-hero">
+    <img class="product-img-main" src="setup.gif" alt="Hawk Nest Hammock Tent setup demonstration" loading="lazy">
+    <div class="product-details">
+      <h2>Hawk Nest™ All-Season Hammock&nbsp;Tent</h2>
+      <div class="price-label">US Pre-Order Price</div>
+      <div class="price-row">
+        <span class="price-old">$239</span>
+        <span class="price-new">$179</span>
+        <span class="price-save">SAVE $60</span>
+      </div>
+      <p class="desc">Everything you need for the best night of sleep you've ever had outdoors. Complete shelter system — nothing else to buy.</p>
+      <ul class="product-includes">
+        <li>Hammock tent with integrated bug net</li>
+        <li>Waterproof rain fly</li>
+        <li>Tree-friendly suspension straps</li>
+        <li>Stuff sack & compression bag</li>
+        <li>Illustrated setup guide</li>
+      </ul>
+      <a href="#" class="cta-btn">Pre-Order Now — $179</a>
+      <span class="cta-sub">Free shipping to all 50 US states</span>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<div class="guarantee-bar reveal">
+  <div class="icon">🛡️</div>
+  <h3>30-Day "Sleep On It" Guarantee</h3>
+  <p>Try the Hawk Nest on your next trip. If it's not the most comfortable night of outdoor sleep you've ever had, send it back. Full refund. No questions. No hassle.</p>
+</div>
+
+<!-- CLOSING -->
+<section class="reveal">
+  <div class="narrow" style="text-align:center">
+    <div class="story-text" style="text-align:center">
+      <p style="font-size:1.4rem;line-height:1.6"><em>Stop sleeping on the ground.<br>You've been doing it long enough.</em></p>
+    </div>
+    <div style="margin-top:32px">
+      <a href="#" class="cta-btn">Pre-Order Your Hawk Nest — $179</a>
+      <span class="cta-sub">Limited pre-order pricing · Ships Spring 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Hawk Nest Hammocks Inc. · <a href="https://hawknesthammocks.ca">hawknesthammocks.ca</a></p>
+  <p style="margin-top:8px;font-size:.75rem;color:rgba(232,218,200,.5)">Patent pending · Made with Canadian stubbornness</p>
+</footer>
+
+<!-- REVEAL ANIMATION -->
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
