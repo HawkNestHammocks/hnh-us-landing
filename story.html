@@ -161,6 +161,7 @@ img{max-width:100%;height:auto;display:block}
 .verified-badge{display:inline-flex;align-items:center;gap:3px;background:#166534;color:#fff;font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:.5px;text-transform:uppercase}
 .review-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:all .3s}
 .review-dot.active{background:var(--rust);width:24px;border-radius:4px}
+.upgrade-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.1)!important}
 
 /* === PRODUCT SECTION === */
 .product-section{background:var(--cream);padding:80px 0}
@@ -439,25 +440,29 @@ footer a{color:var(--sand);text-decoration:underline}
     <div class="chapter-label">Exclusive Pre-Order Bonus</div>
     <h2 class="chapter-title" style="margin-bottom:3rem">4 Free Upgrades Included<span>$107 in extras — yours at no additional cost</span></h2>
     <div class="upgrade-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px;margin:0 auto">
-      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:center">
-        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190" alt="Waterproof bottom" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px">
+      <div class="upgrade-card" onclick="showUpgrade('bottom')" style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190" alt="Waterproof bottom" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1)">
         <div style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--earth);margin-bottom:4px">Waterproof Bottom</div>
         <div style="font-size:.8rem;color:var(--muted)"><s>$29</s> <span style="color:var(--rust);font-weight:700">FREE</span></div>
+        <div style="font-size:.7rem;color:var(--rust);margin-top:6px">Tap for details</div>
       </div>
-      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:center">
-        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669" alt="Carrying bag" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px">
+      <div class="upgrade-card" onclick="showUpgrade('bag')" style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669" alt="Carrying bag" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1)">
         <div style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--earth);margin-bottom:4px">Waterproof Carrying Bag</div>
         <div style="font-size:.8rem;color:var(--muted)"><s>$19</s> <span style="color:var(--rust);font-weight:700">FREE</span></div>
+        <div style="font-size:.7rem;color:var(--rust);margin-top:6px">Tap for details</div>
       </div>
-      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:center">
-        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Bottom_Upgrade_1.png?v=1741284804" alt="5-Year Warranty" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px">
+      <div class="upgrade-card" onclick="showUpgrade('warranty')" style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Bottom_Upgrade_1.png?v=1741284804" alt="5-Year Warranty" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1)">
         <div style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--earth);margin-bottom:4px">5-Year Extended Warranty</div>
         <div style="font-size:.8rem;color:var(--muted)"><s>$29</s> <span style="color:var(--rust);font-weight:700">FREE</span></div>
+        <div style="font-size:.7rem;color:var(--rust);margin-top:6px">Tap for details</div>
       </div>
-      <div style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:center">
-        <img src="gridless_icon.png" alt="Gridless app" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px;border-radius:16px">
+      <div class="upgrade-card" onclick="showUpgrade('gridless')" style="background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s">
+        <img src="gridless_icon.png" alt="Gridless app" style="width:80px;height:80px;object-fit:contain;margin:0 auto 10px;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.1)">
         <div style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--earth);margin-bottom:4px">3 Months Gridless Premium</div>
         <div style="font-size:.8rem;color:var(--muted)"><s>$30</s> <span style="color:var(--rust);font-weight:700">FREE</span></div>
+        <div style="font-size:.7rem;color:var(--rust);margin-top:6px">Tap for details</div>
       </div>
     </div>
     <div style="margin-top:12px;font-size:.85rem;color:var(--muted)">Total value: <strong style="color:var(--earth)">$336</strong> — Yours for <strong style="color:var(--rust);font-size:1.1rem">$179</strong></div>
@@ -490,21 +495,69 @@ footer a{color:var(--sand);text-decoration:underline}
   <p style="margin-top:8px;font-size:.75rem;color:rgba(232,218,200,.5)">Patent pending · Made with Canadian stubbornness</p>
 </footer>
 
-<!-- REVEAL ANIMATION + REVIEW CAROUSEL -->
+<!-- UPGRADE POPUP -->
+<div id="upgradePopup" style="position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)" onclick="this.style.display='none'">
+  <div style="background:var(--parchment);border-radius:16px;max-width:400px;width:90%;padding:32px;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.3)" onclick="event.stopPropagation()">
+    <button onclick="document.getElementById('upgradePopup').style.display='none'" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--muted)">×</button>
+    <img id="popupImg" style="width:100px;height:100px;object-fit:contain;margin:0 auto 16px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.1)">
+    <h3 id="popupTitle" style="font-family:var(--serif);font-size:1.2rem;color:var(--earth);margin-bottom:8px"></h3>
+    <p id="popupDesc" style="font-size:.95rem;color:var(--bark);line-height:1.6"></p>
+    <div id="popupValue" style="display:inline-block;margin-top:12px;font-size:1rem;font-weight:700;color:#166534;background:#f0fdf4;padding:6px 16px;border-radius:20px"></div>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
 <script>
+// Upgrade popup data
+const upgradeData = {
+  bottom: {
+    img: 'https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190',
+    title: 'Waterproof Bottom Upgrade',
+    desc: 'Heavy-duty waterproof floor panel that snaps onto the bottom of your hammock tent. Protects against rain splashback, morning dew, and adds an extra layer of wind protection underneath.',
+    value: 'Value: $29 — FREE with pre-order'
+  },
+  bag: {
+    img: 'https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669',
+    title: 'Waterproof Carrying Bag',
+    desc: 'Premium roll-top waterproof carrying bag that keeps your entire kit dry during transport. Compression straps reduce pack size by 30%. Doubles as a dry bag for river trips.',
+    value: 'Value: $19 — FREE with pre-order'
+  },
+  warranty: {
+    img: 'https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Bottom_Upgrade_1.png?v=1741284804',
+    title: '5-Year Extended Warranty',
+    desc: 'Full coverage against manufacturing defects for 5 years. If anything goes wrong with materials or craftsmanship, we replace it — no questions asked.',
+    value: 'Value: $29 — FREE with pre-order'
+  },
+  gridless: {
+    img: 'gridless_icon.png',
+    title: '3 Months Gridless Premium',
+    desc: 'The survival education app that teaches real outdoor skills through bite-sized lessons and quizzes. Master fire-starting, navigation, shelter building, and 400+ wilderness topics — works offline.',
+    value: 'Value: $30 — FREE with pre-order'
+  }
+};
+function showUpgrade(key){
+  const d = upgradeData[key];
+  document.getElementById('popupImg').src = d.img;
+  document.getElementById('popupTitle').textContent = d.title;
+  document.getElementById('popupDesc').textContent = d.desc;
+  document.getElementById('popupValue').textContent = d.value;
+  document.getElementById('upgradePopup').style.display = 'flex';
+}
+
 // Reveal on scroll
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Review auto-scroll
+// Review auto-scroll — starts when section is in view, centers active card
 (function(){
   const scroll = document.getElementById('reviewScroll');
   const dotsWrap = document.getElementById('reviewDots');
   if(!scroll) return;
   const cards = scroll.querySelectorAll('.review-card');
-  let current = 0;
+  let current = 0, timer = null, started = false;
+
   // Create dots
   cards.forEach((_, i) => {
     const dot = document.createElement('div');
@@ -512,23 +565,45 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     dot.onclick = () => goTo(i);
     dotsWrap.appendChild(dot);
   });
+
   function goTo(idx){
     current = idx;
     const card = cards[idx];
-    scroll.scrollTo({left: card.offsetLeft - 24, behavior:'smooth'});
+    // Center the card in the scroll container
+    const containerWidth = scroll.offsetWidth;
+    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+    scroll.scrollTo({left: cardCenter - containerWidth / 2, behavior:'smooth'});
     dotsWrap.querySelectorAll('.review-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
   }
-  // Auto-advance every 4s
-  let timer = setInterval(() => goTo((current+1)%cards.length), 4000);
-  // Pause on touch/interaction
-  scroll.addEventListener('touchstart', () => clearInterval(timer));
-  scroll.addEventListener('touchend', () => { timer = setInterval(() => goTo((current+1)%cards.length), 4000); });
+
+  function startTimer(){
+    if(timer) clearInterval(timer);
+    timer = setInterval(() => goTo((current+1)%cards.length), 4000);
+  }
+
+  // Only start when reviews section scrolls into view
+  const reviewObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting && !started){
+        started = true;
+        startTimer();
+        reviewObserver.unobserve(e.target);
+      }
+    });
+  }, {threshold: 0.3});
+  reviewObserver.observe(scroll.closest('.reviews-strip'));
+
+  // Pause on touch
+  scroll.addEventListener('touchstart', () => { if(timer) clearInterval(timer); });
+  scroll.addEventListener('touchend', () => startTimer());
+
+  // Update dots on manual scroll
   scroll.addEventListener('scroll', () => {
-    // Update dots based on scroll position
-    const scrollLeft = scroll.scrollLeft;
+    const scrollCenter = scroll.scrollLeft + scroll.offsetWidth / 2;
     let closest = 0, minDist = Infinity;
     cards.forEach((c, i) => {
-      const dist = Math.abs(c.offsetLeft - 24 - scrollLeft);
+      const cardCenter = c.offsetLeft + c.offsetWidth / 2;
+      const dist = Math.abs(cardCenter - scrollCenter);
       if(dist < minDist){ minDist = dist; closest = i; }
     });
     if(closest !== current){
