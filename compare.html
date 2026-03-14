@@ -136,9 +136,9 @@ footer a{color:#94a3b8}
 
 @media(max-width:768px){
   .hero h1{font-size:1.8rem}
-  .compare-header,.compare-row{grid-template-columns:1.2fr 1fr 1fr;font-size:.75rem}
-  .compare-row>div{padding:10px 8px;font-size:.8rem}
-  .compare-header>div{padding:12px 8px;font-size:.7rem}
+  /* Hide desktop table on mobile */
+  .compare-table{display:none}
+  .compare-mobile{display:flex!important}
   .winner-grid,.review-grid{grid-template-columns:1fr}
   .section{padding:60px 0}
   .section-title{font-size:1.7rem}
@@ -146,6 +146,16 @@ footer a{color:#94a3b8}
   .stack-row{font-size:.95rem;padding:12px 16px}
   .stack-row .stack-thumb{width:36px;height:36px}
 }
+/* Mobile comparison cards */
+.compare-mobile{display:none;flex-direction:column;gap:12px;max-width:500px;margin:0 auto;padding:0 16px}
+.cm-card{background:var(--white);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.cm-feature{background:var(--navy);color:#fff;font-weight:700;font-size:.85rem;padding:10px 16px;text-align:center;letter-spacing:.5px}
+.cm-compare{display:grid;grid-template-columns:1fr 1fr;min-height:70px}
+.cm-tent,.cm-hawk{padding:14px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:.85rem;line-height:1.4;gap:4px}
+.cm-tent{background:var(--red-light);color:var(--red)}
+.cm-hawk{background:var(--green-bg);color:var(--green-text);font-weight:600}
+.cm-label{font-size:.6rem;text-transform:uppercase;letter-spacing:1px;font-weight:700;opacity:.7}
+.cm-icon{font-size:1.2rem;line-height:1}
 </style>
 </head>
 <body>
@@ -234,6 +244,21 @@ footer a{color:#94a3b8}
       <div class="hawk"><span class="compare-icon">✓</span> Hang OR ground setup</div>
     </div>
   </div>
+
+  <!-- Mobile comparison cards -->
+  <div class="compare-mobile fade-in">
+    <div class="cm-card"><div class="cm-feature">Sleep Comfort</div><div class="cm-compare"><div class="cm-tent"><div class="cm-label">🏕️ Tent</div><div class="cm-icon">✗</div>Hard ground, rocks, roots</div><div class="cm-hawk"><div class="cm-label">🦅 Hawk Nest</div><div class="cm-icon">✓</div>Suspended — zero pressure points</div></div></div>
+    <div class="cm-card"><div class="cm-feature">Setup Time</div><div class="cm-compare"><div class="cm-tent"><div class="cm-label">🏕️ Tent</div><div class="cm-icon">✗</div>15–25 minutes</div><div class="cm-hawk"><div class="cm-label">🦅 Hawk Nest</div><div class="cm-icon">✓</div>Under 5 minutes</div></div></div>
+    <div class="cm-card"><div class="cm-feature">Weight</div><div class="cm-compare"><div class="cm-tent"><div class="cm-label">🏕️ Tent</div><div class="cm-icon">✗</div>4–7 lbs (1-person)</div><div class="cm-hawk"><div class="cm-label">🦅 Hawk Nest</div><div class="cm-icon">✓</div>4 lbs complete kit</div></div></div>
+    <div class="cm-card"><div class="cm-feature">Wet / Muddy Ground</div><div class="cm-compare"><div class="cm-tent"><div class="cm-label">🏕️ Tent</div><div class="cm-icon">✗</div>Flooded floor, wet gear</div><div class="cm-hawk"><div class="cm-label">🦅 Hawk Nest</div><div class="cm-icon">✓</div>You're above it all</div></div></div>
+    <div class="cm-card"><div class="cm-feature">Terrain Needed</div><div class="cm-compare"><div class="cm-tent"><div class="cm-label">🏕️ Tent</div><div class="cm-icon">✗</div>Need flat, clear ground</div><div class="cm-hawk"><div class="cm-label">🦅 Hawk Nest</div><div class="cm-icon">✓</div>Any two trees (or ground)</div></div></div>
+    <div class="cm-card"><div class="cm-feature">Bug Protection</div><div class="cm-compare"><div class="cm-tent"><div class="cm-label">🏕️ Tent</div><div class="cm-icon">~</div>Mesh + ground entry</div><div class="cm-hawk"><div class="cm-label">🦅 Hawk Nest</div><div class="cm-icon">✓</div>Full enclosure, elevated</div></div></div>
+    <div class="cm-card"><div class="cm-feature">Rain Performance</div><div class="cm-compare"><div class="cm-tent"><div class="cm-label">🏕️ Tent</div><div class="cm-icon">✗</div>Condensation, pooling</div><div class="cm-hawk"><div class="cm-label">🦅 Hawk Nest</div><div class="cm-icon">✓</div>Integrated rain fly</div></div></div>
+    <div class="cm-card"><div class="cm-feature">Back Pain</div><div class="cm-compare"><div class="cm-tent"><div class="cm-label">🏕️ Tent</div><div class="cm-icon">✗</div>Ground = pain guaranteed</div><div class="cm-hawk"><div class="cm-label">🦅 Hawk Nest</div><div class="cm-icon">✓</div>Ergonomic suspension</div></div></div>
+    <div class="cm-card"><div class="cm-feature">Pack Size</div><div class="cm-compare"><div class="cm-tent"><div class="cm-label">🏕️ Tent</div><div class="cm-icon">✗</div>Bulky poles + stakes</div><div class="cm-hawk"><div class="cm-label">🦅 Hawk Nest</div><div class="cm-icon">✓</div>16.5" × 5.5" ultra compact</div></div></div>
+    <div class="cm-card"><div class="cm-feature">Versatility</div><div class="cm-compare"><div class="cm-tent"><div class="cm-label">🏕️ Tent</div><div class="cm-icon">✗</div>Ground only</div><div class="cm-hawk"><div class="cm-label">🦅 Hawk Nest</div><div class="cm-icon">✓</div>Hang OR ground setup</div></div></div>
+  </div>
+
 </div>
 </section>
 
