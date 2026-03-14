@@ -73,11 +73,11 @@ img{max-width:100%;height:auto;display:block}
 .compare-header .col-hawk{background:rgba(74,222,128,.15)}
 .compare-row{display:grid;grid-template-columns:1.2fr 1fr 1fr;border-bottom:1px solid var(--light-gray);transition:background .2s}
 .compare-row:hover{background:var(--light)}
-.compare-row>div{padding:14px 20px;display:flex;align-items:center;justify-content:center;font-size:.95rem}
-.compare-row .feature{justify-content:flex-start;font-weight:600;color:var(--navy)}
+.compare-row>div{padding:16px 12px;display:flex;align-items:center;justify-content:center;font-size:.95rem;text-align:center;line-height:1.4;gap:6px}
+.compare-row .feature{justify-content:flex-start;font-weight:600;color:var(--navy);text-align:left}
 .compare-row .tent{color:var(--red);background:var(--red-light)}
 .compare-row .hawk{color:var(--green-text);background:var(--green-bg);font-weight:600}
-.compare-icon{font-size:1.2rem;margin-right:6px}
+.compare-icon{font-size:1.2rem;flex-shrink:0;line-height:1}
 
 /* WINNER SECTION */
 .winner{background:var(--light)}
@@ -136,7 +136,7 @@ footer a{color:#94a3b8}
 
 @media(max-width:768px){
   .hero h1{font-size:1.8rem}
-  .compare-header,.compare-row{grid-template-columns:1.4fr 1fr 1fr;font-size:.75rem}
+  .compare-header,.compare-row{grid-template-columns:1.2fr 1fr 1fr;font-size:.75rem}
   .compare-row>div{padding:10px 8px;font-size:.8rem}
   .compare-header>div{padding:12px 8px;font-size:.7rem}
   .winner-grid,.review-grid{grid-template-columns:1fr}
