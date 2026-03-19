@@ -27,7 +27,7 @@ src="https://www.facebook.com/tr?id=654633620066866&ev=PageView&noscript=1"
 <meta name="description" content="Pre-order the Hawk Nest All-Season Hammock Tent V.3. Your best sleep outdoors or your money back. Now shipping to the USA.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
@@ -58,6 +58,8 @@ a{text-decoration:none}
 /* CTA Buttons */
 .cta-btn{display:inline-block;background:#F99B38;color:#fff;font-size:1.1rem;font-weight:700;padding:16px 36px;border-radius:8px;border:2px solid #F7B82B;box-shadow:0 4px 15px rgba(249,155,56,.4);cursor:pointer;transition:all .2s;text-align:center;text-transform:uppercase;letter-spacing:.5px}
 .cta-btn:hover{background:#e88a2a;transform:translateY(-2px);box-shadow:0 6px 20px rgba(249,155,56,.5)}
+.cta-btn.pulse{animation:cta-pulse 2s infinite}
+@keyframes cta-pulse{0%,100%{box-shadow:0 4px 15px rgba(249,155,56,.4)}50%{box-shadow:0 4px 25px rgba(249,155,56,.7),0 0 40px rgba(249,155,56,.2)}}
 .cta-secondary{display:inline-block;color:#1a1a1a;font-size:.95rem;padding:12px 28px;border:2px solid #1a1a1a;border-radius:8px;cursor:pointer;transition:all .2s;text-align:center;margin-left:12px;text-decoration:none}
 .cta-secondary:hover{background:rgba(0,0,0,.05)}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
@@ -70,9 +72,10 @@ a{text-decoration:none}
 .section-img{flex:1}
 .section-img img{border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
 
-.section-text h2{font-size:1.8rem;font-weight:900;color:#1a1a1a;margin-bottom:16px;line-height:1.25;text-transform:uppercase}
+.section-text h2{font-family:'Oswald',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:16px;line-height:1.25;text-transform:uppercase;background:linear-gradient(135deg,#1a1a1a 0%,#3b2f1e 50%,#F99B38 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .section-text p{font-size:1rem;color:#555;line-height:1.8;margin-bottom:12px}
-.section-text .highlight{color:#F99B38;font-weight:700}
+.section-text .highlight{background:linear-gradient(90deg,#F99B38,#e65100);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
+.section-text .key-stat{display:inline-block;font-weight:900;font-size:1.1em;color:#1a1a1a;-webkit-text-fill-color:#1a1a1a}
 
 /* Why Choose */
 .why-choose{text-align:center;padding:60px 5% 20px;position:relative}
@@ -81,7 +84,7 @@ a{text-decoration:none}
 
 /* Setup Steps */
 .setup-section{background:#f9f9f9;padding:80px 5%}
-.setup-section h2{text-align:center;font-size:2rem;font-weight:900;text-transform:uppercase;margin-bottom:40px;color:#1a1a1a}
+.setup-section h2{text-align:center;font-family:'Oswald',sans-serif;font-size:2rem;font-weight:700;text-transform:uppercase;margin-bottom:40px;background:linear-gradient(135deg,#1a1a1a 0%,#3b2f1e 50%,#F99B38 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .setup-content{max-width:1100px;margin:0 auto;display:flex;gap:50px;align-items:center}
 .setup-gif{flex:1;text-align:center}
 .setup-gif img{border-radius:12px;max-width:100%;box-shadow:0 8px 30px rgba(0,0,0,.1)}
@@ -118,7 +121,7 @@ a{text-decoration:none}
 
 /* Reviews */
 .reviews-section{padding:60px 5%;max-width:1000px;margin:0 auto}
-.reviews-section h2{text-align:center;font-size:2rem;font-weight:900;text-transform:uppercase;margin-bottom:10px;color:#1a1a1a}
+.reviews-section h2{text-align:center;font-family:'Oswald',sans-serif;font-size:2rem;font-weight:700;text-transform:uppercase;margin-bottom:10px;background:linear-gradient(135deg,#1a1a1a 0%,#3b2f1e 50%,#F99B38 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .review-card{background:#fff;border-radius:10px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
 
 /* Scroll Animations */
@@ -137,7 +140,7 @@ a{text-decoration:none}
 
 /* FAQ */
 .faq-section{padding:80px 5%;max-width:800px;margin:0 auto}
-.faq-section h2{text-align:center;font-size:2rem;font-weight:900;text-transform:uppercase;margin-bottom:40px;color:#1a1a1a}
+.faq-section h2{text-align:center;font-family:'Oswald',sans-serif;font-size:2rem;font-weight:700;text-transform:uppercase;margin-bottom:40px;background:linear-gradient(135deg,#1a1a1a 0%,#3b2f1e 50%,#F99B38 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .faq-item{border-bottom:1px solid #e5e5e5}
 .faq-q{padding:20px 0;font-size:1.05rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:#1a1a1a;user-select:none}
 .faq-q::after{content:'+';font-size:1.5rem;color:#F99B38;font-weight:300;transition:transform .2s}
@@ -147,7 +150,7 @@ a{text-decoration:none}
 
 /* Final CTA */
 .final-cta{background:linear-gradient(135deg,#1a1a1a,#2d2d2d);padding:80px 5%;text-align:center}
-.final-cta h2{color:#fff;font-size:2rem;font-weight:900;text-transform:uppercase;margin-bottom:12px}
+.final-cta h2{font-family:'Oswald',sans-serif;color:#fff;font-size:2rem;font-weight:700;text-transform:uppercase;margin-bottom:12px}
 .final-cta p{color:#ccc;font-size:1rem;margin-bottom:30px}
 
 /* Footer */
@@ -200,8 +203,13 @@ a{text-decoration:none}
 </a>
 <div style="text-align:center;padding:20px 5% 30px;max-width:600px;margin:0 auto">
     <div class="hero-ctas" style="flex-direction:column;gap:12px;align-items:center">
-      <a href="https://hawknesthammocks.ca/products/hawk-nest-all-season-hammock-tent-v-3-us-pre-order" class="cta-btn" style="width:100%;max-width:400px">YES! Claim My Free Add-Ons</a>
+      <a href="https://hawknesthammocks.ca/products/hawk-nest-all-season-hammock-tent-v-3-us-pre-order" class="cta-btn pulse" style="width:100%;max-width:400px">YES! Claim My Free Add-Ons</a>
       <a href="#why-choose" class="cta-secondary" style="width:100%;max-width:400px">I'm still not sure... tell me more ↓</a>
+    </div>
+    <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:16px;font-size:.8rem;color:#888">
+      <span>🔒 Secure Checkout</span>
+      <span>🚚 Free US Shipping</span>
+      <span>↩️ 30-Day Returns</span>
     </div>
 </div>
 
@@ -344,7 +352,7 @@ a{text-decoration:none}
       <div style="font-size:.8rem;color:#666;margin-top:6px;font-style:italic">Total value: $117 — yours FREE with pre-order</div>
     </div>
     <div class="shipping-note">✓ Free shipping across the USA</div>
-    <a href="https://hawknesthammocks.ca/products/hawk-nest-all-season-hammock-tent-v-3-us-pre-order" class="cta-btn" style="display:inline-block">YES! Claim My Free Add-Ons</a>
+    <a href="https://hawknesthammocks.ca/products/hawk-nest-all-season-hammock-tent-v-3-us-pre-order" class="cta-btn pulse" style="display:inline-block">YES! Claim My Free Add-Ons</a>
     <div class="guarantees">
       <div class="guarantee"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> 60-Day Risk-Free Trial</div>
       <div class="guarantee"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> 30-Day Return Policy</div>
@@ -446,7 +454,7 @@ a{text-decoration:none}
 <div class="final-cta">
   <h2>Ready To Elevate Your Camping Experience?</h2>
   <p>Pre-order now and get free add-ons — ships across the USA.</p>
-  <a href="https://hawknesthammocks.ca/products/hawk-nest-all-season-hammock-tent-v-3-us-pre-order" class="cta-btn">YES! Claim My Free Add-Ons</a>
+  <a href="https://hawknesthammocks.ca/products/hawk-nest-all-season-hammock-tent-v-3-us-pre-order" class="cta-btn pulse">YES! Claim My Free Add-Ons</a>
 </div>
 
 <!-- Footer -->
