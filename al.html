@@ -306,8 +306,8 @@ a{text-decoration:none}
         <div class="label">Capacity</div>
       </div>
     </div>
-    <div style="margin:8px 0 4px"><span style="text-decoration:line-through;color:#999;font-size:1.2rem;font-weight:600">$299.95 USD</span></div>
-    <div class="price">$249.95 USD</div>
+    <div style="margin:8px 0 4px"><span style="text-decoration:line-through;color:#999;font-size:1.2rem;font-weight:600">$229 USD</span></div>
+    <div class="price">$179 USD</div>
     <div class="price-sub">Pre-Order Discount — Ships to USA</div>
     <div style="background:#f0faf0;border:1px solid #c6e6c6;border-radius:8px;padding:14px 18px;margin:16px auto;max-width:360px;text-align:left">
       <div style="font-weight:700;font-size:.95rem;margin-bottom:8px;color:#1a1a1a">🎁 4 FREE Add-Ons Included:</div>
@@ -331,8 +331,38 @@ a{text-decoration:none}
 <!-- Reviews -->
 <div class="reviews-section">
   <h2>What Our Customers Say</h2>
-  <div id="judgeme_product_reviews" class="jdgm-widget jdgm-review-widget" data-id="9747498049842"></div>
+  <div id="reviews-container" style="display:flex;flex-direction:column;gap:20px"></div>
 </div>
+<script>
+(function(){
+  var url='https://judge.me/api/v1/reviews?shop_domain=cff8f5.myshopify.com&api_token=d16NC3fCjoy9xwNJIsrSZEcbOLk&per_page=6';
+  fetch(url).then(function(r){return r.json()}).then(function(d){
+    var c=document.getElementById('reviews-container');
+    if(!d.reviews||!d.reviews.length){c.innerHTML='<p style="text-align:center;color:#666">Reviews loading...</p>';return;}
+    d.reviews.forEach(function(r){
+      var stars='';for(var i=0;i<5;i++)stars+=(i<r.rating?'★':'☆');
+      var photo='';
+      if(r.pictures&&r.pictures.length){
+        r.pictures.forEach(function(p){
+          var src=p.urls&&p.urls.compact?p.urls.compact:(p.urls&&p.urls.original?p.urls.original:'');
+          if(src)photo+='<img src="'+src+'" style="width:80px;height:80px;object-fit:cover;border-radius:6px;margin-right:8px;margin-top:8px" alt="Review photo">';
+        });
+      }
+      var html='<div style="background:#fff;border-radius:10px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.06)">'
+        +'<div style="color:#FFC63E;font-size:1.2rem;margin-bottom:4px">'+stars+'</div>'
+        +'<div style="font-weight:700;margin-bottom:2px">'+r.reviewer.name+'</div>'
+        +'<div style="font-size:.8rem;color:#999;margin-bottom:8px">Verified Buyer</div>'
+        +(r.title?'<div style="font-weight:600;margin-bottom:4px">'+r.title+'</div>':'')
+        +'<div style="color:#444;line-height:1.6">'+r.body+'</div>'
+        +(photo?'<div style="display:flex;flex-wrap:wrap;margin-top:8px">'+photo+'</div>':'')
+        +'</div>';
+      c.insertAdjacentHTML('beforeend',html);
+    });
+  }).catch(function(){
+    document.getElementById('reviews-container').innerHTML='<p style="text-align:center;color:#666">Check out our <a href="https://hawknesthammocks.ca" style="color:#F99B38">500+ reviews on our store</a>.</p>';
+  });
+})();
+</script>
 
 <!-- FAQ -->
 <div class="faq-section">
@@ -398,12 +428,7 @@ function toggleFaq(el){
 }
 </script>
 
-<!-- Judge.me Reviews Widget -->
-<script>
-jdgm=window.jdgm||{};jdgm.SHOP_DOMAIN='cff8f5.myshopify.com';jdgm.PLATFORM='shopify';jdgm.PUBLIC_TOKEN='NsdP-JcVzf63a4_0-w4D5a58UZA';
-</script>
-<script data-cfasync="false" type="text/javascript" async src="https://cdn.judge.me/widget_preloader.js"></script>
-<script data-cfasync="false" type="text/javascript" async src="https://cdn.judge.me/assets/installed.js"></script>
+<!-- Reviews loaded via API above -->
 
 </body>
 </html>
