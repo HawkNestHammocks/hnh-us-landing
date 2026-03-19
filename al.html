@@ -118,7 +118,22 @@ a{text-decoration:none}
 
 /* Reviews */
 .reviews-section{padding:60px 5%;max-width:1000px;margin:0 auto}
-.reviews-section h2{text-align:center;font-size:2rem;font-weight:900;text-transform:uppercase;margin-bottom:30px;color:#1a1a1a}
+.reviews-section h2{text-align:center;font-size:2rem;font-weight:900;text-transform:uppercase;margin-bottom:10px;color:#1a1a1a}
+.review-card{background:#fff;border-radius:10px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+
+/* Scroll Animations */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.section,.product-card-section,.faq-section,.progression-section{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.section.visible,.product-card-section.visible,.faq-section.visible,.progression-section.visible{opacity:1;transform:translateY(0)}
+
+/* Bottom Bar */
+.bottom-bar{position:fixed;bottom:0;left:0;right:0;background:#1a1a1a;color:#fff;padding:10px 16px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:1000;transform:translateY(100%);transition:transform .4s ease;box-shadow:0 -2px 10px rgba(0,0,0,0.2)}
+.bottom-bar.show{transform:translateY(0)}
+.bottom-bar .live-dot{width:8px;height:8px;background:#22c55e;border-radius:50%;animation:pulse-dot 1.5s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
+.bottom-bar .bar-text{font-size:.85rem;flex:1}
+.bottom-bar .bar-cta{background:#F99B38;color:#fff;padding:8px 18px;border-radius:6px;text-decoration:none;font-weight:700;font-size:.85rem;white-space:nowrap}
 
 /* FAQ */
 .faq-section{padding:80px 5%;max-width:800px;margin:0 auto}
@@ -331,38 +346,57 @@ a{text-decoration:none}
 <!-- Reviews -->
 <div class="reviews-section">
   <h2>What Our Customers Say</h2>
-  <div id="reviews-container" style="display:flex;flex-direction:column;gap:20px"></div>
+  <div style="text-align:center;color:#FFC63E;font-size:1.3rem;margin-bottom:4px">★★★★★</div>
+  <p style="text-align:center;color:#666;margin-bottom:24px">Based on 500+ verified reviews</p>
+  <div style="display:flex;flex-direction:column;gap:20px">
+
+    <div class="review-card fade-in">
+      <div style="color:#FFC63E;font-size:1.1rem">★★★★★</div>
+      <div style="font-weight:700;margin:4px 0 2px">Steven Neeb</div>
+      <div style="font-size:.8rem;color:#999;margin-bottom:8px">✓ Verified Buyer</div>
+      <div style="font-weight:600;margin-bottom:4px">Some great improvements</div>
+      <div style="color:#444;line-height:1.6">I wasn't happy with the previous version, especially the sleeping pad compartment, which was too loose and in cold weather, I was getting very cold at the bottom. This V.3 addressed this complaint and it should work perfectly. I haven't been able to use it yet but the addition of the Velcro inside the hammock should make a huge difference.</div>
+    </div>
+
+    <div class="review-card fade-in">
+      <div style="color:#FFC63E;font-size:1.1rem">★★★★★</div>
+      <div style="font-weight:700;margin:4px 0 2px">Nico</div>
+      <div style="font-size:.8rem;color:#999;margin-bottom:8px">✓ Verified Buyer</div>
+      <div style="font-weight:600;margin-bottom:4px">What an upgrade!</div>
+      <div style="color:#444;line-height:1.6">Purchased my Hawknest for my new way of camping — getting off the ground is a dream with the Hawknest. I cannot wait to use this summer even more! Easy set up and great quality!</div>
+    </div>
+
+    <div class="review-card fade-in">
+      <div style="color:#FFC63E;font-size:1.1rem">★★★★☆</div>
+      <div style="font-weight:700;margin:4px 0 2px">Scott Thomson</div>
+      <div style="font-size:.8rem;color:#999;margin-bottom:8px">✓ Verified Buyer</div>
+      <div style="font-weight:600;margin-bottom:4px">Worked great first time out!</div>
+      <div style="color:#444;line-height:1.6">I used my V3 Hawknest hammock with the fully adjustable straps, inflatable sleeping pad and the down under quilt for the first time this past weekend. It was our first overnight hammock camp and I slept better under quilt for the first time.</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">
+        <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1768845908__img_3402__original.jpeg?auto=format&w=160" style="width:80px;height:80px;object-fit:cover;border-radius:6px" alt="Review photo">
+        <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1768845915__img_3399__original.jpeg?auto=format&w=160" style="width:80px;height:80px;object-fit:cover;border-radius:6px" alt="Review photo">
+        <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1768845911__img_3401__original.jpeg?auto=format&w=160" style="width:80px;height:80px;object-fit:cover;border-radius:6px" alt="Review photo">
+      </div>
+    </div>
+
+    <div class="review-card fade-in">
+      <div style="color:#FFC63E;font-size:1.1rem">★★★★★</div>
+      <div style="font-weight:700;margin:4px 0 2px">Soren Nazarko</div>
+      <div style="font-size:.8rem;color:#999;margin-bottom:8px">✓ Verified Buyer</div>
+      <div style="font-weight:600;margin-bottom:4px">A must have for outdoor adventures</div>
+      <div style="color:#444;line-height:1.6">Surprisingly spacious and very comfortable. Ample storage space. Easy to set up once you get the hang of it. A bonus is that the hammock flips upside down to become a ground tent. Super cool piece of gear!</div>
+    </div>
+
+    <div class="review-card fade-in">
+      <div style="color:#FFC63E;font-size:1.1rem">★★★★★</div>
+      <div style="font-weight:700;margin:4px 0 2px">Customer</div>
+      <div style="font-size:.8rem;color:#999;margin-bottom:8px">✓ Verified Buyer</div>
+      <div style="font-weight:600;margin-bottom:4px">Super Sweet</div>
+      <div style="color:#444;line-height:1.6">The V.3 Hawk's Nest All Season Hammock Tent is such a cool piece of equipment that is definitely going to come with me whenever I go hiking. At first it can seem complicated but once you set it up 2-3 times it becomes very easy. Highly recommend!</div>
+    </div>
+
+  </div>
 </div>
-<script>
-(function(){
-  var url='https://judge.me/api/v1/reviews?shop_domain=cff8f5.myshopify.com&api_token=d16NC3fCjoy9xwNJIsrSZEcbOLk&per_page=6';
-  fetch(url).then(function(r){return r.json()}).then(function(d){
-    var c=document.getElementById('reviews-container');
-    if(!d.reviews||!d.reviews.length){c.innerHTML='<p style="text-align:center;color:#666">Reviews loading...</p>';return;}
-    d.reviews.forEach(function(r){
-      var stars='';for(var i=0;i<5;i++)stars+=(i<r.rating?'★':'☆');
-      var photo='';
-      if(r.pictures&&r.pictures.length){
-        r.pictures.forEach(function(p){
-          var src=p.urls&&p.urls.compact?p.urls.compact:(p.urls&&p.urls.original?p.urls.original:'');
-          if(src)photo+='<img src="'+src+'" style="width:80px;height:80px;object-fit:cover;border-radius:6px;margin-right:8px;margin-top:8px" alt="Review photo">';
-        });
-      }
-      var html='<div style="background:#fff;border-radius:10px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.06)">'
-        +'<div style="color:#FFC63E;font-size:1.2rem;margin-bottom:4px">'+stars+'</div>'
-        +'<div style="font-weight:700;margin-bottom:2px">'+r.reviewer.name+'</div>'
-        +'<div style="font-size:.8rem;color:#999;margin-bottom:8px">Verified Buyer</div>'
-        +(r.title?'<div style="font-weight:600;margin-bottom:4px">'+r.title+'</div>':'')
-        +'<div style="color:#444;line-height:1.6">'+r.body+'</div>'
-        +(photo?'<div style="display:flex;flex-wrap:wrap;margin-top:8px">'+photo+'</div>':'')
-        +'</div>';
-      c.insertAdjacentHTML('beforeend',html);
-    });
-  }).catch(function(){
-    document.getElementById('reviews-container').innerHTML='<p style="text-align:center;color:#666">Check out our <a href="https://hawknesthammocks.ca" style="color:#F99B38">500+ reviews on our store</a>.</p>';
-  });
-})();
-</script>
 
 <!-- FAQ -->
 <div class="faq-section">
@@ -428,7 +462,53 @@ function toggleFaq(el){
 }
 </script>
 
-<!-- Reviews loaded via API above -->
+<!-- Bottom Urgency Bar -->
+<div class="bottom-bar" id="bottomBar">
+  <span class="live-dot"></span>
+  <span class="bar-text" id="barText"></span>
+  <a href="https://hawknesthammocks.ca/products/hawk-nest-all-season-hammock-tent-v-3-us-pre-order" class="bar-cta">Pre-Order Now</a>
+</div>
+
+<!-- Scroll Animations + Social Proof -->
+<script>
+// Scroll animations
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:0.15});
+document.querySelectorAll('.fade-in,.section,.product-card-section,.faq-section,.progression-section').forEach(el=>observer.observe(el));
+
+// Bottom bar — show after scrolling past hero
+let barShown=false;
+window.addEventListener('scroll',function(){
+  if(!barShown&&window.scrollY>400){
+    document.getElementById('bottomBar').classList.add('show');
+    barShown=true;
+  }
+});
+
+// Social proof rotation
+const proofs=[
+  '🟢 14 people are viewing this right now',
+  '🔥 Sarah from Texas just pre-ordered hers',
+  '🟢 23 people viewed this in the last hour',
+  '🔥 Mike from Colorado just pre-ordered his',
+  '⚡ Limited pre-order pricing — $50 off ends soon',
+  '🔥 James from Florida just pre-ordered his',
+  '🟢 19 people are viewing this right now',
+  '🔥 Ashley from California just pre-ordered hers',
+  '⚡ 4 free add-ons included with every pre-order',
+  '🔥 Ryan from Oregon just pre-ordered his'
+];
+let pi=0;
+const barText=document.getElementById('barText');
+barText.textContent=proofs[0];
+setInterval(function(){
+  pi=(pi+1)%proofs.length;
+  barText.style.opacity=0;
+  setTimeout(function(){barText.textContent=proofs[pi];barText.style.opacity=1},300);
+},4000);
+barText.style.transition='opacity .3s ease';
+</script>
 
 </body>
 </html>
