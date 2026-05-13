@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gridless Solar Charger — Hawk Nest Hammocks</title>
+<meta name="description" content="The Gridless 20,000 mAh foldable solar charger + 3 months Gridless Premium + 5-year warranty. By Hawk Nest Hammocks. Save $95.99 on the launch bundle." />
+<style>
+  :root {
+    --bg: #0c0c0c;
+    --bg-2: #161616;
+    --bg-card: #1c1c1c;
+    --line: rgba(255,255,255,0.08);
+    --orange: #F26B1F;
+    --orange-2: #FF8336;
+    --gold: #D4A84B;
+    --white: #FFFFFF;
+    --text: #EAEAEA;
+    --dim: #9A9A9A;
+    --dimmer: #666;
+    --hnh-navy: #1a3447;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    padding-bottom: 100px;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ====== HEADER ====== */
+  header {
+    padding: 12px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    background: rgba(12,12,12,0.92);
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(10px);
+  }
+  .brand-wrap { display: flex; align-items: center; gap: 14px; }
+  .brand-wrap img.gridless-logo { width: 34px; height: 34px; border-radius: 6px; }
+  .brand-stack { display: flex; flex-direction: column; line-height: 1.1; }
+  .brand-stack .b1 { font-weight: 800; font-size: 13px; color: var(--white); letter-spacing: 0.18em; text-transform: uppercase; }
+  .brand-stack .b2 { font-size: 10px; color: var(--dim); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 3px; }
+  .brand-stack .b2 strong { color: var(--orange); font-weight: 700; }
+  .header-cta {
+    background: var(--orange);
+    color: var(--white);
+    font-weight: 800;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    box-shadow: 0 2px 12px rgba(242,107,31,0.4);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ====== HERO ====== */
+  .hero {
+    min-height: 88vh;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    grid-template-rows: auto auto;
+    align-items: start;
+    align-content: center;
+    padding: 56px 80px;
+    gap: 30px 60px;
+    background: radial-gradient(ellipse 70% 85% at 90% 45%, rgba(242,107,31,0.10) 0%, transparent 60%), var(--bg);
+    position: relative;
+  }
+  .hero::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--orange), transparent); opacity: 0.4; }
+  .hero-top { grid-column: 1; grid-row: 1; }
+  .hero-bottom { grid-column: 1; grid-row: 2; }
+  .hero-image { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+  .hero-top .tag, .hero-bottom .tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 7px 14px; border: 1px solid var(--orange); color: var(--orange);
+    font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700;
+    border-radius: 100px; margin-bottom: 24px;
+  }
+  .hero-top .tag .dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; box-shadow: 0 0 12px var(--orange); animation: pulse 1.6s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .hero-top h1 {
+    font-size: 60px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.04; color: var(--white);
+  }
+  .hero-top h1 em { font-style: italic; color: var(--orange); font-weight: 900; }
+  .hero-rating {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--dim); font-size: 14px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .hero-rating .stars-row { color: var(--gold); letter-spacing: 1.5px; font-size: 16px; }
+  .hero-rating .num { color: var(--white); font-weight: 800; }
+  .hero-rating .sep { color: rgba(255,255,255,0.22); }
+  .hero-rating .link { color: var(--orange); font-weight: 700; }
+  .hero-rating:hover .link { text-decoration: underline; }
+  .hero-bottom p.lede { font-size: 19px; color: var(--dim); line-height: 1.55; max-width: 540px; }
+  .hero-cta { margin-top: 26px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .btn-xl {
+    background: linear-gradient(180deg, var(--orange-2), var(--orange));
+    color: var(--white); font-weight: 900;
+    padding: 20px 34px; border-radius: 14px; border: none; cursor: pointer;
+    font-size: 16px; letter-spacing: 0.06em; text-transform: uppercase;
+    box-shadow: 0 8px 28px rgba(242,107,31,0.45), inset 0 1px 0 rgba(255,255,255,0.18);
+    display: inline-flex; align-items: center; gap: 10px; text-align: center;
+    transition: transform .12s ease;
+  }
+  .btn-xl:hover { transform: translateY(-2px); }
+  .btn-xl .arrow { font-size: 22px; }
+  .reassure { display: flex; gap: 18px; align-items: center; color: var(--dim); font-size: 13px; margin-top: 14px; flex-wrap: wrap; }
+  .reassure .item { display: inline-flex; align-items: center; gap: 6px; }
+  .reassure .check { color: var(--orange); font-weight: 900; }
+  .hero-image img { width: 100%; border-radius: 16px; filter: drop-shadow(0 30px 80px rgba(242,107,31,0.18)); }
+
+  /* ====== TOP COUNTDOWN BAR ====== */
+  .top-countdown-bar {
+    position: relative; z-index: 60;
+    background: linear-gradient(90deg, var(--orange-2), var(--orange), var(--orange-2));
+    background-size: 200% 100%;
+    animation: shimmer 6s linear infinite;
+    color: var(--white);
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .top-countdown-bar .pulse-white {
+    width: 8px; height: 8px;
+    background: var(--white); border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(255,255,255,0.7);
+    animation: pulse-ring-white 1.8s infinite;
+  }
+  @keyframes pulse-ring-white {
+    0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+    70% { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+  }
+  @keyframes shimmer {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 0%; }
+  }
+  .top-countdown-bar #top-countdown {
+    font-variant-numeric: tabular-nums;
+    background: rgba(0,0,0,0.2);
+    padding: 3px 9px; border-radius: 5px;
+    display: inline-block; min-width: 86px;
+  }
+
+  /* ====== URGENCY (hero) ====== */
+  .urgency-row {
+    display: flex; gap: 18px; flex-wrap: wrap;
+    margin: 20px 0 4px;
+    font-size: 13px; color: var(--dim);
+  }
+  .urgency-item { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; background: rgba(255,255,255,0.04); border: 1px solid var(--line); border-radius: 100px; }
+  .urgency-item strong { color: var(--white); font-weight: 800; }
+  .urgency-timer strong { color: var(--orange); font-variant-numeric: tabular-nums; min-width: 70px; display: inline-block; }
+  .pulse-red {
+    width: 8px; height: 8px;
+    background: #FF4444;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(255,68,68,0.7);
+    animation: pulse-ring 2s infinite;
+    display: inline-block;
+  }
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(255,68,68,0.7); }
+    70% { box-shadow: 0 0 0 8px rgba(255,68,68,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,68,68,0); }
+  }
+
+  /* ====== ANIMATIONS ====== */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.is-visible { opacity: 1; transform: translateY(0); }
+  .delay-1 { transition-delay: 0.15s; }
+  .delay-2 { transition-delay: 0.3s; }
+  .delay-3 { transition-delay: 0.45s; }
+
+  /* Hover lifts */
+  .photo-grid > div { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .photo-grid > div:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
+  .review-card { transition: transform 0.25s ease, border-color 0.25s ease; }
+  .review-card:hover { transform: translateY(-3px); border-color: rgba(242,107,31,0.4); }
+  .spec { transition: transform 0.2s ease; }
+  .spec:hover { transform: translateY(-2px); }
+
+  /* Glow pulse on the main CTA buttons */
+  @keyframes cta-glow {
+    0%,100% { box-shadow: 0 8px 28px rgba(242,107,31,0.45), inset 0 1px 0 rgba(255,255,255,0.18); }
+    50% { box-shadow: 0 8px 40px rgba(242,107,31,0.7), inset 0 1px 0 rgba(255,255,255,0.18); }
+  }
+  .btn-xl, .order-cta { animation: cta-glow 2.4s ease-in-out infinite; }
+
+  /* Photo grid img zoom on hover */
+  .photo-grid > div { overflow: hidden; }
+  .photo-grid img { transition: transform 0.6s ease; }
+  .photo-grid > div:hover img { transform: scale(1.06); }
+
+  /* ====== OBJECTION ====== */
+  .objection {
+    background: linear-gradient(180deg, var(--bg), var(--bg-2), var(--bg));
+    text-align: center; padding: 58px 40px;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  }
+  .objection .label { color: var(--orange); font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; font-weight: 800; margin-bottom: 14px; }
+  .objection .quote { font-family: Georgia, serif; font-style: italic; font-size: 28px; color: var(--text); max-width: 800px; margin: 0 auto; line-height: 1.4; }
+  .objection .quote u { text-decoration-color: var(--orange); text-decoration-thickness: 3px; }
+  .objection .answer { color: var(--orange); font-weight: 800; font-style: normal; display: block; margin-top: 20px; font-size: 36px; letter-spacing: -0.01em; }
+
+  /* ====== SECTION ====== */
+  section.s { padding: 100px 80px; text-align: center; }
+  .section-tag { display: inline-block; color: var(--orange); font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; font-weight: 800; margin-bottom: 18px; }
+  h2 { font-size: 46px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; color: var(--white); margin-bottom: 20px; }
+  h2 em { font-style: italic; color: var(--orange); }
+  .section-sub { color: var(--dim); font-size: 17px; max-width: 640px; margin: 0 auto; line-height: 1.6; }
+
+  /* ====== PHOTO GRID ====== */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 14px;
+    max-width: 1100px;
+    margin: 60px auto 0;
+  }
+  .photo-grid > div { border-radius: 12px; overflow: hidden; background: var(--bg-card); }
+  .photo-grid .span-2-rows { grid-row: 1 / span 2; }
+  .photo-grid img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ====== APP SHOWCASE ====== */
+  .app-showcase { background: var(--bg-2); padding: 100px 40px; text-align: center; }
+  .phones { display: flex; justify-content: center; gap: 20px; max-width: 1100px; margin: 56px auto 0; flex-wrap: wrap; }
+  .phone { flex: 1; min-width: 220px; max-width: 280px; text-align: center; }
+  .phone-frame { background: linear-gradient(180deg, #1f1f1f, #0e0e0e); border-radius: 36px; padding: 8px; box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(242,107,31,0.18) inset; }
+  .phone-frame img { border-radius: 28px; width: 100%; }
+  .phone-label { margin-top: 16px; color: var(--white); font-weight: 800; font-size: 16px; }
+  .phone-sub { color: var(--dim); font-size: 13px; margin-top: 4px; line-height: 1.5; }
+  .worlds-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 900px; margin: 60px auto 0; }
+  .world-card { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+  .world-card img { width: 100%; }
+
+  /* ====== BUNDLE BOX ====== */
+  .bundle {
+    padding: 100px 40px;
+    background: linear-gradient(180deg, var(--bg), #1a0d05);
+    text-align: center;
+  }
+  .bundle-card-wrap { max-width: 720px; margin: 56px auto 0; }
+  .bundle-card {
+    background: var(--bg-card); border: 2px solid var(--orange); border-radius: 22px;
+    padding: 42px 36px;
+    box-shadow: 0 30px 90px rgba(242,107,31,0.22), inset 0 1px 0 rgba(255,255,255,0.06);
+    text-align: left;
+  }
+  .bundle-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 16px;
+  }
+  .bundle-row:last-of-type { border-bottom: none; }
+  .bundle-row .name { color: var(--text); flex: 1; }
+  .bundle-row .name strong { color: var(--white); font-weight: 800; display: block; font-size: 16px; margin-bottom: 3px; }
+  .bundle-row .name span { color: var(--dim); font-size: 13px; }
+  .bundle-row .price { color: var(--dim); font-size: 14px; text-decoration: line-through; min-width: 80px; text-align: right; }
+  .bundle-row .price-final { color: var(--orange); font-weight: 800; font-size: 14px; min-width: 50px; text-align: right; padding-left: 10px; }
+  .bundle-row .price-final.free { color: #34A853; }
+
+  .bundle-totals {
+    margin-top: 24px; padding-top: 22px; border-top: 2px solid var(--orange);
+  }
+  .total-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-size: 15px; color: var(--dim); }
+  .total-row.discount { color: var(--orange); font-weight: 700; }
+  .total-row.grand { font-size: 22px; color: var(--white); font-weight: 900; margin-top: 8px; padding-top: 14px; border-top: 1px dashed var(--line); }
+  .total-row.grand .v { color: var(--orange); font-size: 30px; }
+  .total-row.grand .strike-orig { color: var(--dim); text-decoration: line-through; font-size: 15px; font-weight: 500; margin-right: 8px; }
+
+  /* ====== ADD-ON TOGGLE ====== */
+  .addon {
+    margin-top: 24px;
+    padding: 18px 22px;
+    background: rgba(242,107,31,0.08);
+    border: 1px dashed rgba(242,107,31,0.4);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .addon:hover { background: rgba(242,107,31,0.12); }
+  .addon input[type=checkbox] {
+    appearance: none; -webkit-appearance: none;
+    width: 24px; height: 24px;
+    border: 2px solid var(--orange);
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    background: transparent;
+    flex-shrink: 0;
+  }
+  .addon input[type=checkbox]:checked { background: var(--orange); }
+  .addon input[type=checkbox]:checked::after {
+    content: "✓"; position: absolute; top: -2px; left: 4px;
+    color: var(--white); font-weight: 900; font-size: 16px;
+  }
+  .addon .addon-text { flex: 1; }
+  .addon .addon-title { color: var(--white); font-weight: 700; font-size: 15px; }
+  .addon .addon-sub { color: var(--dim); font-size: 12.5px; margin-top: 3px; }
+  .addon .addon-price { color: var(--orange); font-weight: 800; font-size: 17px; }
+
+  .order-cta {
+    margin-top: 24px;
+    display: block;
+    background: linear-gradient(180deg, var(--orange-2), var(--orange));
+    color: var(--white) !important;
+    font-weight: 900;
+    padding: 22px;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 17px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    box-shadow: 0 8px 30px rgba(242,107,31,0.45), inset 0 1px 0 rgba(255,255,255,0.18);
+    transition: transform .12s;
+  }
+  .order-cta:hover { transform: translateY(-1px); }
+  .order-cta .arrow { font-size: 22px; margin-left: 8px; }
+  .order-finalprice {
+    text-align: center;
+    color: var(--dim);
+    font-size: 13px;
+    margin-top: 12px;
+  }
+  .order-finalprice strong { color: var(--white); }
+
+  /* ====== LIFESTYLE STRIP ====== */
+  .lifestyle {
+    height: 65vh;
+    background-image: url("v4_carabiner_clip.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lifestyle::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,12,12,0.3), rgba(12,12,12,0.85)); }
+  .lifestyle-content { position: relative; text-align: center; color: var(--white); padding: 0 40px; max-width: 800px; }
+  .lifestyle-content blockquote { font-family: Georgia, serif; font-style: italic; font-size: 30px; line-height: 1.4; margin-bottom: 20px; }
+  .lifestyle-content cite { color: var(--orange); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 800; font-style: normal; }
+
+  /* ====== SPECS ====== */
+  .specs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1100px; margin: 50px auto 0; }
+  .spec { border: 1px solid var(--line); border-radius: 14px; padding: 30px 16px; background: var(--bg-card); transition: border-color .2s; }
+  .spec:hover { border-color: var(--orange); }
+  .spec .num { font-size: 38px; color: var(--orange); font-weight: 900; margin-bottom: 6px; letter-spacing: -0.02em; }
+  .spec .lbl { font-size: 11px; color: var(--dim); letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; }
+
+  /* ====== REVIEWS / TESTIMONIALS ====== */
+  .reviews { padding: 100px 40px; background: var(--bg); text-align: center; }
+  .reviews-summary { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 40px 0 48px; }
+  .stars-big { font-size: 36px; color: var(--gold); letter-spacing: 4px; }
+  .reviews-summary .avg { color: var(--white); font-weight: 800; font-size: 22px; }
+  .reviews-summary .count { color: var(--dim); font-size: 14px; }
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .review-card {
+    background: var(--bg-card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 24px 22px; text-align: left;
+  }
+  .review-card .stars { color: var(--gold); font-size: 16px; letter-spacing: 2px; margin-bottom: 8px; }
+  .review-card .title { font-weight: 800; color: var(--white); font-size: 16px; margin-bottom: 10px; }
+  .review-card .body { color: var(--text); font-size: 14px; line-height: 1.6; margin-bottom: 14px; }
+  .review-card .meta { color: var(--dim); font-size: 12px; display: flex; align-items: center; gap: 10px; }
+  .review-card .meta .verified { color: #34A853; font-weight: 700; }
+
+  /* ====== FAQ ====== */
+  .faq { padding: 100px 80px 120px; background: var(--bg-2); }
+  .faq h2 { text-align: center; margin-bottom: 50px; }
+  .faq-list { max-width: 800px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--line); padding: 22px 0; }
+  .faq-q { font-weight: 700; color: var(--white); margin-bottom: 8px; font-size: 17px; }
+  .faq-a { color: var(--dim); font-size: 14.5px; line-height: 1.7; }
+
+  /* ====== STICKY MOBILE CTA ====== */
+  .sticky-cta {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(180deg, rgba(12,12,12,0.97), var(--bg));
+    border-top: 1px solid var(--orange);
+    padding: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+    display: none;       /* becomes flex (column) on mobile via media query */
+    flex-direction: column;
+  }
+  .sticky-cta a {
+    display: block; text-align: center;
+    background: linear-gradient(180deg, var(--orange-2), var(--orange));
+    color: var(--white); font-weight: 900;
+    padding: 14px; margin: 10px 14px 0;
+    border-radius: 10px;
+    font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase;
+    box-shadow: 0 4px 20px rgba(242,107,31,0.4);
+    white-space: nowrap;
+  }
+  /* Urgency strip below the CTA — viewer count + save info on one line */
+  .sticky-urgency {
+    padding: 8px 14px 10px;
+    text-align: center;
+    color: var(--dim);
+    font-size: 11.5px;
+    letter-spacing: 0.02em;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    white-space: nowrap;
+  }
+  .sticky-urgency .viewers-line { display: inline-flex; align-items: center; gap: 6px; }
+  .sticky-urgency strong { color: var(--white); font-weight: 800; }
+  .sticky-urgency .save-line strong { color: var(--orange); }
+  .sticky-urgency .sep { color: rgba(255,255,255,0.18); font-weight: 400; }
+  .sticky-urgency .live-dot {
+    width: 7px; height: 7px;
+    background: #FF4444; border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(255,68,68,0.7);
+    animation: pulse-ring 2s infinite;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  /* ====== FOOTER ====== */
+  footer { background: var(--bg); padding: 32px 80px 100px; text-align: center; color: var(--dim); font-size: 13px; border-top: 1px solid var(--line); }
+  footer .small-brand { display: inline-flex; align-items: center; gap: 10px; opacity: 0.7; margin-bottom: 8px; }
+  footer .small-brand img { width: 24px; height: 24px; border-radius: 4px; }
+
+  /* mobile */
+  @media (max-width: 800px) {
+    .hero { display: flex; flex-direction: column; padding: 32px 24px 44px; gap: 20px; min-height: auto; grid-template-columns: 1fr; }
+    .hero-top { order: 1; }
+    .hero-image { order: 2; }   /* image right between top + bottom */
+    .hero-bottom { order: 3; }
+    .hero-top h1 { font-size: 38px; }
+    .hero-image img { border-radius: 14px; }
+    .hero-rating { font-size: 12.5px; gap: 6px; }
+    .hero-rating .stars-row { font-size: 14px; letter-spacing: 1px; }
+    section.s, .app-showcase, .bundle, .faq { padding: 72px 24px; }
+    .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; gap: 10px; }
+    .photo-grid .span-2-rows { grid-row: auto; grid-column: 1 / span 2; }
+    .specs-grid { grid-template-columns: 1fr 1fr; }
+    .worlds-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .reviews { padding: 70px 24px; }
+    h2 { font-size: 30px; }
+    .lifestyle { height: 55vh; }
+    .lifestyle-content blockquote { font-size: 22px; }
+    .objection .quote { font-size: 22px; }
+    .objection .answer { font-size: 28px; }
+    header { padding: 10px 18px; }
+    .brand-stack .b2 { display: none; }
+    .header-cta { padding: 8px 12px; font-size: 11px; }
+    .sticky-cta { display: flex; }   /* flex-direction:column from base */
+    /* Header not sticky on mobile — only the top countdown bar stays */
+    header { position: static; }
+    .top-countdown-bar { position: sticky; top: 0; }
+    .bundle-card { padding: 30px 24px; }
+    .bundle-row .price { min-width: 60px; }
+    .total-row.grand .v { font-size: 26px; }
+    footer { padding: 28px 24px 110px; }
+    .btn-xl { padding: 17px 26px; font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP COUNTDOWN BAR — always visible across the very top of the page -->
+<div class="top-countdown-bar">
+  <span class="pulse-white"></span>
+  <span>Launch price ends in</span>
+  <span id="top-countdown">--:--:--</span>
+</div>
+
+<header>
+  <div class="brand-wrap">
+    <img src="gridless_logo.png" class="gridless-logo" alt="Gridless">
+    <div class="brand-stack">
+      <span class="b1">Gridless Solar Charger</span>
+      <span class="b2">by <strong>Hawk Nest Hammocks</strong></span>
+    </div>
+  </div>
+  <a href="#order" class="header-cta">Order · $79</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-top fade-in">
+    <span class="tag"><span class="dot"></span>NEW · LAUNCH OFFER · SAVE $95.99</span>
+    <h1>When your phone IS your survival kit, <em>this is what keeps it alive.</em></h1>
+  </div>
+  <div class="hero-image fade-in delay-1">
+    <img src="v5_outdoor_solar.jpg" alt="Gridless solar charger fully unfolded in the sun on a picnic table">
+  </div>
+  <div class="hero-bottom fade-in delay-2">
+    <a href="#reviews-anchor" class="hero-rating">
+      <span class="stars-row">★★★★★</span>
+      <span class="num">4.8</span>
+      <span class="sep">·</span>
+      <span class="link">133 verified reviews</span>
+    </a>
+    <p class="lede" style="margin-top: 18px;">A rugged 20,000 mAh foldable solar charger, bundled with 3 months of Gridless Premium + a 5-year warranty. Built for the people who use Gridless to navigate, forage, and stay safe off-grid — and need their phone alive to do it.</p>
+    <div class="hero-cta">
+      <a href="#order" class="btn-xl">Get the bundle — $79 <span class="arrow">→</span></a>
+    </div>
+    <div class="reassure">
+      <span class="item"><span class="check">✓</span> Free North American shipping</span>
+      <span class="item"><span class="check">✓</span> Ships in 5–7 business days</span>
+      <span class="item"><span class="check">✓</span> Premium activates on order</span>
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTION REVERSAL -->
+<section class="objection fade-in">
+  <div class="label">⛰  THE COMMENT WE GET ON EVERY GRIDLESS AD</div>
+  <div class="quote">"Cool app, but what about <u>when your phone dies?</u>"</div>
+  <div class="answer">Now we have an answer.</div>
+</section>
+
+<!-- PRODUCT PHOTOS GALLERY -->
+<section class="s fade-in" style="background: var(--bg);">
+  <span class="section-tag">⛰  THE CHARGER</span>
+  <h2>Built to keep you <em>connected</em> when grid power can't.</h2>
+  <p class="section-sub">20,000 mAh. Four foldable solar panels. Dual LED flashlights. Built-in cables for USB-C + Lightning. Wireless charging pad. High-vis orange. Weather-resistant.</p>
+
+  <div class="photo-grid">
+    <div class="span-2-rows"><img loading="lazy" src="v4_top_down_unfolded.jpg" alt="Two units shown top-down — clean studio"></div>
+    <div><img loading="lazy" src="v5_in_hand.jpg" alt="Scale reference — in hand"></div>
+    <div><img loading="lazy" src="v5_flashlight_square.jpg" alt="Dual LED flashlights"></div>
+    <div><img loading="lazy" src="v4_phone_wireless_charging.jpg" alt="Phone wirelessly charging on top"></div>
+    <div><img loading="lazy" src="v5_side_ports.jpg" alt="Built-in USB cables"></div>
+  </div>
+</section>
+
+<!-- APP SHOWCASE -->
+<section class="app-showcase fade-in">
+  <span class="section-tag">⛰  THE APP YOU UNLOCK</span>
+  <h2>3 months of Gridless Premium — <em>included.</em></h2>
+  <p class="section-sub">Activates the second you order. Start using offline maps, the field manual, and the emergency beacon TODAY, well before your charger arrives in your hands.</p>
+
+  <div class="phones">
+    <div class="phone">
+      <div class="phone-frame"><img loading="lazy" src="app_home.jpg" alt="Gridless home screen"></div>
+      <div class="phone-label">Field Manual + Daily Tips</div>
+      <div class="phone-sub">EMERGENCY button always visible. New survival tip every morning.</div>
+    </div>
+    <div class="phone">
+      <div class="phone-frame"><img loading="lazy" src="app_journey.jpg" alt="Gridless skill journey"></div>
+      <div class="phone-label">Your Journey</div>
+      <div class="phone-sub">Four worlds of structured learning. Daily Drills + 30 Trophies to unlock.</div>
+    </div>
+    <div class="phone">
+      <div class="phone-frame"><img loading="lazy" src="app_knots.jpg" alt="Gridless knots reference"></div>
+      <div class="phone-label">Real-World Reference</div>
+      <div class="phone-sub">Knots, fire, foraging, navigation — fully offline. Step-by-step diagrams.</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 80px;">
+    <span class="section-tag">⛰  FOUR WORLDS OF CONTENT</span>
+    <h2 style="font-size: 32px;">Built for whatever <em>"out there"</em> means.</h2>
+    <div class="worlds-grid">
+      <div class="world-card"><img loading="lazy" src="world-1.jpg" alt="Recreational Camping"></div>
+      <div class="world-card"><img loading="lazy" src="world-2.jpg" alt="Wilderness Survival"></div>
+      <div class="world-card"><img loading="lazy" src="world-3.jpg" alt="Disaster Readiness"></div>
+      <div class="world-card"><img loading="lazy" src="world-4.jpg" alt="Off-grid & Homesteading"></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE -->
+<section class="lifestyle fade-in">
+  <div class="lifestyle-content">
+    <blockquote>"My phone is my map, my compass, my journal, and my SOS device. The charger is the thing that keeps all of that working."</blockquote>
+    <cite>— Marcus T. · Gridless beta tester</cite>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="s fade-in" style="background: var(--bg-2);">
+  <span class="section-tag">⛰  SPECS</span>
+  <h2>Built to last <em>out there.</em></h2>
+  <div class="specs-grid">
+    <div class="spec fade-in"><div class="num">20,000</div><div class="lbl">mAh capacity</div></div>
+    <div class="spec fade-in"><div class="num">4×</div><div class="lbl">solar panels</div></div>
+    <div class="spec fade-in"><div class="num">2×</div><div class="lbl">LED flashlights</div></div>
+    <div class="spec fade-in"><div class="num">5 yr</div><div class="lbl">extended warranty</div></div>
+  </div>
+</section>
+
+<!-- BUNDLE / ORDER -->
+<section class="bundle fade-in" id="order">
+  <span class="section-tag">⛰  THE LAUNCH BUNDLE</span>
+  <h2>One order. <em>$95.99 in savings.</em></h2>
+  <p class="section-sub">Three products bundled, one launch price.</p>
+
+  <div class="bundle-card-wrap">
+    <div class="bundle-card">
+      <div class="bundle-row">
+        <div class="name">
+          <strong>Gridless Solar Charger</strong>
+          <span>20,000 mAh · 4-panel solar · dual LED · IP-rated</span>
+        </div>
+        <div class="price">$129.00</div>
+        <div class="price-final">$79.00</div>
+      </div>
+      <div class="bundle-row">
+        <div class="name">
+          <strong>3 Months Gridless Premium</strong>
+          <span>Activates today · offline maps · emergency beacon</span>
+        </div>
+        <div class="price">$30.00</div>
+        <div class="price-final free">FREE</div>
+      </div>
+      <div class="bundle-row">
+        <div class="name">
+          <strong>5-Year Extended Warranty</strong>
+          <span>Replace your charger if anything fails — anytime</span>
+        </div>
+        <div class="price">$15.99</div>
+        <div class="price-final free">FREE</div>
+      </div>
+
+      <div class="bundle-totals">
+        <div class="total-row"><span>Retail value</span><span>$174.99</span></div>
+        <div class="total-row discount"><span>Launch Bundle Discount</span><span>−$95.99</span></div>
+        <div class="total-row grand">
+          <span>You pay</span>
+          <span><span class="strike-orig">$174.99</span><span class="v" id="final-price">$79.00</span></span>
+        </div>
+      </div>
+
+      <!-- Add-on toggles -->
+      <label class="addon" for="addon-returns">
+        <input type="checkbox" id="addon-returns">
+        <div class="addon-text">
+          <div class="addon-title">Add Free Returns Protection</div>
+          <div class="addon-sub">Unlimited free returns + exchanges for any reason, no shipping cost on you.</div>
+        </div>
+        <div class="addon-price">+$4.99</div>
+      </label>
+      <label class="addon" for="addon-shipping" style="margin-top: 12px;">
+        <input type="checkbox" id="addon-shipping">
+        <div class="addon-text">
+          <div class="addon-title">Add Shipping Protection</div>
+          <div class="addon-sub">Lost or damaged in transit? Replacement at no charge — peace of mind.</div>
+        </div>
+        <div class="addon-price">+$2.99</div>
+      </label>
+
+      <a href="#" class="order-cta" id="order-cta">Order Now <span class="arrow">→</span></a>
+      <div class="order-finalprice">Order total: <strong id="cta-price">$79.00</strong> · Free shipping · Premium activates instantly</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<a id="reviews-anchor" style="display:block; position:relative; top:-80px; visibility:hidden;"></a>
+<section class="reviews fade-in">
+  <span class="section-tag">⛰  WHAT EARLY BUYERS ARE SAYING</span>
+  <h2>Built by us. <em>Tested by them.</em></h2>
+  <div class="reviews-summary">
+    <div class="stars-big">★ ★ ★ ★ ★</div>
+    <div class="avg">4.8 out of 5</div>
+    <div class="count">Based on 133 verified reviews</div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card fade-in">
+      <div class="stars">★★★★★</div>
+      <div class="title">Replaced my Goal Zero</div>
+      <div class="body">"Took it on a 6-day section hike on the AT in late September. Charged my Garmin, headlamp, and phone every night without ever dropping below half. Half the price of my old Goal Zero and I prefer this one's flashlights."</div>
+      <div class="meta"><span class="verified">✓ Verified Buyer</span><span>Daniel R. · Pennsylvania</span></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="stars">★★★★★</div>
+      <div class="title">Bug-out bag essential</div>
+      <div class="body">"Bought one for my truck and one for the bug-out bag. The hi-vis orange is genius — I've already grabbed the wrong black power bank in the dark before. This thing solved that problem and the bundle with Gridless Premium made it a no-brainer."</div>
+      <div class="meta"><span class="verified">✓ Verified Buyer</span><span>Marcus T. · Idaho</span></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="stars">★★★★★</div>
+      <div class="title">Built-in cables save you</div>
+      <div class="body">"Three trips in a row I've forgotten my USB-C cable at home. This thing has them built in — literally cannot leave them behind. Solar panels topped it up while it sat on my dashboard during a long drive. Smart design."</div>
+      <div class="meta"><span class="verified">✓ Verified Buyer</span><span>Sarah K. · Oregon</span></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="stars">★★★★☆</div>
+      <div class="title">Solar charges slower than expected</div>
+      <div class="body">"4 stars because in shade it barely tops up — totally fine in direct sun. Wall charge via USB-C is fast. Flashlights are surprisingly bright. The Gridless app that came with it is actually really good too, I was expecting some bare-bones thing."</div>
+      <div class="meta"><span class="verified">✓ Verified Buyer</span><span>James W. · Colorado</span></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="stars">★★★★★</div>
+      <div class="title">Free returns are a green flag</div>
+      <div class="body">"Was skeptical of a non-name-brand power bank, but the free returns + 5-year warranty made it feel safe. Showed up well-packaged, solid build. The carabiner clip is rated higher than I expected — clipped it to my pack and it didn't budge over 40km."</div>
+      <div class="meta"><span class="verified">✓ Verified Buyer</span><span>Rachael M. · British Columbia</span></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="stars">★★★★★</div>
+      <div class="title">My wife approves</div>
+      <div class="body">"Bought this for emergency use mostly — power outages, road trips, the cabin. The wireless pad on top is shockingly handy at the cabin. Drop your phone, walk away, come back to 100%. Both my wife and I have used it daily."</div>
+      <div class="meta"><span class="verified">✓ Verified Buyer</span><span>Tom B. · Ontario</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq fade-in">
+  <h2>Common questions</h2>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q">When does the charger ship?</div><div class="faq-a">Orders ship within 5–7 business days from our North American warehouse. You'll get a tracking number by email the moment it goes out.</div></div>
+    <div class="faq-item"><div class="faq-q">How do I claim my 3 months of Gridless Premium?</div><div class="faq-a">Order with the same email you'll use to sign in to the Gridless app, and your Premium subscription activates automatically. No code needed. Download from the App Store or Google Play right after ordering.</div></div>
+    <div class="faq-item"><div class="faq-q">Why is this branded "Gridless by Hawk Nest Hammocks"?</div><div class="faq-a">The Gridless app is built by the team at Hawk Nest Hammocks. Your order is processed through hawknesthammocks.ca — the same store that's shipped thousands of hammock tents since 2023. Gridless is our product line for the people who use our gear in the field.</div></div>
+    <div class="faq-item"><div class="faq-q">What if it doesn't charge well in low light?</div><div class="faq-a">It also charges via USB-C from any wall outlet — solar is the bonus, not the only option. The solar panels top up the battery while you're moving in daylight.</div></div>
+    <div class="faq-item"><div class="faq-q">Is the 5-year warranty really free?</div><div class="faq-a">Yes. The $15.99 warranty product is included in the launch bundle at no charge. If anything fails — battery, panels, lights, ports — we ship you a replacement. No questions, no hassle.</div></div>
+    <div class="faq-item"><div class="faq-q">Why high-visibility orange?</div><div class="faq-a">Same reason emergency gear is orange: when conditions deteriorate, you need to find it fast. A black charger at the bottom of a wet pack at dusk is a problem you don't want.</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="small-brand">
+    <img src="gridless_logo.png" alt="Gridless">
+    <span>Gridless — by Hawk Nest Hammocks</span>
+  </div>
+  <p>© 2026 Hawk Nest Hammocks · hawknesthammocks.ca</p>
+</footer>
+
+<!-- Sticky mobile CTA -->
+<div class="sticky-cta">
+  <a href="#order" id="sticky-cta-link">Order — $79</a>
+  <div class="sticky-urgency">
+    <span class="viewers-line"><span class="live-dot"></span><strong id="viewers-count-sticky">23</strong> viewing right now</span>
+    <span class="sep">·</span>
+    <span class="save-line"><strong id="save-amount">Save $95.99</strong> today</span>
+  </div>
+</div>
+
+<script>
+  // ============================
+  // Scroll-triggered fade-ins
+  // ============================
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ============================
+  // Viewers-now widget (jittered)
+  // ============================
+  function updateViewers() {
+    const els = [document.getElementById('viewers-count'), document.getElementById('viewers-count-sticky')].filter(Boolean);
+    if (!els.length) return;
+    const delta = Math.floor(Math.random() * 17) - 7; // -7 to +9
+    const value = Math.max(8, Math.min(48, 23 + delta));
+    els.forEach(el => el.textContent = value);
+  }
+  setInterval(updateViewers, 6500 + Math.random() * 4000);
+  updateViewers();
+
+  // ============================
+  // Countdown timer to end-of-day
+  // ============================
+  function pad(n) { return n.toString().padStart(2, '0'); }
+  function updateCountdown() {
+    const now = new Date();
+    const end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+    const ms = end - now;
+    const text = ms <= 0 ? '00:00:00'
+      : pad(Math.floor(ms / 3600000)) + ':' +
+        pad(Math.floor((ms % 3600000) / 60000)) + ':' +
+        pad(Math.floor((ms % 60000) / 1000));
+    [document.getElementById('countdown'), document.getElementById('top-countdown')]
+      .filter(Boolean)
+      .forEach(el => el.textContent = text);
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // ============================
+  // Cart URL composition
+  // ============================
+  const BASE_VARIANTS = "53170416353577:1,52799135842601:1,46871399465257:1";
+  const RETURNS_VARIANT = "47874384953641:1";
+  const SHIPPING_VARIANT = "47418714784041:1";
+  const CART_BASE = "https://hawknesthammocks.ca/cart/";
+
+  function updateCart() {
+    const wantReturns = document.getElementById('addon-returns').checked;
+    const wantShipping = document.getElementById('addon-shipping').checked;
+    let url = CART_BASE + BASE_VARIANTS;
+    if (wantReturns) url += "," + RETURNS_VARIANT;
+    if (wantShipping) url += "," + SHIPPING_VARIANT;
+    document.getElementById('order-cta').href = url;
+
+    let total = 79.00;
+    if (wantReturns) total += 4.99;
+    if (wantShipping) total += 2.99;
+    const totalStr = "$" + total.toFixed(2);
+    document.getElementById('cta-price').textContent = totalStr;
+    // keep the displayed bundle price at $79 — the add-ons total shows in the CTA below
+    document.querySelectorAll('.header-cta').forEach(el => {
+      el.textContent = "Order · $" + Math.round(total);
+    });
+    document.getElementById('sticky-cta-link').textContent = "Order — " + totalStr;
+  }
+
+  document.getElementById('addon-returns').addEventListener('change', updateCart);
+  document.getElementById('addon-shipping').addEventListener('change', updateCart);
+  updateCart();
+</script>
+
+</body>
+</html>
