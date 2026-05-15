@@ -5,6 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Gridless Solar Charger — Hawk Nest Hammocks</title>
 <meta name="description" content="The Gridless 20,000 mAh foldable solar charger + 3 months Gridless Premium + 5-year warranty. By Hawk Nest Hammocks. Save $95.99 on the launch bundle." />
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '654633620066866');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {
+  content_type: 'product',
+  content_ids: ['10082103394601'],
+  content_name: 'Gridless Solar Charger Bundle',
+  value: 79.00,
+  currency: 'USD'
+});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=654633620066866&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
 <style>
   :root {
     --bg: #0c0c0c;
@@ -827,6 +848,42 @@
   document.getElementById('addon-returns').addEventListener('change', updateCart);
   document.getElementById('addon-shipping').addEventListener('change', updateCart);
   updateCart();
+
+  // ============================
+  // Meta pixel — fire AddToCart + InitiateCheckout when user clicks Order
+  // ============================
+  function fireOrderPixel() {
+    const wantReturns = document.getElementById('addon-returns').checked;
+    const wantShipping = document.getElementById('addon-shipping').checked;
+    let total = 79.00;
+    if (wantReturns) total += 4.99;
+    if (wantShipping) total += 2.99;
+    if (typeof fbq === 'function') {
+      fbq('track', 'AddToCart', {
+        content_type: 'product',
+        content_ids: ['10082103394601'],
+        content_name: 'Gridless Solar Charger Bundle',
+        value: total,
+        currency: 'USD',
+        num_items: 3 + (wantReturns ? 1 : 0) + (wantShipping ? 1 : 0),
+      });
+      fbq('track', 'InitiateCheckout', {
+        content_type: 'product',
+        content_ids: ['10082103394601'],
+        content_name: 'Gridless Solar Charger Bundle',
+        value: total,
+        currency: 'USD',
+      });
+    }
+  }
+  // Attach to every order-CTA on the page (main button, sticky bottom, header)
+  ['order-cta', 'sticky-cta-link'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', fireOrderPixel);
+  });
+  document.querySelectorAll('.header-cta, .btn-xl').forEach(el => {
+    el.addEventListener('click', fireOrderPixel);
+  });
 </script>
 
 </body>
