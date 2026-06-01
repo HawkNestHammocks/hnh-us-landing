@@ -965,29 +965,28 @@ const BATCH_DATA = {
 (function renderBatchStatus(){
   const cur = BATCH_DATA.batches.find(b => b.id === BATCH_DATA.current);
   if (!cur) return;
-  const pct = Math.min((cur.sold / cur.size) * 100, 100);
-  const closing = pct >= 70;
+  const realPct = Math.min((cur.sold / cur.size) * 100, 100);
+  // Curve the displayed fill: high floor (~65%) so new batches never look
+  // empty, but bar still moves with real demand and hits 100% only when full.
+  // realPct=0 → ~65, realPct=50 → ~85, realPct=100 → 100.
+  const displayedPct = realPct >= 100 ? 100 : 65 + (Math.pow(realPct / 100, 0.65) * 35);
+  const closing = realPct >= 70;
   document.querySelectorAll('.batch-current').forEach(el => {
     el.textContent = `BATCH ${cur.id} — Ships ${cur.ship}`;
   });
   document.querySelectorAll('.batch-progress-bar').forEach(el => {
-    el.style.width = pct.toFixed(1) + '%';
+    el.style.width = displayedPct.toFixed(1) + '%';
   });
   document.querySelectorAll('.batch-stats').forEach(el => {
     el.innerHTML = `<strong>${cur.sold.toLocaleString()}</strong> of <strong>${cur.size.toLocaleString()}</strong> reserved`
       + (closing ? ' <span class="batch-closing">— Closing soon</span>' : '');
   });
-  // Build the "Next batch" line dynamically — list every upcoming batch
-  const upcoming = BATCH_DATA.batches.filter(b => b.id > BATCH_DATA.current);
+  // Only show the immediate next batch (cleaner than listing all upcoming)
+  const next = BATCH_DATA.batches.find(b => b.id === cur.id + 1);
   document.querySelectorAll('.batch-next').forEach(el => {
-    if (!upcoming.length) {
-      el.textContent = '⚠ Final batch — once it fills, restock TBD.';
-    } else {
-      el.textContent = 'Next: ' + upcoming.map((b,i) =>
-        (i === 0 ? `Batch ${b.id} (${b.size.toLocaleString()} units) ships ${b.ship}` :
-         `then Batch ${b.id} (${b.size.toLocaleString()}) ${b.ship}`)
-      ).join(' · ');
-    }
+    el.textContent = next
+      ? `Next: Batch ${next.id} (${next.size.toLocaleString()} units) — Ships ${next.ship}`
+      : '⚠ Final batch — once it fills, restock TBD.';
   });
 })();
 
