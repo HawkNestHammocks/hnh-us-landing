@@ -300,91 +300,64 @@ img{max-width:100%;height:auto;display:block}
   .stack-popup{padding:24px 20px}
   .video-reviews-grid{grid-template-columns:1fr!important}
 }
-/* ── Batch status widget (added for batch-drop system) ── */
+/* ── Batch status widget — sits directly above the checkout CTA ── */
 .batch-status{
   background:linear-gradient(180deg,#FFF8E8 0%,#FFEFC8 100%);
   border:2px solid var(--orange);
-  border-radius:18px;
-  padding:24px 28px;
-  margin:30px auto 0;
-  max-width:680px;
-  box-shadow:0 12px 30px rgba(232,114,42,.18);
+  border-radius:14px;
+  padding:14px 18px;
+  margin:0 auto 18px;
+  max-width:460px;
+  box-shadow:0 8px 22px rgba(232,114,42,.18);
   color:#1a2332;
 }
 .batch-status *{color:inherit}
-.batch-header{
-  display:flex;align-items:center;gap:12px;
-  font-size:1.15rem;font-weight:800;
-  color:#1a2332 !important;
-  margin-bottom:14px;
-  letter-spacing:.3px;
-}
+.batch-compact-row{display:flex;align-items:center;gap:14px}
 .batch-pulse{
-  display:inline-block;font-size:1.5rem;
+  display:inline-block;font-size:1.5rem;flex-shrink:0;
   animation:batchPulse 2.2s ease-in-out infinite;
   filter:drop-shadow(0 2px 4px rgba(232,114,42,.4));
 }
+.batch-compact-info{flex:1;min-width:0;text-align:left}
+.batch-current{
+  font-size:.92rem;font-weight:800;letter-spacing:.3px;
+  color:#1a2332 !important;margin-bottom:6px;
+  font-family:'Inter',system-ui,sans-serif;
+}
 .batch-progress-wrap{
-  position:relative;height:16px;
-  background:rgba(232,114,42,.15);
-  border-radius:999px;overflow:hidden;
-  margin-bottom:12px;
-  box-shadow:inset 0 1px 2px rgba(0,0,0,.08);
+  position:relative;height:9px;
+  background:rgba(232,114,42,.15);border-radius:999px;overflow:hidden;
+  margin-bottom:6px;box-shadow:inset 0 1px 2px rgba(0,0,0,.08);
 }
 .batch-progress-bar{
   height:100%;
   background:linear-gradient(90deg,#F4CE52 0%,var(--orange) 60%,#C45813 100%);
   border-radius:999px;
-  box-shadow:0 0 12px rgba(232,114,42,.5);
-  transition:width .4s ease;
-  position:relative;
+  box-shadow:0 0 10px rgba(232,114,42,.45);
+  transition:width .4s ease;position:relative;
 }
 .batch-progress-bar::after{
   content:"";position:absolute;top:0;left:0;right:0;bottom:0;
   background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.4) 50%,transparent 100%);
   animation:batchShimmer 2.5s linear infinite;
 }
-.batch-stats{
-  font-size:1.05rem;color:#1a2332 !important;font-weight:600;
-}
+.batch-stats{font-size:.82rem;font-weight:600;color:#1a2332 !important}
 .batch-stats strong{font-weight:800;color:#1a2332 !important}
 .batch-closing{color:#c45813 !important;font-weight:800}
 .batch-next{
-  font-size:.88rem;color:#5b4830 !important;margin-top:10px;font-style:italic;
+  font-size:.78rem;color:#5b4830 !important;margin-top:6px;font-style:italic;
 }
-/* ── Compact batch widget — fits above checkout CTAs ── */
-.batch-status-compact{
-  padding:14px 18px;border-radius:14px;
-}
-.batch-status-compact .batch-compact-row{
-  display:flex;align-items:center;gap:14px;
-}
-.batch-status-compact .batch-pulse{
-  font-size:1.5rem;flex-shrink:0;
-}
-.batch-status-compact .batch-compact-info{
-  flex:1;min-width:0;
-}
-.batch-status-compact .batch-current{
-  font-size:.92rem;font-weight:800;letter-spacing:.3px;
-  color:#1a2332 !important;margin-bottom:6px;
-  font-family:'Inter',system-ui,sans-serif;
-}
-.batch-status-compact .batch-progress-wrap{
-  height:9px;margin-bottom:6px;
-}
-.batch-status-compact .batch-stats{
-  font-size:.82rem;font-weight:600;
-}
+@keyframes batchPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(1.18)}}
+@keyframes batchShimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 @media (max-width:600px){
-  .batch-status-compact{padding:12px 14px}
-  .batch-status-compact .batch-compact-row{gap:10px}
-  .batch-status-compact .batch-pulse{font-size:1.25rem}
-  .batch-status-compact .batch-current{font-size:.82rem;margin-bottom:5px}
-  .batch-status-compact .batch-stats{font-size:.74rem}
+  .batch-status{padding:12px 14px}
+  .batch-compact-row{gap:10px}
+  .batch-pulse{font-size:1.25rem}
+  .batch-current{font-size:.82rem;margin-bottom:5px}
+  .batch-stats{font-size:.74rem}
+  .batch-next{font-size:.72rem}
 }
-
-/* ── Primary checkout CTA — visually distinct from scroll buttons ── */
+/* ── Primary checkout CTA — visually distinct gradient + icon + arrow ── */
 .btn-checkout{
   display:inline-flex !important;
   align-items:center;justify-content:center;gap:12px;
@@ -396,9 +369,8 @@ img{max-width:100%;height:auto;display:block}
     inset 0 1px 0 rgba(255,255,255,.28),
     inset 0 -1px 0 rgba(0,0,0,.18) !important;
   border:none !important;
-  position:relative;
-  transition:transform .15s ease,box-shadow .2s ease;
   text-shadow:0 1px 2px rgba(0,0,0,.2);
+  transition:transform .15s ease,box-shadow .2s ease;
 }
 .btn-checkout:hover{
   transform:translateY(-2px);
@@ -408,58 +380,12 @@ img{max-width:100%;height:auto;display:block}
     inset 0 1px 0 rgba(255,255,255,.28),
     inset 0 -1px 0 rgba(0,0,0,.18) !important;
 }
-.btn-checkout-icon{font-size:1.35em;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3));}
+.btn-checkout-icon{font-size:1.35em;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3))}
 .btn-checkout-arrow{
   font-size:1.4em;font-weight:900;
   animation:btnArrowSlide 1.4s ease-in-out infinite;
 }
-@keyframes btnArrowSlide{
-  0%,100%{transform:translateX(0)}
-  50%{transform:translateX(6px)}
-}
-
-/* ── Scroll-only buttons — secondary, with down arrow
-   Default = dark navy text on light bg (hero, mid-page).
-   Add .btn-scroll-on-dark when the button sits inside a dark section. */
-.btn-scroll{
-  background:transparent !important;
-  color:#1a2332 !important;
-  border:2px solid var(--orange) !important;
-  box-shadow:0 4px 12px rgba(232,96,28,.18) !important;
-  font-weight:800 !important;
-  display:inline-flex !important;
-  align-items:center;gap:8px;justify-content:center;
-  animation:none !important;
-}
-.btn-scroll::after{content:"↓";font-size:1.05em;opacity:.95;font-weight:900;color:var(--orange);}
-.btn-scroll:hover{
-  background:rgba(232,96,28,.08) !important;
-  border-color:var(--orange-hover) !important;
-  transform:translateY(-1px);
-}
-.btn-scroll-on-dark{
-  color:#fff !important;
-  border-color:#F4CE52 !important;
-  background:rgba(255,255,255,.06) !important;
-}
-.btn-scroll-on-dark::after{color:#F4CE52 !important;}
-.btn-scroll-on-dark:hover{
-  background:rgba(255,255,255,.14) !important;
-  border-color:#F4CE52 !important;
-}
-@keyframes batchPulse{
-  0%,100%{opacity:1;transform:scale(1)}
-  50%{opacity:.7;transform:scale(1.18)}
-}
-@keyframes batchShimmer{
-  0%{transform:translateX(-100%)}
-  100%{transform:translateX(100%)}
-}
-@media (max-width:600px){
-  .batch-status{padding:20px;margin:20px auto 0}
-  .batch-header{font-size:1rem;flex-wrap:wrap}
-  .batch-stats{font-size:.95rem}
-}
+@keyframes btnArrowSlide{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
 </style>
 </head>
 <body>
@@ -468,7 +394,7 @@ img{max-width:100%;height:auto;display:block}
 <div class="logo-bar">
 <div class="container">
   <a href="#" class="logo-mark">
-    <img src="https://hawknesthammocks.ca/cdn/shop/files/Untitled_design_3_001ffe6f-f724-46b9-b784-c4b24d50360a.png" alt="Hawk Nest Hammocks logo" loading="lazy" decoding="async">
+    <img src="https://hawknesthammocks.ca/cdn/shop/files/Untitled_design_3_001ffe6f-f724-46b9-b784-c4b24d50360a.png" alt="Hawk Nest Hammocks logo">
   </a>
   <a href="#offer" class="nav-cta">PRE-ORDER NOW →</a>
 </div>
@@ -493,7 +419,7 @@ img{max-width:100%;height:auto;display:block}
     <p class="hero-sub">Why sleep on the cold, hard ground when you can sleep suspended in comfort? The Hawk Nest V.3 with patent-pending spreader bar system gives you ample interior space for the ultimate outdoor sleep. 400+ five-star reviews. Now shipping to all 50 states.</p>
     
     <div class="hero-cta">
-      <a href="#offer" class="btn btn-scroll">SEE THE OFFER</a>
+      <a href="#offer" class="btn">CLAIM YOUR BUNDLE — $159</a>
     </div>
   </div>
   <div class="hero-image-wrap">
@@ -524,13 +450,13 @@ img{max-width:100%;height:auto;display:block}
     </div>
     <div class="hero-carousel" id="heroCarousel">
       <div class="hero-carousel-track" id="heroTrack">
-        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749" alt="Hawk Nest All-Season Hammock Tent V.3 complete kit" loading="lazy" decoding="async">
-        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_1.png?v=1772739749" alt="Hawk Nest hammock tent close-up" loading="lazy" decoding="async">
-        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_2.png?v=1772739749" alt="Hawk Nest hammock tent setup" loading="lazy" decoding="async">
-        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Mattress_Pocket.png?v=1772739749" alt="Hawk Nest sleeping pad pocket underside" loading="lazy" decoding="async">
-        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_23.png?v=1772739749" alt="Hawk Nest hammock tent lifestyle" loading="lazy" decoding="async">
-        <img src="influencer2.jpg" alt="Hiker with Hawk Nest backpack in winter mountains" loading="lazy" decoding="async">
-        <img src="influencer4.jpg" alt="Hawk Nest hammock in snowy winter mountains" loading="lazy" decoding="async">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749" alt="Hawk Nest All-Season Hammock Tent V.3 complete kit">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_1.png?v=1772739749" alt="Hawk Nest hammock tent close-up">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_2.png?v=1772739749" alt="Hawk Nest hammock tent setup">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Mattress_Pocket.png?v=1772739749" alt="Hawk Nest sleeping pad pocket underside">
+        <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_23.png?v=1772739749" alt="Hawk Nest hammock tent lifestyle">
+        <img src="influencer2.jpg" alt="Hiker with Hawk Nest backpack in winter mountains">
+        <img src="influencer4.jpg" alt="Hawk Nest hammock in snowy winter mountains">
       </div>
       <button class="hero-carousel-btn prev" onclick="carouselPrev()" aria-label="Previous">‹</button>
       <button class="hero-carousel-btn next" onclick="carouselNext()" aria-label="Next">›</button>
@@ -563,23 +489,23 @@ img{max-width:100%;height:auto;display:block}
 </div>
 <div class="stack-table fade-in">
   <div class="stack-row free" onclick="showPopup('hammock')">
-    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749" alt="Hawk Nest V.3" loading="lazy" decoding="async"> Hawk Nest All-Season Hammock Tent V.3</span>
+    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3.png?v=1772739749" alt="Hawk Nest V.3"> Hawk Nest All-Season Hammock Tent V.3</span>
     <span class="stack-val" style="color:#fff">$229</span>
   </div>
   <div class="stack-row free" onclick="showPopup('bottom')">
-    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190" alt="Waterproof bottom" loading="lazy" decoding="async"> Waterproof Bottom Upgrade</span>
+    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190" alt="Waterproof bottom"> Waterproof Bottom Upgrade</span>
     <span class="stack-val"><s style="color:#94a3b8">$39</s> FREE</span>
   </div>
   <div class="stack-row free" onclick="showPopup('bag')">
-    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669" alt="Carrying bag" loading="lazy" decoding="async"> Waterproof Carrying Bag Upgrade</span>
+    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669" alt="Carrying bag"> Waterproof Carrying Bag Upgrade</span>
     <span class="stack-val"><s style="color:#94a3b8">$19</s> FREE</span>
   </div>
   <div class="stack-row free" onclick="showPopup('warranty')">
-    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/lifetime_warranty_badge.png?v=1779393862" alt="Lifetime Warranty" loading="lazy" decoding="async"> Lifetime Warranty (upgrade from 5-year)</span>
+    <span class="stack-label"><img class="stack-thumb" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/lifetime_warranty_badge.png?v=1779393862" alt="Lifetime Warranty"> Lifetime Warranty (upgrade from 5-year)</span>
     <span class="stack-val"><s style="color:#94a3b8">$59</s> FREE</span>
   </div>
   <div class="stack-row free" onclick="showPopup('gridless')">
-    <span class="stack-label"><img class="stack-thumb" src="gridless_icon.png" alt="Gridless app" style="border-radius:12px" loading="lazy" decoding="async"> 1 Year Gridless Premium Survival App</span>
+    <span class="stack-label"><img class="stack-thumb" src="gridless_icon.png" alt="Gridless app" style="border-radius:12px"> 1 Year Gridless Premium Survival App</span>
     <span class="stack-val"><s style="color:#94a3b8">$79</s> FREE</span>
   </div>
   <div class="stack-row free">
@@ -602,19 +528,20 @@ img{max-width:100%;height:auto;display:block}
 </div>
 <p class="stack-tap-hint">Tap any item above to learn more</p>
 
-<div class="batch-status batch-status-compact fade-in" data-batch-widget style="margin:0 auto 18px;max-width:460px">
+<div id="batchStatus" class="batch-status fade-in" data-batch-widget>
   <div class="batch-compact-row">
     <span class="batch-pulse">🔥</span>
     <div class="batch-compact-info">
       <div class="batch-current">BATCH 1 — Ships July 30</div>
       <div class="batch-progress-wrap"><div class="batch-progress-bar" style="width:82.3%"></div></div>
       <div class="batch-stats"><strong>823</strong> of <strong>1,000</strong> reserved <span class="batch-closing">— Closing soon</span></div>
+      <div class="batch-next">Next: Batch 2 (1,000 units) ships Aug 30 · then Batch 3 (1,500) Sep 30 · Batch 4 (1,500) Oct 30</div>
     </div>
   </div>
 </div>
 
 <div class="value-cta fade-in">
-  <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" target="_blank" class="btn btn-checkout">
+  <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" target="_blank" class="btn btn-checkout" style="font-size:1.2rem;padding:20px 48px">
     <span class="btn-checkout-icon">🛒</span>
     <span>PRE-ORDER YOUR HAWK NEST — $159</span>
     <span class="btn-checkout-arrow">→</span>
@@ -633,11 +560,38 @@ img{max-width:100%;height:auto;display:block}
 <section class="section urgency">
 <div class="container">
 <div class="fade-in">
-  <div class="section-eyebrow">Limited First Batch</div>
-  <h2 class="section-title">This Is Our First-Ever US Launch. Stock Is Limited.</h2>
-  <p style="color:#4b5563;max-width:650px;margin-bottom:10px;font-size:1.05rem">We're a Canadian company that spent 3 years perfecting this hammock for the harsh Canadian wilderness. Now we're finally bringing it south of the border — and we're shipping in confirmed production batches. Lock in the current one before it closes.</p>
+  <div class="section-eyebrow">Limited Batch System</div>
+  <h2 class="section-title">We Ship in Limited Batches. Each One Sells Out.</h2>
+  <p style="color:#4b5563;max-width:650px;margin-bottom:10px;font-size:1.05rem">We're a Canadian company that spent 3 years perfecting this hammock for the harsh Canadian wilderness. Now we're shipping to the US in confirmed production batches — once the current one fills, the next opens automatically with a later ship date. Reserve your spot before the current batch closes.</p>
+  <div class="timeline fade-in">
+    <div class="tl-item active">
+      <div class="tl-dot"></div>
+      <div class="tl-label">Batch 1 — Ships July 30</div>
+      <div class="tl-desc">1,000 units · ~82% reserved · closing soon</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-label">Batch 2 — Ships August 30</div>
+      <div class="tl-desc">1,000 units · opens when Batch 1 fills</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-label">Batch 3 — Ships September 30</div>
+      <div class="tl-desc">1,500 units · larger run for fall season</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-label">Batch 4 — Ships October 30</div>
+      <div class="tl-desc">1,500 units · final batch of 2026 production</div>
+    </div>
+    <div class="tl-item red">
+      <div class="tl-dot"></div>
+      <div class="tl-label">After Batch 4 — $229 retail. Bonuses gone.</div>
+      <div class="tl-desc">Limited 2026 batches. Restock TBD.</div>
+    </div>
+  </div>
   <div style="text-align:center;margin-top:40px">
-    <a href="#offer" class="btn btn-scroll">SEE PRICING + BATCH STATUS</a>
+    <a href="#offer" class="btn">LOCK IN $159 BEFORE IT'S GONE</a>
   </div>
 </div>
 </div>
@@ -646,7 +600,7 @@ img{max-width:100%;height:auto;display:block}
 <!-- LIFESTYLE PHOTO -->
 <section style="padding:0;background:var(--white)">
 <div class="container" style="padding:0 20px">
-  <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_34.png?v=1772739749" alt="Customer enjoying Hawk Nest hammock tent in nature" style="width:100%;border-radius:12px;max-height:400px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,.12)" loading="lazy" decoding="async">
+  <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_34.png?v=1772739749" alt="Customer enjoying Hawk Nest hammock tent in nature" style="width:100%;border-radius:12px;max-height:400px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,.12)">
 </div>
 </section>
 
@@ -685,7 +639,7 @@ img{max-width:100%;height:auto;display:block}
       </ul>
     </div>
     <div>
-      <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_20.png?v=1772739749" alt="Couple relaxing in Hawk Nest hammock tent" class="product-img" style="border-radius:12px" loading="lazy" decoding="async">
+      <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_20.png?v=1772739749" alt="Couple relaxing in Hawk Nest hammock tent" class="product-img" style="border-radius:12px">
     </div>
   </div>
 </div>
@@ -700,12 +654,12 @@ img{max-width:100%;height:auto;display:block}
     <h2 class="section-title">Built For Real Adventures</h2>
   </div>
   <div class="gallery-grid fade-in">
-    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_25.png?v=1772739749" alt="Hawk Nest hammock in forest" loading="lazy" decoding="async">
-    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_26.png?v=1772739749" alt="Inside view of Hawk Nest hammock tent" loading="lazy" decoding="async">
-    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Giveaway_5.png?v=1772739749" alt="Hawk Nest set up on snowy ground" loading="lazy" decoding="async">
-    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitled-_1000-x-750-px_l.jpg?v=1772739749" alt="Hawk Nest hammock in forest setting" loading="lazy" decoding="async">
-    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_34.png?v=1772739749" alt="Man relaxing in Hawk Nest hammock" loading="lazy" decoding="async">
-    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_20.png?v=1772739749" alt="Couple in Hawk Nest hammock" loading="lazy" decoding="async">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_25.png?v=1772739749" alt="Hawk Nest hammock in forest">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_26.png?v=1772739749" alt="Inside view of Hawk Nest hammock tent">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Giveaway_5.png?v=1772739749" alt="Hawk Nest set up on snowy ground">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitled-_1000-x-750-px_l.jpg?v=1772739749" alt="Hawk Nest hammock in forest setting">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_34.png?v=1772739749" alt="Man relaxing in Hawk Nest hammock">
+    <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Untitleddesign_20.png?v=1772739749" alt="Couple in Hawk Nest hammock">
   </div>
 </div>
 </section>
@@ -791,7 +745,7 @@ img{max-width:100%;height:auto;display:block}
   <h2 class="section-title" style="text-align:center">Set Up Your Hawk Nest In Under 5 Minutes</h2>
   <!-- Setup GIF -->
   <div style="max-width:560px;margin:30px auto;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.12)">
-    <img src="setup.gif" alt="Hawk Nest hammock tent setup demonstration" style="width:100%;display:block;border-radius:12px" loading="lazy" decoding="async">
+    <img src="setup.gif" alt="Hawk Nest hammock tent setup demonstration" style="width:100%;display:block;border-radius:12px">
   </div>
   <div class="steps-grid">
     <div class="step fade-in">
@@ -817,7 +771,7 @@ img{max-width:100%;height:auto;display:block}
   </div>
 </div>
 <div style="text-align:center;margin-top:40px" class="fade-in">
-  <a href="#offer" class="btn btn-scroll">SEE THE OFFER</a>
+  <a href="#offer" class="btn">ORDER YOURS NOW — $159</a>
 </div>
 </div>
 </section>
@@ -839,56 +793,56 @@ img{max-width:100%;height:auto;display:block}
   </div>
   <div class="test-grid">
     <div class="test-card fade-in">
-      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1754849277__img_6940__original.jpeg?auto=format&w=600" alt="Rusty Goat's Hawk Nest on canoe trip" loading="lazy" decoding="async">
+      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1754849277__img_6940__original.jpeg?auto=format&w=600" alt="Rusty Goat's Hawk Nest on canoe trip">
       <div class="test-stars">★★★★★</div>
       <p class="test-quote">"The hammock was a total experiment on a canoe trip. It's become an essential part of our gear now — comfortable, easy to set up, and kept me dry through everything."</p>
       <div class="test-name">Rusty Goat</div>
       <div class="test-loc">Verified Buyer · Judge.me</div>
     </div>
     <div class="test-card fade-in">
-      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1758763600__img_0734__original.jpeg?auto=format&w=600" alt="Pat's Hawk Nest surviving a storm in Algonquin" loading="lazy" decoding="async">
+      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1758763600__img_0734__original.jpeg?auto=format&w=600" alt="Pat's Hawk Nest surviving a storm in Algonquin">
       <div class="test-stars">★★★★★</div>
       <p class="test-quote">"An intense September storm came through in Algonquin Park, followed by rain for most of the day. I was completely dry and comfortable the entire time."</p>
       <div class="test-name">Pat Christie</div>
       <div class="test-loc">Verified Buyer · Judge.me</div>
     </div>
     <div class="test-card fade-in">
-      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1757347476__20250824_180228__original.jpg?auto=format&w=600" alt="Steve's Hawk Nest after 200km hike" loading="lazy" decoding="async">
+      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1757347476__20250824_180228__original.jpg?auto=format&w=600" alt="Steve's Hawk Nest after 200km hike">
       <div class="test-stars">★★★★★</div>
       <p class="test-quote">"Hiked over 200km in the Québec mountains. And it's still going strong and ready for more. Never sleep on the ground again!"</p>
       <div class="test-name">Steve Desroches</div>
       <div class="test-loc">Verified Buyer · Judge.me</div>
     </div>
     <div class="test-card fade-in">
-      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1764873077__img_1961_jpg__original.jpeg?auto=format&w=600" alt="Alex Catherwood's Hawk Nest setup" loading="lazy" decoding="async">
+      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1764873077__img_1961_jpg__original.jpeg?auto=format&w=600" alt="Alex Catherwood's Hawk Nest setup">
       <div class="test-stars">★★★★★</div>
       <p class="test-quote">"An amazing hammock. Durable for all weather, very comfy, and lightweight to backpack with!"</p>
       <div class="test-name">Alex Catherwood</div>
       <div class="test-loc">Verified Buyer · Judge.me</div>
     </div>
     <div class="test-card fade-in">
-      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1754702940__img_4610__original.jpeg?auto=format&w=600" alt="Elizabeth's Hawk Nest overlooking Bay of Fundy" loading="lazy" decoding="async">
+      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1754702940__img_4610__original.jpeg?auto=format&w=600" alt="Elizabeth's Hawk Nest overlooking Bay of Fundy">
       <div class="test-stars">★★★★★</div>
       <p class="test-quote">"First trip out with the tent, perched on a cliff overlooking the Bay of Fundy. Solid warm and comfy sleep despite the deep temperature drop at night."</p>
       <div class="test-name">Elizabeth Boudreau</div>
       <div class="test-loc">Verified Buyer · Judge.me</div>
     </div>
     <div class="test-card fade-in">
-      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1753894672__img_9169__original.jpeg?auto=format&w=600" alt="Brandon's Hawk Nest on moto-camping trip" loading="lazy" decoding="async">
+      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1753894672__img_9169__original.jpeg?auto=format&w=600" alt="Brandon's Hawk Nest on moto-camping trip">
       <div class="test-stars">★★★★★</div>
       <p class="test-quote">"Just returned from an 8-day moto-camping trip around Quebec and the Gaspe Peninsula. This system exceeded every expectation."</p>
       <div class="test-name">Brandon Williams</div>
       <div class="test-loc">Verified Buyer · Judge.me</div>
     </div>
     <div class="test-card fade-in">
-      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1754765785__img_9593__original.jpeg?auto=format&w=600" alt="Hailey's kayak camping trip with Hawk Nest" loading="lazy" decoding="async">
+      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1754765785__img_9593__original.jpeg?auto=format&w=600" alt="Hailey's kayak camping trip with Hawk Nest">
       <div class="test-stars">★★★★★</div>
       <p class="test-quote">"I ordered a couple of Hawk Nest V.3's after my friend had one and I was not disappointed. Took them on an overnight girls kayaking trip!"</p>
       <div class="test-name">Hailey Kusche</div>
       <div class="test-loc">Verified Buyer · Judge.me</div>
     </div>
     <div class="test-card fade-in">
-      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1755043972__img_9555__original.jpeg?auto=format&w=600" alt="Greg's Hawk Nest on kayak trip" loading="lazy" decoding="async">
+      <img class="test-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1755043972__img_9555__original.jpeg?auto=format&w=600" alt="Greg's Hawk Nest on kayak trip">
       <div class="test-stars">★★★★★</div>
       <p class="test-quote">"This lightweight hammock was easy to set up — first time took about 10 minutes. By the second time, under 5. Perfect for kayak camping."</p>
       <div class="test-name">Greg Faber</div>
@@ -928,11 +882,11 @@ img{max-width:100%;height:auto;display:block}
   <div class="faq-list">
     <div class="faq-item">
       <button class="faq-q">When will my Hawk Nest ship?</button>
-      <div class="faq-a"><p>We ship in confirmed production batches. The live batch counter at the top of this page shows which batch you'll join and when it ships. Batch 1 ships July 30, Batch 2 ships August 30, and so on. Free shipping is included on every order, every batch.</p></div>
+      <div class="faq-a"><p>We ship in confirmed production batches. The live batch counter on this page shows which batch you'll join and exactly when it ships — Batch 1 ships July 30, Batch 2 ships Aug 30, Batch 3 Sep 30, Batch 4 Oct 30. When the current batch fills, the next opens automatically with the later ship date. Free shipping is included on every order, every batch.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q">Is this a pre-order? When do I get charged?</button>
-      <div class="faq-a"><p>Yes — every order on this page is a pre-order. You're charged today to lock in the $159 price + all free bonuses and reserve a spot in the current production batch (see the live batch counter above for the ship date). Each batch fills, and the next opens automatically.</p></div>
+      <div class="faq-a"><p>Yes — every order on this page is a pre-order. You're charged today to lock in the $159 price + all 6 free bonuses and reserve a unit in the current production batch (see the live batch counter above for the ship date). Each batch fills, then the next opens automatically.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q">What if I don't like it?</button>
@@ -975,7 +929,7 @@ img{max-width:100%;height:auto;display:block}
   </div>
   <div style="font-size:.85rem;color:#cbd5e1;margin-bottom:6px">Tax included — what you see is what you pay</div>
   <div style="font-size:.9rem;color:var(--gold);margin-bottom:28px"><em>Includes free bonuses worth $270</em></div>
-  <a href="#offer" class="btn btn-scroll btn-scroll-on-dark" style="font-size:1.1rem;padding:18px 40px">SEE THE FULL OFFER</a>
+  <a href="#offer" class="btn" style="font-size:1.2rem;padding:20px 52px">ORDER MY HAWK NEST — $159</a>
   <p class="guarantee-text">30-Day Money-Back Guarantee · 5-Year Extended Warranty Included</p>
 </div>
 </section>
@@ -984,7 +938,7 @@ img{max-width:100%;height:auto;display:block}
 <div class="sticky-bar" id="stickyBar">
   <div class="sticky-bar-main">
     <span class="sticky-bar-text"><span class="price-old">$429</span> <strong style="color:var(--orange)">$159</strong> tax incl. + Free Shipping</span>
-    <a href="#offer" class="btn btn-scroll btn-scroll-on-dark" style="padding:8px 16px;font-size:.9rem">SEE OFFER</a>
+    <a href="#offer" class="btn">PRE-ORDER</a>
   </div>
   <div class="sticky-bar-urgency"><span class="dot"></span> <span id="viewerCount">47</span> people viewing this right now</div>
 </div>
@@ -997,9 +951,8 @@ img{max-width:100%;height:auto;display:block}
 
 <script>
 // ── Batch status widget — data-driven ──
-// To update: edit BATCH_DATA below (or replace with a fetch() call when the
-// Shopify metafield endpoint is wired up). Render is idempotent across all
-// .batch-status nodes on the page.
+// To update: edit BATCH_DATA below (or replace the values via a fetch when the
+// Shopify metafield endpoint is wired up). Renders into all .batch-status nodes.
 const BATCH_DATA = {
   current: 1,
   batches: [
@@ -1010,9 +963,7 @@ const BATCH_DATA = {
   ],
 };
 (function renderBatchStatus(){
-  const data = BATCH_DATA;
-  const cur = data.batches.find(b => b.id === data.current);
-  const next = data.batches.find(b => b.id === data.current + 1);
+  const cur = BATCH_DATA.batches.find(b => b.id === BATCH_DATA.current);
   if (!cur) return;
   const pct = Math.min((cur.sold / cur.size) * 100, 100);
   const closing = pct >= 70;
@@ -1026,10 +977,17 @@ const BATCH_DATA = {
     el.innerHTML = `<strong>${cur.sold.toLocaleString()}</strong> of <strong>${cur.size.toLocaleString()}</strong> reserved`
       + (closing ? ' <span class="batch-closing">— Closing soon</span>' : '');
   });
+  // Build the "Next batch" line dynamically — list every upcoming batch
+  const upcoming = BATCH_DATA.batches.filter(b => b.id > BATCH_DATA.current);
   document.querySelectorAll('.batch-next').forEach(el => {
-    el.innerHTML = next
-      ? `⚠ Once Batch ${cur.id} fills, Batch ${next.id} (ships ${next.ship}) opens automatically.`
-      : `⚠ Final batch — once it fills, restock is TBD.`;
+    if (!upcoming.length) {
+      el.textContent = '⚠ Final batch — once it fills, restock TBD.';
+    } else {
+      el.textContent = 'Next: ' + upcoming.map((b,i) =>
+        (i === 0 ? `Batch ${b.id} (${b.size.toLocaleString()} units) ships ${b.ship}` :
+         `then Batch ${b.id} (${b.size.toLocaleString()}) ${b.ship}`)
+      ).join(' · ');
+    }
   });
 })();
 
@@ -1071,7 +1029,7 @@ function showPopup(id) {
   const d = popupData[id];
   const overlay = document.getElementById('popupOverlay');
   const content = document.getElementById('popupContent');
-  let imgHtml = d.img ? `<img src="${d.img}" alt="${d.title}" style="${id==='gridless'?'border-radius:16px;':''}" loading="lazy" decoding="async">` : (d.svg || '');
+  let imgHtml = d.img ? `<img src="${d.img}" alt="${d.title}" style="${id==='gridless'?'border-radius:16px;':''}">` : (d.svg || '');
   content.innerHTML = `
     <button class="stack-popup-close" onclick="closePopup()">&times;</button>
     ${imgHtml}
