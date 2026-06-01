@@ -350,6 +350,87 @@ img{max-width:100%;height:auto;display:block}
 .batch-next{
   font-size:.88rem;color:var(--muted);margin-top:10px;font-style:italic;
 }
+/* ── Compact batch widget — fits above checkout CTAs ── */
+.batch-status-compact{
+  padding:14px 18px;border-radius:14px;
+}
+.batch-status-compact .batch-compact-row{
+  display:flex;align-items:center;gap:14px;
+}
+.batch-status-compact .batch-pulse{
+  font-size:1.5rem;flex-shrink:0;
+}
+.batch-status-compact .batch-compact-info{
+  flex:1;min-width:0;
+}
+.batch-status-compact .batch-current{
+  font-size:.92rem;font-weight:800;letter-spacing:.3px;
+  color:var(--earth);margin-bottom:6px;
+  font-family:'Inter',system-ui,sans-serif;
+}
+.batch-status-compact .batch-progress-wrap{
+  height:9px;margin-bottom:6px;
+}
+.batch-status-compact .batch-stats{
+  font-size:.82rem;font-weight:600;
+}
+@media (max-width:600px){
+  .batch-status-compact{padding:12px 14px}
+  .batch-status-compact .batch-compact-row{gap:10px}
+  .batch-status-compact .batch-pulse{font-size:1.25rem}
+  .batch-status-compact .batch-current{font-size:.82rem;margin-bottom:5px}
+  .batch-status-compact .batch-stats{font-size:.74rem}
+}
+
+/* ── Primary checkout CTA — visually distinct from scroll buttons ── */
+.btn-checkout{
+  display:inline-flex !important;
+  align-items:center;justify-content:center;gap:12px;
+  background:linear-gradient(135deg,#F4A04F 0%,#E87422 50%,#C45813 100%) !important;
+  color:#fff !important;
+  box-shadow:
+    0 14px 32px rgba(232,114,42,.45),
+    0 0 0 3px rgba(255,255,255,.06),
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -1px 0 rgba(0,0,0,.18) !important;
+  border:none !important;
+  position:relative;
+  transition:transform .15s ease,box-shadow .2s ease;
+  text-shadow:0 1px 2px rgba(0,0,0,.2);
+}
+.btn-checkout:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 18px 40px rgba(232,114,42,.55),
+    0 0 0 3px rgba(255,255,255,.08),
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -1px 0 rgba(0,0,0,.18) !important;
+}
+.btn-checkout-icon{font-size:1.35em;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3));}
+.btn-checkout-arrow{
+  font-size:1.4em;font-weight:900;
+  animation:btnArrowSlide 1.4s ease-in-out infinite;
+}
+@keyframes btnArrowSlide{
+  0%,100%{transform:translateX(0)}
+  50%{transform:translateX(6px)}
+}
+
+/* ── Scroll-only buttons — secondary, with down arrow ── */
+.btn-scroll{
+  background:rgba(255,255,255,.08) !important;
+  color:var(--cream,#e2e8f0) !important;
+  border:1.5px solid rgba(232,182,53,.45) !important;
+  box-shadow:0 4px 12px rgba(0,0,0,.18) !important;
+  font-weight:700 !important;
+  display:inline-flex !important;
+  align-items:center;gap:8px;justify-content:center;
+}
+.btn-scroll::after{content:"↓";font-size:1.05em;opacity:.85;font-weight:900;}
+.btn-scroll:hover{
+  background:rgba(255,255,255,.14) !important;
+  border-color:rgba(232,182,53,.7) !important;
+}
 @keyframes batchPulse{
   0%,100%{opacity:1;transform:scale(1)}
   50%{opacity:.7;transform:scale(1.18)}
@@ -396,7 +477,7 @@ img{max-width:100%;height:auto;display:block}
     <p class="hero-sub">Why sleep on the cold, hard ground when you can sleep suspended in comfort? The Hawk Nest V.3 with patent-pending spreader bar system gives you ample interior space for the ultimate outdoor sleep. 400+ five-star reviews. Now shipping to all 50 states.</p>
     
     <div class="hero-cta">
-      <a href="#offer" class="btn">CLAIM YOUR BUNDLE — $159</a>
+      <a href="#offer" class="btn btn-scroll">SEE THE OFFER</a>
     </div>
   </div>
   <div class="hero-image-wrap">
@@ -504,9 +585,25 @@ img{max-width:100%;height:auto;display:block}
   <div style="text-align:right;font-size:.78rem;color:#94a3b8;padding:4px 14px 8px;letter-spacing:.5px">Tax included · No checkout surprises</div>
 </div>
 <p class="stack-tap-hint">Tap any item above to learn more</p>
+
+<div class="batch-status batch-status-compact fade-in" data-batch-widget style="margin:0 auto 18px;max-width:460px">
+  <div class="batch-compact-row">
+    <span class="batch-pulse">🔥</span>
+    <div class="batch-compact-info">
+      <div class="batch-current">BATCH 1 — Ships July 30</div>
+      <div class="batch-progress-wrap"><div class="batch-progress-bar" style="width:82.3%"></div></div>
+      <div class="batch-stats"><strong>823</strong> of <strong>1,000</strong> reserved <span class="batch-closing">— Closing soon</span></div>
+    </div>
+  </div>
+</div>
+
 <div class="value-cta fade-in">
-  <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" target="_blank" class="btn" style="font-size:1.2rem;padding:20px 48px">GET THE FULL BUNDLE — $159</a>
-  <span class="btn-sub" style="color:#94a3b8">Save $270 · Free shipping · 30-day guarantee</span>
+  <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" target="_blank" class="btn btn-checkout">
+    <span class="btn-checkout-icon">🛒</span>
+    <span>RESERVE YOUR HAWK NEST — $159</span>
+    <span class="btn-checkout-arrow">→</span>
+  </a>
+  <span class="btn-sub" style="color:#94a3b8">Secure checkout · Save $270 · Free shipping · 30-day guarantee</span>
 </div>
 </div>
 </section>
@@ -520,24 +617,11 @@ img{max-width:100%;height:auto;display:block}
 <section class="section urgency">
 <div class="container">
 <div class="fade-in">
-  <div class="section-eyebrow">Live Batch Status</div>
-  <h2 class="section-title">We Ship in Batches. Lock In the Current One Before It Closes.</h2>
-  <p style="color:#4b5563;max-width:650px;margin-bottom:10px;font-size:1.05rem">Every Hawk Nest V.3 is built in limited production batches with confirmed ship dates. Reserve your spot in the current batch — once it fills, the next one opens with a later ship date.</p>
-
-  <div id="batchStatus" class="batch-status fade-in" data-batch-widget>
-    <div class="batch-header">
-      <span class="batch-pulse">🔥</span>
-      <span class="batch-current">BATCH 1 — Ships July 30</span>
-    </div>
-    <div class="batch-progress-wrap">
-      <div class="batch-progress-bar" style="width: 82.3%"></div>
-    </div>
-    <div class="batch-stats"><strong>823</strong> of <strong>1,000</strong> reserved <span class="batch-closing">— Closing soon</span></div>
-    <div class="batch-next">⚠ Once Batch 1 fills, Batch 2 (ships Aug 30) opens automatically.</div>
-  </div>
-
+  <div class="section-eyebrow">Limited First Batch</div>
+  <h2 class="section-title">This Is Our First-Ever US Launch. Stock Is Limited.</h2>
+  <p style="color:#4b5563;max-width:650px;margin-bottom:10px;font-size:1.05rem">We're a Canadian company that spent 3 years perfecting this hammock for the harsh Canadian wilderness. Now we're finally bringing it south of the border — and we're shipping in confirmed production batches. Lock in the current one before it closes.</p>
   <div style="text-align:center;margin-top:40px">
-    <a href="#offer" class="btn">LOCK IN $159 — JOIN BATCH 1</a>
+    <a href="#offer" class="btn btn-scroll">SEE PRICING + BATCH STATUS</a>
   </div>
 </div>
 </div>
@@ -717,7 +801,7 @@ img{max-width:100%;height:auto;display:block}
   </div>
 </div>
 <div style="text-align:center;margin-top:40px" class="fade-in">
-  <a href="#offer" class="btn">ORDER YOURS NOW — $159</a>
+  <a href="#offer" class="btn btn-scroll">SEE THE OFFER</a>
 </div>
 </div>
 </section>
@@ -875,7 +959,7 @@ img{max-width:100%;height:auto;display:block}
   </div>
   <div style="font-size:.85rem;color:#cbd5e1;margin-bottom:6px">Tax included — what you see is what you pay</div>
   <div style="font-size:.9rem;color:var(--gold);margin-bottom:28px"><em>Includes free bonuses worth $270</em></div>
-  <a href="#offer" class="btn" style="font-size:1.2rem;padding:20px 52px">ORDER MY HAWK NEST — $159</a>
+  <a href="#offer" class="btn btn-scroll" style="font-size:1.1rem;padding:18px 40px">SEE THE FULL OFFER</a>
   <p class="guarantee-text">30-Day Money-Back Guarantee · 5-Year Extended Warranty Included</p>
 </div>
 </section>
@@ -884,7 +968,7 @@ img{max-width:100%;height:auto;display:block}
 <div class="sticky-bar" id="stickyBar">
   <div class="sticky-bar-main">
     <span class="sticky-bar-text"><span class="price-old">$429</span> <strong style="color:var(--orange)">$159</strong> tax incl. + Free Shipping</span>
-    <a href="#offer" class="btn">PRE-ORDER</a>
+    <a href="#offer" class="btn btn-scroll" style="padding:8px 16px;font-size:.9rem">SEE OFFER</a>
   </div>
   <div class="sticky-bar-urgency"><span class="dot"></span> <span id="viewerCount">47</span> people viewing this right now</div>
 </div>

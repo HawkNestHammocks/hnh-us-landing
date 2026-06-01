@@ -316,6 +316,70 @@ footer a{color:var(--sand);text-decoration:underline}
 .batch-next{
   font-size:.88rem;color:var(--muted);margin-top:10px;font-style:italic;
 }
+/* ── Compact batch widget — fits above checkout CTA ── */
+.batch-status-compact{padding:14px 18px;border-radius:14px;}
+.batch-status-compact .batch-compact-row{display:flex;align-items:center;gap:14px;}
+.batch-status-compact .batch-pulse{font-size:1.5rem;flex-shrink:0;}
+.batch-status-compact .batch-compact-info{flex:1;min-width:0;}
+.batch-status-compact .batch-current{
+  font-size:.92rem;font-weight:800;letter-spacing:.3px;
+  color:var(--earth);margin-bottom:6px;
+  font-family:var(--sans,Inter,system-ui,sans-serif);
+}
+.batch-status-compact .batch-progress-wrap{height:9px;margin-bottom:6px;}
+.batch-status-compact .batch-stats{font-size:.82rem;font-weight:600;}
+@media (max-width:600px){
+  .batch-status-compact{padding:12px 14px}
+  .batch-status-compact .batch-compact-row{gap:10px}
+  .batch-status-compact .batch-pulse{font-size:1.25rem}
+  .batch-status-compact .batch-current{font-size:.82rem;margin-bottom:5px}
+  .batch-status-compact .batch-stats{font-size:.74rem}
+}
+
+/* ── Primary checkout CTA — distinct from scroll buttons ── */
+.cta-btn-checkout{
+  display:inline-flex !important;
+  align-items:center;justify-content:center;gap:12px;
+  background:linear-gradient(135deg,#F4A04F 0%,var(--rust) 50%,var(--rust-dark) 100%) !important;
+  color:#fff !important;
+  box-shadow:
+    0 14px 32px rgba(177,86,30,.45),
+    0 0 0 3px rgba(255,255,255,.06),
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -1px 0 rgba(0,0,0,.18) !important;
+  border:none !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.2);
+  transition:transform .15s ease,box-shadow .2s ease;
+}
+.cta-btn-checkout:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 18px 40px rgba(177,86,30,.55),
+    0 0 0 3px rgba(255,255,255,.08),
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -1px 0 rgba(0,0,0,.18) !important;
+}
+.btn-checkout-icon{font-size:1.35em;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3));}
+.btn-checkout-arrow{
+  font-size:1.4em;font-weight:900;
+  animation:btnArrowSlide 1.4s ease-in-out infinite;
+}
+@keyframes btnArrowSlide{
+  0%,100%{transform:translateX(0)}
+  50%{transform:translateX(6px)}
+}
+
+/* ── Scroll-only buttons — secondary treatment ── */
+.cta-btn-scroll{
+  background:transparent !important;
+  color:var(--earth) !important;
+  border:2px solid var(--rust) !important;
+  box-shadow:0 4px 12px rgba(177,86,30,.18) !important;
+  display:inline-flex !important;
+  align-items:center;gap:8px;justify-content:center;
+}
+.cta-btn-scroll::after{content:"↓";font-size:1.05em;opacity:.85;font-weight:900;}
+.cta-btn-scroll:hover{background:rgba(177,86,30,.08) !important;}
 @keyframes batchPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(1.18)}}
 @keyframes batchShimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 @media (max-width:600px){
@@ -332,7 +396,7 @@ footer a{color:var(--sand);text-decoration:underline}
   <a href="https://hawknesthammocks.ca" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--cream)">
     <img src="https://hawknesthammocks.ca/cdn/shop/files/Untitled_design_3_001ffe6f-f724-46b9-b784-c4b24d50360a.png" alt="Hawk Nest Hammocks" style="height:40px;width:auto;border-radius:6px">
   </a>
-  <a href="#offer" style="background:linear-gradient(180deg,var(--rust),var(--rust-dark));color:#fff;font-family:var(--sans);font-size:.8rem;font-weight:700;padding:10px 20px;border-radius:6px;text-decoration:none;box-shadow:0 2px 10px rgba(180,83,9,.3)">Pre-Order Now</a>
+  <a href="#offer" style="background:transparent;color:var(--earth);border:2px solid var(--rust);font-family:var(--sans);font-size:.8rem;font-weight:700;padding:8px 16px;border-radius:6px;text-decoration:none">See Offer ↓</a>
 </nav>
 
 <!-- HERO -->
@@ -564,15 +628,24 @@ footer a{color:var(--sand);text-decoration:underline}
     </div>
     <div style="margin-top:12px;font-size:.85rem;color:var(--muted)">Total value: <strong style="color:var(--earth)">$429</strong> — Yours for <strong style="color:var(--rust);font-size:1.1rem">$159</strong> <span style="color:var(--muted);font-weight:500">(tax included)</span></div>
     <div id="checkout" style="margin-top:36px;padding-top:8px">
-      <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" class="cta-btn" target="_blank" style="font-size:1.15rem;padding:18px 44px">CLAIM YOUR BUNDLE — $159</a>
-      <div style="font-size:.85rem;color:var(--muted);margin-top:10px">Tax included · Free shipping · Reserve your batch below</div>
 
-      <div id="batchStatus" class="batch-status fade-in" style="margin-top:24px" data-batch-widget>
-        <div class="batch-header"><span class="batch-pulse">🔥</span><span class="batch-current">BATCH 1 — Ships July 30</span></div>
-        <div class="batch-progress-wrap"><div class="batch-progress-bar" style="width:82.3%"></div></div>
-        <div class="batch-stats"><strong>823</strong> of <strong>1,000</strong> reserved <span class="batch-closing">— Closing soon</span></div>
-        <div class="batch-next">⚠ Once Batch 1 fills, Batch 2 (ships Aug 30) opens automatically.</div>
+      <div id="batchStatus" class="batch-status batch-status-compact fade-in" data-batch-widget style="margin:0 auto 18px;max-width:460px">
+        <div class="batch-compact-row">
+          <span class="batch-pulse">🔥</span>
+          <div class="batch-compact-info">
+            <div class="batch-current">BATCH 1 — Ships July 30</div>
+            <div class="batch-progress-wrap"><div class="batch-progress-bar" style="width:82.3%"></div></div>
+            <div class="batch-stats"><strong>823</strong> of <strong>1,000</strong> reserved <span class="batch-closing">— Closing soon</span></div>
+          </div>
+        </div>
       </div>
+
+      <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" class="cta-btn cta-btn-checkout" target="_blank" style="font-size:1.15rem;padding:18px 44px">
+        <span class="btn-checkout-icon">🛒</span>
+        <span>RESERVE YOUR HAWK NEST — $159</span>
+        <span class="btn-checkout-arrow">→</span>
+      </a>
+      <div style="font-size:.85rem;color:var(--muted);margin-top:10px">Secure checkout · Tax included · Free shipping</div>
     </div>
   </div>
 </section>
@@ -591,7 +664,7 @@ footer a{color:var(--sand);text-decoration:underline}
       <p style="font-size:1.4rem;line-height:1.6"><em>Stop sleeping on the ground.<br>You've been doing it long enough.</em></p>
     </div>
     <div style="margin-top:32px">
-      <a href="#offer" class="cta-btn">Pre-Order Your Hawk Nest — $159</a>
+      <a href="#offer" class="cta-btn cta-btn-scroll">See the Offer</a>
       <span class="cta-sub">Tax included · Free shipping · Reserve your batch above</span>
     </div>
   </div>
@@ -700,7 +773,7 @@ footer a{color:var(--sand);text-decoration:underline}
     <span style="width:8px;height:8px;background:#4ade80;border-radius:50%;display:inline-block;animation:pulse-dot 1.5s infinite"></span>
     <span style="font-family:var(--sans);font-size:.8rem;color:var(--sand);font-weight:500"><strong id="stickyViewers">34</strong> people viewing this offer</span>
   </div>
-  <a href="#offer" style="background:linear-gradient(180deg,var(--rust),var(--rust-dark));color:#fff;font-family:var(--sans);font-size:.8rem;font-weight:700;padding:10px 20px;border-radius:6px;text-decoration:none;white-space:nowrap;box-shadow:0 2px 10px rgba(180,83,9,.3)">Claim Your Offer →</a>
+  <a href="#offer" style="background:transparent;color:var(--earth);border:2px solid var(--rust);font-family:var(--sans);font-size:.8rem;font-weight:700;padding:8px 16px;border-radius:6px;text-decoration:none;white-space:nowrap">See Offer ↓</a>
 </div>
 <style>
 @keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
