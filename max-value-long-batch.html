@@ -833,6 +833,8 @@ const BATCH_DATA = {
   // Curve the displayed fill so new batches never look empty:
   // realPct=0 → ~65, realPct=50 → ~85, realPct=100 → 100.
   const displayedPct = realPct >= 100 ? 100 : 65 + (Math.pow(realPct / 100, 0.65) * 35);
+  // Derived reserved count tracks the curve so number matches the bar
+  const displayedSold = Math.min(Math.round((displayedPct / 100) * cur.size), cur.size);
   const closing = realPct >= 70;
   document.querySelectorAll('.batch-current').forEach(el => {
     el.textContent = `BATCH ${cur.id} — Ships ${cur.ship}`;
@@ -841,7 +843,7 @@ const BATCH_DATA = {
     el.style.width = displayedPct.toFixed(1) + '%';
   });
   document.querySelectorAll('.batch-stats').forEach(el => {
-    el.innerHTML = `<strong>${cur.sold.toLocaleString()}</strong> of <strong>${cur.size.toLocaleString()}</strong> reserved`
+    el.innerHTML = `<strong>${displayedSold.toLocaleString()}</strong> of <strong>${cur.size.toLocaleString()}</strong> reserved`
       + (closing ? ' <span class="batch-closing">— Closing soon</span>' : '');
   });
   const next = BATCH_DATA.batches.find(b => b.id === cur.id + 1);
