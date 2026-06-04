@@ -922,6 +922,28 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }
   });
 })();
+
+// ── UTM / click-id pass-through to Shopify checkout ──
+// Captures known attribution params from the inbound URL (utm_*, fbclid, gclid, etc.)
+// and appends them to any /cart/ checkout link on the page. Pure additive — no incoming
+// params = zero change to existing behavior. Lets Shopify see the original ad source.
+(function passThroughAttribution(){
+  try {
+    var KEPT = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','ttclid','msclkid','wbraid','gbraid','dclid','irclickid'];
+    var sp = new URLSearchParams(window.location.search);
+    var attr = [];
+    KEPT.forEach(function(k){
+      var v = sp.get(k);
+      if (v) attr.push(encodeURIComponent(k) + '=' + encodeURIComponent(v));
+    });
+    if (!attr.length) return;
+    var qs = attr.join('&');
+    document.querySelectorAll('a[href*="/cart/"]').forEach(function(a){
+      var sep = a.href.indexOf('?') >= 0 ? '&' : '?';
+      a.href = a.href + sep + qs;
+    });
+  } catch (e) { /* fail silent — never block checkout */ }
+})();
 </script>
 
 </body>
