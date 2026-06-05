@@ -954,12 +954,12 @@ img{max-width:100%;height:auto;display:block}
 // To update: edit BATCH_DATA below (or replace the values via a fetch when the
 // Shopify metafield endpoint is wired up). Renders into all .batch-status nodes.
 const BATCH_DATA = {
-  current: 1,
+  current: 2,
   batches: [
-    { id: 1, size: 1000, ship: "July 30",      sold: 823 },
-    { id: 2, size: 1000, ship: "August 30",    sold: 0   },
-    { id: 3, size: 1500, ship: "September 30", sold: 0   },
-    { id: 4, size: 1500, ship: "October 30",   sold: 0   },
+    { id: 1, size: 1000, ship: "July 30",      sold: 1000 },
+    { id: 2, size: 1000, ship: "August 15",    sold: 0    },
+    { id: 3, size: 1500, ship: "September 30", sold: 0    },
+    { id: 4, size: 1500, ship: "October 30",   sold: 0    },
   ],
 };
 (function renderBatchStatus(){
