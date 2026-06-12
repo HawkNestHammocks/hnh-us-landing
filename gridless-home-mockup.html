@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex,nofollow">
+<title>Gridless TODAY — Interactive Mockup</title>
+<style>
+:root{
+  --gold:#C99502; --gold-light:#E8C547; --gold-dark:#9A7400;
+  --cream:#CBC4A6; --dark:#1A1208; --bg1:#1a1e0f; --bg2:#2d2111;
+  --green:#4CAF50; --red:#D9534F;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2) 60%,#1A1208);
+  color:var(--cream); min-height:100vh; max-width:430px; margin:0 auto;
+  padding:14px 16px 90px; overflow-x:hidden;
+}
+
+/* ── header ── */
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.greeting{font-size:.85rem;color:rgba(203,196,166,.6);font-weight:600}
+.greeting b{display:block;font-size:1.05rem;color:#fff;font-weight:800}
+.streak-chip{display:flex;align-items:center;gap:5px;background:rgba(201,149,2,.12);border:1px solid rgba(201,149,2,.35);padding:6px 13px;border-radius:50px;font-weight:900;color:var(--gold);font-size:.95rem}
+
+/* ── HERO gauge ── */
+.hero{display:flex;flex-direction:column;align-items:center;padding:14px 0 6px}
+.gauge-wrap{position:relative;width:210px;height:210px}
+.gauge-wrap svg{transform:rotate(-90deg)}
+.gauge-track{fill:none;stroke:rgba(255,255,255,.07);stroke-width:14;stroke-linecap:round}
+.gauge-fill{fill:none;stroke:url(#goldgrad);stroke-width:14;stroke-linecap:round;transition:stroke-dashoffset 1s cubic-bezier(.22,1,.36,1)}
+.gauge-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gauge-score{font-size:3.4rem;font-weight:900;color:#fff;line-height:1;transition:transform .3s}
+.gauge-score.pop{transform:scale(1.18)}
+.gauge-label{font-size:.62rem;font-weight:900;letter-spacing:3px;color:rgba(203,196,166,.55);margin-top:2px}
+.gauge-status{margin-top:6px;font-size:.78rem;font-weight:900;letter-spacing:2px;padding:5px 16px;border-radius:50px}
+.status-empty{color:var(--red);background:rgba(217,83,79,.12);border:1px solid rgba(217,83,79,.4)}
+.status-building{color:var(--gold);background:rgba(201,149,2,.12);border:1px solid rgba(201,149,2,.4)}
+.status-ready{color:var(--green);background:rgba(76,175,80,.12);border:1px solid rgba(76,175,80,.4)}
+.household{margin-top:10px;display:flex;align-items:center;gap:7px;font-size:.8rem;font-weight:700;color:rgba(203,196,166,.65)}
+.household b{color:var(--gold)}
+.points-float{position:absolute;top:30px;right:10px;font-weight:900;color:var(--green);font-size:1.2rem;opacity:0;pointer-events:none}
+.points-float.show{animation:floatUp 1.1s ease-out}
+@keyframes floatUp{0%{opacity:0;transform:translateY(8px)}25%{opacity:1}100%{opacity:0;transform:translateY(-28px)}}
+
+/* ── missions ── */
+.section-label{font-size:.68rem;font-weight:900;letter-spacing:2.5px;color:rgba(203,196,166,.5);margin:18px 2px 9px;display:flex;justify-content:space-between;align-items:center}
+.section-label .count{color:var(--gold);letter-spacing:0}
+.mission{display:flex;align-items:center;gap:13px;background:rgba(0,0,0,.35);border:1px solid rgba(201,149,2,.18);border-radius:14px;padding:13px 14px;margin-bottom:9px;cursor:pointer;transition:all .25s}
+.mission .ic{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;background:rgba(201,149,2,.12);flex-shrink:0}
+.mission .tx{flex:1;min-width:0}
+.mission .t1{font-size:.9rem;font-weight:800;color:#fff}
+.mission .t2{font-size:.72rem;color:rgba(203,196,166,.55);font-weight:600}
+.mission .pts{font-size:.78rem;font-weight:900;color:var(--gold);white-space:nowrap}
+.mission .chk{width:26px;height:26px;border-radius:50%;border:2px solid rgba(203,196,166,.25);display:flex;align-items:center;justify-content:center;color:transparent;font-weight:900;font-size:.85rem;flex-shrink:0;transition:all .25s}
+.mission.done{border-color:rgba(76,175,80,.35);background:rgba(76,175,80,.06)}
+.mission.done .t1{color:rgba(203,196,166,.5);text-decoration:line-through}
+.mission.done .chk{background:var(--green);border-color:var(--green);color:#fff}
+.mission.done .pts{color:var(--green)}
+.mission.family .ic{background:rgba(232,197,71,.15)}
+
+/* ── week strip ── */
+.week{display:flex;justify-content:space-between;background:rgba(0,0,0,.3);border-radius:14px;padding:12px 16px;margin-top:4px}
+.day{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:.62rem;font-weight:800;color:rgba(203,196,166,.45)}
+.day .dot{width:22px;height:22px;border-radius:50%;border:2px solid rgba(203,196,166,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem}
+.day.hit .dot{background:rgba(201,149,2,.9);border-color:var(--gold);color:var(--dark)}
+.day.today .dot{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,149,2,.2)}
+
+/* ── emergency bar ── */
+.sos-bar{display:flex;gap:9px;margin-top:16px}
+.sos-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;background:rgba(0,0,0,.35);border:1px solid rgba(217,83,79,.25);border-radius:11px;padding:11px 4px;font-size:.74rem;font-weight:900;color:var(--cream)}
+.sos-btn .i{color:var(--red);font-size:.95rem}
+
+/* ── tip ── */
+.tip{background:rgba(0,0,0,.3);border:1px solid rgba(201,149,2,.15);border-radius:12px;padding:13px 14px;margin-top:14px}
+.tip .h{font-size:.66rem;font-weight:900;letter-spacing:2px;color:var(--gold);margin-bottom:5px}
+.tip .b{font-size:.8rem;color:rgba(203,196,166,.8);line-height:1.5;font-weight:500}
+
+.note{margin-top:22px;text-align:center;font-size:.68rem;color:rgba(203,196,166,.35);line-height:1.6}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="greeting">Thursday, June 12<b>Ready for today, Lukas?</b></div>
+  <div class="streak-chip">🔥 <span id="streakN">3</span></div>
+</div>
+
+<!-- HERO GAUGE -->
+<div class="hero">
+  <div class="gauge-wrap">
+    <svg width="210" height="210" viewBox="0 0 210 210">
+      <defs>
+        <linearGradient id="goldgrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#E8C547"/>
+          <stop offset="100%" stop-color="#C99502"/>
+        </linearGradient>
+      </defs>
+      <circle class="gauge-track" cx="105" cy="105" r="92"/>
+      <circle class="gauge-fill" id="gaugeFill" cx="105" cy="105" r="92"
+              stroke-dasharray="578" stroke-dashoffset="555"/>
+    </svg>
+    <div class="gauge-center">
+      <div class="gauge-score" id="scoreN">4</div>
+      <div class="gauge-label">READINESS</div>
+    </div>
+    <div class="points-float" id="ptsFloat">+2</div>
+  </div>
+  <div class="gauge-status status-empty" id="statusPill">JUST STARTING</div>
+  <div class="household">👨‍👩‍👧‍👦 Household: <b id="houseN">11</b> · Clarke family (3 members)</div>
+</div>
+
+<!-- TODAY'S MISSIONS -->
+<div class="section-label">TODAY'S MISSIONS <span class="count" id="missionCount">0/3 · +6 pts available</span></div>
+
+<div class="mission" id="m1" onclick="completeMission(this, 2)">
+  <div class="ic">⚡</div>
+  <div class="tx">
+    <div class="t1">Daily Drill — blackout edition</div>
+    <div class="t2">3 questions · 30 seconds · keeps your streak</div>
+  </div>
+  <div class="pts">+2</div>
+  <div class="chk">✓</div>
+</div>
+
+<div class="mission" id="m2" onclick="completeMission(this, 1)">
+  <div class="ic">🔦</div>
+  <div class="tx">
+    <div class="t1">Check your flashlight batteries</div>
+    <div class="t2">From your Power Outage plan · step 6 of 7</div>
+  </div>
+  <div class="pts">+1</div>
+  <div class="chk">✓</div>
+</div>
+
+<div class="mission family" id="m3" onclick="completeMission(this, 3)">
+  <div class="ic">👨‍👩‍👧‍👦</div>
+  <div class="tx">
+    <div class="t1">Family challenge: meetup point</div>
+    <div class="t2">"Where do we meet if cell networks die?" · any member can complete</div>
+  </div>
+  <div class="pts">+3</div>
+  <div class="chk">✓</div>
+</div>
+
+<!-- WEEK STRIP -->
+<div class="week">
+  <div class="day hit"><div class="dot">✓</div>M</div>
+  <div class="day hit"><div class="dot">✓</div>T</div>
+  <div class="day hit"><div class="dot">✓</div>W</div>
+  <div class="day today"><div class="dot" id="todayDot"></div>T</div>
+  <div class="day"><div class="dot"></div>F</div>
+  <div class="day"><div class="dot"></div>S</div>
+  <div class="day"><div class="dot"></div>S</div>
+</div>
+
+<!-- EMERGENCY QUICK-BAR -->
+<div class="sos-bar">
+  <div class="sos-btn"><span class="i">🆘</span> Beacon</div>
+  <div class="sos-btn"><span class="i">🩹</span> Triage</div>
+  <div class="sos-btn"><span class="i">📋</span> Protocols</div>
+</div>
+
+<!-- DAILY TIP -->
+<div class="tip">
+  <div class="h">💡 DAILY TIP</div>
+  <div class="b">Store water where it won't freeze. A frozen 20L jug is useless in the first hours of a winter blackout.</div>
+</div>
+
+<div class="note">
+  INTERACTIVE MOCKUP — tap the missions and watch the gauge fill.<br>
+  This is the proposed v1.5 TODAY screen. Score statuses: 0-19 Just Starting ·<br>20-59 Building · 60-100 Ready. Missions reset daily; family challenge weekly.
+</div>
+
+<script>
+let score = 4, household = 11, doneCount = 0;
+const CIRC = 578;
+
+function setGauge(val){
+  const off = CIRC - (CIRC * Math.min(val,100) / 100);
+  document.getElementById("gaugeFill").style.strokeDashoffset = off;
+  document.getElementById("scoreN").textContent = val;
+  const pill = document.getElementById("statusPill");
+  pill.className = "gauge-status " + (val < 20 ? "status-empty" : val < 60 ? "status-building" : "status-ready");
+  pill.textContent = val < 20 ? "JUST STARTING" : val < 60 ? "BUILDING READINESS" : "READY";
+}
+
+function completeMission(el, pts){
+  if(el.classList.contains("done")) return;
+  el.classList.add("done");
+  doneCount++;
+  score += pts;
+  household += Math.round(pts/3) || 1;
+  // score pop + float
+  const sn = document.getElementById("scoreN");
+  sn.classList.add("pop"); setTimeout(()=>sn.classList.remove("pop"), 300);
+  const f = document.getElementById("ptsFloat");
+  f.textContent = "+" + pts;
+  f.classList.remove("show"); void f.offsetWidth; f.classList.add("show");
+  if(navigator.vibrate) navigator.vibrate(40);
+  setGauge(score);
+  document.getElementById("houseN").textContent = household;
+  const remaining = [2,1,3].slice(doneCount).reduce ? null : null;
+  document.getElementById("missionCount").textContent =
+    doneCount + "/3" + (doneCount === 3 ? " · all done — streak safe 🔥" : "");
+  if(doneCount === 3){
+    document.getElementById("streakN").textContent = "4";
+    document.getElementById("todayDot").textContent = "✓";
+    document.querySelector(".day.today").classList.add("hit");
+  }
+}
+setTimeout(()=>setGauge(score), 300);
+</script>
+</body>
+</html>
