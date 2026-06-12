@@ -219,6 +219,24 @@ body{
 .ap-card .prog{height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
 .ap-card .prog i{display:block;height:100%;width:43%;background:linear-gradient(90deg,var(--gold-light),var(--gold));border-radius:3px}
 
+/* member mini ring */
+.mring{position:relative;width:38px;height:38px;flex-shrink:0}
+.mring svg{transform:rotate(-90deg)}
+.mring .mt{fill:none;stroke:rgba(255,255,255,.08);stroke-width:3.5}
+.mring .mf{fill:none;stroke-width:3.5;stroke-linecap:round}
+.mring span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;color:#fff}
+
+/* hero toggle */
+.htoggle{display:flex;background:rgba(0,0,0,.4);border:1px solid rgba(201,149,2,.25);border-radius:50px;padding:3px;margin-bottom:10px}
+.htoggle button{border:none;background:none;color:rgba(203,196,166,.55);font-weight:900;font-size:.68rem;letter-spacing:1.5px;padding:7px 20px;border-radius:50px;cursor:pointer;font-family:inherit;transition:all .25s}
+.htoggle button.on{background:rgba(201,149,2,.25);color:var(--gold-light)}
+.fam-break{display:none;width:100%;background:rgba(0,0,0,.42);border:1px solid rgba(201,149,2,.18);border-radius:13px;padding:11px 13px;margin-top:10px}
+.fam-break.on{display:block;animation:fadeIn .3s ease}
+.fb-row{display:flex;align-items:center;gap:10px;padding:6px 0}
+.fb-row .fn{flex:1;font-size:.8rem;font-weight:800;color:#fff}
+.fb-row .fs{font-size:.68rem;font-weight:800}
+.fb-head{font-size:.68rem;font-weight:700;color:rgba(203,196,166,.65);line-height:1.45;margin-bottom:4px}
+
 /* widget glow */
 .widget-frame{position:relative;box-shadow:0 4px 14px rgba(0,0,0,.4),0 0 22px rgba(201,149,2,.28);border-color:rgba(201,149,2,.45);animation:wGlow 2.6s ease-in-out infinite}
 @keyframes wGlow{0%,100%{box-shadow:0 4px 14px rgba(0,0,0,.4),0 0 18px rgba(217,83,79,.3)}50%{box-shadow:0 4px 14px rgba(0,0,0,.4),0 0 30px rgba(201,149,2,.45)}}
@@ -246,20 +264,30 @@ body{
     <div class="greeting">Friday, June 12<b>Ready for today, Lukas?</b></div>
     <div class="trend-chip tr-down" id="trendChip" onclick="openHow()" style="cursor:pointer">▼ SLIPPING</div>
   </div>
-  <div class="hero" onclick="openHow()" style="cursor:pointer">
-    <div class="gauge-wrap">
+  <div class="hero">
+    <div class="htoggle">
+      <button class="on" id="tgYou" onclick="setMode('you')">YOU</button>
+      <button id="tgFam" onclick="setMode('family')">FAMILY</button>
+    </div>
+    <div class="gauge-wrap" onclick="openHow()" style="cursor:pointer">
       <svg width="200" height="200" viewBox="0 0 200 200">
         <circle class="gauge-track" cx="100" cy="100" r="88"/>
         <circle class="gauge-fill" id="gaugeFill" cx="100" cy="100" r="88" stroke-dasharray="553" stroke-dashoffset="531"/>
       </svg>
       <div class="gauge-center">
         <div class="gauge-score" id="scoreN">4</div>
-        <div class="gauge-label">READINESS</div>
+        <div class="gauge-label" id="gaugeLabel">YOUR READINESS</div>
       </div>
       <div class="pts-float" id="ptsFloat">+2</div>
     </div>
-    <div class="status st-e" id="statusPill">JUST STARTING</div>
-    <div class="household">👨‍👩‍👧‍👦 Household: <b id="houseN">11</b> · Clarke family (3)</div>
+    <div class="status st-e" id="statusPill" onclick="openHow()" style="cursor:pointer">JUST STARTING</div>
+    <div class="household" id="houseLine">👨‍👩‍👧‍👦 Household: <b id="houseN">14</b> · Clarke family (3)</div>
+    <div class="fam-break" id="famBreak">
+      <div class="fb-head">📉 <b>Why is it low?</b> Your household average needs everyone pulling. Holly hasn't done a mission in 2 days.</div>
+      <div class="fb-row"><div class="fn">Lukas (you)</div><div class="fs" style="color:var(--red)">4 · SLIPPING</div></div>
+      <div class="fb-row"><div class="fn">Holly</div><div class="fs" style="color:var(--red)">8 · SLIPPING</div><button class="nudge" onclick="this.textContent='SENT 👋';this.classList.add('sent')">NUDGE</button></div>
+      <div class="fb-row"><div class="fn">Emma</div><div class="fs" style="color:var(--gold)">31 · BUILDING</div></div>
+    </div>
   </div>
 
   <div class="sec">TODAY'S MISSIONS <span class="r" id="mCount">0/3 · +6 pts waiting</span></div>
@@ -309,7 +337,8 @@ body{
     </div>
     <div style="flex:1">
       <div style="font-size:.84rem;font-weight:800;color:#fff;margin-bottom:3px">Readiness widget</div>
-      <div style="font-size:.72rem;color:rgba(203,196,166,.6);line-height:1.5;font-weight:500">Your score lives on your phone's home screen. Green when you're prepared — turns red when it starts to slip. Updates live as the family completes missions.</div>
+      <div style="font-size:.72rem;color:rgba(203,196,166,.6);line-height:1.5;font-weight:500">Your score on your phone's home screen — green when prepared, red when it slips.</div>
+      <button style="margin-top:9px;padding:9px 16px;border-radius:50px;font-size:.7rem;font-weight:900;letter-spacing:.5px;border:none;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--dark);cursor:pointer;font-family:inherit" onclick="alert('Walks the user through adding the widget: long-press home screen → + → Gridless. We also prompt this once after onboarding.')">➕ ADD TO HOME SCREEN</button>
     </div>
   </div>
 
@@ -356,17 +385,14 @@ body{
 
 <!-- ═══════════ PLAN ═══════════ -->
 <div class="screen" id="s-plan">
-  <div class="pg-title">YOUR PLAN</div>
-  <div style="text-align:center;margin:4px 0 6px"><span class="chip">⚡ Power outages & blackouts</span></div>
-
-  <div class="rings">
+  <div class="rings" style="margin-top:16px">
     <div class="ring">
       <div class="rw">
         <svg width="84" height="84" viewBox="0 0 84 84">
           <circle class="r-track" cx="42" cy="42" r="36"/>
           <circle class="r-fill" id="planRingMe" cx="42" cy="42" r="36" stroke-dasharray="226" stroke-dashoffset="217"/>
         </svg>
-        <div class="rc"><div class="rv" id="planMe">4</div><div class="rl">READY</div></div>
+        <div class="rc"><div class="rv" id="planMe">4</div><div class="rl" id="planMeState" style="color:#D9534F">SLIPPING</div></div>
       </div>
       <div class="rt">YOU</div>
     </div>
@@ -374,9 +400,9 @@ body{
       <div class="rw">
         <svg width="84" height="84" viewBox="0 0 84 84">
           <circle class="r-track" cx="42" cy="42" r="36"/>
-          <circle class="r-fill" cx="42" cy="42" r="36" stroke-dasharray="226" stroke-dashoffset="201"/>
+          <circle class="r-fill" cx="42" cy="42" r="36" stroke-dasharray="226" stroke-dashoffset="194"/>
         </svg>
-        <div class="rc"><div class="rv">11</div><div class="rl">READY</div></div>
+        <div class="rc"><div class="rv">14</div><div class="rl" style="color:#D9534F">SLIPPING</div></div>
       </div>
       <div class="rt">HOUSEHOLD</div>
     </div>
@@ -535,17 +561,20 @@ body{
   <div class="sec">MY FAMILY <span class="r">4 of 6 seats</span></div>
   <div class="fam">
     <div class="av">L</div>
-    <div class="fx"><div class="f1">Lukas (you)</div><div class="f2 ok">Readiness 4 · active today</div></div>
+    <div class="fx"><div class="f1">Lukas (you)</div><div class="f2 ok">Active today</div></div>
+    <div class="mring"><svg width="38" height="38" viewBox="0 0 38 38"><circle class="mt" cx="19" cy="19" r="15"/><circle class="mf" cx="19" cy="19" r="15" stroke="#D9534F" stroke-dasharray="94" stroke-dashoffset="90"/></svg><span>4</span></div>
     <span class="ptag t-new" style="font-size:.52rem;margin:0">OWNER</span>
   </div>
   <div class="fam">
     <div class="av" style="background:linear-gradient(135deg,#9FB86A,#5E7330)">H</div>
-    <div class="fx"><div class="f1">Holly</div><div class="f2">Readiness 8 · last active yesterday</div></div>
+    <div class="fx"><div class="f1">Holly</div><div class="f2">Last active yesterday</div></div>
+    <div class="mring"><svg width="38" height="38" viewBox="0 0 38 38"><circle class="mt" cx="19" cy="19" r="15"/><circle class="mf" cx="19" cy="19" r="15" stroke="#D9534F" stroke-dasharray="94" stroke-dashoffset="86"/></svg><span>8</span></div>
     <button class="nudge" onclick="this.textContent='SENT 👋';this.classList.add('sent')">NUDGE</button>
   </div>
   <div class="fam">
     <div class="av" style="background:linear-gradient(135deg,#C9A2E8,#7E5BA6)">E</div>
-    <div class="fx"><div class="f1">Emma</div><div class="f2 ok">Readiness 15 · active today 🔥</div></div>
+    <div class="fx"><div class="f1">Emma</div><div class="f2 ok">Active today 🔥</div></div>
+    <div class="mring"><svg width="38" height="38" viewBox="0 0 38 38"><circle class="mt" cx="19" cy="19" r="15"/><circle class="mf" cx="19" cy="19" r="15" stroke="#C99502" stroke-dasharray="94" stroke-dashoffset="65"/></svg><span>31</span></div>
   </div>
   <div class="fam" style="opacity:.7">
     <div class="av" style="background:rgba(203,196,166,.2);color:var(--cream)">?</div>
@@ -693,21 +722,36 @@ function go(name){
 }
 
 /* ── score engine ── */
-let score = 4, household = 11, done = 0;
+let score = 4, household = 14, done = 0, mode = "you";
 const C = 553, WC = 119;
+function band(v){ return v < 20 ? 0 : v < 60 ? 1 : 2; }
+function setMode(m){
+  mode = m;
+  document.getElementById("tgYou").classList.toggle("on", m === "you");
+  document.getElementById("tgFam").classList.toggle("on", m === "family");
+  document.getElementById("gaugeLabel").textContent = m === "you" ? "YOUR READINESS" : "HOUSEHOLD READINESS";
+  document.getElementById("houseLine").style.display = m === "you" ? "" : "none";
+  document.getElementById("famBreak").classList.toggle("on", m === "family");
+  setGauge(score);
+}
 function setGauge(v){
-  document.getElementById("gaugeFill").style.strokeDashoffset = C - (C * Math.min(v,100) / 100);
-  document.getElementById("scoreN").textContent = v;
+  const shown = mode === "you" ? v : household;
+  document.getElementById("gaugeFill").style.strokeDashoffset = C - (C * Math.min(shown,100) / 100);
+  document.getElementById("scoreN").textContent = shown;
+  const b = band(shown);
   const p = document.getElementById("statusPill");
-  p.className = "status " + (v < 20 ? "st-e" : v < 60 ? "st-b" : "st-r");
-  p.textContent = v < 20 ? "JUST STARTING" : v < 60 ? "BUILDING READINESS" : "READY";
+  p.className = "status " + ["st-e","st-b","st-r"][b];
+  p.textContent = ["JUST STARTING","BUILDING READINESS","READY"][b];
   document.getElementById("planMe").textContent = v;
   document.getElementById("planRingMe").style.strokeDashoffset = 226 - (226 * Math.min(v,100) / 100);
+  const ms = document.getElementById("planMeState");
+  if(ms){ ms.textContent = ["SLIPPING","BUILDING","READY"][band(v)]; ms.style.color = ["#D9534F","#C99502","#4CAF50"][band(v)]; }
   document.getElementById("wScore").textContent = v;
   document.getElementById("wRing").style.strokeDashoffset = WC - (WC * Math.min(v,100) / 100);
   const ws = document.getElementById("wStatus");
-  ws.className = "ws " + (v < 20 ? "st-e" : v < 60 ? "st-b" : "st-r");
-  ws.textContent = v < 20 ? "SLIPPING" : v < 60 ? "BUILDING" : "PREPARED";
+  ws.className = "ws " + ["st-e","st-b","st-r"][band(v)];
+  ws.textContent = ["SLIPPING","BUILDING","PREPARED"][band(v)];
+  document.getElementById("houseN").textContent = household;
 }
 function bump(pts){
   score += pts; household += 1;
