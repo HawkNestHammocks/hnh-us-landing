@@ -244,7 +244,7 @@ body{
   <div style="text-align:center;margin:2px 0 8px"><img src="gridless-logo.webp" alt="Gridless" style="height:44px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))"></div>
   <div class="topbar">
     <div class="greeting">Friday, June 12<b>Ready for today, Lukas?</b></div>
-    <div class="trend-chip tr-down" id="trendChip">▼ SLIPPING</div>
+    <div class="trend-chip tr-down" id="trendChip" onclick="openHow()" style="cursor:pointer">▼ SLIPPING</div>
   </div>
   <div class="hero" onclick="openHow()" style="cursor:pointer">
     <div class="gauge-wrap">
@@ -289,8 +289,8 @@ body{
 
   <div class="sec">ACTIVE PROGRAM</div>
   <div class="ap-card" id="apCard" onclick="openSheetRaw('pday')">
-    <div class="a1"><div class="an">🔥 Wildfire Ready</div><div class="at" id="apTag">DAY 3 OF 7</div></div>
-    <div class="ad" id="apDesc">Today: pack the 10-minute go-bag · finish the week for your certificate</div>
+    <div class="a1"><div class="an">🔥 Wildfire Ready</div><div class="at" id="apTag">3 OF 7 STEPS</div></div>
+    <div class="ad" id="apDesc">Next step: pack the 10-minute go-bag · your pace, no deadline</div>
     <div class="prog"><i id="apBar"></i></div>
   </div>
 
@@ -387,82 +387,82 @@ body{
     <div class="prog-card active-p">
       <div class="pe">🔥</div>
       <div class="pn">Wildfire Ready</div>
-      <div class="pm">7 days · go-bags, evac plan</div>
+      <div class="pm">7 steps · go-bags, evac plan</div>
       <div class="pb"><i style="width:43%"></i></div>
-      <span class="ptag t-act">ACTIVE · DAY 3</span>
+      <span class="ptag t-act">ACTIVE · 3/7</span>
     </div>
     <div class="prog-card done-p">
       <div class="pe">⚡</div>
       <div class="pn">Blackout 72-Hour</div>
-      <div class="pm">7 days · light, heat, food</div>
+      <div class="pm">7 steps · light, heat, food</div>
       <div class="pb"><i style="width:100%"></i></div>
       <span class="ptag t-done">✓ COMPLETED</span>
     </div>
     <div class="prog-card">
       <div class="pe">🎒</div>
       <div class="pn">Go-Bag Week</div>
-      <div class="pm">7 days · one bag per person</div>
+      <div class="pm">6 steps · one bag per person</div>
       <div class="pb"><i style="width:0%"></i></div>
       <span class="ptag t-new">START</span>
     </div>
     <div class="prog-card">
       <div class="pe">❄️</div>
       <div class="pn">Winter Storm Ready</div>
-      <div class="pm">14 days · heat, water, car kit</div>
+      <div class="pm">10 steps · heat, water, car kit</div>
       <div class="pb"><i style="width:0%"></i></div>
       <span class="ptag t-new">START</span>
     </div>
     <div class="prog-card">
       <div class="pe">🏠</div>
       <div class="pn">Home Fortress</div>
-      <div class="pm">30 days · security & hazards</div>
+      <div class="pm">15 steps · security & hazards</div>
       <div class="pb"><i style="width:0%"></i></div>
       <span class="ptag t-new">START</span>
     </div>
     <div class="prog-card">
       <div class="pe">💧</div>
       <div class="pn">Water Stockpile</div>
-      <div class="pm">7 days · 72h for everyone</div>
+      <div class="pm">5 steps · 72h for everyone</div>
       <div class="pb"><i style="width:0%"></i></div>
       <span class="ptag t-new">START</span>
     </div>
     <div class="prog-card">
       <div class="pe">🌀</div>
       <div class="pn">Hurricane Season</div>
-      <div class="pm">14 days · seasonal: Jun–Nov</div>
+      <div class="pm">8 steps · seasonal: Jun–Nov</div>
       <div class="pb"><i style="width:0%"></i></div>
       <span class="ptag t-new">SEASONAL</span>
     </div>
     <div class="prog-card">
       <div class="pe">🚗</div>
       <div class="pn">Car Emergency Kit</div>
-      <div class="pm">7 days · renews every winter</div>
+      <div class="pm">6 steps · renews every winter</div>
       <div class="pb"><i style="width:0%"></i></div>
       <span class="ptag t-new">START</span>
     </div>
     <div class="prog-card">
       <div class="pe">🩹</div>
       <div class="pn">First-Aid Foundations</div>
-      <div class="pm">14 days · whole household</div>
+      <div class="pm">10 steps · whole household</div>
       <div class="pb"><i style="width:0%"></i></div>
       <span class="ptag t-new">START</span>
     </div>
     <div class="prog-card">
       <div class="pe">🚨</div>
       <div class="pn">Smoke Alarm & Fire</div>
-      <div class="pm">7 days · renews every 6 mo</div>
+      <div class="pm">4 steps · renews every 6 mo</div>
       <div class="pb"><i style="width:0%"></i></div>
       <span class="ptag t-new">START</span>
     </div>
     <div class="prog-card">
       <div class="pe">🐕</div>
       <div class="pn">Pet Preparedness</div>
-      <div class="pm">7 days · kits & plans for pets</div>
+      <div class="pm">6 steps · kits & plans for pets</div>
       <div class="pb"><i style="width:0%"></i></div>
       <span class="ptag t-new">START</span>
     </div>
   </div>
-  <div style="font-size:.66rem;color:rgba(203,196,166,.45);font-weight:600;margin:0 2px 4px;line-height:1.5">Programs renew with the seasons — Blackout 72-Hour comes back each December, Smoke Alarm & Fire every 6 months. Your score reflects how current you are, not just what you once did.</div>
+  <div style="font-size:.66rem;color:rgba(203,196,166,.45);font-weight:600;margin:0 2px 4px;line-height:1.5">Work through programs at your own pace — no daily deadline. They renew with the seasons — Blackout 72-Hour comes back each December, Smoke Alarm & Fire every 6 months. Your score reflects how current you are, not just what you once did.</div>
 
   <div class="sec">MY EMERGENCY INFO <span class="r">tap to edit</span></div>
   <div style="font-size:.6rem;font-weight:900;letter-spacing:2px;color:rgba(201,149,2,.7);margin:6px 2px 6px">👨‍👩‍👧‍👦 PEOPLE & MEETING</div>
@@ -514,6 +514,62 @@ body{
   <div class="proto" style="opacity:.5"><div class="i">⚠️</div><div class="t">+ 16 more protocols…</div><div class="arr">›</div></div>
 
   <div class="foot">Emergency protocols are free for everyone, always.<br>In a life-threatening emergency, call 911 first.</div>
+</div>
+
+<!-- ═══════════ YOU / FAMILY ═══════════ -->
+<div class="screen" id="s-account">
+  <div class="pg-title">YOU</div>
+  <div class="pg-sub">Your account & your household.</div>
+
+  <div class="hero-card" style="background:rgba(201,149,2,.12);border:1px solid rgba(201,149,2,.35)">
+    <div class="fam" style="background:none;border:none;padding:0;margin:0;flex:1">
+      <div class="av" style="width:46px;height:46px;font-size:1.1rem">L</div>
+      <div class="fx">
+        <div class="f1" style="font-size:1rem">Lukas</div>
+        <div class="f2">lukas@hawknest…</div>
+      </div>
+    </div>
+    <span class="ptag t-new" style="font-size:.58rem">FAMILY ANNUAL ✓</span>
+  </div>
+
+  <div class="sec">MY FAMILY <span class="r">4 of 6 seats</span></div>
+  <div class="fam">
+    <div class="av">L</div>
+    <div class="fx"><div class="f1">Lukas (you)</div><div class="f2 ok">Readiness 4 · active today</div></div>
+    <span class="ptag t-new" style="font-size:.52rem;margin:0">OWNER</span>
+  </div>
+  <div class="fam">
+    <div class="av" style="background:linear-gradient(135deg,#9FB86A,#5E7330)">H</div>
+    <div class="fx"><div class="f1">Holly</div><div class="f2">Readiness 8 · last active yesterday</div></div>
+    <button class="nudge" onclick="this.textContent='SENT 👋';this.classList.add('sent')">NUDGE</button>
+  </div>
+  <div class="fam">
+    <div class="av" style="background:linear-gradient(135deg,#C9A2E8,#7E5BA6)">E</div>
+    <div class="fx"><div class="f1">Emma</div><div class="f2 ok">Readiness 15 · active today 🔥</div></div>
+  </div>
+  <div class="fam" style="opacity:.7">
+    <div class="av" style="background:rgba(203,196,166,.2);color:var(--cream)">?</div>
+    <div class="fx"><div class="f1">Grandma Pat</div><div class="f2">Invited · hasn't joined yet</div></div>
+    <button class="nudge" onclick="this.textContent='RESENT ✓';this.classList.add('sent')">RESEND</button>
+  </div>
+
+  <div style="background:rgba(0,0,0,.42);border:1px dashed rgba(201,149,2,.45);border-radius:14px;padding:15px;text-align:center;margin-top:4px">
+    <div style="font-size:.64rem;font-weight:900;letter-spacing:2px;color:rgba(203,196,166,.5)">YOUR FAMILY INVITE CODE</div>
+    <div style="font-size:1.7rem;font-weight:900;letter-spacing:6px;color:var(--gold-light);margin:7px 0 4px;font-family:ui-monospace,monospace">GRID-7XKP</div>
+    <div style="font-size:.7rem;color:rgba(203,196,166,.6);font-weight:600;margin-bottom:12px;line-height:1.5">Anyone with this code joins your household and gets<br>full Premium — included in your plan, up to 6 people.</div>
+    <div style="display:flex;gap:8px">
+      <button class="ab" style="flex:1;padding:11px 4px;border-radius:50px;font-size:.74rem;font-weight:900;border:none;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--dark);cursor:pointer;font-family:inherit" onclick="alert('Opens the native share sheet — text it, WhatsApp it, AirDrop it. They download Gridless, tap “Join a family”, enter the code, done.')">📤 SHARE CODE</button>
+      <button class="ab" style="flex:1;padding:11px 4px;border-radius:50px;font-size:.74rem;font-weight:900;border:1px solid rgba(201,149,2,.5);background:none;color:var(--gold);cursor:pointer;font-family:inherit" onclick="alert('Shows a QR code — family members scan it with their camera to join instantly.')">⊞ QR CODE</button>
+    </div>
+  </div>
+
+  <div class="sec">SETTINGS</div>
+  <div class="row"><div class="ic">💳</div><div class="tx"><div class="t1">Manage subscription</div><div class="t2">Family Annual · renews Jun 12, 2027</div></div><div class="arr">›</div></div>
+  <div class="row"><div class="ic">🔔</div><div class="tx"><div class="t1">Notifications</div><div class="t2">Daily missions, family activity, maintenance reminders</div></div><div class="arr">›</div></div>
+  <div class="row"><div class="ic">🛡</div><div class="tx"><div class="t1">Privacy & data</div><div class="t2">Your info stays on your devices</div></div><div class="arr">›</div></div>
+  <div class="row"><div class="ic">🚪</div><div class="tx"><div class="t1">Sign out</div><div class="t2"></div></div><div class="arr">›</div></div>
+
+  <div class="note">Individual-plan users see an "Upgrade to Family" card here instead<br>of the member list — same price pitch as the paywall's family card.</div>
 </div>
 
 <!-- ═══════════ SHEETS ═══════════ -->
@@ -597,10 +653,10 @@ body{
 <!-- program day sheet -->
 <div class="sheet" id="sh-pday">
   <div class="grab"></div>
-  <div class="sh-kick">🔥 WILDFIRE READY · DAY 3 OF 7</div>
+  <div class="sh-kick">🔥 WILDFIRE READY · STEP 3 OF 7</div>
   <div class="sh-title">Pack the 10-minute go-bag</div>
-  <div class="sh-sub">15 minutes · real-world action · +2 on completion</div>
-  <div class="why">🔥 <b>Today's goal:</b> if you had 10 minutes to evacuate, ONE bag should already be packed. Build it now so you never pack it in a panic.</div>
+  <div class="sh-sub">~15 minutes · at your own pace · +2 on completion</div>
+  <div class="why">🔥 <b>This step's goal:</b> if you had 10 minutes to evacuate, ONE bag should already be packed. Build it now so you never pack it in a panic.</div>
   <div class="sub" onclick="subPday(this)"><div class="bx">✓</div><div class="st">Grab a backpack — one per household is the minimum</div></div>
   <div class="sub" onclick="subPday(this)"><div class="bx">✓</div><div class="st">Pack: water, snacks, meds, phone charger, cash</div></div>
   <div class="sub" onclick="subPday(this)"><div class="bx">✓</div><div class="st">Add copies of ID + your insurance info (photos count)</div></div>
@@ -624,7 +680,7 @@ body{
   <div class="tab" id="t-library" onclick="go('library')"><div class="ti">📚</div><div class="tl">LIBRARY</div></div>
   <div class="tab" id="t-plan" onclick="go('plan')"><div class="ti">🧭</div><div class="tl">PLAN</div></div>
   <div class="tab" id="t-emergency" onclick="go('emergency')"><div class="ti">🆘</div><div class="tl">SOS</div></div>
-  <div class="tab" id="t-account" onclick="alert('Account — unchanged from current app (plus the new Family section)')"><div class="ti">👤</div><div class="tl">YOU</div></div>
+  <div class="tab" id="t-account" onclick="go('account')"><div class="ti">👤</div><div class="tl">YOU</div></div>
 </div>
 
 <script>
@@ -692,10 +748,10 @@ function finishPday(){
   closeSheets();
   bump(2);
   celebrate(2, "pday");
-  document.getElementById("apTag").textContent = "DAY 4 OF 7";
-  document.getElementById("apDesc").textContent = "Day 3 complete ✓ · tomorrow: map two evacuation routes";
+  document.getElementById("apTag").textContent = "4 OF 7 STEPS";
+  document.getElementById("apDesc").textContent = "Step complete ✓ · next: map two evacuation routes";
   document.getElementById("apBar").style.width = "57%";
-  document.getElementById("pdayCta").textContent = "Completed today ✓";
+  document.getElementById("pdayCta").textContent = "Step complete ✓";
   document.getElementById("pdayCta").disabled = true;
 }
 function closeSheets(){
@@ -713,7 +769,7 @@ function finish(k, pts){
 }
 
 /* ── celebration ── */
-const CEL_MSG = {drill:"Drill crushed! ⚡", task:"Real-world task done! 🔦", family:"Whole household leveled up! 👨‍👩‍👧‍👦", pday:"Go-bag packed — day 3 done! 🔥"};
+const CEL_MSG = {drill:"Drill crushed! ⚡", task:"Real-world task done! 🔦", family:"Whole household leveled up! 👨‍👩‍👧‍👦", pday:"Go-bag packed — step 3 done! 🔥"};
 function celebrate(pts, k){
   document.getElementById("celPts").textContent = "+" + pts;
   document.getElementById("celMsg").textContent = CEL_MSG[k] || "Mission complete!";
