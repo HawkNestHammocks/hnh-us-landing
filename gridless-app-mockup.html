@@ -241,11 +241,12 @@ body{
 
 <!-- ═══════════ TODAY ═══════════ -->
 <div class="screen active" id="s-today">
+  <div style="text-align:center;margin:2px 0 8px"><img src="gridless-logo.webp" alt="Gridless" style="height:44px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))"></div>
   <div class="topbar">
     <div class="greeting">Friday, June 12<b>Ready for today, Lukas?</b></div>
     <div class="trend-chip tr-down" id="trendChip">▼ SLIPPING</div>
   </div>
-  <div class="hero">
+  <div class="hero" onclick="openHow()" style="cursor:pointer">
     <div class="gauge-wrap">
       <svg width="200" height="200" viewBox="0 0 200 200">
         <circle class="gauge-track" cx="100" cy="100" r="88"/>
@@ -277,7 +278,7 @@ body{
   </div>
   <div class="mission" id="m-task" onclick="openSheet('task')">
     <div class="ic">🔦</div>
-    <div class="tx"><div class="t1">Check your flashlight batteries</div><div class="t2">From your Power Outage plan · guided</div></div>
+    <div class="tx"><div class="t1">Check your flashlight batteries</div><div class="t2">Auto-reminder · last checked 4 months ago</div></div>
     <div class="pts">+1</div><div class="chk">✓</div>
   </div>
   <div class="mission" id="m-family" onclick="openSheet('family')">
@@ -287,10 +288,10 @@ body{
   </div>
 
   <div class="sec">ACTIVE PROGRAM</div>
-  <div class="ap-card" onclick="go('plan')">
-    <div class="a1"><div class="an">🔥 Wildfire Ready</div><div class="at">DAY 3 OF 7</div></div>
-    <div class="ad">Today: pack the 10-minute go-bag · finish the week for your certificate</div>
-    <div class="prog"><i></i></div>
+  <div class="ap-card" id="apCard" onclick="openSheetRaw('pday')">
+    <div class="a1"><div class="an">🔥 Wildfire Ready</div><div class="at" id="apTag">DAY 3 OF 7</div></div>
+    <div class="ad" id="apDesc">Today: pack the 10-minute go-bag · finish the week for your certificate</div>
+    <div class="prog"><i id="apBar"></i></div>
   </div>
 
   <div class="sec">ON YOUR HOME SCREEN</div>
@@ -338,7 +339,7 @@ body{
   </div>
 
   <div class="sec">LEARN & PLAY</div>
-  <div class="row"><div class="ic">🗺</div><div class="tx"><div class="t1">Skill Worlds & Quizzes</div><div class="t2">4,800+ questions · 4 worlds · boss battles</div></div><div class="arr">›</div></div>
+  <div class="row"><div class="ic">⚡</div><div class="tx"><div class="t1">Practice Drills</div><div class="t2">Replay past dailies · 4,800+ questions by topic</div></div><div class="arr">›</div></div>
   <div class="row"><div class="ic">🔥</div><div class="tx"><div class="t1">Campfire Games</div><div class="t2">Group games for around the fire</div></div><div class="arr">›</div></div>
 
   <div class="sec">AI FIELD SCANNERS</div>
@@ -425,23 +426,57 @@ body{
       <div class="pb"><i style="width:0%"></i></div>
       <span class="ptag t-new">START</span>
     </div>
+    <div class="prog-card">
+      <div class="pe">🌀</div>
+      <div class="pn">Hurricane Season</div>
+      <div class="pm">14 days · seasonal: Jun–Nov</div>
+      <div class="pb"><i style="width:0%"></i></div>
+      <span class="ptag t-new">SEASONAL</span>
+    </div>
+    <div class="prog-card">
+      <div class="pe">🚗</div>
+      <div class="pn">Car Emergency Kit</div>
+      <div class="pm">7 days · renews every winter</div>
+      <div class="pb"><i style="width:0%"></i></div>
+      <span class="ptag t-new">START</span>
+    </div>
+    <div class="prog-card">
+      <div class="pe">🩹</div>
+      <div class="pn">First-Aid Foundations</div>
+      <div class="pm">14 days · whole household</div>
+      <div class="pb"><i style="width:0%"></i></div>
+      <span class="ptag t-new">START</span>
+    </div>
+    <div class="prog-card">
+      <div class="pe">🚨</div>
+      <div class="pn">Smoke Alarm & Fire</div>
+      <div class="pm">7 days · renews every 6 mo</div>
+      <div class="pb"><i style="width:0%"></i></div>
+      <span class="ptag t-new">START</span>
+    </div>
+    <div class="prog-card">
+      <div class="pe">🐕</div>
+      <div class="pn">Pet Preparedness</div>
+      <div class="pm">7 days · kits & plans for pets</div>
+      <div class="pb"><i style="width:0%"></i></div>
+      <span class="ptag t-new">START</span>
+    </div>
   </div>
-
-  <div class="sec">YOUR 7-STEP READINESS PLAN <span class="r" id="planCount">2/7</span></div>
-  <div class="step done" onclick="step(this)"><div class="ic"><span>⚡</span></div><div class="t">Read the Power Outage protocol</div><div class="pl">+1</div></div>
-  <div class="step done" onclick="step(this)"><div class="ic"><span>💧</span></div><div class="t">Calculate your 72-hour water needs</div><div class="pl">+1</div></div>
-  <div class="step" onclick="step(this)"><div class="ic"><span>🔥</span></div><div class="t">Build a 3-day drill habit</div><div class="pl">+1</div></div>
-  <div class="step" onclick="step(this)"><div class="ic"><span>⬇️</span></div><div class="t">Download the Field Manual offline</div><div class="pl">+1</div></div>
-  <div class="step" onclick="step(this)"><div class="ic"><span>🆘</span></div><div class="t">Add your emergency Beacon contact</div><div class="pl">+1</div></div>
-  <div class="step" onclick="step(this)"><div class="ic"><span>🔦</span></div><div class="t">Locate the flashlight & battery tools</div><div class="pl">+1</div></div>
-  <div class="step" onclick="step(this)"><div class="ic"><span>👨‍👩‍👧‍👦</span></div><div class="t">Set a household meeting plan</div><div class="pl">+1</div></div>
+  <div style="font-size:.66rem;color:rgba(203,196,166,.45);font-weight:600;margin:0 2px 4px;line-height:1.5">Programs renew with the seasons — Blackout 72-Hour comes back each December, Smoke Alarm & Fire every 6 months. Your score reflects how current you are, not just what you once did.</div>
 
   <div class="sec">MY EMERGENCY INFO <span class="r">tap to edit</span></div>
-  <div class="vault" onclick="vaultEdit(this)"><div class="vi">📍</div><div class="vx"><div class="v1">FAMILY MEETUP POINT</div><div class="v2">The big oak at the park</div></div><div class="ve">✎</div></div>
+  <div style="font-size:.6rem;font-weight:900;letter-spacing:2px;color:rgba(201,149,2,.7);margin:6px 2px 6px">👨‍👩‍👧‍👦 PEOPLE & MEETING</div>
+  <div class="vault" onclick="vaultEdit(this)"><div class="vi">📍</div><div class="vx"><div class="v1">PRIMARY MEETUP POINT</div><div class="v2">The big oak at the park</div></div><div class="ve">✎</div></div>
+  <div class="vault" onclick="vaultEdit(this)"><div class="vi">🗺</div><div class="vx"><div class="v1">BACKUP MEETUP (OUT OF AREA)</div><div class="v2 empty">Tap to add…</div></div><div class="ve">＋</div></div>
   <div class="vault" onclick="vaultEdit(this)"><div class="vi">📞</div><div class="vx"><div class="v1">ICE CONTACT</div><div class="v2">Holly · 555-0142</div></div><div class="ve">✎</div></div>
+  <div class="vault" onclick="vaultEdit(this)"><div class="vi">☎️</div><div class="vx"><div class="v1">OUT-OF-TOWN CHECK-IN</div><div class="v2">Grandma Pat · 555-0188 (texts work when calls don't)</div></div><div class="ve">✎</div></div>
+  <div style="font-size:.6rem;font-weight:900;letter-spacing:2px;color:rgba(201,149,2,.7);margin:10px 2px 6px">🏠 HOME</div>
   <div class="vault" onclick="vaultEdit(this)"><div class="vi">🔧</div><div class="vx"><div class="v1">UTILITY SHUTOFFS</div><div class="v2">Gas: left of meter · Water: basement SW corner</div></div><div class="ve">✎</div></div>
+  <div class="vault" onclick="vaultEdit(this)"><div class="vi">🧯</div><div class="vx"><div class="v1">FIRE EXTINGUISHER & KIT LOCATIONS</div><div class="v2 empty">Tap to add…</div></div><div class="ve">＋</div></div>
+  <div style="font-size:.6rem;font-weight:900;letter-spacing:2px;color:rgba(201,149,2,.7);margin:10px 2px 6px">📄 DOCUMENTS & MEDICAL</div>
   <div class="vault" onclick="vaultEdit(this)"><div class="vi">📄</div><div class="vx"><div class="v1">INSURANCE POLICY #</div><div class="v2 empty">Tap to add…</div></div><div class="ve">＋</div></div>
-  <div class="vault" onclick="vaultEdit(this)"><div class="vi">💊</div><div class="vx"><div class="v1">MEDICAL NOTES</div><div class="v2 empty">Allergies, prescriptions… tap to add</div></div><div class="ve">＋</div></div>
+  <div class="vault" onclick="vaultEdit(this)"><div class="vi">💊</div><div class="vx"><div class="v1">MEDICAL NOTES & ALLERGIES</div><div class="v2 empty">Tap to add…</div></div><div class="ve">＋</div></div>
+  <div class="vault" style="border-style:dashed;justify-content:center" onclick="alert('Add a custom field — any info your family needs in an emergency. Synced to every family member, available offline.')"><div style="font-size:.78rem;font-weight:900;color:var(--gold)">＋ ADD CUSTOM FIELD</div></div>
 
   <div class="sec">CERTIFICATES</div>
   <div class="cert"><div class="ce">📜</div><div class="ct">Blackout 72-Hour — completed May 30</div><div class="cb">SHARE</div></div>
@@ -542,6 +577,37 @@ body{
   <button class="cta" id="famCta" disabled onclick="finish('family',3)">Waiting for your answer…</button>
 </div>
 
+<!-- how-the-score-works sheet -->
+<div class="sheet" id="sh-how">
+  <div class="grab"></div>
+  <div class="sh-kick">📊 YOUR READINESS SCORE</div>
+  <div class="sh-title">How it works</div>
+  <div class="sh-sub">One number for how ready your household really is — right now.</div>
+  <div style="display:flex;gap:7px;margin-bottom:14px">
+    <div style="flex:1;text-align:center;background:rgba(217,83,79,.1);border:1px solid rgba(217,83,79,.4);border-radius:11px;padding:10px 4px"><div style="font-weight:900;color:var(--red);font-size:.95rem">0–19</div><div style="font-size:.6rem;font-weight:900;color:rgba(203,196,166,.6);letter-spacing:1px">JUST STARTING</div></div>
+    <div style="flex:1;text-align:center;background:rgba(201,149,2,.1);border:1px solid rgba(201,149,2,.4);border-radius:11px;padding:10px 4px"><div style="font-weight:900;color:var(--gold);font-size:.95rem">20–59</div><div style="font-size:.6rem;font-weight:900;color:rgba(203,196,166,.6);letter-spacing:1px">BUILDING</div></div>
+    <div style="flex:1;text-align:center;background:rgba(76,175,80,.1);border:1px solid rgba(76,175,80,.4);border-radius:11px;padding:10px 4px"><div style="font-weight:900;color:var(--green);font-size:.95rem">60–100</div><div style="font-size:.6rem;font-weight:900;color:rgba(203,196,166,.6);letter-spacing:1px">READY</div></div>
+  </div>
+  <div class="why" style="border-left-color:var(--green)">⬆️ <b>It goes UP when you act:</b><br>· Daily missions (+1 to +3 each)<br>· Program days (+2) and finished programs (+5)<br>· Family challenges — everyone's score rises together</div>
+  <div class="why" style="border-left-color:var(--red)">⬇️ <b>It DRIFTS DOWN when you don't:</b><br>· Skip a full week → score slips<br>· Batteries age, seasons change, plans go stale — readiness isn't a trophy, it's a state. The score tells the truth.</div>
+  <div class="why">🏆 <b>At 100:</b> you're fully ready — for now. Keeping it green takes a few minutes a day. That's the whole game.</div>
+  <button class="cta" onclick="closeSheets()">Got it — let's stay ready</button>
+</div>
+
+<!-- program day sheet -->
+<div class="sheet" id="sh-pday">
+  <div class="grab"></div>
+  <div class="sh-kick">🔥 WILDFIRE READY · DAY 3 OF 7</div>
+  <div class="sh-title">Pack the 10-minute go-bag</div>
+  <div class="sh-sub">15 minutes · real-world action · +2 on completion</div>
+  <div class="why">🔥 <b>Today's goal:</b> if you had 10 minutes to evacuate, ONE bag should already be packed. Build it now so you never pack it in a panic.</div>
+  <div class="sub" onclick="subPday(this)"><div class="bx">✓</div><div class="st">Grab a backpack — one per household is the minimum</div></div>
+  <div class="sub" onclick="subPday(this)"><div class="bx">✓</div><div class="st">Pack: water, snacks, meds, phone charger, cash</div></div>
+  <div class="sub" onclick="subPday(this)"><div class="bx">✓</div><div class="st">Add copies of ID + your insurance info (photos count)</div></div>
+  <div class="sub" onclick="subPday(this)"><div class="bx">✓</div><div class="st">Store it where you EXIT — front closet, garage door</div></div>
+  <button class="cta" id="pdayCta" disabled onclick="finishPday()">Complete the steps above</button>
+</div>
+
 <!-- ═══════════ CELEBRATION ═══════════ -->
 <div class="celebrate" id="celebrate">
   <div class="cel-card">
@@ -603,8 +669,34 @@ function bump(pts){
 /* ── sheets ── */
 function openSheet(k){
   if(document.getElementById("m-" + k).classList.contains("done")) return;
+  openSheetRaw(k);
+}
+function openSheetRaw(k){
   document.getElementById("sheetBk").classList.add("open");
   document.getElementById("sh-" + k).classList.add("open");
+}
+function openHow(){ openSheetRaw("how"); }
+
+/* ── program day ── */
+let pdayDone = false;
+function subPday(el){
+  el.classList.toggle("on");
+  const all = document.querySelectorAll("#sh-pday .sub").length;
+  const on = document.querySelectorAll("#sh-pday .sub.on").length;
+  const c = document.getElementById("pdayCta");
+  c.disabled = on < all || pdayDone;
+  c.textContent = on < all ? `${on}/${all} steps done` : "Go-bag packed — collect +2 🔥";
+}
+function finishPday(){
+  pdayDone = true;
+  closeSheets();
+  bump(2);
+  celebrate(2, "pday");
+  document.getElementById("apTag").textContent = "DAY 4 OF 7";
+  document.getElementById("apDesc").textContent = "Day 3 complete ✓ · tomorrow: map two evacuation routes";
+  document.getElementById("apBar").style.width = "57%";
+  document.getElementById("pdayCta").textContent = "Completed today ✓";
+  document.getElementById("pdayCta").disabled = true;
 }
 function closeSheets(){
   document.getElementById("sheetBk").classList.remove("open");
@@ -621,7 +713,7 @@ function finish(k, pts){
 }
 
 /* ── celebration ── */
-const CEL_MSG = {drill:"Drill crushed! ⚡", task:"Real-world task done! 🔦", family:"Whole household leveled up! 👨‍👩‍👧‍👦"};
+const CEL_MSG = {drill:"Drill crushed! ⚡", task:"Real-world task done! 🔦", family:"Whole household leveled up! 👨‍👩‍👧‍👦", pday:"Go-bag packed — day 3 done! 🔥"};
 function celebrate(pts, k){
   document.getElementById("celPts").textContent = "+" + pts;
   document.getElementById("celMsg").textContent = CEL_MSG[k] || "Mission complete!";
