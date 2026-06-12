@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="robots" content="noindex,nofollow">
-<title>Gridless v1.5 — Full App Mockup</title>
+<title>Gridless v1.5 — Full App Mockup v2</title>
 <style>
 :root{
   --gold:#C99502; --gold-light:#E8C547; --gold-dark:#9A7400;
@@ -12,9 +12,11 @@
   --green:#4CAF50; --red:#D9534F; --bar:#1A1E0F;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:#10120a}
 body{
   font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-  background:linear-gradient(180deg,var(--bg1),var(--bg2) 60%,#1A1208) fixed;
+  background:linear-gradient(180deg,rgba(26,30,15,.82),rgba(45,33,17,.85) 60%,rgba(26,18,8,.9)),
+             url('gridless-bg.webp') center top / cover fixed;
   color:var(--cream); max-width:430px; margin:0 auto; min-height:100vh;
 }
 .screen{display:none;padding:14px 16px 110px;animation:fadeIn .25s ease}
@@ -27,7 +29,7 @@ body{
 .pg-sub{text-align:center;font-size:.8rem;color:rgba(203,196,166,.6);font-weight:500;margin-bottom:14px}
 .sec{font-size:.66rem;font-weight:900;letter-spacing:2.5px;color:rgba(203,196,166,.5);margin:16px 2px 8px;display:flex;justify-content:space-between}
 .sec .r{color:var(--gold);letter-spacing:0}
-.row{display:flex;align-items:center;gap:12px;background:rgba(0,0,0,.35);border-radius:12px;padding:12px 13px;margin-bottom:8px;cursor:pointer;border:1px solid transparent;transition:all .2s}
+.row{display:flex;align-items:center;gap:12px;background:rgba(0,0,0,.42);border-radius:12px;padding:12px 13px;margin-bottom:8px;cursor:pointer;border:1px solid transparent;transition:all .2s}
 .row .ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;background:rgba(201,149,2,.12);flex-shrink:0}
 .row .tx{flex:1;min-width:0}
 .row .t1{font-size:.88rem;font-weight:800;color:#fff}
@@ -40,7 +42,9 @@ body{
 .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
 .greeting{font-size:.8rem;color:rgba(203,196,166,.6);font-weight:600}
 .greeting b{display:block;font-size:1rem;color:#fff;font-weight:800}
-.streak-chip{display:flex;align-items:center;gap:5px;background:rgba(201,149,2,.12);border:1px solid rgba(201,149,2,.35);padding:6px 12px;border-radius:50px;font-weight:900;color:var(--gold)}
+.trend-chip{display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:50px;font-weight:900;font-size:.7rem;letter-spacing:.5px;transition:all .3s}
+.tr-down{background:rgba(217,83,79,.12);border:1px solid rgba(217,83,79,.4);color:var(--red)}
+.tr-up{background:rgba(76,175,80,.12);border:1px solid rgba(76,175,80,.4);color:var(--green)}
 .hero{display:flex;flex-direction:column;align-items:center;padding:10px 0 4px}
 .gauge-wrap{position:relative;width:200px;height:200px}
 .gauge-wrap svg{transform:rotate(-90deg)}
@@ -59,25 +63,25 @@ body{
 .pts-float{position:absolute;top:26px;right:8px;font-weight:900;color:var(--green);font-size:1.15rem;opacity:0;pointer-events:none}
 .pts-float.show{animation:fl 1.1s ease-out}
 @keyframes fl{0%{opacity:0;transform:translateY(8px)}25%{opacity:1}100%{opacity:0;transform:translateY(-26px)}}
-.mission{display:flex;align-items:center;gap:12px;background:rgba(0,0,0,.35);border:1px solid rgba(201,149,2,.18);border-radius:13px;padding:12px 13px;margin-bottom:8px;cursor:pointer;transition:all .25s}
+.mission{display:flex;align-items:center;gap:12px;background:rgba(0,0,0,.42);border:1px solid rgba(201,149,2,.18);border-radius:13px;padding:12px 13px;margin-bottom:8px;cursor:pointer;transition:all .25s}
 .mission .ic{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;background:rgba(201,149,2,.12);flex-shrink:0}
 .mission .tx{flex:1}
 .mission .t1{font-size:.86rem;font-weight:800;color:#fff}
 .mission .t2{font-size:.69rem;color:rgba(203,196,166,.55);font-weight:600}
 .mission .pts{font-size:.76rem;font-weight:900;color:var(--gold)}
 .mission .chk{width:25px;height:25px;border-radius:50%;border:2px solid rgba(203,196,166,.25);display:flex;align-items:center;justify-content:center;color:transparent;font-weight:900;font-size:.8rem;flex-shrink:0;transition:all .25s}
-.mission.done{border-color:rgba(76,175,80,.35);background:rgba(76,175,80,.06)}
+.mission.done{border-color:rgba(76,175,80,.35);background:rgba(76,175,80,.08)}
 .mission.done .t1{color:rgba(203,196,166,.5);text-decoration:line-through}
 .mission.done .chk{background:var(--green);border-color:var(--green);color:#fff}
-.week{display:flex;justify-content:space-between;background:rgba(0,0,0,.3);border-radius:13px;padding:11px 15px;margin-top:2px}
-.day{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.6rem;font-weight:800;color:rgba(203,196,166,.45)}
-.day .dot{width:21px;height:21px;border-radius:50%;border:2px solid rgba(203,196,166,.2);display:flex;align-items:center;justify-content:center;font-size:.65rem}
-.day.hit .dot{background:rgba(201,149,2,.9);border-color:var(--gold);color:var(--dark)}
-.day.today .dot{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,149,2,.2)}
+.widget-card{display:flex;align-items:center;gap:14px;background:rgba(0,0,0,.42);border:1px solid rgba(201,149,2,.15);border-radius:14px;padding:13px 15px;margin-top:4px}
+.widget-frame{width:104px;height:104px;border-radius:20px;background:linear-gradient(145deg,#23270f,#1A1208);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;flex-shrink:0;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.widget-frame .wv{font-size:1.5rem;font-weight:900;color:#fff;line-height:1}
+.widget-frame .wl{font-size:.42rem;font-weight:900;letter-spacing:1.5px;color:rgba(203,196,166,.55)}
+.widget-frame .ws{font-size:.46rem;font-weight:900;letter-spacing:.5px;padding:2px 7px;border-radius:50px}
 .sos-bar{display:flex;gap:8px;margin-top:13px}
-.sos-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(0,0,0,.35);border:1px solid rgba(217,83,79,.25);border-radius:10px;padding:10px 4px;font-size:.72rem;font-weight:900}
+.sos-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(0,0,0,.42);border:1px solid rgba(217,83,79,.25);border-radius:10px;padding:10px 4px;font-size:.72rem;font-weight:900}
 .sos-btn .i{color:var(--red)}
-.tip{background:rgba(0,0,0,.3);border:1px solid rgba(201,149,2,.15);border-radius:12px;padding:12px 13px;margin-top:12px}
+.tip{background:rgba(0,0,0,.38);border:1px solid rgba(201,149,2,.15);border-radius:12px;padding:12px 13px;margin-top:12px}
 .tip .h{font-size:.64rem;font-weight:900;letter-spacing:2px;color:var(--gold);margin-bottom:4px}
 .tip .b{font-size:.78rem;color:rgba(203,196,166,.8);line-height:1.5;font-weight:500}
 
@@ -92,15 +96,15 @@ body{
 .ring .rv{font-size:1.45rem;font-weight:900;color:#fff;line-height:1}
 .ring .rl{font-size:.5rem;font-weight:900;color:rgba(203,196,166,.55);letter-spacing:1px}
 .ring .rt{font-size:.62rem;font-weight:900;letter-spacing:1.5px;color:rgba(203,196,166,.5)}
-.step{display:flex;align-items:center;gap:12px;background:rgba(0,0,0,.35);border-radius:12px;padding:12px 13px;margin-bottom:7px;cursor:pointer;transition:all .25s}
+.step{display:flex;align-items:center;gap:12px;background:rgba(0,0,0,.42);border-radius:12px;padding:12px 13px;margin-bottom:7px;cursor:pointer;transition:all .25s}
 .step .ic{font-size:1rem;width:30px;text-align:center;flex-shrink:0}
 .step .t{flex:1;font-size:.84rem;font-weight:700;color:var(--cream)}
 .step .pl{font-size:.72rem;font-weight:900;color:var(--gold)}
-.step.done{background:rgba(76,175,80,.06)}
+.step.done{background:rgba(76,175,80,.08)}
 .step.done .t{color:rgba(203,196,166,.45);text-decoration:line-through}
 .step.done .ic::before{content:"✅";font-size:.95rem}
 .step.done .ic span{display:none}
-.sprint{border-radius:15px;padding:15px;margin-bottom:8px;background:linear-gradient(135deg,rgba(217,83,79,.18),rgba(154,116,0,.15));border:1px solid rgba(217,83,79,.35);cursor:pointer}
+.sprint{border-radius:15px;padding:15px;margin-bottom:8px;background:linear-gradient(135deg,rgba(217,83,79,.2),rgba(154,116,0,.18));border:1px solid rgba(217,83,79,.35);cursor:pointer}
 .sprint .s1{display:flex;justify-content:space-between;align-items:center}
 .sprint .nm{font-size:1rem;font-weight:900;color:#fff}
 .sprint .tag{font-size:.6rem;font-weight:900;letter-spacing:1px;background:var(--red);color:#fff;padding:3px 9px;border-radius:50px}
@@ -108,7 +112,7 @@ body{
 .sprint .prog{height:7px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden}
 .sprint .prog i{display:block;height:100%;width:43%;background:linear-gradient(90deg,var(--gold-light),var(--gold));border-radius:4px}
 .sprint .pd{font-size:.66rem;color:rgba(203,196,166,.55);margin-top:5px;font-weight:700}
-.cert{display:flex;align-items:center;gap:11px;background:rgba(201,149,2,.07);border:1px dashed rgba(201,149,2,.4);border-radius:12px;padding:12px 13px;margin-bottom:7px}
+.cert{display:flex;align-items:center;gap:11px;background:rgba(201,149,2,.09);border:1px dashed rgba(201,149,2,.4);border-radius:12px;padding:12px 13px;margin-bottom:7px}
 .cert .ce{font-size:1.3rem}
 .cert .ct{flex:1;font-size:.8rem;font-weight:700;color:var(--cream)}
 .cert .cb{font-size:.68rem;font-weight:900;color:var(--gold);border:1px solid rgba(201,149,2,.5);padding:5px 11px;border-radius:50px}
@@ -119,16 +123,51 @@ body{
 .sos-hero .t1{font-size:1.05rem;font-weight:900;color:#fff}
 .sos-hero .t2{font-size:.74rem;color:rgba(255,255,255,.85);font-weight:600}
 .egrid{display:flex;gap:8px;margin-bottom:6px}
-.ecard{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;background:rgba(0,0,0,.35);border:1px solid rgba(201,149,2,.2);border-radius:13px;padding:14px 4px;cursor:pointer}
+.ecard{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;background:rgba(0,0,0,.42);border:1px solid rgba(201,149,2,.2);border-radius:13px;padding:14px 4px;cursor:pointer}
 .ecard .i{font-size:1.25rem}
 .ecard .l{font-size:.66rem;font-weight:900;text-align:center;line-height:1.3}
-.proto{display:flex;align-items:center;gap:11px;background:rgba(0,0,0,.35);border:1px solid rgba(217,83,79,.14);border-radius:10px;padding:10px 13px;margin-bottom:6px;cursor:pointer}
+.proto{display:flex;align-items:center;gap:11px;background:rgba(0,0,0,.42);border:1px solid rgba(217,83,79,.14);border-radius:10px;padding:10px 13px;margin-bottom:6px;cursor:pointer}
 .proto .i{color:var(--red);font-size:.85rem}
 .proto .t{flex:1;font-size:.82rem;font-weight:700}
 .foot{text-align:center;font-size:.66rem;color:rgba(203,196,166,.35);line-height:1.6;margin-top:10px}
 
+/* ═══ sheets (mission detail) ═══ */
+.sheet-bk{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:50;backdrop-filter:blur(3px)}
+.sheet-bk.open{display:block}
+.sheet{position:fixed;left:50%;transform:translateX(-50%) translateY(105%);bottom:0;width:100%;max-width:430px;max-height:88vh;overflow-y:auto;background:linear-gradient(180deg,rgba(35,39,15,.97),rgba(26,18,8,.99)),url('gridless-bg.webp') center/cover;border-radius:22px 22px 0 0;padding:10px 18px 30px;z-index:60;transition:transform .35s cubic-bezier(.22,1,.36,1);border-top:1px solid rgba(201,149,2,.3)}
+.sheet.open{transform:translateX(-50%) translateY(0)}
+.grab{width:42px;height:4px;background:rgba(203,196,166,.3);border-radius:3px;margin:4px auto 14px}
+.sh-kick{font-size:.62rem;font-weight:900;letter-spacing:2.5px;color:var(--gold);text-align:center}
+.sh-title{font-size:1.2rem;font-weight:900;color:#fff;text-align:center;margin:4px 0 2px}
+.sh-sub{font-size:.76rem;color:rgba(203,196,166,.6);text-align:center;font-weight:600;margin-bottom:14px}
+.why{background:rgba(201,149,2,.08);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:10px 13px;font-size:.78rem;line-height:1.5;color:rgba(203,196,166,.85);font-weight:500;margin-bottom:14px}
+.sub{display:flex;align-items:center;gap:12px;background:rgba(0,0,0,.4);border:1px solid rgba(201,149,2,.15);border-radius:12px;padding:12px 13px;margin-bottom:8px;cursor:pointer;transition:all .2s}
+.sub .bx{width:23px;height:23px;border-radius:7px;border:2px solid rgba(203,196,166,.3);display:flex;align-items:center;justify-content:center;color:transparent;font-weight:900;font-size:.75rem;flex-shrink:0;transition:all .2s}
+.sub .st{flex:1;font-size:.83rem;font-weight:700}
+.sub.on .bx{background:var(--green);border-color:var(--green);color:#fff}
+.sub.on .st{color:rgba(203,196,166,.5);text-decoration:line-through}
+.cta{display:block;width:100%;border:none;border-radius:50px;padding:15px;font-size:.95rem;font-weight:900;letter-spacing:.5px;margin-top:14px;cursor:pointer;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--dark);transition:all .25s;font-family:inherit}
+.cta:disabled{background:rgba(203,196,166,.15);color:rgba(203,196,166,.4)}
+/* quiz */
+.q-card{background:rgba(0,0,0,.4);border:1px solid rgba(201,149,2,.2);border-radius:14px;padding:16px;margin-bottom:10px}
+.q-n{font-size:.62rem;font-weight:900;letter-spacing:2px;color:var(--gold);margin-bottom:6px}
+.q-t{font-size:.95rem;font-weight:800;color:#fff;line-height:1.4;margin-bottom:12px}
+.opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.06);border:1px solid rgba(203,196,166,.15);border-radius:11px;padding:12px 14px;font-size:.84rem;font-weight:700;color:var(--cream);margin-bottom:7px;cursor:pointer;font-family:inherit;transition:all .2s}
+.opt.right{background:rgba(76,175,80,.2);border-color:var(--green);color:#fff}
+.opt.wrong{background:rgba(217,83,79,.2);border-color:var(--red)}
+/* family */
+.fam{display:flex;align-items:center;gap:12px;background:rgba(0,0,0,.4);border:1px solid rgba(201,149,2,.15);border-radius:12px;padding:11px 13px;margin-bottom:8px}
+.fam .av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.85rem;color:var(--dark);background:linear-gradient(135deg,var(--gold-light),var(--gold));flex-shrink:0}
+.fam .fx{flex:1}
+.fam .f1{font-size:.85rem;font-weight:800;color:#fff}
+.fam .f2{font-size:.68rem;font-weight:700;color:rgba(203,196,166,.5)}
+.fam .f2.ok{color:var(--green)}
+.nudge{font-size:.7rem;font-weight:900;color:var(--gold);border:1px solid rgba(201,149,2,.5);background:none;padding:6px 13px;border-radius:50px;cursor:pointer;font-family:inherit}
+.nudge.sent{color:var(--green);border-color:rgba(76,175,80,.5)}
+.together{background:rgba(76,175,80,.08);border:1px solid rgba(76,175,80,.25);border-radius:12px;padding:11px 13px;font-size:.74rem;line-height:1.5;color:rgba(203,196,166,.85);font-weight:600;margin:4px 0 10px}
+
 /* ═══ tab bar ═══ */
-.tabbar{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:402px;display:flex;background:rgba(42,51,32,.92);backdrop-filter:blur(14px);border-radius:50px;padding:5px 6px;box-shadow:0 6px 24px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.06)}
+.tabbar{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:402px;display:flex;background:rgba(42,51,32,.92);backdrop-filter:blur(14px);border-radius:50px;padding:5px 6px;box-shadow:0 6px 24px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.06);z-index:40}
 .tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0;border-radius:50px;cursor:pointer;color:rgba(203,196,166,.5);transition:all .25s}
 .tab .ti{font-size:1.15rem}
 .tab .tl{font-size:.56rem;font-weight:900;letter-spacing:.5px}
@@ -146,8 +185,8 @@ body{
 <!-- ═══════════ TODAY ═══════════ -->
 <div class="screen active" id="s-today">
   <div class="topbar">
-    <div class="greeting">Thursday, June 12<b>Ready for today, Lukas?</b></div>
-    <div class="streak-chip">🔥 <span id="streakN">3</span></div>
+    <div class="greeting">Friday, June 12<b>Ready for today, Lukas?</b></div>
+    <div class="trend-chip tr-down" id="trendChip">▼ SLIPPING</div>
   </div>
   <div class="hero">
     <div class="gauge-wrap">
@@ -166,30 +205,39 @@ body{
   </div>
 
   <div class="sec">TODAY'S MISSIONS <span class="r" id="mCount">0/3 · +6 pts waiting</span></div>
-  <div class="mission" onclick="mission(this,2)">
+  <div class="mission" id="m-drill" onclick="openSheet('drill')">
     <div class="ic">⚡</div>
-    <div class="tx"><div class="t1">Daily Drill — blackout edition</div><div class="t2">3 questions · 30 seconds · keeps your streak</div></div>
+    <div class="tx"><div class="t1">Daily Drill — blackout edition</div><div class="t2">3 questions · 30 seconds</div></div>
     <div class="pts">+2</div><div class="chk">✓</div>
   </div>
-  <div class="mission" onclick="mission(this,1)">
+  <div class="mission" id="m-task" onclick="openSheet('task')">
     <div class="ic">🔦</div>
-    <div class="tx"><div class="t1">Check your flashlight batteries</div><div class="t2">From your Power Outage plan · step 6/7</div></div>
+    <div class="tx"><div class="t1">Check your flashlight batteries</div><div class="t2">From your Power Outage plan · guided</div></div>
     <div class="pts">+1</div><div class="chk">✓</div>
   </div>
-  <div class="mission" onclick="mission(this,3)">
+  <div class="mission" id="m-family" onclick="openSheet('family')">
     <div class="ic">👨‍👩‍👧‍👦</div>
-    <div class="tx"><div class="t1">Family challenge: meetup point</div><div class="t2">"Where do we meet if cell networks die?"</div></div>
+    <div class="tx"><div class="t1">Family challenge: meetup point</div><div class="t2">Whole household completes together</div></div>
     <div class="pts">+3</div><div class="chk">✓</div>
   </div>
 
-  <div class="week">
-    <div class="day hit"><div class="dot">✓</div>M</div>
-    <div class="day hit"><div class="dot">✓</div>T</div>
-    <div class="day hit"><div class="dot">✓</div>W</div>
-    <div class="day today"><div class="dot" id="todayDot"></div>T</div>
-    <div class="day"><div class="dot"></div>F</div>
-    <div class="day"><div class="dot"></div>S</div>
-    <div class="day"><div class="dot"></div>S</div>
+  <div class="sec">ON YOUR HOME SCREEN</div>
+  <div class="widget-card">
+    <div class="widget-frame">
+      <div style="position:relative;width:46px;height:46px">
+        <svg width="46" height="46" viewBox="0 0 46 46" style="transform:rotate(-90deg)">
+          <circle cx="23" cy="23" r="19" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="4.5"/>
+          <circle cx="23" cy="23" r="19" fill="none" stroke="url(#gg)" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="119" stroke-dashoffset="114" id="wRing"/>
+        </svg>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span class="wv" id="wScore" style="font-size:1.05rem">4</span></div>
+      </div>
+      <div class="wl">READINESS</div>
+      <div class="ws st-e" id="wStatus">SLIPPING</div>
+    </div>
+    <div style="flex:1">
+      <div style="font-size:.84rem;font-weight:800;color:#fff;margin-bottom:3px">Readiness widget</div>
+      <div style="font-size:.72rem;color:rgba(203,196,166,.6);line-height:1.5;font-weight:500">Your score lives on your phone's home screen. Green when you're prepared — turns red when it starts to slip. Updates live as the family completes missions.</div>
+    </div>
   </div>
 
   <div class="sos-bar">
@@ -208,7 +256,7 @@ body{
   <div class="pg-title">LIBRARY</div>
   <div class="pg-sub">Everything you need to know — even offline.</div>
 
-  <div class="hero-card" style="background:rgba(201,149,2,.1);border:1px solid rgba(201,149,2,.35)">
+  <div class="hero-card" style="background:rgba(201,149,2,.12);border:1px solid rgba(201,149,2,.35)">
     <div style="font-size:1.7rem">📖</div>
     <div style="flex:1">
       <div style="font-size:1rem;font-weight:900;color:#fff">Field Manual</div>
@@ -272,7 +320,7 @@ body{
   <div class="sec">YOUR 7-STEP READINESS PLAN <span class="r" id="planCount">2/7</span></div>
   <div class="step done" onclick="step(this)"><div class="ic"><span>⚡</span></div><div class="t">Read the Power Outage protocol</div><div class="pl">+1</div></div>
   <div class="step done" onclick="step(this)"><div class="ic"><span>💧</span></div><div class="t">Calculate your 72-hour water needs</div><div class="pl">+1</div></div>
-  <div class="step" onclick="step(this)"><div class="ic"><span>🔥</span></div><div class="t">Build a 3-day drill streak</div><div class="pl">+1</div></div>
+  <div class="step" onclick="step(this)"><div class="ic"><span>🔥</span></div><div class="t">Build a 3-day drill habit</div><div class="pl">+1</div></div>
   <div class="step" onclick="step(this)"><div class="ic"><span>⬇️</span></div><div class="t">Download the Field Manual offline</div><div class="pl">+1</div></div>
   <div class="step" onclick="step(this)"><div class="ic"><span>🆘</span></div><div class="t">Add your emergency Beacon contact</div><div class="pl">+1</div></div>
   <div class="step" onclick="step(this)"><div class="ic"><span>🔦</span></div><div class="t">Locate the flashlight & battery tools</div><div class="pl">+1</div></div>
@@ -316,6 +364,67 @@ body{
   <div class="foot">Emergency protocols are free for everyone, always.<br>In a life-threatening emergency, call 911 first.</div>
 </div>
 
+<!-- ═══════════ SHEETS ═══════════ -->
+<div class="sheet-bk" id="sheetBk" onclick="closeSheets()"></div>
+
+<!-- drill sheet -->
+<div class="sheet" id="sh-drill">
+  <div class="grab"></div>
+  <div class="sh-kick">⚡ DAILY DRILL</div>
+  <div class="sh-title">Blackout Edition</div>
+  <div class="sh-sub">3 questions · answer all to earn +2</div>
+  <div id="quizBox">
+    <div class="q-card">
+      <div class="q-n">QUESTION <span id="qNum">1</span> OF 3</div>
+      <div class="q-t" id="qText">The power just went out across your neighborhood. What's the FIRST thing to check?</div>
+      <div id="qOpts">
+        <button class="opt" onclick="answer(this,false)">Start the backup generator</button>
+        <button class="opt" onclick="answer(this,true)">Whether it's just your home (breaker) or the whole grid</button>
+        <button class="opt" onclick="answer(this,false)">Open the fridge to assess food</button>
+      </div>
+    </div>
+  </div>
+  <button class="cta" id="drillCta" disabled onclick="finish('drill',2)">Answer all 3 to finish</button>
+</div>
+
+<!-- actionable task sheet -->
+<div class="sheet" id="sh-task">
+  <div class="grab"></div>
+  <div class="sh-kick">🔦 TODAY'S TASK · FROM YOUR POWER OUTAGE PLAN</div>
+  <div class="sh-title">Check your flashlight batteries</div>
+  <div class="sh-sub">2 minutes · real-world action</div>
+  <div class="why">⚡ <b>Why this matters:</b> most households can't find a working flashlight in the first 10 minutes of a blackout. Two minutes now means you're never searching in the dark.</div>
+  <div class="sub" onclick="subTask(this)"><div class="bx">✓</div><div class="st">Find your main flashlight — can you grab it in the dark?</div></div>
+  <div class="sub" onclick="subTask(this)"><div class="bx">✓</div><div class="st">Turn it on — is the beam still bright?</div></div>
+  <div class="sub" onclick="subTask(this)"><div class="bx">✓</div><div class="st">Spare batteries within reach? (correct size!)</div></div>
+  <button class="cta" id="taskCta" disabled onclick="finish('task',1)">Complete the steps above</button>
+</div>
+
+<!-- family challenge sheet -->
+<div class="sheet" id="sh-family">
+  <div class="grab"></div>
+  <div class="sh-kick">👨‍👩‍👧‍👦 THIS WEEK'S FAMILY CHALLENGE</div>
+  <div class="sh-title">The Meetup Point</div>
+  <div class="sh-sub">Cell networks are down. Where does your family meet?</div>
+  <div class="why">🗣 <b>Do this together:</b> Agree on ONE spot everyone can reach without a phone. Each member confirms it in their own app — the challenge completes when the whole household has answered.</div>
+  <div class="together" id="togetherBox">💬 You started this challenge — Holly and Emma just got a notification: <i>"Lukas kicked off this week's family challenge. Jump in!"</i></div>
+  <div class="fam">
+    <div class="av">L</div>
+    <div class="fx"><div class="f1">Lukas (you)</div><div class="f2" id="lukasState">Hasn't answered yet</div></div>
+    <button class="nudge" id="meBtn" onclick="meConfirm()">CONFIRM SPOT</button>
+  </div>
+  <div class="fam">
+    <div class="av" style="background:linear-gradient(135deg,#9FB86A,#5E7330)">H</div>
+    <div class="fx"><div class="f1">Holly</div><div class="f2">Hasn't answered yet</div></div>
+    <button class="nudge" onclick="this.textContent='SENT 👋';this.classList.add('sent')">NUDGE</button>
+  </div>
+  <div class="fam">
+    <div class="av" style="background:linear-gradient(135deg,#C9A2E8,#7E5BA6)">E</div>
+    <div class="fx"><div class="f1">Emma</div><div class="f2 ok">✓ Confirmed: "the big oak at the park"</div></div>
+  </div>
+  <button class="cta" id="famCta" disabled onclick="finish('family',3)">Waiting for your answer…</button>
+</div>
+
 <!-- ═══════════ TAB BAR ═══════════ -->
 <div class="tabbar">
   <div class="tab active" id="t-today" onclick="go('today')"><div class="ti">🏠</div><div class="tl">TODAY</div></div>
@@ -334,22 +443,25 @@ function go(name){
   window.scrollTo({top: 0});
 }
 
+/* ── score engine ── */
 let score = 4, household = 11, done = 0;
-const C = 553;
+const C = 553, WC = 119;
 function setGauge(v){
   document.getElementById("gaugeFill").style.strokeDashoffset = C - (C * Math.min(v,100) / 100);
   document.getElementById("scoreN").textContent = v;
   const p = document.getElementById("statusPill");
   p.className = "status " + (v < 20 ? "st-e" : v < 60 ? "st-b" : "st-r");
   p.textContent = v < 20 ? "JUST STARTING" : v < 60 ? "BUILDING READINESS" : "READY";
-  // keep PLAN ring in sync
   document.getElementById("planMe").textContent = v;
   document.getElementById("planRingMe").style.strokeDashoffset = 226 - (226 * Math.min(v,100) / 100);
+  document.getElementById("wScore").textContent = v;
+  document.getElementById("wRing").style.strokeDashoffset = WC - (WC * Math.min(v,100) / 100);
+  const ws = document.getElementById("wStatus");
+  ws.className = "ws " + (v < 20 ? "st-e" : v < 60 ? "st-b" : "st-r");
+  ws.textContent = v < 20 ? "SLIPPING" : v < 60 ? "BUILDING" : "PREPARED";
 }
-function mission(el, pts){
-  if(el.classList.contains("done")) return;
-  el.classList.add("done");
-  done++; score += pts; household += 1;
+function bump(pts){
+  score += pts; household += 1;
   const sn = document.getElementById("scoreN");
   sn.classList.add("pop"); setTimeout(()=>sn.classList.remove("pop"), 300);
   const f = document.getElementById("ptsFloat");
@@ -357,19 +469,90 @@ function mission(el, pts){
   if(navigator.vibrate) navigator.vibrate(40);
   setGauge(score);
   document.getElementById("houseN").textContent = household;
-  document.getElementById("mCount").textContent = done + "/3" + (done === 3 ? " · all done — streak safe 🔥" : "");
-  if(done === 3){
-    document.getElementById("streakN").textContent = "4";
-    document.getElementById("todayDot").textContent = "✓";
-    document.querySelector(".day.today").classList.add("hit");
-  }
+  const t = document.getElementById("trendChip");
+  t.className = "trend-chip tr-up"; t.innerHTML = "▲ ON TRACK";
 }
+
+/* ── sheets ── */
+function openSheet(k){
+  if(document.getElementById("m-" + k).classList.contains("done")) return;
+  document.getElementById("sheetBk").classList.add("open");
+  document.getElementById("sh-" + k).classList.add("open");
+}
+function closeSheets(){
+  document.getElementById("sheetBk").classList.remove("open");
+  document.querySelectorAll(".sheet").forEach(s => s.classList.remove("open"));
+}
+function finish(k, pts){
+  closeSheets();
+  const m = document.getElementById("m-" + k);
+  m.classList.add("done");
+  done++; bump(pts);
+  document.getElementById("mCount").textContent = done + "/3" + (done === 3 ? " · all done 🎉" : "");
+}
+
+/* ── drill quiz ── */
+const QUIZ = [
+  {t:"The power just went out across your neighborhood. What's the FIRST thing to check?",
+   o:["Start the backup generator","Whether it's just your home (breaker) or the whole grid","Open the fridge to assess food"], r:1},
+  {t:"How long does food stay safe in an UNOPENED fridge with no power?",
+   o:["About 4 hours","About 24 hours","About 30 minutes"], r:0},
+  {t:"Best light source for a long outage with kids in the house?",
+   o:["Candles in every room","Battery lanterns & headlamps","Phone flashlights"], r:1}
+];
+let qi = 0, answered = false;
+function answer(btn, right){
+  if(answered) return;
+  answered = true;
+  btn.classList.add(right ? "right" : "wrong");
+  if(!right){
+    const opts = document.querySelectorAll("#qOpts .opt");
+    opts[QUIZ[qi].r].classList.add("right");
+  }
+  if(navigator.vibrate) navigator.vibrate(right ? 30 : [20,40,20]);
+  setTimeout(()=>{
+    qi++;
+    if(qi < QUIZ.length){
+      document.getElementById("qNum").textContent = qi + 1;
+      document.getElementById("qText").textContent = QUIZ[qi].t;
+      document.getElementById("qOpts").innerHTML = QUIZ[qi].o.map((o,i) =>
+        `<button class="opt" onclick="answer(this,${i === QUIZ[qi].r})">${o}</button>`).join("");
+      answered = false;
+    } else {
+      const c = document.getElementById("drillCta");
+      c.disabled = false; c.textContent = "Drill complete — collect +2 ⚡";
+    }
+  }, 900);
+}
+
+/* ── task subchecks ── */
+function subTask(el){
+  el.classList.toggle("on");
+  const all = document.querySelectorAll("#sh-task .sub").length;
+  const on = document.querySelectorAll("#sh-task .sub.on").length;
+  const c = document.getElementById("taskCta");
+  c.disabled = on < all;
+  c.textContent = on < all ? `${on}/${all} steps done` : "Task complete — collect +1 🔦";
+}
+
+/* ── family ── */
+function meConfirm(){
+  document.getElementById("lukasState").textContent = '✓ Confirmed: "the big oak at the park"';
+  document.getElementById("lukasState").classList.add("ok");
+  const b = document.getElementById("meBtn");
+  b.textContent = "DONE ✓"; b.classList.add("sent");
+  document.getElementById("togetherBox").innerHTML = "💬 2 of 3 confirmed — once Holly answers, the whole household earns +3 and your family ring jumps. <i>(For the mockup, you can collect now.)</i>";
+  const c = document.getElementById("famCta");
+  c.disabled = false; c.textContent = "Household challenge complete — collect +3 👨‍👩‍👧‍👦";
+}
+
+/* ── plan steps ── */
 function step(el){
   const was = el.classList.contains("done");
   el.classList.toggle("done");
   const n = document.querySelectorAll("#s-plan .step.done").length;
   document.getElementById("planCount").textContent = n + "/7";
-  if(!was){ score += 1; setGauge(score); if(navigator.vibrate) navigator.vibrate(30); }
+  if(!was){ bump(1); }
 }
 setTimeout(()=>setGauge(score), 300);
 </script>
