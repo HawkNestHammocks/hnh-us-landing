@@ -166,6 +166,63 @@ body{
 .nudge.sent{color:var(--green);border-color:rgba(76,175,80,.5)}
 .together{background:rgba(76,175,80,.08);border:1px solid rgba(76,175,80,.25);border-radius:12px;padding:11px 13px;font-size:.74rem;line-height:1.5;color:rgba(203,196,166,.85);font-weight:600;margin:4px 0 10px}
 
+/* ═══ celebration ═══ */
+.celebrate{display:none;position:fixed;inset:0;z-index:80;pointer-events:none;align-items:center;justify-content:center}
+.celebrate.on{display:flex}
+.cel-card{background:linear-gradient(160deg,rgba(35,39,15,.97),rgba(26,18,8,.98));border:1px solid rgba(201,149,2,.5);border-radius:20px;padding:26px 34px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.6),0 0 60px rgba(201,149,2,.25);animation:celIn .45s cubic-bezier(.18,1.4,.4,1)}
+@keyframes celIn{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+.cel-check{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,var(--gold-light),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.9rem;color:var(--dark);margin:0 auto 10px;animation:celPop .5s .1s cubic-bezier(.18,1.6,.4,1) both}
+@keyframes celPop{0%{transform:scale(0)}100%{transform:scale(1)}}
+.cel-pts{font-size:1.6rem;font-weight:900;color:var(--gold-light)}
+.cel-msg{font-size:.85rem;font-weight:800;color:#fff;margin-top:2px}
+.cel-sub{font-size:.7rem;font-weight:600;color:rgba(203,196,166,.6);margin-top:3px}
+.confetti{position:fixed;top:-12px;border-radius:2px;z-index:79;pointer-events:none;animation:confFall linear forwards}
+@keyframes confFall{to{transform:translateY(110vh) rotate(720deg);opacity:.2}}
+.alldone{display:none;background:linear-gradient(135deg,rgba(76,175,80,.14),rgba(201,149,2,.12));border:1px solid rgba(76,175,80,.4);border-radius:15px;padding:16px;margin-bottom:8px;text-align:center}
+.alldone.on{display:block;animation:fadeIn .4s ease}
+.alldone .a1{font-size:1rem;font-weight:900;color:#fff}
+.alldone .a2{font-size:.74rem;font-weight:600;color:rgba(203,196,166,.7);margin:4px 0 12px}
+.alldone .btns{display:flex;gap:8px}
+.alldone .ab{flex:1;padding:11px 4px;border-radius:50px;font-size:.74rem;font-weight:900;border:1px solid rgba(201,149,2,.5);color:var(--gold);background:none;cursor:pointer;font-family:inherit}
+
+/* ═══ programs shelf ═══ */
+.shelf{display:flex;gap:9px;overflow-x:auto;padding:2px 2px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.shelf::-webkit-scrollbar{display:none}
+.prog-card{flex:0 0 150px;border-radius:14px;padding:13px;background:rgba(0,0,0,.42);border:1px solid rgba(201,149,2,.2);cursor:pointer}
+.prog-card.active-p{background:linear-gradient(135deg,rgba(217,83,79,.22),rgba(154,116,0,.2));border-color:rgba(217,83,79,.45)}
+.prog-card.done-p{border-color:rgba(76,175,80,.4);opacity:.85}
+.prog-card .pe{font-size:1.4rem}
+.prog-card .pn{font-size:.8rem;font-weight:900;color:#fff;margin:6px 0 3px;line-height:1.25}
+.prog-card .pm{font-size:.62rem;font-weight:800;color:rgba(203,196,166,.55)}
+.prog-card .pb{margin-top:8px;height:5px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.prog-card .pb i{display:block;height:100%;background:linear-gradient(90deg,var(--gold-light),var(--gold));border-radius:3px}
+.ptag{display:inline-block;font-size:.52rem;font-weight:900;letter-spacing:1px;padding:2px 8px;border-radius:50px;margin-top:7px}
+.ptag.t-act{background:var(--red);color:#fff}
+.ptag.t-done{background:rgba(76,175,80,.25);color:var(--green);border:1px solid rgba(76,175,80,.5)}
+.ptag.t-new{background:rgba(201,149,2,.18);color:var(--gold);border:1px solid rgba(201,149,2,.45)}
+
+/* ═══ emergency info vault ═══ */
+.vault{display:flex;align-items:center;gap:12px;background:rgba(0,0,0,.42);border:1px solid rgba(201,149,2,.15);border-radius:12px;padding:12px 13px;margin-bottom:7px;cursor:pointer}
+.vault .vi{width:32px;height:32px;border-radius:9px;background:rgba(201,149,2,.12);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.vault .vx{flex:1;min-width:0}
+.vault .v1{font-size:.66rem;font-weight:900;letter-spacing:1px;color:rgba(203,196,166,.5)}
+.vault .v2{font-size:.84rem;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vault .v2.empty{color:rgba(203,196,166,.4);font-weight:600;font-style:italic}
+.vault .ve{color:var(--gold);font-size:.85rem}
+
+/* ═══ active program (TODAY) ═══ */
+.ap-card{border-radius:14px;padding:13px 14px;margin-top:4px;background:linear-gradient(135deg,rgba(217,83,79,.18),rgba(154,116,0,.16));border:1px solid rgba(217,83,79,.35);cursor:pointer}
+.ap-card .a1{display:flex;justify-content:space-between;align-items:center}
+.ap-card .an{font-size:.88rem;font-weight:900;color:#fff}
+.ap-card .at{font-size:.56rem;font-weight:900;letter-spacing:1px;background:var(--red);color:#fff;padding:3px 8px;border-radius:50px}
+.ap-card .ad{font-size:.7rem;font-weight:700;color:rgba(203,196,166,.7);margin:5px 0 8px}
+.ap-card .prog{height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.ap-card .prog i{display:block;height:100%;width:43%;background:linear-gradient(90deg,var(--gold-light),var(--gold));border-radius:3px}
+
+/* widget glow */
+.widget-frame{position:relative;box-shadow:0 4px 14px rgba(0,0,0,.4),0 0 22px rgba(201,149,2,.28);border-color:rgba(201,149,2,.45);animation:wGlow 2.6s ease-in-out infinite}
+@keyframes wGlow{0%,100%{box-shadow:0 4px 14px rgba(0,0,0,.4),0 0 18px rgba(217,83,79,.3)}50%{box-shadow:0 4px 14px rgba(0,0,0,.4),0 0 30px rgba(201,149,2,.45)}}
+
 /* ═══ tab bar ═══ */
 .tabbar{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:402px;display:flex;background:rgba(42,51,32,.92);backdrop-filter:blur(14px);border-radius:50px;padding:5px 6px;box-shadow:0 6px 24px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.06);z-index:40}
 .tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0;border-radius:50px;cursor:pointer;color:rgba(203,196,166,.5);transition:all .25s}
@@ -205,6 +262,14 @@ body{
   </div>
 
   <div class="sec">TODAY'S MISSIONS <span class="r" id="mCount">0/3 · +6 pts waiting</span></div>
+  <div class="alldone" id="allDone">
+    <div class="a1">🎉 All missions complete!</div>
+    <div class="a2">You're more prepared than you were this morning. Want to keep going?</div>
+    <div class="btns">
+      <button class="ab" onclick="go('library')">📚 EXPLORE LIBRARY</button>
+      <button class="ab" onclick="go('plan')">🧭 VIEW YOUR PLAN</button>
+    </div>
+  </div>
   <div class="mission" id="m-drill" onclick="openSheet('drill')">
     <div class="ic">⚡</div>
     <div class="tx"><div class="t1">Daily Drill — blackout edition</div><div class="t2">3 questions · 30 seconds</div></div>
@@ -219,6 +284,13 @@ body{
     <div class="ic">👨‍👩‍👧‍👦</div>
     <div class="tx"><div class="t1">Family challenge: meetup point</div><div class="t2">Whole household completes together</div></div>
     <div class="pts">+3</div><div class="chk">✓</div>
+  </div>
+
+  <div class="sec">ACTIVE PROGRAM</div>
+  <div class="ap-card" onclick="go('plan')">
+    <div class="a1"><div class="an">🔥 Wildfire Ready</div><div class="at">DAY 3 OF 7</div></div>
+    <div class="ad">Today: pack the 10-minute go-bag · finish the week for your certificate</div>
+    <div class="prog"><i></i></div>
   </div>
 
   <div class="sec">ON YOUR HOME SCREEN</div>
@@ -309,12 +381,50 @@ body{
     </div>
   </div>
 
-  <div class="sec">ACTIVE SPRINT</div>
-  <div class="sprint">
-    <div class="s1"><div class="nm">🔥 Wildfire Ready</div><div class="tag">DAY 3 OF 7</div></div>
-    <div class="ds">A 7-day program: evacuation plan, go-bags, air quality, defensible space. Finish for your certificate.</div>
-    <div class="prog"><i></i></div>
-    <div class="pd">3 of 7 days complete · today: "Pack the 10-minute go-bag"</div>
+  <div class="sec">READINESS PROGRAMS <span class="r">scroll →</span></div>
+  <div class="shelf">
+    <div class="prog-card active-p">
+      <div class="pe">🔥</div>
+      <div class="pn">Wildfire Ready</div>
+      <div class="pm">7 days · go-bags, evac plan</div>
+      <div class="pb"><i style="width:43%"></i></div>
+      <span class="ptag t-act">ACTIVE · DAY 3</span>
+    </div>
+    <div class="prog-card done-p">
+      <div class="pe">⚡</div>
+      <div class="pn">Blackout 72-Hour</div>
+      <div class="pm">7 days · light, heat, food</div>
+      <div class="pb"><i style="width:100%"></i></div>
+      <span class="ptag t-done">✓ COMPLETED</span>
+    </div>
+    <div class="prog-card">
+      <div class="pe">🎒</div>
+      <div class="pn">Go-Bag Week</div>
+      <div class="pm">7 days · one bag per person</div>
+      <div class="pb"><i style="width:0%"></i></div>
+      <span class="ptag t-new">START</span>
+    </div>
+    <div class="prog-card">
+      <div class="pe">❄️</div>
+      <div class="pn">Winter Storm Ready</div>
+      <div class="pm">14 days · heat, water, car kit</div>
+      <div class="pb"><i style="width:0%"></i></div>
+      <span class="ptag t-new">START</span>
+    </div>
+    <div class="prog-card">
+      <div class="pe">🏠</div>
+      <div class="pn">Home Fortress</div>
+      <div class="pm">30 days · security & hazards</div>
+      <div class="pb"><i style="width:0%"></i></div>
+      <span class="ptag t-new">START</span>
+    </div>
+    <div class="prog-card">
+      <div class="pe">💧</div>
+      <div class="pn">Water Stockpile</div>
+      <div class="pm">7 days · 72h for everyone</div>
+      <div class="pb"><i style="width:0%"></i></div>
+      <span class="ptag t-new">START</span>
+    </div>
   </div>
 
   <div class="sec">YOUR 7-STEP READINESS PLAN <span class="r" id="planCount">2/7</span></div>
@@ -325,6 +435,13 @@ body{
   <div class="step" onclick="step(this)"><div class="ic"><span>🆘</span></div><div class="t">Add your emergency Beacon contact</div><div class="pl">+1</div></div>
   <div class="step" onclick="step(this)"><div class="ic"><span>🔦</span></div><div class="t">Locate the flashlight & battery tools</div><div class="pl">+1</div></div>
   <div class="step" onclick="step(this)"><div class="ic"><span>👨‍👩‍👧‍👦</span></div><div class="t">Set a household meeting plan</div><div class="pl">+1</div></div>
+
+  <div class="sec">MY EMERGENCY INFO <span class="r">tap to edit</span></div>
+  <div class="vault" onclick="vaultEdit(this)"><div class="vi">📍</div><div class="vx"><div class="v1">FAMILY MEETUP POINT</div><div class="v2">The big oak at the park</div></div><div class="ve">✎</div></div>
+  <div class="vault" onclick="vaultEdit(this)"><div class="vi">📞</div><div class="vx"><div class="v1">ICE CONTACT</div><div class="v2">Holly · 555-0142</div></div><div class="ve">✎</div></div>
+  <div class="vault" onclick="vaultEdit(this)"><div class="vi">🔧</div><div class="vx"><div class="v1">UTILITY SHUTOFFS</div><div class="v2">Gas: left of meter · Water: basement SW corner</div></div><div class="ve">✎</div></div>
+  <div class="vault" onclick="vaultEdit(this)"><div class="vi">📄</div><div class="vx"><div class="v1">INSURANCE POLICY #</div><div class="v2 empty">Tap to add…</div></div><div class="ve">＋</div></div>
+  <div class="vault" onclick="vaultEdit(this)"><div class="vi">💊</div><div class="vx"><div class="v1">MEDICAL NOTES</div><div class="v2 empty">Allergies, prescriptions… tap to add</div></div><div class="ve">＋</div></div>
 
   <div class="sec">CERTIFICATES</div>
   <div class="cert"><div class="ce">📜</div><div class="ct">Blackout 72-Hour — completed May 30</div><div class="cb">SHARE</div></div>
@@ -425,6 +542,16 @@ body{
   <button class="cta" id="famCta" disabled onclick="finish('family',3)">Waiting for your answer…</button>
 </div>
 
+<!-- ═══════════ CELEBRATION ═══════════ -->
+<div class="celebrate" id="celebrate">
+  <div class="cel-card">
+    <div class="cel-check">✓</div>
+    <div class="cel-pts" id="celPts">+2</div>
+    <div class="cel-msg" id="celMsg">Mission complete!</div>
+    <div class="cel-sub">You're more prepared than you were this morning.</div>
+  </div>
+</div>
+
 <!-- ═══════════ TAB BAR ═══════════ -->
 <div class="tabbar">
   <div class="tab active" id="t-today" onclick="go('today')"><div class="ti">🏠</div><div class="tl">TODAY</div></div>
@@ -489,6 +616,42 @@ function finish(k, pts){
   m.classList.add("done");
   done++; bump(pts);
   document.getElementById("mCount").textContent = done + "/3" + (done === 3 ? " · all done 🎉" : "");
+  celebrate(pts, k);
+  if(done === 3) setTimeout(()=>document.getElementById("allDone").classList.add("on"), 1500);
+}
+
+/* ── celebration ── */
+const CEL_MSG = {drill:"Drill crushed! ⚡", task:"Real-world task done! 🔦", family:"Whole household leveled up! 👨‍👩‍👧‍👦"};
+function celebrate(pts, k){
+  document.getElementById("celPts").textContent = "+" + pts;
+  document.getElementById("celMsg").textContent = CEL_MSG[k] || "Mission complete!";
+  const c = document.getElementById("celebrate");
+  c.classList.add("on");
+  if(navigator.vibrate) navigator.vibrate([30,40,60]);
+  // confetti burst
+  const colors = ["#E8C547","#C99502","#4CAF50","#fff","#CBC4A6"];
+  for(let i = 0; i < 36; i++){
+    const p = document.createElement("div");
+    p.className = "confetti";
+    const s = 5 + ((i * 7) % 6);
+    p.style.cssText = `left:${(i * 137) % 100}vw;width:${s}px;height:${s * 1.6}px;background:${colors[i % colors.length]};animation-duration:${1.4 + (i % 5) * .25}s;animation-delay:${(i % 7) * .06}s`;
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(), 3200);
+  }
+  setTimeout(()=>c.classList.remove("on"), 1500);
+}
+
+/* ── emergency info vault ── */
+function vaultEdit(el){
+  const label = el.querySelector(".v1").textContent;
+  const v2 = el.querySelector(".v2");
+  const cur = v2.classList.contains("empty") ? "" : v2.textContent;
+  const val = prompt(label + ":", cur);
+  if(val === null) return;
+  if(val.trim()){
+    v2.textContent = val.trim(); v2.classList.remove("empty");
+    el.querySelector(".ve").textContent = "✎";
+  }
 }
 
 /* ── drill quiz ── */
