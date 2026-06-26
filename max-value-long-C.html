@@ -48,9 +48,9 @@ src="https://www.facebook.com/tr?id=654633620066866&ev=PageView&noscript=1"
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:var(--sans);color:var(--earth);line-height:1.7;background:var(--parchment);-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
-section{padding:64px 0}
-.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
-.narrow{max-width:720px;margin:0 auto;padding:0 22px}
+section{padding:64px 22px}
+.wrap{max-width:1040px;margin:0 auto;padding:0}
+.narrow{max-width:720px;margin:0 auto;padding:0}
 
 /* === STARS === */
 .stars{color:var(--gold);letter-spacing:2px;line-height:1}
@@ -110,14 +110,16 @@ nav .nav-cta{background:linear-gradient(180deg,var(--gold),#b9821c);color:#241a0
 .vbadge{display:inline-flex;align-items:center;gap:4px;background:#1e6b3a;color:#fff;font-size:.62rem;font-weight:800;padding:3px 9px;border-radius:5px;letter-spacing:.5px;text-transform:uppercase}
 .vbadge.dark{background:#1e6b3a}
 
-/* === PHOTO WALL === */
-.photo-wall{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:160px;gap:10px;max-width:980px;margin:0 auto}
-.photo-wall figure{position:relative;overflow:hidden;border-radius:12px;margin:0}
-.photo-wall img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-.photo-wall figure:hover img{transform:scale(1.06)}
-.photo-wall figcaption{position:absolute;left:0;right:0;bottom:0;padding:18px 12px 8px;background:linear-gradient(transparent,rgba(0,0,0,.62));color:#fff;font-size:.72rem;font-weight:600}
-.pw-tall{grid-row:span 2}
-.pw-wide{grid-column:span 2}
+/* === CUSTOMER PHOTO WALL (masonry) === */
+.cust-wall{column-count:4;column-gap:14px;max-width:1120px;margin:0 auto}
+.cw-card{break-inside:avoid;margin:0 0 14px;border-radius:14px;overflow:hidden;background:var(--cream);border:1px solid var(--sand);box-shadow:0 3px 12px rgba(59,47,30,.07)}
+.cw-card img{width:100%;display:block;transition:transform .5s ease}
+.cw-card:hover img{transform:scale(1.04)}
+.cw-card .cw-meta{padding:11px 13px 14px}
+.cw-card .cw-meta .stars{font-size:.82rem;margin-bottom:6px}
+.cw-card .cw-name{font-family:var(--sans);font-size:.72rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--earth);display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.cw-card .cw-name .vchip{background:#1e6b3a;color:#fff;font-size:.55rem;font-weight:800;padding:2px 6px;border-radius:4px;letter-spacing:.4px}
+.cw-card .cw-snip{font-family:var(--serif);font-size:.86rem;font-style:italic;line-height:1.5;color:var(--bark)}
 
 /* === REVIEW CARDS GRID === */
 .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1000px;margin:0 auto}
@@ -194,13 +196,17 @@ nav .nav-cta{background:linear-gradient(180deg,var(--gold),#b9821c);color:#241a0
 
 /* === GRIDLESS FEATURE === */
 .gridless-sec{background:var(--forest-deep);color:var(--cream)}
-.gridless-card{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
-.gridless-card .gimgs{display:flex;gap:12px;justify-content:center}
-.gridless-card .gimgs img{width:46%;border-radius:18px;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.gridless-card{max-width:940px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center}
+.gridless-card .gphones{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.gridless-card .phone{border-radius:22px;overflow:hidden;border:5px solid #0a160d;box-shadow:0 16px 40px rgba(0,0,0,.5);background:#0a160d}
+.gridless-card .phone img{width:100%;display:block;border-radius:16px}
 .gridless-card .glogo{height:30px;width:auto;margin-bottom:16px}
-.gridless-card h3{font-family:var(--serif);font-size:1.7rem;font-weight:700;line-height:1.2;margin-bottom:12px;color:#fff}
-.gridless-card p{font-size:.98rem;color:#dcd2bd;line-height:1.7;margin-bottom:10px}
-.gridless-card .gtag{display:inline-block;margin-top:6px;font-size:.78rem;font-weight:800;letter-spacing:.5px;color:var(--gold);background:rgba(224,169,46,.14);border:1px solid rgba(224,169,46,.3);padding:6px 14px;border-radius:999px}
+.gridless-card h3{font-family:var(--serif);font-size:1.55rem;font-weight:700;line-height:1.25;margin-bottom:14px;color:#fff}
+.gridless-card .gfeat{list-style:none;margin:0 0 18px;padding:0}
+.gridless-card .gfeat li{position:relative;padding-left:26px;font-size:.95rem;color:#dcd2bd;line-height:1.55;margin-bottom:11px}
+.gridless-card .gfeat li::before{content:"✓";position:absolute;left:0;top:0;color:var(--gold);font-weight:900}
+.gridless-card .gfeat li strong{color:#fff;font-weight:700}
+.gridless-card .gtag{display:inline-block;margin-top:2px;font-size:.78rem;font-weight:800;letter-spacing:.5px;color:var(--gold);background:rgba(224,169,46,.14);border:1px solid rgba(224,169,46,.3);padding:7px 15px;border-radius:999px}
 
 /* === STORY / BRAND === */
 .brand-sec{background:var(--parchment)}
@@ -237,19 +243,18 @@ footer a{color:#e3d6bb;text-decoration:underline}
 @media(max-width:860px){
   .review-grid{grid-template-columns:repeat(2,1fr)}
   .upgrade-grid{grid-template-columns:repeat(2,1fr);max-width:480px}
-  .gridless-card{grid-template-columns:1fr;gap:24px;text-align:center}
-  .gridless-card .gimgs{order:2}
+  .gridless-card{grid-template-columns:1fr;gap:26px}
+  .cust-wall{column-count:3}
 }
 @media(max-width:720px){
-  section{padding:48px 0}
+  section{padding:48px 18px}
   .story-card{grid-template-columns:1fr;text-align:center;gap:20px}
   .story-card img{height:240px;max-width:340px;margin:0 auto}
   .story-card .author{justify-content:center}
   .offer-hero{grid-template-columns:1fr;text-align:center;gap:26px}
   .offer-rating,.price-row{justify-content:center}
-  .photo-wall{grid-template-columns:repeat(2,1fr);grid-auto-rows:140px}
-  .pw-wide{grid-column:span 2}
-  .pw-tall{grid-row:span 1}
+  .cust-wall{column-count:2;column-gap:12px}
+  .cw-card{margin-bottom:12px}
 }
 @media(max-width:520px){
   .review-grid{grid-template-columns:1fr}
@@ -258,7 +263,6 @@ footer a{color:#e3d6bb;text-decoration:underline}
   .trust-item .t{font-size:.74rem}
   .hero h1{font-size:1.85rem}
   .snippet{max-width:260px}
-  .photo-wall{grid-template-columns:1fr 1fr}
 }
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -319,19 +323,15 @@ footer a{color:#e3d6bb;text-decoration:underline}
   </div>
 </section>
 
-<!-- PHOTO WALL -->
+<!-- CUSTOMER PHOTO WALL -->
 <section class="reveal">
   <span class="kicker">Real campers, real campsites</span>
-  <h2 class="sec-title">Out in the wild, not in a studio</h2>
-  <p class="sec-sub">Every one of these is a real Hawk Nest owner who sent us their shot. This is what your next campsite looks like.</p>
-  <div class="photo-wall">
-    <figure class="pw-tall"><img src="influencer4.jpg" alt="Hawk Nest hammock tent in a snowy forest" loading="lazy"><figcaption>Four-season tested</figcaption></figure>
-    <figure class="pw-wide"><img src="https://judgeme.imgix.net/hawk-nest-hammocks/1753894672__img_9169__original.jpeg?auto=format&w=600" alt="Moto-camping with the Hawk Nest" loading="lazy"><figcaption>8-day moto trip — Gaspé Peninsula</figcaption></figure>
-    <figure><img src="https://judgeme.imgix.net/hawk-nest-hammocks/1754702940__img_4610__original.jpeg?auto=format&w=400" alt="Hawk Nest perched on a cliff over the Bay of Fundy" loading="lazy"><figcaption>Cliffside, Bay of Fundy</figcaption></figure>
-    <figure><img src="https://judgeme.imgix.net/hawk-nest-hammocks/1755043972__img_9555__original.jpeg?auto=format&w=400" alt="Kayak camping with the Hawk Nest" loading="lazy"><figcaption>Kayak camping</figcaption></figure>
-    <figure class="pw-wide"><img src="influencer2.jpg" alt="Hawk Nest hammock tent between two trees" loading="lazy"><figcaption>Set up in under 5 minutes</figcaption></figure>
-    <figure><img src="https://judgeme.imgix.net/hawk-nest-hammocks/1757347476__20250824_180228__original.jpg?auto=format&w=400" alt="200km hike through the Québec mountains" loading="lazy"><figcaption>200km, Québec mountains</figcaption></figure>
-    <figure><img src="https://judgeme.imgix.net/hawk-nest-hammocks/1762993637__canoetrip__original.jpg?auto=format&w=400" alt="Canoe trip with the Hawk Nest V.3" loading="lazy"><figcaption>Canoe trip, Algonquin</figcaption></figure>
+  <h2 class="sec-title">An overflowing wall of real owners</h2>
+  <p class="sec-sub">Not a studio shot in sight. Every photo below was sent in by a real Hawk Nest owner — this is what your next night outdoors could look like.</p>
+  <div class="cust-wall" id="custWall"></div>
+  <div style="text-align:center;margin-top:30px">
+    <a href="#offer" class="cta-btn"><span class="ic">🛒</span><span>Join Them — Pre-Order $159</span><span class="arr">→</span></a>
+    <span class="cta-sub">Free fast US shipping &middot; Tax included &middot; 30-day guarantee</span>
   </div>
 </section>
 
@@ -450,21 +450,28 @@ footer a{color:#e3d6bb;text-decoration:underline}
   </div>
 </section>
 
-<!-- GRIDLESS FEATURE -->
+<!-- GRIDLESS FEATURE (v1.5) -->
 <section class="gridless-sec reveal">
-  <div class="wrap">
-    <div class="gridless-card">
-      <div class="gimgs">
-        <img src="gridless-home.png" alt="Gridless app home screen" loading="lazy">
-        <img src="gridless-feature.png" alt="Gridless app lesson screen" loading="lazy">
-      </div>
-      <div>
-        <img class="glogo" src="gridless_logo.webp" alt="Gridless">
-        <h3>1 Full Year of Gridless Premium — Free</h3>
-        <p>The survival education app that teaches real outdoor skills through bite-sized lessons and quizzes: fire-starting, navigation, shelter building, water purification, and 600+ wilderness topics.</p>
-        <p>Works fully offline, so you can learn anywhere — even off the grid.</p>
-        <span class="gtag">A $79 value — included free with your pre-order</span>
-      </div>
+  <span class="kicker" style="color:var(--gold)">Included free — a full year</span>
+  <h2 class="sec-title" style="color:#fff">A daily readiness habit for the whole family</h2>
+  <p class="sec-sub" style="color:#c7bca4">Gridless Premium turns being ready for the outdoors into a 30-second daily habit — for you and everyone under your roof. A $79 value, yours free for a full year with your pre-order.</p>
+  <div class="gridless-card">
+    <div class="gphones">
+      <div class="phone"><img src="gridless-v15-home.jpg" alt="Gridless daily readiness home screen with score ring" loading="lazy"></div>
+      <div class="phone"><img src="gridless-v15-drill.jpg" alt="Gridless daily drill quiz" loading="lazy"></div>
+      <div class="phone"><img src="gridless-v15-plan.jpg" alt="Gridless readiness programs and toolkit" loading="lazy"></div>
+      <div class="phone"><img src="gridless-v15-knots.jpg" alt="Gridless knots reference library" loading="lazy"></div>
+    </div>
+    <div>
+      <img class="glogo" src="gridless_logo.webp" alt="Gridless">
+      <ul class="gfeat">
+        <li>Your own <strong>readiness score</strong> that grows as you build real skills</li>
+        <li>A <strong>30-second Daily Drill</strong> plus a full year of challenges &amp; quizzes</li>
+        <li><strong>Family Plan:</strong> one shared household score, a ring for every member, weekly family challenges and gentle nudges</li>
+        <li>Readiness programs, gear &amp; emergency checklists, knot &amp; first-aid references</li>
+        <li>Works <strong>100% offline</strong> — everything in your pocket when you're off the grid</li>
+      </ul>
+      <span class="gtag">A $79 value — included free with your pre-order</span>
     </div>
   </div>
 </section>
@@ -562,6 +569,57 @@ var REVIEWS_BOTTOM = [
   {t:"Amazing hammock and accessories. The best service and support. So good. I highly recommend everyone get one.", a:"Stephen"},
   {t:"I've been camping for 30 years and this is the first time I've actually slept through the night in the backcountry.", a:"Michael T."}
 ];
+
+// === CUSTOMER PHOTO WALL (real judge.me reviews + photos) ===
+var JM = "https://judgeme.imgix.net/hawk-nest-hammocks/";
+var Q = "?auto=format&w=600";
+var PHOTO_WALL = [
+  {p:"1781495991__img_6079__original.jpeg", n:"Jennifer", r:5, s:"Best sleep in a loooong time — so warm and cozy I didn't want to get up in the morning."},
+  {p:"1758763600__img_0734__original.jpeg", n:"Pat Christie", r:5, s:"An intense storm, roughly 10 hours of rain — I stayed completely dry the entire night."},
+  {p:"1764873077__img_1961_jpg__original.jpeg", n:"Alex Catherwood", r:5, s:"An amazing hammock. Durable for all weather, very comfy, and lightweight to backpack with."},
+  {p:"1776701471__20260320_155447__original.jpg", n:"Andrew Kryshak", r:5, s:"Easy to set up, warm and incredibly comfortable — below freezing and I stayed cozy."},
+  {p:"1775425593__1000006934__original.jpg", n:"Shermthebear", r:5, s:"Kept me warm at -17°C and never got cold. No cold spots, even in the wind."},
+  {p:"1762993637__canoetrip__original.jpg", n:"Justin Cohen", r:5, s:"Best sleep I have ever had on a canoe trip. Love Version 3.0!"},
+  {p:"1757347476__20250824_180228__original.jpg", n:"Steve Desroches", r:5, s:"Hiked over 200km and it's still going strong. It's become my favorite piece of kit."},
+  {p:"1763611408__img_4260__original.jpeg", n:"Jennifer", r:5, s:"Better sleeps than in my own bed at home. So much better than a tent on the ground."},
+  {p:"1774373403__img_3402__original.jpeg", n:"Scott Thomson", r:4, s:"Camped in January, 15° below zero. The under quilt kept me nice and warm."},
+  {p:"1758331418__img_5188__original.jpeg", n:"Mark Seaman", r:5, s:"The best and most comfortable hammock I have ever used."},
+  {p:"1760730766__messenger_creation_faea4a1b-f605-4ea4-89__original.jpeg", n:"Jonathan Lewis", r:5, s:"So small and light — perfect for kayak camping. Stayed completely dry and warm."},
+  {p:"1758407631__img_1466__original.jpeg", n:"Gerald", r:5, s:"Now I have the V3 and it is amazing — stronger material and better construction."},
+  {p:"1768154768__img_9664__original.jpeg", n:"Bob Mackay", r:5, s:"Slept soundly through the rain and 15kt wind. Great tent hammock."},
+  {p:"1764873080__img_1963__original.jpeg", n:"Alex Catherwood", r:5, s:"Comfy, durable, and light enough to backpack with anywhere."},
+  {p:"1763228829__1000019508__original.jpg", n:"Tara MacDonald", r:4, s:"Durable and comfortable on two backcountry trips. An excellent tent!"},
+  {p:"1758763606__img_0763__original.jpeg", n:"Pat Christie", r:5, s:"Extra comfy — I slept better than I have in a very long time camping."},
+  {p:"1776701467__20260417_175702__original.jpg", n:"Andrew Kryshak", r:5, s:"Below freezing both nights and I stayed warm with just a sleeping bag."},
+  {p:"1761784409__1761784393313-thumbnail__original.png", n:"Maarten Stam", r:5, s:"A great night's sleep, and the owner stands 100% behind the product."},
+  {p:"1759109134__img_7060__original.jpeg", n:"Dennis", r:5, s:"Well made with great attention to the small details. Super easy to set up!"},
+  {p:"1764873071__img_1948_jpg__original.jpeg", n:"Alex Catherwood", r:5, s:"Durable for all weather and so easy to pack down."},
+  {p:"1758331420__img_5189__original.jpeg", n:"Mark Seaman", r:5, s:"Light, easy to pack into the field, and an all-in-one setup. Get one."},
+  {p:"1774373409__img_3401__original.jpeg", n:"Scott Thomson", r:4, s:"Nice and warm even when it dropped to 15 below zero overnight."},
+  {p:"1760730765__messenger_creation_ba373c25-edd7-4edb-b4__original.jpeg", n:"Jonathan Lewis", r:5, s:"Through rain and wind I stayed dry and warm. Would 100% recommend."},
+  {p:"1758763603__img_0762__original.jpeg", n:"Pat Christie", r:5, s:"Completely dry through the whole storm. Highly recommend."},
+  {p:"1758407634__img_1457__original.jpeg", n:"Gerald", r:5, s:"The pad pocket keeps a well-insulated bottom. So many thoughtful touches."},
+  {p:"1764873074__img_2020__original.jpeg", n:"Alex Catherwood", r:5, s:"Lightweight to backpack with — an amazing hammock."},
+  {p:"1768845908__img_3402__original.jpeg", n:"Scott Thomson", r:4, s:"Down to -13°C overnight. Easy to set up, no real quality issues."},
+  {p:"1774373406__img_3399__original.jpeg", n:"Scott Thomson", r:4, s:"The under quilt kept me warm all night long."},
+  {p:"1768845915__img_3399__original.jpg", n:"Scott Thomson", r:4, s:"Straps, sleeping pad and down under quilt — a simple, solid setup."},
+  {p:"1768845911__img_3401__original.jpg", n:"Scott Thomson", r:4, s:"First time out and the setup was easy with no real issues."}
+];
+(function(){
+  var wall = document.getElementById('custWall');
+  if(!wall) return;
+  function starStr(n){ var s=''; for(var i=0;i<5;i++){ s += i<n ? '★' : '☆'; } return s; }
+  wall.innerHTML = PHOTO_WALL.map(function(c){
+    return '<div class="cw-card">'+
+      '<img src="'+JM+c.p+Q+'" alt="'+c.n+'’s Hawk Nest setup" loading="lazy">'+
+      '<div class="cw-meta">'+
+        '<div class="stars">'+starStr(c.r)+'</div>'+
+        '<div class="cw-name">'+c.n+' <span class="vchip">✓ Verified</span></div>'+
+        '<div class="cw-snip">"'+c.s+'"</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+})();
 
 // Build marquee (duplicated for seamless loop)
 (function(){

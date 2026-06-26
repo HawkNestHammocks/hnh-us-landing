@@ -52,9 +52,9 @@ src="https://www.facebook.com/tr?id=654633620066866&ev=PageView&noscript=1"
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:var(--body);color:var(--ink);line-height:1.6;background:var(--paper);-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
-section{padding:54px 0}
-.wrap{max-width:980px;margin:0 auto;padding:0 18px}
-.narrow{max-width:680px;margin:0 auto;padding:0 18px}
+section{padding:54px 18px}
+.wrap{max-width:980px;margin:0 auto}
+.narrow{max-width:680px;margin:0 auto}
 
 /* ===== HEADINGS ===== */
 .kicker{font-family:var(--display);text-transform:uppercase;letter-spacing:2.5px;font-size:.72rem;font-weight:800;color:var(--rust)}
@@ -198,13 +198,24 @@ table.cmp tbody tr:last-child td,table.cmp tbody tr:last-child th{border-bottom:
 
 /* ===== GRIDLESS ===== */
 .gl-sec{background:linear-gradient(180deg,#0e2014,#15110b);color:var(--cream)}
-.gl-flex{display:grid;grid-template-columns:1fr;gap:26px;max-width:840px;margin:28px auto 0;align-items:center}
-.gl-shots{display:flex;gap:14px;justify-content:center}
-.gl-shots img{width:46%;max-width:200px;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.5)}
-.gl-copy .gl-logo{height:30px;width:auto;margin-bottom:14px}
-.gl-copy h3{font-family:var(--display);font-weight:900;font-size:1.5rem;line-height:1.1;margin-bottom:10px;color:#fff}
+.gl-phones{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:420px;margin:30px auto 0}
+.gl-phone{position:relative;border-radius:20px;overflow:hidden;border:3px solid #23201b;background:#000;box-shadow:0 16px 40px rgba(0,0,0,.55)}
+.gl-phone img{width:100%;aspect-ratio:620/1342;object-fit:cover;display:block}
+.gl-phone .cap{position:absolute;left:0;right:0;bottom:0;padding:18px 10px 9px;
+  background:linear-gradient(180deg,transparent,rgba(7,12,8,.92));
+  font-family:var(--display);font-weight:800;font-size:.72rem;letter-spacing:.3px;color:var(--gold);text-align:center}
+.gl-copy{max-width:600px;margin:26px auto 0;text-align:center}
+.gl-copy .gl-logo{height:30px;width:auto;margin:0 auto 14px}
+.gl-copy h3{font-family:var(--display);font-weight:900;font-size:clamp(1.4rem,4.6vw,1.7rem);line-height:1.1;margin-bottom:12px;color:#fff}
 .gl-copy h3 .hl{color:var(--gold)}
-.gl-copy p{color:var(--sand);font-size:.96rem;line-height:1.6;margin-bottom:14px}
+.gl-copy p{color:var(--sand);font-size:.96rem;line-height:1.6;margin-bottom:18px}
+.gl-feats{list-style:none;display:grid;grid-template-columns:1fr;gap:9px;max-width:430px;margin:0 auto 18px;text-align:left}
+.gl-feats li{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--sand);line-height:1.45}
+.gl-feats li .fi{flex-shrink:0;font-size:1.05rem;line-height:1.3}
+.gl-feats li strong{color:#fff;font-weight:700}
+.gl-fam{max-width:430px;margin:0 auto 18px;background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.28);border-radius:13px;padding:15px 16px;text-align:left}
+.gl-fam .ft{font-family:var(--display);font-weight:900;font-size:.95rem;color:var(--gold);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
+.gl-fam p{color:var(--sand);font-size:.88rem;line-height:1.5;margin:0}
 .gl-copy .pill{display:inline-block;background:rgba(245,166,35,.16);border:1px solid rgba(245,166,35,.35);color:var(--gold);font-family:var(--display);font-weight:800;font-size:.78rem;padding:7px 14px;border-radius:99px;letter-spacing:.3px}
 
 /* ===== REVIEWS ===== */
@@ -220,7 +231,9 @@ table.cmp tbody tr:last-child td,table.cmp tbody tr:last-child th{border-bottom:
 .rev .body{font-size:.92rem;color:var(--slate);line-height:1.55;margin-bottom:11px}
 .rev .auth{font-family:var(--display);font-weight:700;font-size:.78rem;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .vbadge{display:inline-flex;align-items:center;gap:3px;background:var(--green);color:#fff;font-size:.6rem;font-weight:800;padding:3px 7px;border-radius:4px;letter-spacing:.4px;text-transform:uppercase;font-family:var(--display)}
-.rev-photo{width:100%;height:160px;object-fit:cover;border-radius:9px;margin-bottom:12px}
+.rev-photo{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:9px;margin-bottom:12px;background:var(--sand)}
+.rev-photos{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}
+.rev-photos .rev-photo{margin-bottom:0}
 
 /* ===== GUARANTEE ===== */
 .guar{background:var(--ink);color:var(--cream);text-align:center;padding:46px 18px}
@@ -267,8 +280,7 @@ footer .small{margin-top:8px;font-size:.72rem;color:#5f7065}
 
 /* ===== RESPONSIVE ===== */
 @media(min-width:760px){
-  .gl-flex{grid-template-columns:0.9fr 1.1fr}
-  .gl-shots{order:0}
+  .gl-phones{grid-template-columns:repeat(4,1fr);max-width:840px}
   .bgrid{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:480px){
@@ -276,7 +288,8 @@ footer .small{margin-top:8px;font-size:.72rem;color:#5f7065}
   .price-pod .now{font-size:2.5rem}
   table.cmp th,table.cmp td{padding:11px 4px;font-size:.74rem}
   table.cmp tbody th{font-size:.74rem;padding-left:8px}
-  section{padding:44px 0}
+  section{padding:44px 14px}
+  .stack,.cmp-wrap,.rev-grid,.faq,.bgrid,.gl-phones{margin-left:auto;margin-right:auto}
 }
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
 .reveal.vis{opacity:1;transform:translateY(0)}
@@ -356,7 +369,7 @@ footer .small{margin-top:8px;font-size:.72rem;color:#5f7065}
     </div>
     <div class="stack-row">
       <div class="ic">📱</div>
-      <div class="txt"><div class="name">1 Year Gridless Premium</div><div class="desc">600+ offline wilderness skill lessons &amp; quizzes</div></div>
+      <div class="txt"><div class="name">1 Year Gridless Premium</div><div class="desc">Daily family-readiness app — score, drills &amp; offline guides</div></div>
       <div class="val"><s>$79</s><span class="free">Free</span></div>
     </div>
     <div class="stack-row">
@@ -499,20 +512,33 @@ footer .small{margin-top:8px;font-size:.72rem;color:#5f7065}
 <section class="gl-sec reveal">
   <div class="narrow" style="text-align:center">
     <div class="kicker">Free Bonus · $79 Value</div>
-    <h2 class="big light">1 Year of Gridless Premium — Included</h2>
+    <h2 class="big light">1 Year of Gridless Premium — Included Free</h2>
+    <p class="sub" style="color:#b8c7bb">The daily family-readiness app. Build real preparedness in 30 seconds a day — and bring the whole household with you.</p>
   </div>
-  <div class="gl-flex">
-    <div class="gl-shots">
-      <img src="gridless-home.png" alt="Gridless app home screen">
-      <img src="gridless-feature.png" alt="Gridless app lesson screen">
+
+  <div class="gl-phones">
+    <div class="gl-phone"><img src="gridless-v15-home.jpg" alt="Gridless daily readiness home with score ring"><span class="cap">Readiness Score</span></div>
+    <div class="gl-phone"><img src="gridless-v15-drill.jpg" alt="Gridless 30-second daily drill quiz"><span class="cap">Daily Drill</span></div>
+    <div class="gl-phone"><img src="gridless-v15-knots.jpg" alt="Gridless knots reference library"><span class="cap">Knot Library</span></div>
+    <div class="gl-phone"><img src="gridless-v15-plan.jpg" alt="Gridless readiness programs and toolkit"><span class="cap">Programs &amp; Toolkit</span></div>
+  </div>
+
+  <div class="gl-copy">
+    <img class="gl-logo" src="gridless-logo.webp" alt="Gridless">
+    <h3>Know your family is <span class="hl">ready for anything</span> — every single day.</h3>
+    <p>Gridless turns preparedness into a daily habit. Get a personal <strong style="color:#fff">readiness score</strong>, knock out a 30-second drill each morning, and work through a full year of challenges and quizzes. Then take it deep into the backcountry — it runs <strong style="color:#fff">100% offline</strong>, no signal or power required.</p>
+    <ul class="gl-feats">
+      <li><span class="fi">🎯</span><span>A live <strong>personal readiness score</strong> that climbs as you train</span></li>
+      <li><span class="fi">⚡</span><span>A <strong>30-second daily drill</strong> + a full year of challenges &amp; quizzes</span></li>
+      <li><span class="fi">📡</span><span>Fully <strong>offline</strong> — works with no signal and no power</span></li>
+      <li><span class="fi">🧭</span><span><strong>Readiness programs</strong> plus gear &amp; emergency checklists</span></li>
+      <li><span class="fi">🪢</span><span>Quick-reference <strong>knot &amp; first-aid</strong> guides</span></li>
+    </ul>
+    <div class="gl-fam">
+      <div class="ft">👨‍👩‍👧 Family Plan included</div>
+      <p>One shared household readiness score with a ring for every member, weekly family challenges, and gentle nudges that keep everyone on track — so prepping isn't on one person alone.</p>
     </div>
-    <div class="gl-copy">
-      <img class="gl-logo" src="gridless-logo.webp" alt="Gridless">
-      <h3>Learn the skills to <span class="hl">survive anywhere</span> off the grid.</h3>
-      <p>Gridless is the survival-education app that teaches real outdoor skills through bite-sized lessons and quizzes — fire-starting, navigation, shelter building, water purification, and 600+ wilderness topics.</p>
-      <p>It works fully offline, so you can learn and reference it deep in the backcountry. Every pre-order includes a <strong style="color:#fff">full year of Premium, free.</strong></p>
-      <span class="pill">📱 Worth $79 — Yours at no extra cost</span>
-    </div>
+    <span class="pill">📱 Worth $79 — Yours free with your pre-order</span>
   </div>
 </section>
 
@@ -540,6 +566,7 @@ footer .small{margin-top:8px;font-size:.72rem;color:#5f7065}
     </div>
 
     <div class="rev">
+      <img class="rev-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1763611408__img_4260__original.jpeg?auto=format&w=500" alt="Jennifer's hammock hung in the trees" loading="lazy">
       <div class="s">★★★★★</div>
       <div class="body">"I have not had better sleeps in my own bed at home than hanging in the trees outside in my Hawk Nest Hammock tent. So much better than sleeping in a tent."</div>
       <div class="auth">Jennifer <span class="vbadge">✓ Verified</span></div>
@@ -566,6 +593,7 @@ footer .small{margin-top:8px;font-size:.72rem;color:#5f7065}
     </div>
 
     <div class="rev">
+      <img class="rev-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1762993637__canoetrip__original.jpg?auto=format&w=500" alt="Justin's canoe trip campsite" loading="lazy">
       <div class="s">★★★★★</div>
       <div class="body">"Love Version 3.0! Subtle but great improvements over the original. Can't wait to get back to Algonquin Park this summer. Best sleep system out there."</div>
       <div class="auth">Justin Cohen <span class="vbadge">✓ Verified</span></div>
@@ -579,12 +607,17 @@ footer .small{margin-top:8px;font-size:.72rem;color:#5f7065}
     </div>
 
     <div class="rev">
+      <div class="rev-photos">
+        <img class="rev-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1764873077__img_1961_jpg__original.jpeg?auto=format&w=400" alt="Alex's hammock setup" loading="lazy">
+        <img class="rev-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1764873074__img_2020__original.jpeg?auto=format&w=400" alt="Alex backpacking with the Hawk Nest" loading="lazy">
+      </div>
       <div class="s">★★★★★</div>
       <div class="body">"An amazing hammock. Durable for all weather, very comfy, and lightweight to backpack with!"</div>
       <div class="auth">Alex Catherwood <span class="vbadge">✓ Verified</span></div>
     </div>
 
     <div class="rev">
+      <img class="rev-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1761784409__1761784393313-thumbnail__original.png?auto=format&w=500" alt="Maarten's first night out" loading="lazy">
       <div class="s">★★★★★</div>
       <div class="body">"Lukas (the owner) is amazing! He's got a fantastic product and 100% product satisfaction guaranteed. On my first night out I noticed the quality immediately."</div>
       <div class="auth">Maarten Stam <span class="vbadge">✓ Verified</span></div>
@@ -612,6 +645,53 @@ footer .small{margin-top:8px;font-size:.72rem;color:#5f7065}
       <div class="s">★★★★★</div>
       <div class="body">"Just like the creator said — it's like they looked at others on the market and said 'what can we do better?' Everything about this is thoughtfully designed."</div>
       <div class="auth">Michael Blecich <span class="vbadge">✓ Verified</span></div>
+    </div>
+
+    <div class="rev">
+      <div class="rev-photos">
+        <img class="rev-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1776701471__20260320_155447__original.jpg?auto=format&w=400" alt="Andrew's sub-freezing setup" loading="lazy">
+        <img class="rev-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1776701467__20260417_175702__original.jpg?auto=format&w=400" alt="Andrew's hammock in the woods" loading="lazy">
+      </div>
+      <div class="s">★★★★★</div>
+      <div class="body">"Took out my V.3 twice in the last couple weeks and have been loving it. Both times it got below freezing, but I stayed warm and comfortable with just a sleeping bag."</div>
+      <div class="auth">Andrew Kryshak <span class="vbadge">✓ Verified</span></div>
+    </div>
+
+    <div class="rev">
+      <div class="rev-photos">
+        <img class="rev-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1758331418__img_5188__original.jpeg?auto=format&w=400" alt="Mark's Hawk Nest hung in the forest" loading="lazy">
+        <img class="rev-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1758331420__img_5189__original.jpeg?auto=format&w=400" alt="Mark's hammock setup" loading="lazy">
+      </div>
+      <div class="s">★★★★★</div>
+      <div class="body">"I have all three versions and this is the best, most comfortable hammock I've ever used. Light, easy to pack, an all-in-one. A lot of thought went into this complete package."</div>
+      <div class="auth">Mark Seaman <span class="vbadge">✓ Verified</span></div>
+    </div>
+
+    <div class="rev">
+      <div class="rev-photos">
+        <img class="rev-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1758407631__img_1466__original.jpeg?auto=format&w=400" alt="Gerald's V.3 pitched between trees" loading="lazy">
+        <img class="rev-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1758407634__img_1457__original.jpeg?auto=format&w=400" alt="Gerald's interior setup" loading="lazy">
+      </div>
+      <div class="s">★★★★★</div>
+      <div class="body">"The V.3 is amazing — much stronger material and better construction. The pad pocket keeps a well-insulated bottom, the bug net and fly are very effective, and the lantern holders at both ends are brilliant."</div>
+      <div class="auth">Gerald <span class="vbadge">✓ Verified</span></div>
+    </div>
+
+    <div class="rev">
+      <img class="rev-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1759109134__img_7060__original.jpeg?auto=format&w=500" alt="Dennis's Hawk Nest gear" loading="lazy">
+      <div class="s">★★★★★</div>
+      <div class="body">"Well made, with great attention to small details. A great addition to your Hawk Nest gear. I love it — super easy to set up!"</div>
+      <div class="auth">Dennis <span class="vbadge">✓ Verified</span></div>
+    </div>
+
+    <div class="rev">
+      <div class="rev-photos">
+        <img class="rev-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1760730766__messenger_creation_faea4a1b-f605-4ea4-89__original.jpeg?auto=format&w=400" alt="Jonathan's kayak-camping setup" loading="lazy">
+        <img class="rev-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1760730765__messenger_creation_ba373c25-edd7-4edb-b4__original.jpeg?auto=format&w=400" alt="Jonathan's hammock by the water" loading="lazy">
+      </div>
+      <div class="s">★★★★★</div>
+      <div class="body">"Used this for a couple seasons now and it's been amazing. So small and light, perfect for kayak camping. I've had it in rain and wind and stayed completely dry and warm."</div>
+      <div class="auth">Jonathan Lewis <span class="vbadge">✓ Verified</span></div>
     </div>
 
   </div>

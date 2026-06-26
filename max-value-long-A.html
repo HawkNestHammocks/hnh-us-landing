@@ -192,8 +192,13 @@ nav.topbar .nav-cta{
 .qcard .who{display:flex;align-items:center;gap:9px;font-family:var(--sans);font-size:.76rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;flex-wrap:wrap}
 .vbadge{display:inline-flex;align-items:center;gap:3px;background:#1f5130;color:#fff;font-size:.6rem;font-weight:700;padding:3px 7px;border-radius:4px;letter-spacing:.4px}
 .qcard.with-img{padding:0;overflow:hidden}
-.qcard.with-img .qcard-photo{width:100%;height:190px;object-fit:cover}
+.qcard.with-img .qcard-photo{width:100%;aspect-ratio:1/1;object-fit:cover;background:#e7dcc6}
 .qcard.with-img .qcard-text{padding:24px}
+/* customer photo strip */
+.photo-strip{max-width:980px;margin:0 auto 30px;display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.photo-strip img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;border:1px solid var(--line);box-shadow:0 2px 10px rgba(60,45,20,.08);background:#e7dcc6}
+@media(max-width:760px){.photo-strip{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:440px){.photo-strip{grid-template-columns:repeat(3,1fr);gap:8px}}
 
 /* ===== OFFER / SPEC SHEET ===== */
 .offer-sec{background:var(--parchment)}
@@ -260,10 +265,12 @@ nav.topbar .nav-cta{
 .gridless-copy p{font-family:var(--sans);font-size:1rem;line-height:1.7;color:#d8cdb6;margin-bottom:16px}
 .gridless-copy .free-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(199,154,62,.16);border:1px solid rgba(199,154,62,.4);border-radius:8px;padding:9px 16px;font-family:var(--sans);font-size:.85rem;font-weight:600;color:var(--gold)}
 .gridless-copy .free-tag s{color:#9a8c6c}
-.gridless-art{position:relative;display:flex;justify-content:center;align-items:center;gap:14px}
-.gridless-art img{border-radius:20px;box-shadow:0 24px 60px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08)}
-.gridless-art .phone1{width:54%;z-index:2;transform:translateY(14px)}
-.gridless-art .phone2{width:50%;z-index:1;transform:translateY(-14px)}
+.gridless-art{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.gridless-art figure{margin:0}
+.gridless-art img{width:100%;border-radius:22px;box-shadow:0 20px 48px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1);display:block}
+.gridless-art figcaption{font-family:var(--sans);font-size:.7rem;letter-spacing:.4px;color:var(--gold);text-align:center;margin-top:8px;opacity:.85}
+.gridless-feat-row{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 4px}
+.gridless-feat-row span{font-family:var(--sans);font-size:.78rem;font-weight:600;color:#e7dcc0;background:rgba(199,154,62,.12);border:1px solid rgba(199,154,62,.28);border-radius:999px;padding:6px 12px}
 .gridless-logo-top{display:flex;align-items:center;gap:10px;margin-bottom:18px}
 .gridless-logo-top img{height:30px;width:auto}
 
@@ -287,15 +294,18 @@ footer .fine{margin-top:9px;font-size:.74rem;color:rgba(227,214,191,.45)}
 #stickyBar{
   position:fixed;left:0;right:0;bottom:0;z-index:200;display:none;
   background:rgba(21,16,8,.96);backdrop-filter:blur(10px);
-  border-top:1px solid rgba(199,154,62,.25);padding:11px 16px;
-  align-items:center;justify-content:space-between;gap:12px;
+  border-top:1px solid rgba(199,154,62,.25);
+  padding:10px max(14px,env(safe-area-inset-left)) calc(10px + env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-right));
   box-shadow:0 -4px 22px rgba(0,0,0,.35);
 }
-#stickyBar .sb-left{min-width:0}
-#stickyBar .sb-price{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:#fff;line-height:1.1}
+/* shown as a clean flex row via JS (display:flex) */
+#stickyBar.fl-row{display:flex;flex-direction:row;align-items:center;gap:12px;flex-wrap:nowrap}
+#stickyBar .sb-left{min-width:0;flex:1 1 auto;display:flex;flex-direction:column;justify-content:center}
+#stickyBar .sb-price{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:#fff;line-height:1.15;white-space:nowrap}
 #stickyBar .sb-price s{font-size:.8rem;color:#a99b78;font-weight:400}
 #stickyBar .sb-note{font-family:var(--sans);font-size:.68rem;color:var(--gold);letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#stickyBar .btn{padding:13px 22px;font-size:.92rem;flex-shrink:0}
+/* override global .btn{width:100%} so the CTA never overlaps the label */
+#stickyBar .btn{width:auto;flex:0 0 auto;padding:13px 22px;font-size:.92rem;white-space:nowrap}
 
 /* ===== REVEAL ===== */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s ease}
@@ -306,7 +316,8 @@ footer .fine{margin-top:9px;font-size:.74rem;color:rgba(227,214,191,.45)}
   .gridless-inner{grid-template-columns:1fr;gap:34px;text-align:center}
   .gridless-logo-top{justify-content:center}
   .gridless-copy .chapter-label{justify-content:center}
-  .gridless-art{order:-1}
+  .gridless-copy .gridless-feat-row{justify-content:center}
+  .gridless-art{order:-1;max-width:440px;margin:0 auto}
 }
 @media(max-width:620px){
   section{padding:54px 0}
@@ -454,93 +465,131 @@ footer .fine{margin-top:9px;font-size:.74rem;color:rgba(227,214,191,.45)}
     <p class="chapter-sub">4.8 out of 5 stars · 400+ five-star reviews</p>
   </div>
   <div class="wrap">
+
+    <!-- REAL CUSTOMER PHOTO STRIP -->
+    <div class="photo-strip">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1758763606__img_0763__original.jpeg?auto=format&w=600" alt="Real customer photo — Hawk Nest in Algonquin Park" loading="lazy">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1776701467__20260417_175702__original.jpg?auto=format&w=600" alt="Real customer photo — Hawk Nest below freezing" loading="lazy">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1774373409__img_3401__original.jpeg?auto=format&w=600" alt="Real customer photo — winter camping in Alberta" loading="lazy">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1764873080__img_1963__original.jpeg?auto=format&w=600" alt="Real customer photo — Hawk Nest in the backcountry" loading="lazy">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1758407634__img_1457__original.jpeg?auto=format&w=600" alt="Real customer photo — Hawk Nest pitched between trees" loading="lazy">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1758331420__img_5189__original.jpeg?auto=format&w=600" alt="Real customer photo — Hawk Nest in the green" loading="lazy">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1760730765__messenger_creation_ba373c25-edd7-4edb-b4__original.jpeg?auto=format&w=600" alt="Real customer photo — kayak-camping setup" loading="lazy">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1775425593__1000006934__original.jpg?auto=format&w=600" alt="Real customer photo — under quilt at -17C" loading="lazy">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1764873071__img_1948_jpg__original.jpeg?auto=format&w=600" alt="Real customer photo — lightweight backpacking" loading="lazy">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1762993637__canoetrip__original.jpg?auto=format&w=600" alt="Real customer photo — canoe trip in Algonquin" loading="lazy">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1758763603__img_0762__original.jpeg?auto=format&w=600" alt="Real customer photo — dry through a storm" loading="lazy">
+      <img src="https://judgeme.imgix.net/hawk-nest-hammocks/1764873074__img_2020__original.jpeg?auto=format&w=600" alt="Real customer photo — all-weather durability" loading="lazy">
+    </div>
+
     <div class="review-grid">
 
       <div class="qcard with-img">
-        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1758763600__img_0734__original.jpeg?auto=format&w=500" alt="Pat's setup in Algonquin Park">
+        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1758763600__img_0734__original.jpeg?auto=format&w=600" alt="Pat's setup in Algonquin Park" loading="lazy">
         <div class="qcard-text">
           <div class="stars">★★★★★</div>
-          <p class="body">"An intense September storm came through in Algonquin Park, followed by rain for most of the day. I was completely dry and comfortable the entire time."</p>
+          <p class="body">"Finally put my Hawk Nest to the test in Algonquin Park. An intense September storm came through, followed by rain for roughly 10 hours. I stayed completely dry the whole time, and slept better than I have in a very long time camping."</p>
           <div class="who">Pat Christie <span class="vbadge">✓ Verified Buyer</span></div>
         </div>
       </div>
 
       <div class="qcard with-img">
-        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1757347476__20250824_180228__original.jpg?auto=format&w=500" alt="Steve's 200km hike in Quebec">
+        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1776701471__20260320_155447__original.jpg?auto=format&w=600" alt="Andrew's freezing-night setup" loading="lazy">
         <div class="qcard-text">
           <div class="stars">★★★★★</div>
-          <p class="body">"Hiked over 200km in the Québec mountains. And it's still going strong and ready for more. Never sleep on the ground again!"</p>
+          <p class="body">"Taken my V.3 out twice in the last couple of weeks and have been loving it. Easy to set up, easy to take down, warm and incredibly comfortable. Both times it got below freezing and I stayed warm with just a sleeping bag."</p>
+          <div class="who">Andrew Kryshak <span class="vbadge">✓ Verified Buyer</span></div>
+        </div>
+      </div>
+
+      <div class="qcard with-img">
+        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1757347476__20250824_180228__original.jpg?auto=format&w=600" alt="Steve's 200km hike in Quebec" loading="lazy">
+        <div class="qcard-text">
+          <div class="stars">★★★★★</div>
+          <p class="body">"Quick to set up, versatile and darn tough. Hiked over 200km in the Québec mountains and it's still going strong and ready for more. Never sleep on the wet uneven ground again — it's become my favorite piece of kit."</p>
           <div class="who">Steve Desroches <span class="vbadge">✓ Verified Buyer</span></div>
         </div>
       </div>
 
       <div class="qcard with-img">
-        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1754702940__img_4610__original.jpeg?auto=format&w=500" alt="Elizabeth's setup over the Bay of Fundy">
+        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1763611408__img_4260__original.jpeg?auto=format&w=600" alt="Jennifer's hang in the trees" loading="lazy">
         <div class="qcard-text">
           <div class="stars">★★★★★</div>
-          <p class="body">"First trip out with the tent, perched on a cliff overlooking the Bay of Fundy. Solid warm and comfy sleep despite the deep temperature drop at night."</p>
-          <div class="who">Elizabeth Boudreau <span class="vbadge">✓ Verified Buyer</span></div>
+          <p class="body">"I have not had better sleeps in my own bed at home than hanging in the trees outside in my Hawk Nest. So much better than sleeping in a tent on the ground. Easy to set up, and even easier to take down."</p>
+          <div class="who">Jennifer <span class="vbadge">✓ Verified Buyer</span></div>
         </div>
       </div>
 
-      <div class="qcard">
-        <div class="stars">★★★★★</div>
-        <p class="body">"Just returned from an 8-day moto-camping trip around Quebec and the Gaspe Peninsula. This system exceeded every expectation."</p>
-        <div class="who">Brandon Williams <span class="vbadge">✓ Verified Buyer</span></div>
-      </div>
-
-      <div class="qcard">
-        <div class="stars">★★★★★</div>
-        <p class="body">"I have not had better sleeps in my own bed at home than hanging in the trees outside in my Hawk Nest. So much better than sleeping in a tent."</p>
-        <div class="who">Jennifer <span class="vbadge">✓ Verified Buyer</span></div>
-      </div>
-
       <div class="qcard with-img">
-        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1755043972__img_9555__original.jpeg?auto=format&w=500" alt="Greg's kayak-camping setup">
+        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1774373403__img_3402__original.jpeg?auto=format&w=600" alt="Scott's January camp in Alberta" loading="lazy">
         <div class="qcard-text">
           <div class="stars">★★★★★</div>
-          <p class="body">"This lightweight hammock was easy to set up — first time took about 10 minutes. By the second time, under 5. Perfect for kayak camping."</p>
-          <div class="who">Greg Faber <span class="vbadge">✓ Verified Buyer</span></div>
+          <p class="body">"I went camping in January in Alberta. The temperature was 15° below zero and the under quilt kept me nice and warm."</p>
+          <div class="who">Scott Thomson <span class="vbadge">✓ Verified Buyer</span></div>
         </div>
       </div>
 
-      <div class="qcard">
-        <div class="stars">★★★★★</div>
-        <p class="body">"An amazing hammock. Durable for all weather, very comfy, and lightweight to backpack with!"</p>
-        <div class="who">Alex Catherwood <span class="vbadge">✓ Verified Buyer</span></div>
+      <div class="qcard with-img">
+        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1764873077__img_1961_jpg__original.jpeg?auto=format&w=600" alt="Alex's backpacking setup" loading="lazy">
+        <div class="qcard-text">
+          <div class="stars">★★★★★</div>
+          <p class="body">"An amazing hammock. Durable for all weather, very comfy, and lightweight to backpack with!"</p>
+          <div class="who">Alex Catherwood <span class="vbadge">✓ Verified Buyer</span></div>
+        </div>
       </div>
 
       <div class="qcard with-img">
-        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1768154768__img_9664__original.jpeg?auto=format&w=500" alt="Bob's stormy backyard test">
+        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1768154768__img_9664__original.jpeg?auto=format&w=600" alt="Bob's stormy backyard test" loading="lazy">
         <div class="qcard-text">
           <div class="stars">★★★★★</div>
-          <p class="body">"Tested it as soon as I got it — 3°C, raining, wind 15kts. Not the wilderness, but close enough for a trial. Absolutely loved it."</p>
+          <p class="body">"Had to try it as soon as I got it. Tested it in 3°C, raining, wind 15kts. Not the wilderness, but close enough for a trial. Slept soundly through the rain and wind. Can't wait to use it on the Juan de Fuca Trail."</p>
           <div class="who">Bob Mackay <span class="vbadge">✓ Verified Buyer</span></div>
         </div>
       </div>
 
-      <div class="qcard">
-        <div class="stars">★★★★★</div>
-        <p class="body">"I ordered a couple of Hawk Nest V.3's after my friend had one and I was not disappointed. Took them on an overnight girls' kayaking trip!"</p>
-        <div class="who">Hailey Kusche <span class="vbadge">✓ Verified Buyer</span></div>
+      <div class="qcard with-img">
+        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1760730766__messenger_creation_faea4a1b-f605-4ea4-89__original.jpeg?auto=format&w=600" alt="Jonathan's kayak-camping setup" loading="lazy">
+        <div class="qcard-text">
+          <div class="stars">★★★★★</div>
+          <p class="body">"So small and light, it's perfect for kayak camping. I've had it in rain and wind and stayed completely dry and warm, even on nights that dipped just below zero. Would 100% recommend."</p>
+          <div class="who">Jonathan Lewis <span class="vbadge">✓ Verified Buyer</span></div>
+        </div>
       </div>
 
-      <div class="qcard">
-        <div class="stars">★★★★★</div>
-        <p class="body">"Love Version 3.0! Subtle but great improvements over the original. Can't wait to get back out. Best sleep system out there."</p>
-        <div class="who">Justin Cohen <span class="vbadge">✓ Verified Buyer</span></div>
+      <div class="qcard with-img">
+        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1758331418__img_5188__original.jpeg?auto=format&w=600" alt="Mark's V.3 in the field" loading="lazy">
+        <div class="qcard-text">
+          <div class="stars">★★★★★</div>
+          <p class="body">"I have all three versions and this is the best and most comfortable hammock I have ever used. The material upgrades and little touches like more interior pockets make all the difference. Light and so easy to pack into the field."</p>
+          <div class="who">Mark Seaman <span class="vbadge">✓ Verified Buyer</span></div>
+        </div>
       </div>
 
-      <div class="qcard">
-        <div class="stars">★★★★★</div>
-        <p class="body">"I've slept overnight in the rain and in clear skies and have nothing but good things to say. Easy to set up and incredibly comfortable."</p>
-        <div class="who">Gavin Ward <span class="vbadge">✓ Verified Buyer</span></div>
+      <div class="qcard with-img">
+        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1762993637__canoetrip__original.jpg?auto=format&w=600" alt="Justin's canoe trip" loading="lazy">
+        <div class="qcard-text">
+          <div class="stars">★★★★★</div>
+          <p class="body">"Love Version 3.0! Subtle but great improvements over the original. Best sleep I have ever had on a canoe trip was in the Hawk Nest hammock."</p>
+          <div class="who">Justin Cohen <span class="vbadge">✓ Verified Buyer</span></div>
+        </div>
       </div>
 
-      <div class="qcard">
-        <div class="stars">★★★★★</div>
-        <p class="body">"Just took it out for a two-night backcountry trip and slept beautifully. Easy to put up and take down. Love my Hawk Nest V.3."</p>
-        <div class="who">Cameron Lorentzon <span class="vbadge">✓ Verified Buyer</span></div>
+      <div class="qcard with-img">
+        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1758407631__img_1466__original.jpeg?auto=format&w=600" alt="Gerald's V.3 setup" loading="lazy">
+        <div class="qcard-text">
+          <div class="stars">★★★★★</div>
+          <p class="body">"I started with the very first version and was so excited I bought four. Now I have the V.3 and it's amazing — much stronger material, better construction, and just as simple to put up. The rest in the hammock was phenomenal."</p>
+          <div class="who">Gerald <span class="vbadge">✓ Verified Buyer</span></div>
+        </div>
+      </div>
+
+      <div class="qcard with-img">
+        <img class="qcard-photo" src="https://judgeme.imgix.net/hawk-nest-hammocks/1759109134__img_7060__original.jpeg?auto=format&w=600" alt="Dennis's setup" loading="lazy">
+        <div class="qcard-text">
+          <div class="stars">★★★★★</div>
+          <p class="body">"Well made, with great attention to small details. A great addition to your gear and super easy to set up. I love it."</p>
+          <div class="who">Dennis <span class="vbadge">✓ Verified Buyer</span></div>
+        </div>
       </div>
 
     </div>
@@ -558,15 +607,37 @@ footer .fine{margin-top:9px;font-size:.74rem;color:rgba(227,214,191,.45)}
         <img src="gridless_logo.webp" alt="Gridless">
       </div>
       <div class="chapter-label">Included free · 1 full year</div>
-      <h3>Learn to thrive off the grid.</h3>
-      <p class="lead">A full year of Gridless Premium — in every pre-order.</p>
-      <p>Gridless is the survival-skills app built for people who actually go outside. Bite-sized lessons and quizzes teach fire-starting, navigation, shelter building, water purification and 600+ wilderness topics.</p>
-      <p>It all works offline, so you can keep learning even when there's no signal — exactly where your Hawk Nest takes you.</p>
-      <div class="free-tag">🎁 <span><s>$79/yr value</s> &nbsp;FREE with your pre-order</span></div>
+      <h3>Build real readiness, a little every day.</h3>
+      <p class="lead">The new Gridless v1.5 — a daily family-readiness app, free in every pre-order.</p>
+      <p>Get a personal <strong>readiness score</strong> that climbs as you build real skills. A 30-second <strong>daily drill</strong> plus a full year of fresh challenges and quizzes — no repeats — keeps you sharp without ever feeling like homework.</p>
+      <p>Turn on the <strong>Family Plan</strong> for one shared household score, a readiness ring for every member, weekly family challenges and gentle nudges. Work through step-by-step <strong>readiness programs</strong>, tick off gear and emergency checklists, and look up knot and first-aid references in seconds.</p>
+      <p>And it all works <strong>fully offline</strong> — no signal, no power, no problem — exactly where your Hawk Nest takes you.</p>
+      <div class="gridless-feat-row">
+        <span>📈 Readiness score</span>
+        <span>⚡ 30-sec daily drill</span>
+        <span>👨‍👩‍👧 Family Plan</span>
+        <span>📡 Works offline</span>
+        <span>🪢 Knots &amp; first aid</span>
+      </div>
+      <div class="free-tag">🎁 <span><s>$79/yr value</s> &nbsp;1 Year Gridless Premium, FREE with your pre-order</span></div>
     </div>
     <div class="gridless-art">
-      <img class="phone1" src="gridless-home.png" alt="Gridless app home screen">
-      <img class="phone2" src="gridless-feature.png" alt="Gridless app lesson screen">
+      <figure>
+        <img src="gridless-v15-home.jpg" alt="Gridless v1.5 home screen with daily readiness score ring" loading="lazy">
+        <figcaption>Your daily readiness score</figcaption>
+      </figure>
+      <figure>
+        <img src="gridless-v15-drill.jpg" alt="Gridless v1.5 daily drill quiz question" loading="lazy">
+        <figcaption>30-second daily drill</figcaption>
+      </figure>
+      <figure>
+        <img src="gridless-v15-plan.jpg" alt="Gridless v1.5 readiness programs and toolkit" loading="lazy">
+        <figcaption>Readiness programs &amp; toolkit</figcaption>
+      </figure>
+      <figure>
+        <img src="gridless-v15-knots.jpg" alt="Gridless v1.5 knots reference library" loading="lazy">
+        <figcaption>Knot &amp; first-aid library</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -582,6 +653,7 @@ footer .fine{margin-top:9px;font-size:.74rem;color:rgba(227,214,191,.45)}
     </div>
   </div>
 
+  <div class="wrap">
   <div class="offer-card">
     <div class="offer-head">
       <div class="kicker">US Pre-Order · All-Season Hammock Tent (V.3)</div>
@@ -624,7 +696,7 @@ footer .fine{margin-top:9px;font-size:.74rem;color:rgba(227,214,191,.45)}
           <span class="spec-check">✓</span>
           <div class="spec-main">
             <div class="spec-name">1 Year Gridless Premium</div>
-            <div class="spec-desc">600+ offline survival lessons and quizzes. Learn the skills your trips deserve.</div>
+            <div class="spec-desc">Daily family-readiness app — readiness score, 30-sec drills, Family Plan, works offline.</div>
           </div>
           <div class="spec-val"><s>$79</s><b>FREE</b></div>
         </li>
@@ -673,6 +745,7 @@ footer .fine{margin-top:9px;font-size:.74rem;color:rgba(227,214,191,.45)}
         <span class="btn-sub">Secure checkout · Tax included · Free fast US shipping</span>
       </div>
     </div>
+  </div>
   </div>
 </section>
 
@@ -728,7 +801,7 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   const hero=document.querySelector('.hero');
   if(!bar||!hero) return;
   const o=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ bar.style.display = e.isIntersecting ? 'none' : 'flex'; });
+    entries.forEach(e=>{ bar.classList.toggle('fl-row', !e.isIntersecting); });
   },{threshold:.05});
   o.observe(hero);
 })();
