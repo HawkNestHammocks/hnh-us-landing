@@ -133,7 +133,7 @@ nav .nav-cta{background:linear-gradient(180deg,var(--gold),#b9821c);color:#241a0
 /* === PRODUCT / OFFER === */
 .offer-sec{background:var(--cream)}
 .offer-hero{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;max-width:1000px;margin:0 auto}
-.offer-hero .pimg{border-radius:18px;box-shadow:0 20px 56px rgba(59,47,30,.16);background:#fff}
+.offer-hero .pimg{width:100%;max-height:440px;object-fit:contain;border-radius:18px;box-shadow:0 20px 56px rgba(59,47,30,.16);background:#fff;padding:18px}
 .offer-hero h2{font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.1rem);font-weight:700;color:var(--earth);line-height:1.2;margin-bottom:8px}
 .offer-rating{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--muted);margin-bottom:16px}
 .offer-rating .stars{font-size:1rem}
@@ -145,28 +145,30 @@ nav .nav-cta{background:linear-gradient(180deg,var(--gold),#b9821c);color:#241a0
 .tax-note{font-size:.85rem;color:var(--muted);margin:2px 0 18px;font-weight:500}
 .offer-desc{font-size:1rem;color:var(--bark);line-height:1.7;margin-bottom:24px}
 
-/* === UPGRADES === */
-.upgrade-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:840px;margin:0 auto}
-.ucard{background:var(--parchment);border:1px solid var(--sand);border-radius:14px;padding:22px 18px;text-align:center;transition:transform .2s,box-shadow .2s}
-.ucard:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(59,47,30,.1)}
-.ucard .uic{width:64px;height:64px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:30px;background:var(--cream);border-radius:16px;box-shadow:0 4px 12px rgba(59,47,30,.1);overflow:hidden}
-.ucard .uic img{width:100%;height:100%;object-fit:cover}
-.ucard .ut{font-family:var(--serif);font-size:1.04rem;font-weight:600;color:var(--earth);margin-bottom:6px;line-height:1.25}
-.ucard .uv{font-size:.82rem;color:var(--muted)}
-.ucard .uv s{opacity:.7}
-.ucard .uv .free{color:var(--rust);font-weight:800}
-
-/* === VALUE STACK === */
-.value-stack{max-width:520px;margin:34px auto 0;background:var(--parchment);border:1px solid var(--sand);border-radius:16px;padding:24px 26px}
-.value-stack .vrow{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px dashed var(--sand);font-size:.94rem}
-.value-stack .vrow:last-of-type{border-bottom:none}
-.value-stack .vrow .vl{color:var(--bark)}
-.value-stack .vrow .vp{font-weight:700;color:var(--earth)}
-.value-stack .vrow .vp.free{color:#1e6b3a}
-.value-stack .vtotal{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;padding-top:14px;border-top:2px solid var(--earth)}
-.value-stack .vtotal .tl{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--earth)}
-.value-stack .vtotal .tp .tp-old{font-size:.95rem;text-decoration:line-through;color:var(--muted);margin-right:8px}
-.value-stack .vtotal .tp .tp-new{font-family:var(--serif);font-size:1.7rem;font-weight:700;color:var(--rust)}
+/* === EVERYTHING INCLUDED LIST === */
+.incl-list{max-width:560px;margin:0 auto;background:var(--cream);border:1px solid var(--sand);border-radius:18px;overflow:hidden;box-shadow:0 6px 24px rgba(59,47,30,.08)}
+.incl-row{border-bottom:1px solid var(--sand)}
+.incl-row:last-child{border-bottom:none}
+.incl-head{display:flex;align-items:center;gap:13px;width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:15px 18px;font-family:var(--sans);color:var(--earth)}
+.incl-head:hover{background:rgba(224,169,46,.06)}
+.incl-ic{width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px;background:var(--parchment);border-radius:12px;box-shadow:0 2px 8px rgba(59,47,30,.08);overflow:hidden}
+.incl-ic img{width:100%;height:100%;object-fit:cover}
+.incl-name{flex:1;min-width:0;font-size:.96rem;font-weight:700;line-height:1.3}
+.incl-val{flex-shrink:0;display:flex;align-items:center;gap:7px;font-size:.9rem;white-space:nowrap}
+.incl-val s{color:var(--muted);font-weight:500}
+.incl-val .free{background:linear-gradient(180deg,var(--gold),#b9821c);color:#241a06;font-weight:800;font-size:.7rem;letter-spacing:.5px;padding:3px 9px;border-radius:6px;box-shadow:0 2px 6px rgba(224,169,46,.3)}
+.incl-val .paid{font-family:var(--serif);font-weight:700;color:var(--earth);font-size:1.08rem}
+.incl-chev{flex-shrink:0;font-size:1.25rem;line-height:1;color:var(--rust);font-weight:700;transition:transform .3s ease;width:18px;text-align:center}
+.incl-row.open .incl-chev{transform:rotate(45deg)}
+.incl-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.incl-body p{padding:0 18px 16px 77px;font-size:.9rem;color:var(--bark);line-height:1.6;margin:0}
+.incl-total{max-width:560px;margin:24px auto 0;background:var(--forest);color:var(--cream);border-radius:16px;padding:20px 26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;box-shadow:0 10px 28px rgba(31,61,36,.22)}
+.incl-total .it-l .il1{font-family:var(--sans);font-size:.74rem;text-transform:uppercase;letter-spacing:1.5px;color:#bcae9a;font-weight:700;margin-bottom:2px}
+.incl-total .it-l .il2{font-family:var(--serif);font-size:1.8rem;font-weight:700;color:#fff;line-height:1}
+.incl-total .it-r{text-align:right}
+.incl-total .it-r .ir1{font-family:var(--sans);font-size:.74rem;text-transform:uppercase;letter-spacing:1.5px;color:#bcae9a;font-weight:700;margin-bottom:2px}
+.incl-total .it-r .ir2{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--gold);line-height:1}
+.incl-total .it-r .ir3{font-size:.76rem;color:#bcae9a;margin-top:2px}
 
 /* === CTA BUTTON === */
 .cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,#F4A04F 0%,var(--rust) 52%,var(--rust-dark) 100%);color:#fff;font-family:var(--sans);font-size:1.12rem;font-weight:800;padding:18px 40px;border-radius:12px;text-decoration:none;border:none;cursor:pointer;text-shadow:0 1px 2px rgba(0,0,0,.2);box-shadow:0 14px 30px rgba(177,86,30,.42),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -1px 0 rgba(0,0,0,.18);transition:transform .15s ease,box-shadow .2s ease}
@@ -242,7 +244,6 @@ footer a{color:#e3d6bb;text-decoration:underline}
 /* === RESPONSIVE === */
 @media(max-width:860px){
   .review-grid{grid-template-columns:repeat(2,1fr)}
-  .upgrade-grid{grid-template-columns:repeat(2,1fr);max-width:480px}
   .gridless-card{grid-template-columns:1fr;gap:26px}
   .cust-wall{column-count:3}
 }
@@ -258,11 +259,16 @@ footer a{color:#e3d6bb;text-decoration:underline}
 }
 @media(max-width:520px){
   .review-grid{grid-template-columns:1fr}
-  .upgrade-grid{grid-template-columns:1fr;max-width:320px}
   .trust-grid{grid-template-columns:repeat(2,1fr);gap:4px}
   .trust-item .t{font-size:.74rem}
   .hero h1{font-size:1.85rem}
   .snippet{max-width:260px}
+  .incl-head{gap:11px;padding:14px 14px}
+  .incl-ic{width:42px;height:42px;font-size:22px}
+  .incl-name{font-size:.9rem}
+  .incl-val{font-size:.84rem;gap:5px}
+  .incl-body p{padding:0 14px 15px 67px}
+  .incl-total{padding:18px 20px}
 }
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -288,7 +294,7 @@ footer a{color:#e3d6bb;text-decoration:underline}
     </div>
     <h1>The hammock tent campers won't stop <em>talking about</em>.</h1>
     <p class="hero-sub">Two years. Thousands of nights in the field. One review after another saying the same thing: best sleep they've ever had outdoors. Now it's finally coming to the US.</p>
-    <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" class="cta-btn" target="_blank" rel="noopener">
+    <a href="#offer" class="cta-btn">
       <span class="ic">🛒</span><span>Pre-Order Yours — $159</span><span class="arr">→</span>
     </a>
     <div class="cta-sub" style="color:#cdbfa3;margin-bottom:30px">Free fast US shipping &middot; Tax included &middot; 30-day guarantee</div>
@@ -353,7 +359,7 @@ footer a{color:#e3d6bb;text-decoration:underline}
   <h2 class="sec-title">Everything you need. One price.</h2>
   <p class="sec-sub">The complete all-season setup the reviews are raving about — plus 6 premium upgrades, free.</p>
   <div class="offer-hero">
-    <img class="pimg" src="https://hawknesthammocks.ca/cdn/shop/files/Untitled_design_3_001ffe6f-f724-46b9-b784-c4b24d50360a.png" alt="Hawk Nest All-Season Hammock Tent" loading="lazy">
+    <img class="pimg" src="hammock-product.png" alt="Hawk Nest All-Season Hammock Tent (V.3)" loading="lazy">
     <div>
       <h2>Hawk Nest All-Season Hammock Tent (V.3)</h2>
       <div class="offer-rating"><span class="stars">★★★★★</span> 4.8/5 from 400+ five-star reviews</div>
@@ -365,62 +371,90 @@ footer a{color:#e3d6bb;text-decoration:underline}
       </div>
       <div class="tax-note">Tax included — no checkout surprises</div>
       <p class="offer-desc">A complete shelter system that hangs between two trees and keeps you off the cold ground entirely. Waterproof, windproof, bug-proof — and the most comfortable night of sleep you'll have outdoors.</p>
-      <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" class="cta-btn" target="_blank" rel="noopener">
-        <span class="ic">🛒</span><span>Pre-Order Now — $159</span><span class="arr">→</span>
-      </a>
-      <div class="cta-sub">Secure checkout &middot; Tax included &middot; Free shipping</div>
     </div>
   </div>
 </section>
 
-<!-- 6 FREE UPGRADES -->
+<!-- EVERYTHING INCLUDED -->
 <section class="reveal" style="background:var(--parchment)">
   <span class="kicker">Exclusive pre-order bonus</span>
-  <h2 class="sec-title">6 Free Upgrades Included</h2>
-  <p class="sec-sub">Over $270 in extras — yours at no additional cost when you pre-order.</p>
-  <div class="upgrade-grid">
-    <div class="ucard">
-      <div class="uic">🌧️</div>
-      <div class="ut">Waterproof &amp; Windproof Fabric</div>
-      <div class="uv"><s>$39</s> <span class="free">FREE</span></div>
+  <h2 class="sec-title">Everything That's Included</h2>
+  <p class="sec-sub">Over $270 in upgrades — yours free when you pre-order. Tap any item to see what you get.</p>
+  <div class="incl-list">
+    <div class="incl-row">
+      <button type="button" class="incl-head">
+        <span class="incl-ic"><img src="hammock-product.png" alt="Hawk Nest Hammock Tent V.3"></span>
+        <span class="incl-name">Hawk Nest All-Season Hammock Tent (V.3)</span>
+        <span class="incl-val"><span class="paid">$229</span></span>
+        <span class="incl-chev">+</span>
+      </button>
+      <div class="incl-body"><p>Complete all-season shelter — waterproof/windproof fabric, full bug-net enclosure, and a detachable rain fly. Holds up to 500 lbs, packs to 5.5×5.5×16 in, ~3–4 lb trail weight.</p></div>
     </div>
-    <div class="ucard">
-      <div class="uic">🎒</div>
-      <div class="ut">Waterproof Carrying Bag</div>
-      <div class="uv"><s>$19</s> <span class="free">FREE</span></div>
+    <div class="incl-row">
+      <button type="button" class="incl-head">
+        <span class="incl-ic">🌧️</span>
+        <span class="incl-name">Waterproof &amp; Windproof Fabric</span>
+        <span class="incl-val"><s>$39</s> <span class="free">FREE</span></span>
+        <span class="incl-chev">+</span>
+      </button>
+      <div class="incl-body"><p>Ripstop fabric proven in −30°C winters and summer storms — keeps you dry and warm in any weather.</p></div>
     </div>
-    <div class="ucard">
-      <div class="uic">🛡️</div>
-      <div class="ut">Lifetime Warranty</div>
-      <div class="uv"><s>$59</s> <span class="free">FREE</span></div>
+    <div class="incl-row">
+      <button type="button" class="incl-head">
+        <span class="incl-ic">🎒</span>
+        <span class="incl-name">Waterproof Carrying Bag</span>
+        <span class="incl-val"><s>$19</s> <span class="free">FREE</span></span>
+        <span class="incl-chev">+</span>
+      </button>
+      <div class="incl-body"><p>A roll-top dry bag that compresses your whole kit and keeps it dry on the trail.</p></div>
     </div>
-    <div class="ucard">
-      <div class="uic"><img src="gridless_logo.webp" alt="Gridless"></div>
-      <div class="ut">1 Year Gridless Premium</div>
-      <div class="uv"><s>$79</s> <span class="free">FREE</span></div>
+    <div class="incl-row">
+      <button type="button" class="incl-head">
+        <span class="incl-ic">🛡️</span>
+        <span class="incl-name">Lifetime Warranty</span>
+        <span class="incl-val"><s>$59</s> <span class="free">FREE</span></span>
+        <span class="incl-chev">+</span>
+      </button>
+      <div class="incl-body"><p>We cover tears, zippers, buckles and seams for life. If it ever fails, we make it right.</p></div>
     </div>
-    <div class="ucard">
-      <div class="uic">🚚</div>
-      <div class="ut">Free Fast US Shipping</div>
-      <div class="uv"><span class="free">FREE</span></div>
+    <div class="incl-row">
+      <button type="button" class="incl-head">
+        <span class="incl-ic"><img src="gridless_icon.png" alt="Gridless"></span>
+        <span class="incl-name">1 Year Gridless Premium</span>
+        <span class="incl-val"><s>$79</s> <span class="free">FREE</span></span>
+        <span class="incl-chev">+</span>
+      </button>
+      <div class="incl-body"><p>A full year of the Gridless family-readiness app — daily readiness score, drills, a Family Plan, and offline guides. A $79 value.</p></div>
     </div>
-    <div class="ucard">
-      <div class="uic">↩️</div>
-      <div class="ut">Hassle-Free Returns &amp; Exchanges</div>
-      <div class="uv"><span class="free">FREE</span></div>
+    <div class="incl-row">
+      <button type="button" class="incl-head">
+        <span class="incl-ic">🚚</span>
+        <span class="incl-name">Free Fast US Shipping</span>
+        <span class="incl-val"><span class="free">FREE</span></span>
+        <span class="incl-chev">+</span>
+      </button>
+      <div class="incl-body"><p>Ships domestically within the US — fast, with tax and duties already included. No surprise fees at checkout.</p></div>
+    </div>
+    <div class="incl-row">
+      <button type="button" class="incl-head">
+        <span class="incl-ic">↩️</span>
+        <span class="incl-name">Hassle-Free Returns &amp; Exchanges</span>
+        <span class="incl-val"><span class="free">FREE</span></span>
+        <span class="incl-chev">+</span>
+      </button>
+      <div class="incl-body"><p>A full year of easy returns and exchanges, no questions asked.</p></div>
     </div>
   </div>
-
-  <!-- VALUE STACK -->
-  <div class="value-stack">
-    <div class="vrow"><span class="vl">All-Season Hammock Tent (V.3)</span><span class="vp">$229</span></div>
-    <div class="vrow"><span class="vl">Waterproof &amp; Windproof Fabric</span><span class="vp free">FREE</span></div>
-    <div class="vrow"><span class="vl">Waterproof Carrying Bag</span><span class="vp free">FREE</span></div>
-    <div class="vrow"><span class="vl">Lifetime Warranty</span><span class="vp free">FREE</span></div>
-    <div class="vrow"><span class="vl">1 Year Gridless Premium</span><span class="vp free">FREE</span></div>
-    <div class="vrow"><span class="vl">Free Fast US Shipping</span><span class="vp free">FREE</span></div>
-    <div class="vrow"><span class="vl">Hassle-Free Returns &amp; Exchanges</span><span class="vp free">FREE</span></div>
-    <div class="vtotal"><span class="tl">Total Value</span><span class="tp"><span class="tp-old">$429</span><span class="tp-new">$159</span></span></div>
+  <div class="incl-total">
+    <div class="it-l">
+      <div class="il1">Total Value</div>
+      <div class="il2">$429</div>
+    </div>
+    <div class="it-r">
+      <div class="ir1">You pay today</div>
+      <div class="ir2">$159</div>
+      <div class="ir3">tax included</div>
+    </div>
   </div>
 
   <!-- BATCH + CTA -->
@@ -495,7 +529,7 @@ footer a{color:#e3d6bb;text-decoration:underline}
     <div class="stars" style="font-size:1.6rem;margin-bottom:14px">★★★★★</div>
     <h2 class="sec-title" style="margin-bottom:14px">Join 400+ campers who never sleep on the ground anymore</h2>
     <p class="sec-sub" style="margin-bottom:26px">Lock in the pre-order price, get all 6 upgrades free, and reserve your spot in Batch 2 before it closes.</p>
-    <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" class="cta-btn" target="_blank" rel="noopener">
+    <a href="#offer" class="cta-btn">
       <span class="ic">🛒</span><span>Pre-Order Your Hawk Nest — $159</span><span class="arr">→</span>
     </a>
     <span class="cta-sub">Free fast US shipping &middot; Tax included &middot; 30-day guarantee &middot; Lifetime warranty</span>
@@ -514,7 +548,7 @@ footer a{color:#e3d6bb;text-decoration:underline}
     <span class="sb-stars">★★★★★ 4.8/5</span>
     <span class="sb-txt"><strong>$159</strong> &middot; 6 free upgrades &middot; ~120 left</span>
   </div>
-  <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" target="_blank" rel="noopener">Pre-Order →</a>
+  <a href="#offer">Pre-Order →</a>
 </div>
 
 <!-- SCRIPTS -->
@@ -646,6 +680,18 @@ window.addEventListener('load',function(){setTimeout(function(){document.querySe
     entries.forEach(function(e){ bar.style.display = e.isIntersecting ? 'none' : 'flex'; });
   }, {threshold:0.05});
   obs.observe(hero);
+})();
+
+// === "Everything Included" accordion ===
+(function(){
+  document.querySelectorAll('.incl-head').forEach(function(h){
+    h.addEventListener('click', function(){
+      var row = h.parentElement;
+      var body = row.querySelector('.incl-body');
+      var open = row.classList.toggle('open');
+      body.style.maxHeight = open ? body.scrollHeight + 'px' : '0';
+    });
+  });
 })();
 
 // === UTM / click-id pass-through to Shopify checkout ===
