@@ -807,8 +807,9 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
     entries.forEach(function(e){
       if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); }
     });
-  }, {threshold: 0.12});
+  }, {threshold:0});
   document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+window.addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('vis');});},1400);});
 })();
 
 // UTM / click-id pass-through to Shopify checkout

@@ -335,13 +335,6 @@ footer a{color:#e3d6bb;text-decoration:underline}
   </div>
 </section>
 
-<!-- WHAT REAL CAMPERS SAY -->
-<section style="background:var(--parchment)" class="reveal">
-  <span class="kicker">What real campers say</span>
-  <h2 class="sec-title">400+ five-star reviews. Here's a few.</h2>
-  <p class="sec-sub">No incentives. No paid placements. Just people who slept better outdoors and wanted everyone to know.</p>
-  <div class="review-grid" id="reviewGridTop"></div>
-</section>
 
 <!-- BRAND STORY -->
 <section class="brand-sec reveal">
@@ -636,14 +629,14 @@ function cardHTML(r){
   var img = r.img ? '<img src="'+r.img+'" alt="Hawk Nest customer photo" loading="lazy">' : '';
   return '<div class="rcard">'+img+'<div class="body"><div class="stars">★★★★★</div><p>"'+r.t+'"</p><div class="author">'+r.a+' <span class="vbadge">✓ Verified</span></div></div></div>';
 }
-document.getElementById('reviewGridTop').innerHTML = REVIEWS_TOP.map(cardHTML).join('');
 document.getElementById('reviewGridBottom').innerHTML = REVIEWS_BOTTOM.map(cardHTML).join('');
 
 // Reveal on scroll
 var io = new IntersectionObserver(function(entries){
   entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
-}, {threshold:0.1});
+}, {threshold:0});
 document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+window.addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});},1400);});
 
 // Sticky bar — show after hero scrolls out
 (function(){

@@ -792,8 +792,9 @@ footer .fine{margin-top:9px;font-size:.74rem;color:rgba(227,214,191,.45)}
 // Reveal on scroll
 const obs = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
-},{threshold:.12});
+},{threshold:0});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+window.addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});},1400);});
 
 // Sticky bar — show after hero scrolls out
 (function(){
