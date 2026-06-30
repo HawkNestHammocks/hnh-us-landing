@@ -596,10 +596,10 @@ footer a{color:var(--sand);text-decoration:underline}
         <div class="batch-compact-row">
           <span class="batch-pulse">🔥</span>
           <div class="batch-compact-info">
-            <div class="batch-current">BATCH 1 — Ships July 30</div>
-            <div class="batch-progress-wrap"><div class="batch-progress-bar" style="width:82.3%"></div></div>
-            <div class="batch-stats"><strong>823</strong> of <strong>1,000</strong> reserved <span class="batch-closing">— Closing soon</span></div>
-            <div class="batch-next">Next: Batch 3 (1,500 units) ships Sep 30 · then Batch 4 (1,500) Oct 30</div>
+            <div class="batch-current">BATCH 3 — Ships September 15</div>
+            <div class="batch-progress-wrap"><div class="batch-progress-bar" style="width:30%"></div></div>
+            <div class="batch-stats"><strong>450</strong> of <strong>1,500</strong> reserved <span class="batch-closing">— Selling fast</span></div>
+            <div class="batch-next">Batches 1 &amp; 2 sold out · Next: Batch 4 (1,500 units) ships October 30</div>
           </div>
         </div>
       </div>
@@ -818,11 +818,11 @@ function showUpgrade(key){
 
 // ── Batch status widget — data-driven ──
 const BATCH_DATA = {
-  current: 2,
+  current: 3,
   batches: [
     { id: 1, size: 1000, ship: "July 30",      sold: 1000 },
-    { id: 2, size: 1000, ship: "August 15",    sold: 0    },
-    { id: 3, size: 1500, ship: "September 30", sold: 0    },
+    { id: 2, size: 1000, ship: "August 15",    sold: 1000 },
+    { id: 3, size: 1500, ship: "September 15", sold: 0    },
     { id: 4, size: 1500, ship: "October 30",   sold: 0    },
   ],
 };
