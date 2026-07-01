@@ -536,10 +536,10 @@ img{max-width:100%;height:auto;display:block}
   <div class="batch-compact-row">
     <span class="batch-pulse">🔥</span>
     <div class="batch-compact-info">
-      <div class="batch-current">BATCH 1 — Ships July 30</div>
-      <div class="batch-progress-wrap"><div class="batch-progress-bar" style="width:82.3%"></div></div>
-      <div class="batch-stats"><strong>130</strong> of <strong>200</strong> reserved <span class="batch-closing">— Closing soon</span></div>
-      <div class="batch-next">Next: Batch 3 (200 units) ships Sep 30 · then Batch 4 (200) Oct 30</div>
+      <div class="batch-current">BATCH 3 — Ships September 15</div>
+      <div class="batch-progress-wrap"><div class="batch-progress-bar" style="width:30%"></div></div>
+      <div class="batch-stats"><strong>60</strong> of <strong>200</strong> reserved <span class="batch-closing">— selling fast</span></div>
+      <div class="batch-next">Batches 1 &amp; 2 sold out · Next: Batch 4 (200 units) ships October 30</div>
     </div>
   </div>
 </div>
@@ -573,15 +573,15 @@ img{max-width:100%;height:auto;display:block}
       <div class="tl-label">Batch 1 — Ships July 30<span class="tl-badge">SOLD OUT</span></div>
       <div class="tl-desc">200 units · fully reserved</div>
     </div>
+    <div class="tl-item sold-out">
+      <div class="tl-dot"></div>
+      <div class="tl-label">Batch 2 — Ships August 15<span class="tl-badge">SOLD OUT</span></div>
+      <div class="tl-desc">200 units · fully reserved</div>
+    </div>
     <div class="tl-item active">
       <div class="tl-dot"></div>
-      <div class="tl-label">Batch 2 — Ships August 15</div>
-      <div class="tl-desc">200 units · current batch — open now</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-label">Batch 3 — Ships September 30</div>
-      <div class="tl-desc">200 units · open soon</div>
+      <div class="tl-label">Batch 3 — Ships September 15</div>
+      <div class="tl-desc">200 units · current batch — open now, selling fast</div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
@@ -886,7 +886,7 @@ img{max-width:100%;height:auto;display:block}
   <div class="faq-list">
     <div class="faq-item">
       <button class="faq-q">When will my Hawk Nest ship?</button>
-      <div class="faq-a"><p>We ship in confirmed production batches. The live batch counter on this page shows which batch you'll join and exactly when it ships — Batch 1 sold out (shipped July 30), Batch 2 ships Aug 15 (current), Batch 3 Sep 30, Batch 4 Oct 30. When the current batch fills, the next opens automatically with the later ship date. Free shipping is included on every order, every batch.</p></div>
+      <div class="faq-a"><p>We ship in confirmed production batches. The live batch counter on this page shows which batch you'll join and exactly when it ships — Batches 1 &amp; 2 sold out (shipped July 30 / Aug 15), Batch 3 ships Sep 15 (current), Batch 4 Oct 30. When the current batch fills, the next opens automatically with the later ship date. Free shipping is included on every order, every batch.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q">Is this a pre-order? When do I get charged?</button>
@@ -958,11 +958,11 @@ img{max-width:100%;height:auto;display:block}
 // To update: edit BATCH_DATA below (or replace the values via a fetch when the
 // Shopify metafield endpoint is wired up). Renders into all .batch-status nodes.
 const BATCH_DATA = {
-  current: 2,
+  current: 3,
   batches: [
     { id: 1, size: 200, ship: "July 30",      sold: 200 },
-    { id: 2, size: 200, ship: "August 15",    sold: 0   },
-    { id: 3, size: 200, ship: "September 30", sold: 0   },
+    { id: 2, size: 200, ship: "August 15",    sold: 200 },
+    { id: 3, size: 200, ship: "September 15", sold: 0   },
     { id: 4, size: 200, ship: "October 30",   sold: 0   },
   ],
 };
@@ -970,10 +970,10 @@ const BATCH_DATA = {
   const cur = BATCH_DATA.batches.find(b => b.id === BATCH_DATA.current);
   if (!cur) return;
   const realPct = Math.min((cur.sold / cur.size) * 100, 100);
-  // Curve the displayed fill: high floor (~65%) so new batches never look
-  // empty, but bar still moves with real demand and hits 100% only when full.
-  // realPct=0 → ~65, realPct=50 → ~85, realPct=100 → 100.
-  const displayedPct = realPct >= 100 ? 100 : 65 + (Math.pow(realPct / 100, 0.65) * 35);
+  // Curve the displayed fill: floor (~30%) so a fresh active batch looks
+  // actively selling (not empty), but bar still moves with real demand and
+  // hits 100% only when full. realPct=0 → ~30, realPct=50 → ~75, realPct=100 → 100.
+  const displayedPct = realPct >= 100 ? 100 : 30 + (Math.pow(realPct / 100, 0.65) * 70);
   // Derived reserved count tracks the curve so the number on screen matches
   // the bar — never starts at 0/1000.
   const displayedSold = Math.min(Math.round((displayedPct / 100) * cur.size), cur.size);

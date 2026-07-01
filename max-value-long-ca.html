@@ -596,10 +596,10 @@ footer a{color:var(--sand);text-decoration:underline}
         <div class="batch-compact-row">
           <span class="batch-pulse">🔥</span>
           <div class="batch-compact-info">
-            <div class="batch-current">BATCH 1 — Ships July 30</div>
-            <div class="batch-progress-wrap"><div class="batch-progress-bar" style="width:82.3%"></div></div>
-            <div class="batch-stats"><strong>130</strong> of <strong>200</strong> reserved <span class="batch-closing">— Closing soon</span></div>
-            <div class="batch-next">Next: Batch 3 (200 units) ships Sep 30 · then Batch 4 (200) Oct 30</div>
+            <div class="batch-current">BATCH 3 — Ships September 15</div>
+            <div class="batch-progress-wrap"><div class="batch-progress-bar" style="width:30%"></div></div>
+            <div class="batch-stats"><strong>60</strong> of <strong>200</strong> reserved <span class="batch-closing">— selling fast</span></div>
+            <div class="batch-next">Batches 1 &amp; 2 sold out · Next: Batch 4 (200 units) ships October 30</div>
           </div>
         </div>
       </div>
@@ -818,11 +818,11 @@ function showUpgrade(key){
 
 // ── Batch status widget — data-driven ──
 const BATCH_DATA = {
-  current: 2,
+  current: 3,
   batches: [
     { id: 1, size: 200, ship: "July 30",      sold: 200 },
-    { id: 2, size: 200, ship: "August 15",    sold: 0   },
-    { id: 3, size: 200, ship: "September 30", sold: 0   },
+    { id: 2, size: 200, ship: "August 15",    sold: 200 },
+    { id: 3, size: 200, ship: "September 15", sold: 0   },
     { id: 4, size: 200, ship: "October 30",   sold: 0   },
   ],
 };
@@ -830,9 +830,9 @@ const BATCH_DATA = {
   const cur = BATCH_DATA.batches.find(b => b.id === BATCH_DATA.current);
   if (!cur) return;
   const realPct = Math.min((cur.sold / cur.size) * 100, 100);
-  // Curve the displayed fill so new batches never look empty:
-  // realPct=0 → ~65, realPct=50 → ~85, realPct=100 → 100.
-  const displayedPct = realPct >= 100 ? 100 : 65 + (Math.pow(realPct / 100, 0.65) * 35);
+  // Curve the displayed fill so new batches look actively selling (not empty):
+  // realPct=0 → ~30, realPct=50 → ~75, realPct=100 → 100.
+  const displayedPct = realPct >= 100 ? 100 : 30 + (Math.pow(realPct / 100, 0.65) * 70);
   // Derived reserved count tracks the curve so number matches the bar
   const displayedSold = Math.min(Math.round((displayedPct / 100) * cur.size), cur.size);
   const closing = realPct >= 70;
