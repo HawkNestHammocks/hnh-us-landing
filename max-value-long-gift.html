@@ -639,7 +639,17 @@ footer a{color:var(--sand);text-decoration:underline}
         <span class="btn-checkout-arrow">→</span>
       </a>
       <div style="font-size:.85rem;color:var(--muted);margin-top:10px">Secure checkout · Tax included · Free shipping</div>
-      <div style="font-size:.9rem;color:var(--rust);margin-top:10px;font-weight:600">🎁 Sending this as a gift? Add your message in the order notes at checkout — we'll include it and pack it gift-ready.</div>
+      <div id="giftBox" style="max-width:560px;margin:14px auto 0;text-align:left;background:#fff;border:1px solid var(--sand);border-radius:12px;padding:14px 16px">
+        <label for="giftToggle" style="display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:700;color:var(--earth);font-size:.98rem;margin:0">
+          <input type="checkbox" id="giftToggle" style="width:18px;height:18px;accent-color:#b45309;cursor:pointer">
+          🎁 This is a gift
+        </label>
+        <div id="giftFields" style="display:none;margin-top:12px">
+          <input id="giftTo" type="text" maxlength="60" placeholder="Recipient's name (optional)" style="width:100%;padding:10px 12px;border:1px solid var(--sand);border-radius:8px;font-family:var(--sans);font-size:.92rem;margin-bottom:8px;box-sizing:border-box">
+          <textarea id="giftMsg" maxlength="200" rows="2" placeholder="Gift message — we'll include it with the order (optional)" style="width:100%;padding:10px 12px;border:1px solid var(--sand);border-radius:8px;font-family:var(--sans);font-size:.92rem;resize:vertical;box-sizing:border-box"></textarea>
+          <div style="font-size:.82rem;color:var(--muted);margin-top:6px">We'll flag your order as a gift and pack it gift-ready. 🎁</div>
+        </div>
+      </div>
 
       <div class="batch-timeline">
         <div class="tl-head">🔥 The Batch System — Each One Sells Out</div>
@@ -982,6 +992,28 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
       a.href = a.href + sep + qs;
     });
   } catch (e) { /* fail silent — never block checkout */ }
+})();
+</script>
+
+<!-- Gift option: append gift flag + message to the cart/checkout URL on click -->
+<script>
+(function(){
+  var toggle=document.getElementById('giftToggle');
+  if(!toggle) return;
+  var fields=document.getElementById('giftFields');
+  toggle.addEventListener('change',function(){ fields.style.display=toggle.checked?'block':'none'; });
+  document.querySelectorAll('a[href*="/cart/"]').forEach(function(a){
+    a.addEventListener('click',function(){
+      if(!toggle.checked) return;
+      if(a.href.indexOf('Gift')>-1) return; // already applied on a prior click
+      var to=(document.getElementById('giftTo')||{}).value||'';
+      var msg=(document.getElementById('giftMsg')||{}).value||'';
+      var extra='&attributes%5BGift%20Order%5D=Yes';
+      if(to.trim()) extra+='&attributes%5BGift%20To%5D='+encodeURIComponent(to.trim());
+      if(msg.trim()) extra+='&note='+encodeURIComponent(msg.trim());
+      a.href=a.href+extra;
+    });
+  });
 })();
 </script>
 
