@@ -1006,11 +1006,15 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     a.addEventListener('click',function(){
       if(!toggle.checked) return;
       if(a.href.indexOf('Gift')>-1) return; // already applied on a prior click
-      var to=(document.getElementById('giftTo')||{}).value||'';
-      var msg=(document.getElementById('giftMsg')||{}).value||'';
+      var to=(document.getElementById('giftTo')||{}).value.trim();
+      var msg=(document.getElementById('giftMsg')||{}).value.trim();
+      // Note leads with a clear marker so it prints on the packing slip
+      var note='🎁 GIFT ORDER';
+      if(to) note+=' — To: '+to;
+      if(msg) note+=' — Message: "'+msg+'"';
       var extra='&attributes%5BGift%20Order%5D=Yes';
-      if(to.trim()) extra+='&attributes%5BGift%20To%5D='+encodeURIComponent(to.trim());
-      if(msg.trim()) extra+='&note='+encodeURIComponent(msg.trim());
+      if(to) extra+='&attributes%5BGift%20To%5D='+encodeURIComponent(to);
+      extra+='&note='+encodeURIComponent(note);
       a.href=a.href+extra;
     });
   });
