@@ -69,7 +69,11 @@ img{max-width:100%;height:auto;display:block}
 .cta-zone{text-align:center;padding:4px 0 40px}
 .btn-checkout{display:block;width:100%;background:linear-gradient(180deg,var(--rust) 0%,var(--rust-dark) 100%);color:#fff;font-family:var(--sans);font-size:1.12rem;font-weight:700;padding:18px;border-radius:8px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(180,83,9,.3);letter-spacing:.3px;transition:transform .15s,box-shadow .15s}
 .btn-checkout:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(180,83,9,.4)}
-.skip{display:inline-block;margin-top:14px;font-family:var(--serif);font-style:italic;font-size:.92rem;color:var(--muted);text-decoration:underline}
+.btn-skip{display:block;width:100%;margin-top:12px;background:transparent;color:var(--bark);font-family:var(--sans);font-size:1rem;font-weight:600;padding:15px;border-radius:8px;text-decoration:none;border:2px solid var(--sand);cursor:pointer;text-align:center;transition:border-color .15s,color .15s}
+.btn-skip:hover{border-color:var(--bark);color:var(--earth)}
+.skip-top{display:flex;justify-content:center;margin:16px 0 -6px}
+.btn-skip-top{display:inline-block;background:transparent;color:var(--bark);font-family:var(--sans);font-size:.85rem;font-weight:600;padding:9px 22px;border-radius:50px;text-decoration:none;border:1.5px solid var(--sand);text-align:center;transition:border-color .15s,color .15s}
+.btn-skip-top:hover{border-color:var(--bark);color:var(--earth)}
 .trust{margin-top:14px;font-size:.78rem;color:var(--muted)}
 .trust span{margin:0 8px}
 
@@ -117,6 +121,8 @@ img{max-width:100%;height:auto;display:block}
 </div>
 
 <div class="container">
+
+  <div class="skip-top"><a class="btn-skip-top skipLink" href="#">Not interested? Skip straight to checkout →</a></div>
 
   <!-- Add-ons -->
   <div class="addons">
@@ -182,7 +188,7 @@ img{max-width:100%;height:auto;display:block}
   <!-- CTA -->
   <div class="cta-zone">
     <a class="btn-checkout" id="checkoutBtn" href="#">Complete Pre-Order →</a>
-    <a class="skip" id="skipLink" href="#">No thanks — continue with just the Max Value bundle</a>
+    <a class="btn-skip skipLink" href="#">No thanks — checkout with just my bundle →</a>
     <div class="trust"><span>🔒 Secure checkout</span><span>🇨🇦 Ships from Brampton, ON</span><span>↩️ Free returns</span></div>
   </div>
 
@@ -252,7 +258,7 @@ function render(){
   document.getElementById("checkoutBtn").href = "https://hawknesthammocks.ca/cart/" + cart + "?country=CA";
 }
 
-document.getElementById("skipLink").href = "https://hawknesthammocks.ca/cart/" + BASE_CART + "?country=CA";
+document.querySelectorAll(".skipLink").forEach(a => { a.href = "https://hawknesthammocks.ca/cart/" + BASE_CART + "?country=CA"; });
 render();
 
 // Product details for the ⓘ modal — specs pulled from the real product pages.
