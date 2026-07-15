@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Complete Your Pre-Order — Hawk Nest Hammocks Canada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --earth:#3b2f1e;--bark:#5c4a32;--sand:#e8dcc8;--cream:#f5f0e6;--parchment:#faf7f0;
+  --rust:#b45309;--rust-dark:#92400e;--forest:#1a3a1a;--muted:#6b7280;
+  --serif:'Crimson Pro',Georgia,'Times New Roman',serif;
+  --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);color:var(--earth);line-height:1.7;background:var(--parchment);-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+.container{max-width:680px;margin:0 auto;padding:0 16px}
+
+/* ── Progress header ── */
+.progress-bar{background:var(--earth);padding:14px 0;text-align:center}
+.progress-steps{display:flex;justify-content:center;gap:10px;align-items:center;font-size:.74rem;font-weight:600;letter-spacing:.8px;color:var(--sand);opacity:.95}
+.progress-steps .done{color:#86efac}
+.progress-steps .active{color:#e8c547}
+.progress-steps .arrow{color:var(--bark);font-size:.7rem}
+
+/* ── Hero strip ── */
+.hero{background:linear-gradient(180deg,#1a1208 0%,#2d2111 60%,#3b2f1e 100%);color:var(--cream);text-align:center;padding:30px 16px 26px}
+.hero .check{display:inline-flex;align-items:center;gap:8px;background:rgba(134,239,172,.1);border:1px solid rgba(134,239,172,.3);color:#86efac;font-size:.82rem;font-weight:700;padding:6px 16px;border-radius:50px;margin-bottom:14px;font-family:var(--sans)}
+.hero h1{font-family:var(--serif);font-size:1.7rem;font-weight:700;line-height:1.25;margin-bottom:8px}
+.hero p{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--sand);max-width:480px;margin:0 auto}
+.hero .gold{color:#e8c547}
+
+/* ── Add-on cards ── */
+.addons{padding:28px 0 10px}
+.addons h2{font-family:var(--sans);font-size:.8rem;font-weight:700;text-align:center;margin-bottom:4px;letter-spacing:3px;color:var(--rust);text-transform:uppercase}
+.addons .sub{text-align:center;font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--muted);margin-bottom:18px}
+.card{background:#fff;border:1px solid var(--sand);border-radius:12px;padding:14px;display:flex;gap:14px;align-items:center;margin-bottom:12px;cursor:pointer;transition:border-color .15s,box-shadow .15s;position:relative}
+.card:hover{border-color:var(--bark)}
+.card.selected{border:2px solid var(--rust);box-shadow:0 6px 20px rgba(180,83,9,.12);padding:13px}
+.card img{width:84px;height:84px;object-fit:cover;border-radius:10px;flex-shrink:0;background:var(--cream)}
+.card .info{flex:1;min-width:0}
+.card .name{font-family:var(--serif);font-size:1.05rem;font-weight:700;line-height:1.3;color:var(--earth)}
+.card .desc{font-size:.78rem;color:var(--muted);margin:2px 0 6px;line-height:1.45}
+.card .prices{display:flex;align-items:baseline;gap:8px}
+.card .was{font-size:.82rem;color:var(--muted);text-decoration:line-through}
+.card .now{font-size:1.05rem;font-weight:700;color:var(--forest);font-family:var(--sans)}
+.card .save-pill{font-size:.66rem;font-weight:700;color:#fff;background:var(--forest);padding:2px 9px;border-radius:50px;letter-spacing:.5px}
+.card .toggle{width:30px;height:30px;border-radius:50%;border:2px solid var(--sand);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:800;color:#fff;font-size:1rem;transition:all .15s}
+.card.selected .toggle{background:var(--rust);border-color:var(--rust)}
+.card .badge-popular{position:absolute;top:-9px;left:14px;background:#e8c547;color:var(--earth);font-size:.6rem;font-weight:800;letter-spacing:1px;padding:2px 10px;border-radius:50px;font-family:var(--sans)}
+
+/* ── Order summary ── */
+.summary{background:var(--cream);border:1px solid var(--sand);border-radius:12px;padding:18px;margin:20px 0 14px}
+.summary h3{font-family:var(--sans);font-size:.75rem;font-weight:700;letter-spacing:2.5px;color:var(--rust);text-transform:uppercase;margin-bottom:12px}
+.summary .row{display:flex;justify-content:space-between;font-size:.92rem;padding:4px 0}
+.summary .row .item{color:var(--bark)}
+.summary .row .price{font-weight:700;color:var(--earth)}
+.summary .row.addon .item::before{content:"+ ";color:var(--forest);font-weight:800}
+.summary .row.savings{color:var(--forest);font-weight:700;font-size:.85rem}
+.summary .divider{border-top:1px dashed var(--sand);margin:10px 0}
+.summary .total{display:flex;justify-content:space-between;font-family:var(--serif);font-size:1.25rem;font-weight:700}
+.summary .total .amount{color:var(--earth)}
+
+/* ── CTA ── */
+.cta-zone{text-align:center;padding:4px 0 40px}
+.btn-checkout{display:block;width:100%;background:linear-gradient(180deg,var(--rust) 0%,var(--rust-dark) 100%);color:#fff;font-family:var(--sans);font-size:1.12rem;font-weight:700;padding:18px;border-radius:8px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(180,83,9,.3);letter-spacing:.3px;transition:transform .15s,box-shadow .15s}
+.btn-checkout:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(180,83,9,.4)}
+.skip{display:inline-block;margin-top:14px;font-family:var(--serif);font-style:italic;font-size:.92rem;color:var(--muted);text-decoration:underline}
+.trust{margin-top:14px;font-size:.78rem;color:var(--muted)}
+.trust span{margin:0 8px}
+
+@media(min-width:560px){
+  .hero h1{font-size:2rem}
+  .card img{width:96px;height:96px}
+}
+
+/* ── Details modal ── */
+.details-btn{display:inline-block;margin-top:6px;font-size:.72rem;font-weight:700;color:var(--muted);background:var(--cream);border:1px solid var(--sand);border-radius:50px;padding:2px 10px;cursor:pointer;font-family:var(--sans)}
+.details-btn:hover{color:var(--earth);border-color:var(--bark)}
+.dmodal{display:none;position:fixed;inset:0;background:rgba(26,18,8,.6);z-index:50;align-items:center;justify-content:center;padding:18px}
+.dmodal-box{background:var(--parchment);border-radius:14px;max-width:480px;width:100%;max-height:86vh;overflow-y:auto;padding:22px;position:relative;border:1px solid var(--sand)}
+.dmodal-close{position:absolute;top:12px;right:12px;background:var(--cream);border:1px solid var(--sand);width:32px;height:32px;border-radius:50%;font-size:.95rem;cursor:pointer;color:var(--muted)}
+.dmodal-box h3{font-family:var(--serif);font-size:1.35rem;font-weight:700;margin-bottom:12px;padding-right:36px;color:var(--earth)}
+.dmodal-imgs{display:flex;gap:8px;overflow-x:auto;margin-bottom:14px}
+.dmodal-imgs img{width:200px;height:200px;object-fit:cover;border-radius:10px;flex-shrink:0;background:var(--cream)}
+.dmodal-bullets{margin:0 0 14px 18px;font-size:.9rem;color:var(--bark)}
+.dmodal-bullets li{margin-bottom:6px}
+.dmodal-prices{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+.dmodal-was{font-size:.95rem;color:var(--muted);text-decoration:line-through}
+.dmodal-now{font-size:1.35rem;font-weight:700;color:var(--forest);font-family:var(--sans)}
+.dmodal-add{display:block;width:100%;background:linear-gradient(180deg,var(--rust) 0%,var(--rust-dark) 100%);color:#fff;font-family:var(--sans);font-size:1rem;font-weight:700;padding:14px;border-radius:8px;border:none;cursor:pointer}
+
+</style>
+</head>
+<body>
+
+<!-- Progress -->
+<div class="progress-bar">
+  <div class="progress-steps">
+    <span class="done">✓ BATCH 3 RESERVED</span>
+    <span class="arrow">▶</span>
+    <span class="active">COMPLETE YOUR KIT</span>
+    <span class="arrow">▶</span>
+    <span>SECURE CHECKOUT</span>
+  </div>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="check">✓ Your Batch 3 Max Value Pre-Order is reserved</div>
+  <h1>Complete Your Kit — <span class="gold">Pre-Order Pricing Only</span></h1>
+  <p>Add the gear that turns a great hammock into a complete sleep system. These prices exist only on this page, with your pre-order.</p>
+</div>
+
+<div class="container">
+
+  <!-- Add-ons -->
+  <div class="addons">
+    <h2>Add To Your Pre-Order</h2>
+    <div class="sub">Tap to add — ships together with your V.3, from Brampton, Ontario</div>
+
+    <div class="card" data-id="underquilt" data-price="191.99" data-was="274.99" onclick="toggle(this)">
+      <span class="badge-popular">MOST POPULAR</span>
+      <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/More_photos_coming_soon..._4.png?v=1765481685" alt="ThermoNest Underquilt">
+      <div class="info">
+        <div class="name">ThermoNest™ Cold-Weather Underquilt</div>
+        <div class="desc">The single biggest comfort upgrade — sleep warm in every season.</div>
+        <div class="prices"><span class="was">$274.99</span><span class="now">$191.99</span><span class="save-pill">SAVE 30%</span></div>
+        <button class="details-btn" onclick="event.stopPropagation();showDetails('underquilt')">ⓘ Details</button>
+      </div>
+      <div class="toggle">+</div>
+    </div>
+
+    <div class="card" data-id="tarp" data-price="76.99" data-was="110.00" onclick="toggle(this)">
+      <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/1_491720a1-e9f3-4f76-9f15-1b377c8c321a.png?v=1760635154" alt="ShelterPro Rain Fly">
+      <div class="info">
+        <div class="name">ShelterPro™ Full-Coverage Rain Fly</div>
+        <div class="desc">Symmetrical storm coverage for the wettest BC + prairie nights.</div>
+        <div class="prices"><span class="was">$110.00</span><span class="now">$76.99</span><span class="save-pill">SAVE 30%</span></div>
+        <button class="details-btn" onclick="event.stopPropagation();showDetails('tarp')">ⓘ Details</button>
+      </div>
+      <div class="toggle">+</div>
+    </div>
+
+    <div class="card" data-id="pad" data-price="48.99" data-was="69.95" onclick="toggle(this)">
+      <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Pad_Ads_5.png?v=1757011220" alt="Ultralight Sleeping Pad">
+      <div class="info">
+        <div class="name">Ultralight Inflatable Sleeping Pad</div>
+        <div class="desc">Slides into the V.3's integrated pad pocket — extra warmth + structure.</div>
+        <div class="prices"><span class="was">$69.95</span><span class="now">$48.99</span><span class="save-pill">SAVE 30%</span></div>
+        <button class="details-btn" onclick="event.stopPropagation();showDetails('pad')">ⓘ Details</button>
+      </div>
+      <div class="toggle">+</div>
+    </div>
+
+    <div class="card" data-id="straps" data-price="26.99" data-was="38.00" onclick="toggle(this)">
+      <img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Strap_Product_Photo.png?v=1731955678" alt="Adjustable Tree Straps">
+      <div class="info">
+        <div class="name">Adjustable Tree Straps (Pair)</div>
+        <div class="desc">Faster setup, tree-friendly, dialed tension every time.</div>
+        <div class="prices"><span class="was">$38.00</span><span class="now">$26.99</span><span class="save-pill">SAVE 29%</span></div>
+        <button class="details-btn" onclick="event.stopPropagation();showDetails('straps')">ⓘ Details</button>
+      </div>
+      <div class="toggle">+</div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="summary">
+    <h3>Your Pre-Order</h3>
+    <div class="row"><span class="item" id="bundleItem">Max Value Bundle (V.3 + 6 upgrades)</span><span class="price" id="bundlePrice">$199.00</span></div>
+    <div id="addonRows"></div>
+    <div class="row savings" id="savingsRow" style="display:none"><span class="item">Add-on savings</span><span class="price" id="savingsAmt"></span></div>
+    <div class="divider"></div>
+    <div class="total"><span>Total (CAD)</span><span class="amount" id="totalAmt">$199.00</span></div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-zone">
+    <a class="btn-checkout" id="checkoutBtn" href="#">Complete Pre-Order →</a>
+    <a class="skip" id="skipLink" href="#">No thanks — continue with just the Max Value bundle</a>
+    <div class="trust"><span>🔒 Secure checkout</span><span>🇨🇦 Ships from Brampton, ON</span><span>↩️ Free returns</span></div>
+  </div>
+
+</div>
+
+
+<!-- Product details modal -->
+<div id="detailsModal" class="dmodal" onclick="if(event.target===this)closeDetails()">
+  <div class="dmodal-box">
+    <button class="dmodal-close" onclick="closeDetails()">✕</button>
+    <h3 id="dmTitle"></h3>
+    <div class="dmodal-imgs" id="dmImgs"></div>
+    <ul class="dmodal-bullets" id="dmBullets"></ul>
+    <div class="dmodal-prices"><span class="dmodal-was" id="dmWas"></span><span class="dmodal-now" id="dmNow"></span></div>
+    <button class="dmodal-add" id="dmAdd" onclick="addFromModal()">Add to pre-order</button>
+  </div>
+</div>
+
+<script>
+// Base Max Value bundle cart permalink (CA store) — fallback when no ?goto= is passed.
+const DEFAULT_CART_URL = "https://hawknesthammocks.ca/cart/53237762261289:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=CA";
+
+// The LP passes its fully-built cart URL (qty-scaled, UTM + gift params applied) via ?goto=.
+let gotoUrl = DEFAULT_CART_URL;
+try {
+  const g = new URLSearchParams(window.location.search).get("goto");
+  if (g && g.indexOf("hawknesthammocks.ca/cart/") > -1) gotoUrl = g;
+} catch(e) {}
+
+// Split into prefix + line items + query so add-ons can be spliced into the items list.
+const CART_PREFIX = gotoUrl.slice(0, gotoUrl.indexOf("/cart/") + 6);
+const _rest = gotoUrl.slice(gotoUrl.indexOf("/cart/") + 6);
+const _qPos = _rest.indexOf("?");
+const BASE_CART = _qPos === -1 ? _rest : _rest.slice(0, _qPos);
+const CART_QUERY = _qPos === -1 ? "?country=CA" : _rest.slice(_qPos);
+
+// Bundle quantity (all 6 base line items carry the same :N)
+const BUNDLE_QTY = (BASE_CART.match(/:(\d+)/) ? parseInt(BASE_CART.match(/:(\d+)/)[1], 10) : 1) || 1;
+
+// Discounted "Pre-Order Add-On" duplicate products (created 2026-06-11, 30% off).
+const VARIANTS = {
+  underquilt: "53249433469225",
+  tarp:       "53249433501993",
+  pad:        "53249433534761",
+  straps:     "53249433567529"
+};
+
+const NAMES = {
+  underquilt: "ThermoNest™ Underquilt",
+  tarp: "ShelterPro™ Rain Fly",
+  pad: "Ultralight Sleeping Pad",
+  straps: "Adjustable Tree Straps"
+};
+
+const BUNDLE_PRICE = 199.00 * BUNDLE_QTY;
+const selected = new Set();
+
+if (BUNDLE_QTY > 1) {
+  document.getElementById("bundleItem").textContent = "Max Value Bundle \u00d7" + BUNDLE_QTY + " (V.3 + 6 upgrades each)";
+  document.getElementById("bundlePrice").textContent = "$" + BUNDLE_PRICE.toFixed(2);
+}
+
+function toggle(card){
+  const id = card.dataset.id;
+  if(selected.has(id)){ selected.delete(id); card.classList.remove("selected"); card.querySelector(".toggle").textContent = "+"; }
+  else { selected.add(id); card.classList.add("selected"); card.querySelector(".toggle").textContent = "✓"; }
+  render();
+}
+
+function render(){
+  let total = BUNDLE_PRICE, savings = 0, rows = "";
+  document.querySelectorAll(".card").forEach(card => {
+    const id = card.dataset.id;
+    if(selected.has(id)){
+      const price = parseFloat(card.dataset.price);
+      const was = parseFloat(card.dataset.was);
+      total += price; savings += (was - price);
+      rows += `<div class="row addon"><span class="item">${NAMES[id]}</span><span class="price">$${price.toFixed(2)}</span></div>`;
+    }
+  });
+  document.getElementById("addonRows").innerHTML = rows;
+  document.getElementById("totalAmt").textContent = "$" + total.toFixed(2);
+  const sr = document.getElementById("savingsRow");
+  if(savings > 0){ sr.style.display = "flex"; document.getElementById("savingsAmt").textContent = "−$" + savings.toFixed(2); }
+  else { sr.style.display = "none"; }
+
+  let cart = BASE_CART;
+  selected.forEach(id => { cart += "," + VARIANTS[id] + ":1"; });
+  document.getElementById("checkoutBtn").href = CART_PREFIX + cart + CART_QUERY;
+}
+
+document.getElementById("skipLink").href = CART_PREFIX + BASE_CART + CART_QUERY;
+render();
+
+// Product details for the ⓘ modal — specs pulled from the real product pages.
+const DETAILS = {
+  underquilt: {
+    title: "ThermoNest™ Cold-Weather Underquilt",
+    imgs: [
+      "https://cdn.shopify.com/s/files/1/0815/8498/0265/files/More_photos_coming_soon..._4.png?v=1765481685",
+      "https://cdn.shopify.com/s/files/1/0815/8498/0265/files/More_photos_coming_soon..._2.png?v=1765481685"
+    ],
+    bullets: [
+      "Premium duck-down fill — lightweight, packable, ultra-warm",
+      "Expedition-grade insulation for superior warmth",
+      "Full-length coverage eliminates cold spots",
+      "Effortless attachment to any Hawk Nest model",
+      "Designed for extreme conditions — tested in the Canadian wild"
+    ],
+    was: "$274.99", now: "$191.99"
+  },
+  tarp: {
+    title: "ShelterPro™ Full-Coverage Rain Fly",
+    imgs: [
+      "https://cdn.shopify.com/s/files/1/0815/8498/0265/files/1_491720a1-e9f3-4f76-9f15-1b377c8c321a.png?v=1760635154",
+      "https://cdn.shopify.com/s/files/1/0815/8498/0265/files/4.png?v=1760635154"
+    ],
+    bullets: [
+      "XL overhead shelter for maximum dryness — covers you AND your gear",
+      "Dry gear storage + integrated line pouches",
+      "Lightweight 2 lb build — adventure ready",
+      "No-knot setup with fully adjustable tie-downs",
+      "Built for storms, trusted by Canadians"
+    ],
+    was: "$110.00", now: "$76.99"
+  },
+  pad: {
+    title: "Ultralight Inflatable Sleeping Pad",
+    imgs: [
+      "https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Pad_Ads_5.png?v=1757011220",
+      "https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Pump_SackPad_Photos_4.png?v=1757011220"
+    ],
+    bullets: [
+      "R-value 4 — noticeably warmer sleeps",
+      "1.3 lbs total — ultralight and packable",
+      "Puncture-proof 40D nylon + waterproof TPU coating",
+      "Quieter than other pads",
+      "Fits adults up to 6'6\" — slides into the V.3's integrated pad pocket"
+    ],
+    was: "$69.95", now: "$48.99"
+  },
+  straps: {
+    title: "Adjustable Tree Straps (Pair)",
+    imgs: [
+      "https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Strap_Product_Photo.png?v=1731955678",
+      "https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Adjustable_Strap_Set_Up.png?v=1731868545"
+    ],
+    bullets: [
+      "Two 10-foot heavy-duty nylon straps",
+      "Rated up to 750 lbs each",
+      "2 adjustable stainless-steel buckles per strap",
+      "2 carabiners for rain-fly attachment + carrying pouch included",
+      "Only 0.86 lbs total — simple, fast setup"
+    ],
+    was: "$38.00", now: "$26.99"
+  }
+};
+
+function showDetails(key){
+  const d = DETAILS[key];
+  document.getElementById("dmTitle").textContent = d.title;
+  document.getElementById("dmImgs").innerHTML = d.imgs.map(s => `<img src="${s}" loading="lazy">`).join("");
+  document.getElementById("dmBullets").innerHTML = d.bullets.map(b => `<li>${b}</li>`).join("");
+  document.getElementById("dmWas").textContent = d.was;
+  document.getElementById("dmNow").textContent = d.now;
+  const btn = document.getElementById("dmAdd");
+  btn.dataset.key = key;
+  btn.textContent = selected.has(key) ? "✓ Added to pre-order" : "Add to pre-order";
+  document.getElementById("detailsModal").style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+function closeDetails(){
+  document.getElementById("detailsModal").style.display = "none";
+  document.body.style.overflow = "";
+}
+function addFromModal(){
+  const key = document.getElementById("dmAdd").dataset.key;
+  if(!selected.has(key)){
+    const card = document.querySelector(`.card[data-id="${key}"]`);
+    if(card) toggle(card);
+  }
+  closeDetails();
+}
+
+// ── Availability: hide sold-out add-ons (file refreshed from Shopify stock by a background job) ──
+fetch("/availability.json?t=" + Date.now())
+  .then(r => r.json())
+  .then(avail => {
+    document.querySelectorAll(".card").forEach(card => {
+      const id = card.dataset.id;
+      if(avail[id] === false){
+        if(selected.has(id)){ selected.delete(id); }
+        card.style.display = "none";
+      }
+    });
+    render();
+  })
+  .catch(() => {/* availability file unreachable — show everything */});
+
+</script>
+</body>
+</html>

@@ -1036,5 +1036,18 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   setTimeout(load, 6000);
 })();
 </script>
+
+<!-- Pre-checkout upsell: intercept the (fully-built) cart link and route through the add-on page.
+     Runs LAST so qty/UTM/gift scripts have already mutated the href by click time. -->
+<script>
+(function(){
+  document.querySelectorAll('a[href*="/cart/"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      window.location.href = 'max-value-b3-ca-complete.html?goto=' + encodeURIComponent(a.href);
+    });
+  });
+})();
+</script>
 </body>
 </html>
