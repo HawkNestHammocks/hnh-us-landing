@@ -60,9 +60,71 @@ tr.total td{font-weight:700;color:var(--earth);border-top:2px solid var(--earth)
 footer{padding:38px 0 60px;text-align:center;font-size:.8rem;color:var(--muted)}
 blockquote{font-family:var(--serif);font-size:1.3rem;font-style:italic;color:var(--bark);
  border-left:3px solid var(--sand);padding-left:18px;margin:22px 0}
+
+:root{--h:#14120e;--b:#4a463c;--accent:#b45309;--card:#f5f0e6;--line:#c9bfa8;
+ --fh:'Crimson Pro',Georgia,serif;--hw:700;--hls:-.01em;--r:10px}
+
+/* ── shared component core; colours come from each page's :root ── */
+.lp-sec{padding:52px 0}
+.lp-h{font-size:clamp(1.5rem,5vw,2.1rem);line-height:1.12;margin-bottom:8px;color:var(--h);
+ font-family:var(--fh);font-weight:var(--hw);letter-spacing:var(--hls);text-wrap:balance}
+.lp-p{color:var(--b);margin-bottom:14px}
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),
+ transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+/* carousel */
+.car{position:relative;margin:20px 0}
+.car-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+ -webkit-overflow-scrolling:touch;padding-bottom:10px;scrollbar-width:none}
+.car-track::-webkit-scrollbar{display:none}
+.car-item{flex:0 0 84%;scroll-snap-align:center;border-radius:var(--r);overflow:hidden;
+ background:var(--card);border:1px solid var(--line)}
+@media(min-width:640px){.car-item{flex:0 0 46%}}
+.car-item img{width:100%;display:block;aspect-ratio:1/1;object-fit:cover;background:#fff}
+.car-cap{padding:13px 15px}
+.car-cap b{display:block;color:var(--h);font-size:1rem;margin-bottom:4px}
+.car-cap span{font-size:.86rem;color:var(--b);line-height:1.45}
+.car-dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
+.car-dots i{width:6px;height:6px;border-radius:50%;background:var(--line);transition:.25s}
+.car-dots i.on{background:var(--accent);width:20px;border-radius:3px}
+/* photo band between copy */
+.band{margin:26px 0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.band img{width:100%;display:block}
+.band figcaption{padding:11px 14px;font-size:.84rem;color:var(--b);background:var(--card)}
+/* timeline */
+.tl{margin:18px 0}
+.tl-row{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.tl-row:last-child{border-bottom:none}
+.tl-when{flex:0 0 92px;font-size:.78rem;font-weight:700;color:var(--accent);letter-spacing:.04em;
+ padding-top:2px}
+.tl-what b{display:block;color:var(--h);font-size:1rem;margin-bottom:3px}
+.tl-what span{font-size:.9rem;color:var(--b)}
+/* faq */
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{padding:15px 30px 15px 0;cursor:pointer;list-style:none;position:relative;
+ color:var(--h);font-weight:600;font-size:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";position:absolute;right:4px;top:13px;font-size:1.4rem;
+ color:var(--accent);transition:transform .25s}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq p{padding:0 0 16px;font-size:.94rem;color:var(--b);line-height:1.6}
+/* urgency strip */
+.urg{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;
+ padding:12px 14px;border-radius:var(--r);background:var(--card);border:1px solid var(--line);
+ font-size:.84rem;color:var(--b);margin:18px 0}
+.urg b{color:var(--h)}
+.dot{width:7px;height:7px;border-radius:50%;background:#3fbf6a;display:inline-block;
+ margin-right:5px;animation:pl 2s ease-in-out infinite}
+@keyframes pl{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
+/* logo strip */
+.lg{display:flex;align-items:center;justify-content:center;gap:14px;padding:18px 0}
+.lg img{height:54px;width:auto}
+.lg .badge{height:52px}
 </style></head><body>
 
-<div class="hero"><div class="wrap">
+<div class="hero"><div class="wrap"><div class="lg rv"><img src="hnh-logo.png" alt="Hawk Nest Hammocks" loading="lazy"></div>
   <div class="eyebrow">US pre-order · ships Sept 15</div>
   <h1>Nobody Forgets the First Night They Sleep Off&nbsp;the&nbsp;Ground</h1>
   <p class="lead">Not because it's dramatic. Because nothing goes wrong. Here's that night,
@@ -124,7 +186,7 @@ blockquote{font-family:var(--serif);font-size:1.3rem;font-style:italic;color:var
 
 <section><div class="wrap">
   <h2>Take the first night</h2>
-  <p>400+ people have now done it and left us 4.8 out of 5. The pre-order is the cheapest
+  <p>9,000+ people have now done it and left us 4.8 out of 5. The pre-order is the cheapest
   it will be, because you're buying before the batch lands.</p>
   
 <div class="offer">
@@ -153,6 +215,23 @@ your place in the batch is held in the order it was taken.</div>
   we cover that too.</div>
 </div></section>
 
+<section><div class="wrap"><h2 class="lp-h rv">No trees? It becomes a ground tent</h2><p class="rv">The V.3 pitches on the ground with poles as a full tent — same fly, same bug net, same waterproof floor. You are never carrying the wrong shelter.</p><figure class="band rv"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Giveaway_5_99ccb285-90d8-40c8-9bd0-ed3854d17547.png?v=1779476450" alt="The same shelter, pitched on the ground." loading="lazy"><figcaption>The same shelter, pitched on the ground.</figcaption></figure></div></section><section><div class="wrap"><h2 class="lp-h rv">The product, close up</h2><div class="car rv"><div class="car-track"><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3_4571549c-8c67-42fd-adbb-3efbb9bf5188.png?v=1779476438" alt="Everything in the box" loading="lazy"><div class="car-cap"><b>Everything in the box</b><span>Hammock-tent, bug net, detachable rain fly, straps and hardware.</span></div></div><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Giveaway_5_99ccb285-90d8-40c8-9bd0-ed3854d17547.png?v=1779476450" alt="No trees? Pitch it on the ground" loading="lazy"><div class="car-cap"><b>No trees? Pitch it on the ground</b><span>The V.3 sets up as a ground tent. Two poles, same shelter — you're never stuck.</span></div></div><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Mattress_Pocket_f695c9ae-a716-4ba1-8d44-3b2ab49ec937.png?v=1779476443" alt="Integrated pad pocket" loading="lazy"><div class="car-cap"><b>Integrated pad pocket</b><span>Holds a pad up to 25in wide so it can't slide out from under you.</span></div></div><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_2_96243078-2cbf-46ec-b354-1da5464ee1fa.png?v=1779476445" alt="210T ripstop, 500lb rated" loading="lazy"><div class="car-cap"><b>210T ripstop, 500lb rated</b><span>Heavy stitching, sealed seams, and a fly that detaches when you don't want it.</span></div></div><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Screenshot2024-03-19121621_f25ae76b-b47b-4cb2-9807-a94c1d975b04.png?v=1779476448" alt="Packs to 5.5 x 5.5 x 16in" loading="lazy"><div class="car-cap"><b>Packs to 5.5 x 5.5 x 16in</b><span>3–4lb trail weight. Smaller than the tent it replaces.</span></div></div><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_26_06752900-9952-47de-a0cf-e364b54ebba9.png?v=1779476455" alt="Room to actually sleep" loading="lazy"><div class="car-cap"><b>Room to actually sleep</b><span>Lie diagonal and the fabric flattens out — no banana shape.</span></div></div></div><div class="car-dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div></div></div></section><section><div class="wrap"><h2 class="lp-h rv">What happens after you order</h2><div class="tl rv"><div class="tl-row"><div class="tl-when">Today</div><div class="tl-what"><b>You reserve</b><span>Your place in the September batch is held in the order it was taken.</span></div></div><div class="tl-row"><div class="tl-when">Now → Sept</div><div class="tl-what"><b>Batch production</b><span>The run is already in production. You're buying from it before it lands.</span></div></div><div class="tl-row"><div class="tl-when">Sept 15</div><div class="tl-what"><b>Ships from South Carolina</b><span>Duties included. Nothing to pay on delivery.</span></div></div><div class="tl-row"><div class="tl-when">2–5 days</div><div class="tl-what"><b>On your doorstep</b><span>Standard US ground. Free, both ways if you send it back.</span></div></div></div></div></section><section><div class="wrap"><h2 class="lp-h rv">Questions people actually ask</h2><div class="faq rv"><details><summary>What if there are no trees?</summary><p>Then you pitch it on the ground. The V.3 sets up as a ground tent using poles — same shelter, same fly, same bug net. It's the reason people take it above the treeline and onto beaches, and it's the feature most competitors don't have.</p></details><details><summary>Will I be cold in it?</summary><p>It's built as an all-season shelter — enclosed body, full bug net, detachable rain fly, and a pad pocket that takes a pad up to 25in for genuine winter use. Most of the year you won't reach for the pad. In deep cold you will, the same as in any shelter.</p></details><details><summary>What happens when it rains?</summary><p>Water runs downhill and, hanging, you're not at the bottom of it. The fly sheds it and the waterproof floor panel is included free with this pre-order. Our reviews are full of ten-hour storms with people staying dry.</p></details><details><summary>My back is bad — won't I be folded in half?</summary><p>That's from lying straight down the middle. Lie slightly diagonal and the fabric flattens under you, spreading your weight instead of pressing it into hip and shoulder. A lot of our buyers came to it because the ground was hurting them.</p></details><details><summary>How long does setup take?</summary><p>Under five minutes once you've done it twice. Two straps, clip in, fly over the ridgeline, zip the net. No poles to thread, no stakes to lose.</p></details><details><summary>Why is it $159 when it looks like $400?</summary><p>Because it's a pre-order. You're buying from the September batch before it lands, so there's no warehousing, no inventory float and no retailer margin. What you give up is time — it ships Sept 15.</p></details><details><summary>Is this a real company?</summary><p>9,000+ units shipped, 1,200+ verified reviews averaging 4.8, a lifetime warranty we honour and a support inbox we answer. Designed in Canada, shipped to you from South Carolina.</p></details><details><summary>What if I don't like it?</summary><p>Send it back, free, both directions, and the hammock carries a lifetime warranty on top.</p></details></div></div></section>
 <footer><div class="wrap">Hawk Nest Hammocks · Built in Canada · Shipped from South Carolina<br>
-4.8 out of 5 from 400+ verified reviews</div></footer>
+4.8 out of 5 from 1,200+ verified reviews</div></footer>
+
+<script>
+(function(){
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){
+   if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+ document.querySelectorAll('.car').forEach(function(car){
+   var t=car.querySelector('.car-track'),dots=car.querySelectorAll('.car-dots i');
+   if(!t||!dots.length)return;
+   t.addEventListener('scroll',function(){
+     var i=Math.round(t.scrollLeft/(t.scrollWidth/dots.length));
+     dots.forEach(function(d,j){d.classList.toggle('on',j===Math.min(i,dots.length-1))});
+   },{passive:true});
+ });
+})();
+</script>
 </body></html>
