@@ -239,6 +239,13 @@ footer{padding:36px 0 60px;text-align:center;font-size:.78rem;color:var(--dim);b
    document.querySelectorAll('.qtyp-b button').forEach(function(b){
      b.classList.toggle('on',b.getAttribute('data-q')===String(q));
    });
+   /* the Reserve button says $159; if they pick 3 the page has to say so too,
+      or the jump to a $479.97 checkout reads as a bait and switch */
+   document.querySelectorAll('.qtyp-n').forEach(function(n){
+     n.textContent = q>1
+       ? q+' complete kits — $'+(q*159.99).toFixed(2)+' total at checkout.'
+       : 'Each one is a complete kit — hammock plus all six upgrades.';
+   });
  }
  (function(){
    var links=cartLinks();
