@@ -103,6 +103,19 @@ footer{padding:16px 22px 28px;font-family:'IBM Plex Mono';font-size:.64rem;color
 .dot{width:7px;height:7px;border-radius:50%;background:#3fbf6a;display:inline-block;
  margin-right:5px;animation:pl 2s ease-in-out infinite}
 @keyframes pl{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
+/* quantity picker — injected next to every Reserve button */
+.qtyp{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+ margin:0 0 14px;font-family:inherit}
+.qtyp-l{font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.72}
+.qtyp-b{display:inline-flex;gap:6px}
+.qtyp-b button{min-width:46px;padding:9px 12px;border-radius:9px;cursor:pointer;
+ font:inherit;font-weight:800;font-size:.95rem;line-height:1;
+ background:rgba(255,255,255,.06);color:inherit;
+ border:1.5px solid rgba(255,255,255,.22);transition:.14s}
+.qtyp-b button:hover{border-color:rgba(255,255,255,.45)}
+.qtyp-b button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.qtyp-n{font-size:.78rem;opacity:.66;flex-basis:100%;text-align:center}
+
 /* sticky urgency bar */
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;transform:translateY(110%);
  transition:transform .35s cubic-bezier(.22,1,.36,1);
@@ -125,14 +138,6 @@ footer{padding:16px 22px 28px;font-family:'IBM Plex Mono';font-size:.64rem;color
 .lg.center{justify-content:center}
 
 .car-item,.band{border-color:var(--line)}
-
-.livebar{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:99px;
- background:var(--card);border:1px solid var(--line);font-size:.85rem;color:var(--b);margin:14px 0}
-.livebar b{color:var(--h)}
-.livedot{width:8px;height:8px;border-radius:50%;background:#3fbf6a;flex:0 0 auto;
- box-shadow:0 0 0 0 rgba(63,191,106,.7);animation:lp 2.2s ease-out infinite}
-@keyframes lp{0%{box-shadow:0 0 0 0 rgba(63,191,106,.65)}70%{box-shadow:0 0 0 9px rgba(63,191,106,0)}
- 100%{box-shadow:0 0 0 0 rgba(63,191,106,0)}}
 </style></head><body>
 <div class="sheet">
  <div class="hd">
@@ -223,6 +228,51 @@ footer{padding:16px 22px 28px;font-family:'IBM Plex Mono';font-size:.64rem;color
      dots.forEach(function(d,j){d.classList.toggle('on',j===Math.min(i,dots.length-1))});
    },{passive:true});
  });
+ /* ── multi-buy ────────────────────────────────────────────────────────────────
+    The cart permalink jumps straight to checkout, and Shopify's checkout has no
+    quantity control — so before this, a customer who wanted two bundles had no way
+    to say so. Shopify's automatic discount already scales per unit (verified to 10),
+    so all this has to do is put the same quantity on all six variant IDs. Bumping
+    only the hammock would ship someone three hammocks and one rain fly. */
+ var CART_RE=/\/cart\/([0-9]+(?::[0-9]+)?(?:,[0-9]+(?::[0-9]+)?)*)/;
+ function cartLinks(){
+   return Array.prototype.filter.call(document.querySelectorAll('a[href*="/cart/"]'),
+     function(a){return CART_RE.test(a.getAttribute('href')||'')});
+ }
+ function setQty(q){
+   cartLinks().forEach(function(a){
+     a.href=a.getAttribute('href').replace(CART_RE,function(m,list){
+       return '/cart/'+list.split(',').map(function(part){
+         return part.split(':')[0]+':'+q;
+       }).join(',');
+     });
+   });
+   document.querySelectorAll('.qtyp-b button').forEach(function(b){
+     b.classList.toggle('on',b.getAttribute('data-q')===String(q));
+   });
+ }
+ (function(){
+   var links=cartLinks();
+   if(!links.length)return;
+   // one picker above each full-width Reserve button; the sticky bar is too cramped
+   links.forEach(function(a){
+     if(a.classList.contains('sticky-cta'))return;
+     var w=document.createElement('div');
+     w.className='qtyp';
+     w.innerHTML='<span class="qtyp-l">How many?</span><span class="qtyp-b">'+
+       [1,2,3].map(function(n){
+         return '<button type="button" data-q="'+n+'"'+(n===1?' class="on"':'')+'>'+n+'</button>';
+       }).join('')+'</span>'+
+       '<span class="qtyp-n">Each one is a complete kit — hammock plus all six upgrades.</span>';
+     a.parentNode.insertBefore(w,a);
+   });
+   document.addEventListener('click',function(e){
+     var b=e.target.closest?e.target.closest('.qtyp-b button'):null;
+     if(!b)return;
+     e.preventDefault();
+     setQty(parseInt(b.getAttribute('data-q'),10)||1);
+   });
+ })();
  var sb=document.getElementById('stickyBar');
  if(sb){
    var foot=document.querySelector('footer');

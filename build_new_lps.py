@@ -2,8 +2,11 @@
 # (max-value-long-gift.html), three different persuasion mechanics.
 import pathlib
 
-CHECKOUT = ("https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,"
-            "53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US")
+import lp_parts as L
+
+# These three pages had their OWN copy of the cart link, which is how they missed the
+# multi-buy picker the first time round. One source of truth now.
+CHECKOUT = L.CHECKOUT
 
 HEAD = """<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -94,9 +97,62 @@ well before the holidays. Pre-order batches ship in <b>Navy</b>. You're charged 
 your place in the batch is held in the order it was taken.</div>
 """
 
-FOOT = """
+QTY_CSS = """
+<style>
+.qtyp{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.qtyp-l{font-size:.78rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.qtyp-b{display:inline-flex;gap:6px}
+.qtyp-b button{min-width:46px;padding:9px 12px;border-radius:9px;cursor:pointer;font:inherit;
+ font-weight:700;font-size:.95rem;line-height:1;background:#fff;color:var(--earth);
+ border:1.5px solid rgba(92,74,50,.28);transition:.14s}
+.qtyp-b button:hover{border-color:var(--rust)}
+.qtyp-b button.on{background:var(--rust);border-color:var(--rust);color:#fff}
+.qtyp-n{font-size:.76rem;color:var(--muted);flex-basis:100%;text-align:center}
+.offer .qtyp-l,.offer .qtyp-n{color:#c9bda6}
+.offer .qtyp-b button{background:rgba(255,255,255,.08);color:var(--cream);border-color:rgba(255,255,255,.28)}
+.offer .qtyp-b button.on{background:var(--rust);border-color:var(--rust);color:#fff}
+</style>"""
+
+# Shopify's checkout has no quantity control and the permalink skips the cart, so without
+# this a customer who wants two complete kits has no way to say so. The automatic discount
+# already scales per unit — this just has to move all six variant IDs together.
+QTY_JS = r"""
+<script>
+(function(){
+ var RE=/\/cart\/([0-9]+(?::[0-9]+)?(?:,[0-9]+(?::[0-9]+)?)*)/;
+ function links(){return Array.prototype.filter.call(
+   document.querySelectorAll('a[href*="/cart/"]'),
+   function(a){return RE.test(a.getAttribute('href')||'')});}
+ function setQty(q){
+   links().forEach(function(a){
+     a.href=a.getAttribute('href').replace(RE,function(m,list){
+       return '/cart/'+list.split(',').map(function(x){return x.split(':')[0]+':'+q}).join(',');
+     });
+   });
+   document.querySelectorAll('.qtyp-b button').forEach(function(b){
+     b.classList.toggle('on',b.getAttribute('data-q')===String(q));});
+ }
+ var ls=links(); if(!ls.length)return;
+ ls.forEach(function(a){
+   var w=document.createElement('div'); w.className='qtyp';
+   w.innerHTML='<span class="qtyp-l">How many?</span><span class="qtyp-b">'+
+     [1,2,3].map(function(n){return '<button type="button" data-q="'+n+'"'+
+       (n===1?' class="on"':'')+'>'+n+'</button>'}).join('')+'</span>'+
+     '<span class="qtyp-n">Each one is a complete kit — hammock plus all six upgrades.</span>';
+   a.parentNode.insertBefore(w,a);
+ });
+ document.addEventListener('click',function(e){
+   var b=e.target.closest?e.target.closest('.qtyp-b button'):null;
+   if(!b)return; e.preventDefault();
+   setQty(parseInt(b.getAttribute('data-q'),10)||1);
+ });
+})();
+</script>"""
+
+FOOT = QTY_CSS + """
 <footer><div class="wrap">Hawk Nest Hammocks · Built in Canada · Shipped from South Carolina<br>
 4.8 out of 5 from 400+ verified reviews</div></footer>
+""" + QTY_JS + """
 </body></html>"""
 
 pathlib.Path("_lp_common.py").write_text("")

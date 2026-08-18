@@ -3,8 +3,28 @@ Every page pulls the SAME facts from here, so a correction lands everywhere at o
 which is how the 'no trees = buy a tent' error got into three pages before."""
 import json
 
-CHECKOUT = ("https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,"
-            "53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US")
+# The Max Value bundle: the hammock plus five upgrades that the automatic discount
+# zeroes out. Verified 2026-08-18 that the discount scales exactly per unit — a cart of
+# 3 comes to 3 x $159.99 with 3 of all six lines — so multi-buy needs no Shopify change,
+# only a way for the customer to ASK for it. See qty_picker() in lp_shared.
+VARIANTS = [
+    "53200326557993",   # V.3 Hammock Tent — US Pre-Order (Max Value)  $159.99
+    "53198306312489",   # Gridless 1 Year Premium                       $79.99
+    "53198306345257",   # Lifetime Warranty Upgrade                     $59.99
+    "46948621254953",   # UPGRADE | Waterproof Bottom Fabric            $39.99
+    "46948623810857",   # UPGRADE | Waterproof Carrying Bag             $19.99
+    "47874384953641",   # Free Returns                                   $4.99
+]
+
+def checkout_url(qty=1):
+    """Cart permalink for `qty` complete bundles — every line moves together.
+
+    Bumping only the hammock would ship one buyer three hammocks and one rain fly, so
+    the quantity is applied to all six variants or none."""
+    items = ",".join(f"{v}:{qty}" for v in VARIANTS)
+    return f"https://hawknesthammocks.ca/cart/{items}?country=US"
+
+CHECKOUT = checkout_url(1)
 
 UNITS       = "9,000+"
 REVIEWS     = "1,200+"        # 1,212 published on Judge.me
