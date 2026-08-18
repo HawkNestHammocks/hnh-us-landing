@@ -122,6 +122,29 @@ blockquote{font-family:var(--serif);font-size:1.3rem;font-style:italic;color:var
 .lg{display:flex;align-items:center;justify-content:center;gap:14px;padding:18px 0}
 .lg img{height:54px;width:auto}
 .lg .badge{height:52px}
+/* sticky urgency bar */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;transform:translateY(110%);
+ transition:transform .35s cubic-bezier(.22,1,.36,1);
+ background:var(--stickybg,#12160f);color:#fff;
+ box-shadow:0 -6px 26px rgba(0,0,0,.35);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
+.sticky.up{transform:none}
+.sticky-in{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.sticky-txt{flex:1;min-width:0;line-height:1.25}
+.sticky-txt b{display:block;font-size:.94rem}
+.sticky-txt span{font-size:.76rem;opacity:.82;display:block;margin-top:1px}
+.sticky-cta{flex:0 0 auto;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;
+ font-size:.92rem;padding:12px 18px;border-radius:8px;white-space:nowrap}
+.sticky-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;display:inline-block;
+ margin-right:6px;animation:pl 2s ease-in-out infinite;vertical-align:middle}
+@media(max-width:380px){.sticky-txt span{display:none}}
+
+.livebar{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:99px;
+ background:var(--card);border:1px solid var(--line);font-size:.85rem;color:var(--b);margin:14px 0}
+.livebar b{color:var(--h)}
+.livedot{width:8px;height:8px;border-radius:50%;background:#3fbf6a;flex:0 0 auto;
+ box-shadow:0 0 0 0 rgba(63,191,106,.7);animation:lp 2.2s ease-out infinite}
+@keyframes lp{0%{box-shadow:0 0 0 0 rgba(63,191,106,.65)}70%{box-shadow:0 0 0 9px rgba(63,191,106,0)}
+ 100%{box-shadow:0 0 0 0 rgba(63,191,106,0)}}
 </style></head><body>
 
 <div class="hero"><div class="wrap"><div class="lg rv"><img src="hnh-logo.png" alt="Hawk Nest Hammocks" loading="lazy"></div>
@@ -130,7 +153,7 @@ blockquote{font-family:var(--serif);font-size:1.3rem;font-style:italic;color:var
   <p class="lead">We've read a few thousand comments. The same eight doubts come up every
   time. Two of them are completely right, and we'll tell you which.</p>
 </div></div>
-<div class="wrap"><figure class="band rv" style="margin:22px 0 4px"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_1_b5041f35-c67a-4f3f-a454-10844caff6c4.png?v=1779476441" alt="Hawk Nest V.3 pitched between two trees" loading="lazy"><figcaption>The V.3 in the field — bug net in, fly on.</figcaption></figure></div>
+<div class="wrap"><figure class="band rv" style="margin:22px 0 4px"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_1_b5041f35-c67a-4f3f-a454-10844caff6c4.png?v=1779476441" alt="Hawk Nest V.3 pitched between two trees" loading="lazy"><figcaption>The V.3 in the field — bug net in, fly on.</figcaption></figure><div class="livebar rv"><span class="livedot"></span><span><b>178 people</b> ordered in the last 7 days · <b>8</b> in the last 24 hours</span></div></div>
 
 <section><div class="wrap">
   <div class="obj"><div class="q">“I'll be cold. Hammocks are freezing.”</div><p>That's true of a bare summer hammock and it's the single most common reason people bounce off the idea. The V.3 is built as an all-season shelter, not a backyard hammock: enclosed body, full bug net, detachable rain fly, and a pad pocket that takes a pad up to 25 inches wide for genuine winter use. Most of the year you won't need the pad. In deep cold you will, same as any shelter.</p></div><div class="obj"><div class="q">“What happens when it rains?”</div><p>Water runs downhill, and off the ground you're not at the bottom of the hill any more. The rain fly sheds it, the waterproof bottom panel is included free with this pre-order, and there's no groundsheet for a puddle to pool on. Rain is the thing hammock sleepers worry about least, which surprises people.</p></div><div class="obj"><div class="q">“My back is bad. Won't I be folded in half?”</div><p>That's the banana-shape problem, and it comes from lying straight down the middle. Lie slightly diagonal and the fabric flattens out under you. Your weight spreads over the whole surface instead of pressing into hip, shoulder and heel. A lot of our reviews are from people who came to it because the ground was hurting them.</p></div><div class="obj"><div class="q">“What if there are no trees?”</div><p>Then you pitch it on the ground. The V.3 sets up as a conventional tent with poles — same fly, same bug net, same waterproof floor. Above the treeline, on sand, in a bare site, you're still covered. It's the feature most hammock shelters don't have.</p></div><div class="obj"><div class="q">“How long does it take to set up?”</div><p>Under five minutes once you've done it twice, and the first time is mostly reading. Two straps, clip in, fly over the ridgeline, zip the net. No poles to thread, no stakes to lose, nothing to peg into ground that won't hold a stake.</p></div><div class="obj"><div class="q">“Why is it $159 when it looks like it should be $400?”</div><p>Because it's a pre-order. You're buying from the September batch before it lands, so we're not paying to warehouse it or float the inventory, and there's no retailer margin in the middle. That saving is the discount. What you give up is time — it ships September 15.</p></div><div class="obj"><div class="q">“Is this a real company or a dropship?”</div><p>Real company, and the reason to believe it is the volume: 9,000+ units shipped, 1,200+ verified reviews averaging 4.8, a lifetime warranty we actually honour, and a support inbox we answer. Designed in Canada, and your order ships from South Carolina with duties already covered.</p></div><div class="obj"><div class="q">“What if I hate it?”</div><p>Send it back, free, both directions. We'd rather eat the shipping than have it sit in your garage. The hammock carries a lifetime warranty on top of that.</p></div>
@@ -195,4 +218,8 @@ your place in the batch is held in the order it was taken.</div>
  });
 })();
 </script>
-<div class="sticky" id="stickyBar" style="--stickybg:#3b2f1e"><div class="sticky-in"><div class="sticky-txt"><b><span class="sticky-dot"></span>$159 &nbsp;·&nbsp; ships Sept 15</b><span>9,000+ shipped · batch closes when full</span></div><a class="sticky-cta" href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US">Reserve</a></div></div></body></html>
+<div class="sticky" id="stickyBar" style="--stickybg:#3b2f1e"><div class="sticky-in"><div class="sticky-txt"><b><span class="sticky-dot"></span>$159 &nbsp;·&nbsp; ships Sept 15</b><span>9,000+ shipped · batch closes when full</span></div><a class="sticky-cta" href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US">Reserve</a></div></div><script>(function(){var sb=document.getElementById('stickyBar');if(!sb)return;
+var foot=document.querySelector('footer');
+function s(){var past=window.scrollY>420;var end=foot&&foot.getBoundingClientRect().top<window.innerHeight+40;
+sb.classList.toggle('up',past&&!end);}
+window.addEventListener('scroll',s,{passive:true});s();})();</script></body></html>
