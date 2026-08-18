@@ -28,9 +28,11 @@ DARK = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 body{{background:var(--ink);color:var(--white);font-family:'Archivo',system-ui,sans-serif;
  line-height:1.55;-webkit-font-smoothing:antialiased}}
 .w{{max-width:720px;margin:0 auto;padding:0 20px}}
-.hero{{min-height:70vh;display:flex;flex-direction:column;justify-content:flex-end;
+.hero{{min-height:74vh;display:flex;flex-direction:column;justify-content:space-between;
  background:linear-gradient(180deg,rgba(11,13,12,.30),rgba(11,13,12,.92) 74%,var(--ink)),
- url('{L.IMG["trees"]}') center/cover;padding:64px 0 40px}}
+ url('{L.IMG["trees"]}') center/cover;padding:26px 0 40px}}
+.hero-logo{{text-align:center}}
+.hero-logo img{{height:66px;width:auto;filter:drop-shadow(0 3px 10px rgba(0,0,0,.55))}}
 .kick{{font-family:'Archivo Narrow';font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;
  color:var(--accent);font-weight:700}}
 h1{{font-size:clamp(2.5rem,9.5vw,4.2rem);font-weight:900;line-height:.95;letter-spacing:-.03em;margin:12px 0}}
@@ -66,14 +68,15 @@ a.cta small{{display:block;font-weight:500;font-size:.76rem;opacity:.92;margin-t
 footer{{padding:36px 0 60px;text-align:center;font-size:.78rem;color:var(--dim);border-top:1px solid var(--line)}}
 {S.CORE_CSS}
 </style></head><body>
-<div class="hero"><div class="w">
+<div class="hero">
+ <div class="hero-logo"><img src="{L.LOGO_LIGHT}" alt="Hawk Nest Hammocks"></div>
+ <div class="w">
  <div class="kick">US pre-order · ships Sept 15</div>
  <h1>Sleep Above It.<br>Or On It.</h1>
  <p class="sub">An all-season shelter that hangs between two trees — and pitches on the ground when there aren't any.</p>
 </div></div>
 
 <section class="lp-sec"><div class="w">
- {S.logos(light=True, center=True, h=62)}
  {S.urgency()}
  <h2 class="lp-h rv">Everything that ruins a night happens at ground level</h2>
  <p class="big rv">Water pools. Cold conducts. Roots find your hip. You lose the last of the daylight hunting for ground flat enough to lie on.</p>
