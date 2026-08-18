@@ -11,6 +11,7 @@ REVIEWS     = "1,200+"        # 1,212 published on Judge.me
 RATING      = "4.8"           # published mean is 4.85
 LOGO_COLOR  = "hnh-logo.png"          # the real sun-mountain mark
 LOGO_ALT    = "hnh-logo.png"
+LOGO_LIGHT  = "hnh-logo-light.png"   # colour mark, light text — for dark grounds
 WARRANTY    = "https://cdn.shopify.com/s/files/1/0815/8498/0265/files/lifetime_warranty_badge.png?v=1779393862"
 
 P = json.load(open("/tmp/us_product_imgs.json"))
@@ -33,7 +34,7 @@ CAROUSEL = [
                  "The V.3 sets up as a ground tent. Two poles, same shelter — you're never stuck."),
  (IMG["pocket"], "Integrated pad pocket",  "Holds a pad up to 25in wide so it can't slide out from under you."),
  (IMG["fly"],    "210T ripstop, 500lb rated","Heavy stitching, sealed seams, and a fly that detaches when you don't want it."),
- (IMG["packed"], "Packs to 5.5 x 5.5 x 16in","3–4lb trail weight. Smaller than the tent it replaces."),
+ (IMG["packed"], "Packs to 5.5 x 5.5 x 16in","4.5–5 lb packed — 5 lb with the waterproof upgrades on."),
  (IMG["inside"], "Room to actually sleep",  "Lie diagonal and the fabric flattens out — no banana shape."),
 ]
 

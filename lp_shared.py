@@ -58,10 +58,26 @@ CORE_CSS = """
 .dot{width:7px;height:7px;border-radius:50%;background:#3fbf6a;display:inline-block;
  margin-right:5px;animation:pl 2s ease-in-out infinite}
 @keyframes pl{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
+/* sticky urgency bar */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;transform:translateY(110%);
+ transition:transform .35s cubic-bezier(.22,1,.36,1);
+ background:var(--stickybg,#12160f);color:#fff;
+ box-shadow:0 -6px 26px rgba(0,0,0,.35);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
+.sticky.up{transform:none}
+.sticky-in{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.sticky-txt{flex:1;min-width:0;line-height:1.25}
+.sticky-txt b{display:block;font-size:.94rem}
+.sticky-txt span{font-size:.76rem;opacity:.82;display:block;margin-top:1px}
+.sticky-cta{flex:0 0 auto;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;
+ font-size:.92rem;padding:12px 18px;border-radius:8px;white-space:nowrap}
+.sticky-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;display:inline-block;
+ margin-right:6px;animation:pl 2s ease-in-out infinite;vertical-align:middle}
+@media(max-width:380px){.sticky-txt span{display:none}}
 /* logo strip */
 .lg{display:flex;align-items:center;justify-content:center;gap:14px;padding:18px 0}
 .lg img{height:54px;width:auto}
 .lg .badge{height:58px}
+.lg.center{justify-content:center}
 """
 
 CORE_JS = """
@@ -78,13 +94,26 @@ CORE_JS = """
      dots.forEach(function(d,j){d.classList.toggle('on',j===Math.min(i,dots.length-1))});
    },{passive:true});
  });
+ var sb=document.getElementById('stickyBar');
+ if(sb){
+   var foot=document.querySelector('footer');
+   var onScroll=function(){
+     var past=window.scrollY>420;
+     var atEnd=foot&&foot.getBoundingClientRect().top<window.innerHeight+40;
+     sb.classList.toggle('up',past&&!atEnd);
+   };
+   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+ }
 })();
 </script>
 """
 
-def logos(badge=True):
+def logos(badge=False, light=False, center=False, h=None):
+    src = L.LOGO_LIGHT if light else L.LOGO_COLOR
     b = f'<img class="badge" src="{L.WARRANTY}" alt="Lifetime warranty" loading="lazy">' if badge else ""
-    return f'<div class="lg rv"><img src="{L.LOGO_COLOR}" alt="Hawk Nest Hammocks" loading="lazy">{b}</div>'
+    cls = "lg rv center" if center else "lg rv"
+    st = f' style="height:{h}px"' if h else ""
+    return f'<div class="{cls}"><img src="{src}"{st} alt="Hawk Nest Hammocks" loading="lazy">{b}</div>'
 
 def band(key, cap):
     return f'<figure class="band rv"><img src="{L.IMG[key]}" alt="{cap}" loading="lazy"><figcaption>{cap}</figcaption></figure>'
@@ -110,6 +139,12 @@ def urgency():
     return (f'<div class="urg rv"><span><span class="dot"></span><b>{L.UNITS}</b> shipped</span>'
             f'<span>·</span><span><b>{L.RATING}</b> from {L.REVIEWS} reviews</span>'
             f'<span>·</span><span>Batch closes when it\'s full — <b>ships Sept 15</b></span></div>')
+
+def sticky(bg="#12160f"):
+    return (f'<div class="sticky" id="stickyBar" style="--stickybg:{bg}"><div class="sticky-in">'
+            f'<div class="sticky-txt"><b><span class="sticky-dot"></span>$159 &nbsp;·&nbsp; ships Sept 15</b>'
+            f'<span>{L.UNITS} shipped · batch closes when full</span></div>'
+            f'<a class="sticky-cta" href="{L.CHECKOUT}">Reserve</a></div></div>')
 
 def includes_rows(cls_row="", cls_val=""):
     return "".join(f'<li class="{cls_row}"><span>{n}</span><i class="{cls_val}">{v}</i></li>'

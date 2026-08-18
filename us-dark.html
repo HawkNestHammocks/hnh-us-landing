@@ -102,10 +102,26 @@ footer{padding:36px 0 60px;text-align:center;font-size:.78rem;color:var(--dim);b
 .dot{width:7px;height:7px;border-radius:50%;background:#3fbf6a;display:inline-block;
  margin-right:5px;animation:pl 2s ease-in-out infinite}
 @keyframes pl{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
+/* sticky urgency bar */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;transform:translateY(110%);
+ transition:transform .35s cubic-bezier(.22,1,.36,1);
+ background:var(--stickybg,#12160f);color:#fff;
+ box-shadow:0 -6px 26px rgba(0,0,0,.35);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
+.sticky.up{transform:none}
+.sticky-in{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.sticky-txt{flex:1;min-width:0;line-height:1.25}
+.sticky-txt b{display:block;font-size:.94rem}
+.sticky-txt span{font-size:.76rem;opacity:.82;display:block;margin-top:1px}
+.sticky-cta{flex:0 0 auto;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;
+ font-size:.92rem;padding:12px 18px;border-radius:8px;white-space:nowrap}
+.sticky-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;display:inline-block;
+ margin-right:6px;animation:pl 2s ease-in-out infinite;vertical-align:middle}
+@media(max-width:380px){.sticky-txt span{display:none}}
 /* logo strip */
 .lg{display:flex;align-items:center;justify-content:center;gap:14px;padding:18px 0}
 .lg img{height:54px;width:auto}
 .lg .badge{height:58px}
+.lg.center{justify-content:center}
 
 </style></head><body>
 <div class="hero"><div class="w">
@@ -115,7 +131,7 @@ footer{padding:36px 0 60px;text-align:center;font-size:.78rem;color:var(--dim);b
 </div></div>
 
 <section class="lp-sec"><div class="w">
- <div class="lg rv"><img src="hnh-logo.png" alt="Hawk Nest Hammocks" loading="lazy"><img class="badge" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/lifetime_warranty_badge.png?v=1779393862" alt="Lifetime warranty" loading="lazy"></div>
+ <div class="lg rv center"><img src="hnh-logo-light.png" style="height:62px" alt="Hawk Nest Hammocks" loading="lazy"></div>
  <div class="urg rv"><span><span class="dot"></span><b>9,000+</b> shipped</span><span>·</span><span><b>4.8</b> from 1,200+ reviews</span><span>·</span><span>Batch closes when it's full — <b>ships Sept 15</b></span></div>
  <h2 class="lp-h rv">Everything that ruins a night happens at ground level</h2>
  <p class="big rv">Water pools. Cold conducts. Roots find your hip. You lose the last of the daylight hunting for ground flat enough to lie on.</p>
@@ -123,7 +139,7 @@ footer{padding:36px 0 60px;text-align:center;font-size:.78rem;color:var(--dim);b
  <div class="grid3 rv">
   <div><b>9,000+</b><span>UNITS SHIPPED</span></div>
   <div><b>4.8</b><span>1,200+ REVIEWS</span></div>
-  <div><b>3–4 lb</b><span>TRAIL WEIGHT</span></div>
+  <div><b>4.5–5 lb</b><span>PACKED WEIGHT</span></div>
  </div>
  <figure class="band rv"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Giveaway_5_99ccb285-90d8-40c8-9bd0-ed3854d17547.png?v=1779476450" alt="No trees? It pitches on the ground as a tent — same fly, same bug net." loading="lazy"><figcaption>No trees? It pitches on the ground as a tent — same fly, same bug net.</figcaption></figure>
 </div></section>
@@ -131,7 +147,7 @@ footer{padding:36px 0 60px;text-align:center;font-size:.78rem;color:var(--dim);b
 <section class="lp-sec"><div class="w">
  <h2 class="lp-h rv">Look at the thing properly</h2>
  <p class="rv">Swipe through — build detail, the pad pocket, packed size, and the ground setup.</p>
- <div class="car rv"><div class="car-track"><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3_4571549c-8c67-42fd-adbb-3efbb9bf5188.png?v=1779476438" alt="Everything in the box" loading="lazy"><div class="car-cap"><b>Everything in the box</b><span>Hammock-tent, bug net, detachable rain fly, straps and hardware.</span></div></div><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Giveaway_5_99ccb285-90d8-40c8-9bd0-ed3854d17547.png?v=1779476450" alt="No trees? Pitch it on the ground" loading="lazy"><div class="car-cap"><b>No trees? Pitch it on the ground</b><span>The V.3 sets up as a ground tent. Two poles, same shelter — you're never stuck.</span></div></div><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Mattress_Pocket_f695c9ae-a716-4ba1-8d44-3b2ab49ec937.png?v=1779476443" alt="Integrated pad pocket" loading="lazy"><div class="car-cap"><b>Integrated pad pocket</b><span>Holds a pad up to 25in wide so it can't slide out from under you.</span></div></div><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_2_96243078-2cbf-46ec-b354-1da5464ee1fa.png?v=1779476445" alt="210T ripstop, 500lb rated" loading="lazy"><div class="car-cap"><b>210T ripstop, 500lb rated</b><span>Heavy stitching, sealed seams, and a fly that detaches when you don't want it.</span></div></div><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Screenshot2024-03-19121621_f25ae76b-b47b-4cb2-9807-a94c1d975b04.png?v=1779476448" alt="Packs to 5.5 x 5.5 x 16in" loading="lazy"><div class="car-cap"><b>Packs to 5.5 x 5.5 x 16in</b><span>3–4lb trail weight. Smaller than the tent it replaces.</span></div></div><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_26_06752900-9952-47de-a0cf-e364b54ebba9.png?v=1779476455" alt="Room to actually sleep" loading="lazy"><div class="car-cap"><b>Room to actually sleep</b><span>Lie diagonal and the fabric flattens out — no banana shape.</span></div></div></div><div class="car-dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div></div>
+ <div class="car rv"><div class="car-track"><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_3_4571549c-8c67-42fd-adbb-3efbb9bf5188.png?v=1779476438" alt="Everything in the box" loading="lazy"><div class="car-cap"><b>Everything in the box</b><span>Hammock-tent, bug net, detachable rain fly, straps and hardware.</span></div></div><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Giveaway_5_99ccb285-90d8-40c8-9bd0-ed3854d17547.png?v=1779476450" alt="No trees? Pitch it on the ground" loading="lazy"><div class="car-cap"><b>No trees? Pitch it on the ground</b><span>The V.3 sets up as a ground tent. Two poles, same shelter — you're never stuck.</span></div></div><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Mattress_Pocket_f695c9ae-a716-4ba1-8d44-3b2ab49ec937.png?v=1779476443" alt="Integrated pad pocket" loading="lazy"><div class="car-cap"><b>Integrated pad pocket</b><span>Holds a pad up to 25in wide so it can't slide out from under you.</span></div></div><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Main_Product_Image_2_96243078-2cbf-46ec-b354-1da5464ee1fa.png?v=1779476445" alt="210T ripstop, 500lb rated" loading="lazy"><div class="car-cap"><b>210T ripstop, 500lb rated</b><span>Heavy stitching, sealed seams, and a fly that detaches when you don't want it.</span></div></div><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Screenshot2024-03-19121621_f25ae76b-b47b-4cb2-9807-a94c1d975b04.png?v=1779476448" alt="Packs to 5.5 x 5.5 x 16in" loading="lazy"><div class="car-cap"><b>Packs to 5.5 x 5.5 x 16in</b><span>4.5–5 lb packed — 5 lb with the waterproof upgrades on.</span></div></div><div class="car-item"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Misc_Square_26_06752900-9952-47de-a0cf-e364b54ebba9.png?v=1779476455" alt="Room to actually sleep" loading="lazy"><div class="car-cap"><b>Room to actually sleep</b><span>Lie diagonal and the fabric flattens out — no banana shape.</span></div></div></div><div class="car-dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div></div>
 </div></section>
 
 <section class="lp-sec"><div class="w">
@@ -146,7 +162,7 @@ footer{padding:36px 0 60px;text-align:center;font-size:.78rem;color:var(--dim);b
  <h2 class="lp-h rv">Up in under five minutes</h2>
  <div class="rev rv"><img src="https://review-images.judgeme.com/hawk-nest-hammocks/1776701467__20260417_175702__original.jpg?quality=80&width=1024" alt="Customer photo — Andrew Kryshak" loading="lazy">
   <span class="st">★★★★★</span><q>I have taken out my V.3 Hawk Nest twice in the last couple of weeks and have been loving it! It is easy to set up, easy to take down, warm and above all, incredibly comfortable. Both times I went out recently, it got below freezing, but I was able to stay comfortable and warm with just a s</q><cite>Andrew Kryshak — verified buyer</cite></div>
- <figure class="band rv"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Screenshot2024-03-19121621_f25ae76b-b47b-4cb2-9807-a94c1d975b04.png?v=1779476448" alt="Packs to 5.5 x 5.5 x 16in — smaller than the tent it replaces." loading="lazy"><figcaption>Packs to 5.5 x 5.5 x 16in — smaller than the tent it replaces.</figcaption></figure>
+ <figure class="band rv"><img src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Screenshot2024-03-19121621_f25ae76b-b47b-4cb2-9807-a94c1d975b04.png?v=1779476448" alt="Packs to 5.5 x 5.5 x 16in at 4.5–5 lb — 5 lb with the waterproof upgrades." loading="lazy"><figcaption>Packs to 5.5 x 5.5 x 16in at 4.5–5 lb — 5 lb with the waterproof upgrades.</figcaption></figure>
 </div></section>
 
 <section class="lp-sec"><div class="w">
@@ -170,6 +186,7 @@ footer{padding:36px 0 60px;text-align:center;font-size:.78rem;color:var(--dim);b
 </div></section>
 
 <footer><div class="w">Hawk Nest Hammocks · designed in Canada · 9,000+ shipped · 4.8 from 1,200+ verified reviews</div></footer>
+<div class="sticky" id="stickyBar" style="--stickybg:#12160f"><div class="sticky-in"><div class="sticky-txt"><b><span class="sticky-dot"></span>$159 &nbsp;·&nbsp; ships Sept 15</b><span>9,000+ shipped · batch closes when full</span></div><a class="sticky-cta" href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US">Reserve</a></div></div>
 
 <script>
 (function(){
@@ -184,6 +201,16 @@ footer{padding:36px 0 60px;text-align:center;font-size:.78rem;color:var(--dim);b
      dots.forEach(function(d,j){d.classList.toggle('on',j===Math.min(i,dots.length-1))});
    },{passive:true});
  });
+ var sb=document.getElementById('stickyBar');
+ if(sb){
+   var foot=document.querySelector('footer');
+   var onScroll=function(){
+     var past=window.scrollY>420;
+     var atEnd=foot&&foot.getBoundingClientRect().top<window.innerHeight+40;
+     sb.classList.toggle('up',past&&!atEnd);
+   };
+   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+ }
 })();
 </script>
 

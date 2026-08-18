@@ -73,7 +73,7 @@ footer{{padding:36px 0 60px;text-align:center;font-size:.78rem;color:var(--dim);
 </div></div>
 
 <section class="lp-sec"><div class="w">
- {S.logos()}
+ {S.logos(light=True, center=True, h=62)}
  {S.urgency()}
  <h2 class="lp-h rv">Everything that ruins a night happens at ground level</h2>
  <p class="big rv">Water pools. Cold conducts. Roots find your hip. You lose the last of the daylight hunting for ground flat enough to lie on.</p>
@@ -81,7 +81,7 @@ footer{{padding:36px 0 60px;text-align:center;font-size:.78rem;color:var(--dim);
  <div class="grid3 rv">
   <div><b>{L.UNITS}</b><span>UNITS SHIPPED</span></div>
   <div><b>{L.RATING}</b><span>{L.REVIEWS} REVIEWS</span></div>
-  <div><b>3–4 lb</b><span>TRAIL WEIGHT</span></div>
+  <div><b>4.5–5 lb</b><span>PACKED WEIGHT</span></div>
  </div>
  {S.band("ground","No trees? It pitches on the ground as a tent — same fly, same bug net.")}
 </div></section>
@@ -104,7 +104,7 @@ footer{{padding:36px 0 60px;text-align:center;font-size:.78rem;color:var(--dim);
  <h2 class="lp-h rv">Up in under five minutes</h2>
  <div class="rev rv"><img src="{r2['pic']}" alt="Customer photo — {r2['name']}" loading="lazy">
   <span class="st">★★★★★</span><q>{r2['body'][:290]}</q><cite>{r2['name']} — verified buyer</cite></div>
- {S.band("packed","Packs to 5.5 x 5.5 x 16in — smaller than the tent it replaces.")}
+ {S.band("packed","Packs to 5.5 x 5.5 x 16in at 4.5–5 lb — 5 lb with the waterproof upgrades.")}
 </div></section>
 
 <section class="lp-sec"><div class="w">
@@ -123,6 +123,7 @@ footer{{padding:36px 0 60px;text-align:center;font-size:.78rem;color:var(--dim);
 </div></section>
 
 <footer><div class="w">Hawk Nest Hammocks · designed in Canada · {L.UNITS} shipped · {L.RATING} from {L.REVIEWS} verified reviews</div></footer>
+{S.sticky("#12160f")}
 {S.CORE_JS}
 </body></html>"""
 pathlib.Path("us-dark.html").write_text(DARK)
@@ -185,7 +186,7 @@ footer{{padding:30px 0 56px;text-align:center;font-size:.77rem;color:#8b968c;bor
 {S.CORE_CSS}
 </style></head><body>
 <header><div class="w">
- {S.logos()}
+ {S.logos(h=58)}
  <div class="pill">US pre-order · ships Sept 15</div>
  <h1>{L.UNITS} people stopped sleeping on the ground.</h1>
  <p>These aren't stock photos. Every picture below came from a verified buyer's review.</p>
@@ -235,6 +236,7 @@ footer{{padding:30px 0 56px;text-align:center;font-size:.77rem;color:#8b968c;bor
 </div></section>
 
 <footer><div class="w">Hawk Nest Hammocks · designed in Canada · every photo above is a real customer review</div></footer>
+{S.sticky("#1d3a26")}
 {S.CORE_JS}
 </body></html>"""
 pathlib.Path("us-proof.html").write_text(PROOF)
@@ -299,9 +301,10 @@ footer{{padding:16px 22px 28px;font-family:'IBM Plex Mono';font-size:.64rem;colo
  <div class="hd">
   <div><div class="t">HAWK NEST HAMMOCKS · FIELD SPECIFICATION</div>
    <h1>V.3 All-Season Hammock-Tent</h1></div>
-  <img src="{L.LOGO_ALT}" alt="Hawk Nest Hammocks">
+  <img src="{L.LOGO_LIGHT}" alt="Hawk Nest Hammocks" style="height:44px">
   <div class="rev">DOC V.3-US<br>PRE-ORDER<br>SHIPS 15 SEP 2026</div>
  </div>
+ <img src="{L.IMG["trees"]}" alt="Hawk Nest V.3 in the field" style="width:100%;display:block" loading="lazy">
  <div class="bd">
   <h2 class="sec">1 · Summary</h2>
   <p>A fully enclosed suspended shelter: hammock body, integrated bug net, detachable rain fly and a
@@ -319,7 +322,7 @@ footer{{padding:16px 22px 28px;font-family:'IBM Plex Mono';font-size:.64rem;colo
 
   <h2 class="sec">3 · Specification</h2>
   <table>
-   <tr><td>Trail weight</td><td>3–4 lb</td></tr>
+   <tr><td>Packed weight</td><td>4.5–5 lb (5 lb with waterproof upgrades)</td></tr>
    <tr><td>Packed size</td><td>5.5 × 5.5 × 16 in</td></tr>
    <tr><td>Max load</td><td>500 lb</td></tr>
    <tr><td>Pad pocket</td><td>fits pads to 25 in wide</td></tr>
@@ -335,8 +338,8 @@ footer{{padding:16px 22px 28px;font-family:'IBM Plex Mono';font-size:.64rem;colo
   <h2 class="sec">5 · Comparison — ground system</h2>
   <table class="cmp">
    <tr><td>2P tent + pad + footprint + hardware</td><td>$450 · 6 lb 8 oz</td></tr>
-   <tr><td>Hawk Nest V.3 complete kit</td><td class="win">$159 · 3–4 lb</td></tr>
-   <tr><td>Difference</td><td class="win">−$291 · −2.5 lb</td></tr>
+   <tr><td>Hawk Nest V.3 complete kit</td><td class="win">$159 · 4.5–5 lb</td></tr>
+   <tr><td>Difference</td><td class="win">−$291 · −1.5 lb</td></tr>
   </table>
   <div class="callout"><b>Note on the pad.</b> A ground system needs an insulated pad because the
   earth conducts heat out of you all night. Suspended, there is nothing beneath you to conduct to.</div>
@@ -368,6 +371,7 @@ footer{{padding:16px 22px 28px;font-family:'IBM Plex Mono';font-size:.64rem;colo
  </div>
  <footer>HAWK NEST HAMMOCKS · DESIGNED IN CANADA · {L.UNITS} UNITS SHIPPED · {L.RATING}/5 FROM {L.REVIEWS} VERIFIED REVIEWS</footer>
 </div>
+{S.sticky("#12263f")}
 {S.CORE_JS}
 </body></html>"""
 pathlib.Path("us-spec.html").write_text(SPEC)
