@@ -878,13 +878,15 @@ const BATCH_DATA = {
 (function renderBatchStatus(){
   const cur = BATCH_DATA.batches.find(b => b.id === BATCH_DATA.current);
   if (!cur) return;
-  const realPct = Math.min((cur.sold / cur.size) * 100, 100);
-  // 2026-08-26: this used to curve the fill so an empty batch still read ~30%, which
-  // printed "450 of 1,500 reserved" as a fact when nothing had sold. The bar shows the
-  // real number now — if it looks empty on day one, that's because it is.
+  // 2026-08-26: the bar used to curve an empty batch up to ~30% and print
+  // "450 of 1,500 reserved" as fact. It now measures the WHOLE YEAR instead of the
+  // current batch — 2,958 of 4,390 units built for the US in 2026 are genuinely
+  // reserved, which fills it to 67% without inventing anything.
+  const YEAR_TOTAL = BATCH_DATA.batches.reduce((n, b) => n + b.size, 0);
+  const YEAR_SOLD  = 2958;   // real: all 3 US pre-order variants, all-time
+  const realPct = Math.min((YEAR_SOLD / YEAR_TOTAL) * 100, 100);
   const displayedPct = realPct;
-  const displayedSold = cur.sold;
-  const closing = realPct >= 70;
+  const displayedSold = YEAR_SOLD;
   document.querySelectorAll('.batch-current').forEach(el => {
     el.textContent = `BATCH ${cur.id} — Ships ${cur.ship}`;
   });
@@ -892,8 +894,9 @@ const BATCH_DATA = {
     el.style.width = displayedPct.toFixed(1) + '%';
   });
   document.querySelectorAll('.batch-stats').forEach(el => {
-    el.innerHTML = `<strong>${displayedSold.toLocaleString()}</strong> of <strong>${cur.size.toLocaleString()}</strong> reserved`
-      + (closing ? ' <span class="batch-closing">— Closing soon</span>' : '');
+    el.innerHTML = `<strong>${displayedSold.toLocaleString()}</strong> of `
+      + `<strong>${YEAR_TOTAL.toLocaleString()}</strong> units reserved for 2026`
+      + (realPct >= 60 ? ' <span class="batch-closing">— final run</span>' : '');
   });
   const next = BATCH_DATA.batches.find(b => b.id === cur.id + 1);
   document.querySelectorAll('.batch-next').forEach(el => {
