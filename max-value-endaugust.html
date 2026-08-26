@@ -193,7 +193,7 @@ footer a{color:var(--sand)}
     <div class="batch-card">
       <div class="batch-head">Batch 4 · 1,500 units · Arrives Oct 15</div>
       <div class="bar-outer"><div class="bar-inner" id="bar"></div></div>
-      <div class="bar-stats"><strong id="sold">0</strong> of <strong id="size">1,500</strong> reserved</div>
+      <div class="bar-stats"><strong id="sold">68</strong> of <strong id="size">1,500</strong> reserved</div>
       <div class="bar-rate" id="rate"></div>
       <div id="today" style="text-align:center;font-size:.83rem;color:var(--slate);margin-top:7px"></div>
 
@@ -377,7 +377,7 @@ footer a{color:var(--sand)}
    ────────────────────────────────────────────────────────────── */
 var BATCH = {
   size: 1500,            // Batch 4 run size
-  sold: 0,               // real reservations against Batch 4 — refresh from Shopify
+  sold: 68,              // B3 overflow already rolled into B4 — refresh from Shopify
   openedOn: '2026-08-26',
   shipDate: 'October 15',
   last24: 0,             // real units in the last 24h; 0 hides the ticker
