@@ -253,7 +253,7 @@ footer a{color:var(--sand)}
         </div>
         <span id="qnote" style="font-size:.84rem;color:var(--muted)">6 add-ons included</span>
       </div>
-      <a href="#" class="cta" id="checkout">
+      <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" class="cta" id="checkout">
         <span>🛒</span><span id="ctaText">GET YOUR HAWK NEST — $159</span><span>→</span>
       </a>
       <div class="cta-ship">✓ In stock — ships within <span class="shipDays">3</span> business days</div>
@@ -351,7 +351,7 @@ footer a{color:var(--sand)}
     <h2 class="sec" style="color:var(--cream)">Stop Sleeping On The Ground</h2>
     <p style="color:#c9bda6;font-size:.98rem">Batch 3 is on the shelf. When it's gone,
       the next one is a wait again.</p>
-    <a href="#" class="cta" id="checkout2" style="margin-top:18px">
+    <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" class="cta" id="checkout2" style="margin-top:18px">
       <span>🛒</span><span id="ctaText2">GET YOURS — $159</span><span>→</span>
     </a>
     <div class="cta-note" style="color:#a89a80">Free shipping · Duties included · 30-day guarantee</div>
@@ -409,6 +409,8 @@ var BATCH = {
    Six line items scale together; Shopify's automatic bundle
    discount applies per hammock. Same variant set the other Max
    Value pages use.                                             */
+/* The buttons ship with a working single-unit cart URL already in the href, so a JS
+   failure degrades to a working checkout instead of a dead '#'. This only upgrades it. */
 var VARIANTS = [53200326557993,53198306312489,53198306345257,46948621254953,46948623810857,47874384953641];
 var UNIT = 159, q = 1;
 
