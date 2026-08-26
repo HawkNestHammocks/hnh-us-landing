@@ -157,7 +157,7 @@ footer a{color:var(--sand)}
 <body>
 
 <div class="sticky" id="stickyBar">
-  Batches 1 &amp; 2 sold out · Batch 3 <b><span id="sLeft">926</span> of 1,200 left</b> · ships from stock
+  Batches 1 &amp; 2 sold out · Batch 3 <b><span id="sLeft">87</span> of 1,200 left</b> · ships from stock
 </div>
 
 <header class="hero">
@@ -193,8 +193,9 @@ footer a{color:var(--sand)}
     <div class="batch-card">
       <div class="batch-head">Batch 3 · 1,200 units · United States</div>
       <div class="bar-outer"><div class="bar-inner" id="bar"></div></div>
-      <div class="bar-stats"><strong id="sold">274</strong> of <strong>1,200</strong> reserved</div>
-      <div class="bar-rate" id="rate">Running at about 27 a day since it opened</div>
+      <div class="bar-stats"><strong id="sold">1,113</strong> of <strong id="size">1,200</strong> reserved</div>
+      <div class="bar-rate" id="rate"></div>
+      <div id="today" style="text-align:center;font-size:.83rem;color:var(--slate);margin-top:7px"></div>
 
       <div class="tl">
         <div class="tl-row done"><div class="tl-dot"></div><div>
@@ -221,8 +222,8 @@ footer a{color:var(--sand)}
 <section style="background:var(--cream);padding-top:36px">
   <div class="narrow">
     <h2 class="sec">Everything In The Box</h2>
-    <p class="sec-sub">The hammock tent, plus the six things people buy straight after it —
-      included at no extra cost while Batch&nbsp;3 lasts.</p>
+    <p class="sec-sub">The hammock tent, plus every upgrade people add to it — included at no extra
+      cost while Batch&nbsp;3 lasts.</p>
 
     <div class="stack">
       <div class="stack-head">
@@ -230,12 +231,11 @@ footer a{color:var(--sand)}
         <div class="s">One order · everything below</div>
       </div>
       <div class="row"><span class="n">Hawk Nest™ V.3 All-Season Hammock Tent</span><span class="p">$229</span></div>
-      <div class="row"><span class="n">Premium Duck Down Underquilt</span><span class="p"><s>$79</s> <span class="free">FREE</span></span></div>
-      <div class="row"><span class="n">All-Weather Rain Fly</span><span class="p"><s>$59</s> <span class="free">FREE</span></span></div>
-      <div class="row"><span class="n">Tree-Safe Suspension Straps</span><span class="p"><s>$39</s> <span class="free">FREE</span></span></div>
-      <div class="row"><span class="n">Compression Stuff Sack</span><span class="p"><s>$19</s> <span class="free">FREE</span></span></div>
-      <div class="row"><span class="n">Ridgeline Organiser</span><span class="p"><s>$4.99</s> <span class="free">FREE</span></span></div>
-      <div class="row"><span class="n">Gridless Premium — 1 year</span><span class="p"><span class="free">INCLUDED</span></span></div>
+      <div class="row"><span class="n">Gridless Survival App — 1 year Premium</span><span class="p"><s>$79</s> <span class="free">FREE</span></span></div>
+      <div class="row"><span class="n">Lifetime Warranty Upgrade</span><span class="p"><s>$59</s> <span class="free">FREE</span></span></div>
+      <div class="row"><span class="n">Waterproof Bottom Fabric upgrade</span><span class="p"><s>$39</s> <span class="free">FREE</span></span></div>
+      <div class="row"><span class="n">Waterproof Carrying Bag upgrade</span><span class="p"><s>$19</s> <span class="free">FREE</span></span></div>
+      <div class="row"><span class="n">Free Returns</span><span class="p"><s>$4.99</s> <span class="free">FREE</span></span></div>
       <div class="tot">
         <div class="was">Buy it all separately: <s>$429</s></div>
         <div class="now">$159</div>
@@ -265,18 +265,18 @@ footer a{color:var(--sand)}
 <!-- ── WHY IT'S DIFFERENT ───────────────────────────────── -->
 <section>
   <div class="narrow">
-    <h2 class="sec">Built To Sleep In, Not Just Hang In</h2>
-    <p class="sec-sub">Most hammocks are a seat with ambitions. This is a tent that happens
-      to be off the ground.</p>
+    <h2 class="sec">Built For Where You Actually Camp</h2>
+    <p class="sec-sub">A hammock tent that doesn't need the perfect campsite to work.</p>
     <div class="pts">
-      <div class="pt"><div class="ic">🛏️</div><div>
-        <div class="h">A flat lay, not a banana</div>
-        <div class="b">The asymmetric cut lets you lie diagonally and sleep flat — the single
-          reason most people give up on hammocks.</div></div></div>
-      <div class="pt"><div class="ic">🪶</div><div>
-        <div class="h">Real duck down underneath</div>
-        <div class="b">Not synthetic fill. A premium duck down underquilt, because the cold
-          comes from below and a sleeping bag alone won't stop it.</div></div></div>
+      <div class="pt"><div class="ic">🌲</div><div>
+        <div class="h">Hang it, or pitch it on the ground</div>
+        <div class="b">Two trees and you're up. No trees and it goes down as a ground tent
+          with the included poles — so a treeless site never ends the trip.</div></div></div>
+      <div class="pt"><div class="ic">❄️</div><div>
+        <div class="h">Sleeping pad pocket for cold nights</div>
+        <div class="b">A dedicated sleeve holds your pad flat underneath you instead of
+          letting it slide out. Fits pads up to 25" wide — NeoAir, NEMO Tensor and the
+          rest — which is what keeps the cold from coming up through the bottom.</div></div></div>
       <div class="pt"><div class="ic">🌧️</div><div>
         <div class="h">Detachable all-weather fly</div>
         <div class="b">Snaps, loops and suspension ties. Take it off on a clear night, put it
@@ -374,10 +374,11 @@ footer a{color:var(--sand)}
    is the safe direction.
    ────────────────────────────────────────────────────────────── */
 var BATCH = {
-  size: 1200,
-  sold: 274,          // real, as of 2026-08-26
-  openedOn: '2026-08-16',
+  size: 1200,         // US allocation — CONFIRM with Lukas (bg config says the run is 1,500 total)
+  sold: 1113,         // real: every unit ordered since batch 3 opened 2026-06-30
+  openedOn: '2026-06-30',
   shipDays: 3,        // conservative — we beat this in practice
+  last24: 36,         // real units ordered in the last 24h
 };
 
 (function(){
@@ -387,6 +388,7 @@ var BATCH = {
   var perDay = BATCH.sold / days;
 
   document.getElementById('sold').textContent = BATCH.sold.toLocaleString();
+  document.getElementById('size').textContent = BATCH.size.toLocaleString();
   document.getElementById('sLeft').textContent = left.toLocaleString();
   document.getElementById('shipDays').textContent = BATCH.shipDays;
   Array.prototype.forEach.call(document.querySelectorAll('.shipDays'), function(el){
@@ -396,6 +398,10 @@ var BATCH = {
   // still animates it on a real load — but it never depends on a timer firing, which is
   // how it ended up blank in an offscreen/throttled frame.
   document.getElementById('bar').style.width = pct.toFixed(1) + '%';
+  if (BATCH.last24) {
+    document.getElementById('today').innerHTML =
+      '🔥 <strong>' + BATCH.last24 + '</strong> reserved in the last 24 hours';
+  }
   if (perDay >= 1) {
     var closes = Math.round(left / perDay);
     document.getElementById('rate').textContent =
