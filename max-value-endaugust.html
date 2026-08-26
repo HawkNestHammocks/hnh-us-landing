@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>The End of August Release — Hawk Nest All-Season Hammock Tent</title>
-<meta name="description" content="Batches 1 and 2 sold out. Batch 3 is 1,200 units for the US — and for the first time it ships from stock. $159 with $270 of gear included.">
+<title>Batch 4 Pre-Order — Hawk Nest All-Season Hammock Tent</title>
+<meta name="description" content="Batch 3 sold out. Batch 4 is the final run of 2026 — 1,500 units, arriving October 15. $159 with $270 of upgrades included.">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="icon" href="/favicon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,14 +12,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;700;800&display=swap">
 
 <!--
-  END OF AUGUST RELEASE — in-stock variant of the Max Value offer.
-  Built 2026-08-26.
+  BATCH 4 PRE-ORDER — Max Value offer.
+  Built 2026-08-26, switched to Batch 4 the same day.
 
-  ⚠ DO NOT PUBLISH UNTIL THE BATCH 3 CONTAINER IS PHYSICALLY RECEIVED.
-  Every ship claim on this page assumes stock on the shelf. Running it before the
-  container lands is the exact misrepresentation we agreed to avoid.
+  Batch 3 US hit its 1,200 allocation, so the in-stock angle this page was
+  originally built for is gone. It's an honest pre-order again: Batch 4 arrives
+  Oct 15 and the page says so plainly.
 
-  Two constants below control every claim on the page. Change them in one place.
+  Every claim comes from the BATCH constant near the bottom. Change it in one place.
 -->
 <style>
 :root{
@@ -157,17 +157,17 @@ footer a{color:var(--sand)}
 <body>
 
 <div class="sticky" id="stickyBar">
-  Batches 1 &amp; 2 sold out · Batch 3 <b><span id="sLeft">87</span> of 1,200 left</b> · ships from stock
+  Batches 1, 2 &amp; 3 sold out · <b>Batch 4 — final run of 2026</b> · arrives Oct 15
 </div>
 
 <header class="hero">
   <div class="wrap">
     <img src="hnh-logo-light.png" alt="Hawk Nest Hammocks" class="logo"
          onerror="this.style.display='none'">
-    <div class="eyebrow">The End of August Release</div>
-    <h1>No More Waiting<br>For Your Hawk&nbsp;Nest</h1>
-    <p class="sub">Two batches sold out before they landed. This one is different —
-      it's on the shelf, and it goes out the door this week.</p>
+    <div class="eyebrow">Batch 4 · Final Run of 2026</div>
+    <h1>Batch 3 Just<br>Sold&nbsp;Out</h1>
+    <p class="sub">Three batches gone, every one of them before it landed. Batch 4 is
+      the last run of 2026 — reserve yours at $159 before it goes the same way.</p>
     <img src="product-v3-main.jpg" alt="Hawk Nest V.3 All-Season Hammock Tent" class="shot"
          onerror="this.src='influencer4.jpg'">
     <div class="rating-row">
@@ -177,23 +177,23 @@ footer a{color:var(--sand)}
   </div>
 </header>
 
-<div class="instock">
-  <div class="big">In stock. Ships within <span id="shipDays">3</span> business days.</div>
-  <div class="small">Order today, get tracking this week — no production wait, no batch queue.</div>
+<div class="instock" style="background:#3b2f1e;color:#e8dcc8;border-color:#5c4a32">
+  <div class="big">Batch 4 arrives <span id="shipDate">October 15</span>.</div>
+  <div class="small" style="color:#c9bda6">Reserve now at $159 · nothing is charged twice · cancel any time before it ships</div>
 </div>
 
 <!-- ── THE BATCH SYSTEM ─────────────────────────────────── -->
 <section style="padding-top:34px">
   <div class="narrow">
-    <h2 class="sec">Why There's Still A Limit</h2>
-    <p class="sec-sub">We build in batches and we don't overbuild. Batch&nbsp;3 is the first one
-      that shipped early enough to sit in the warehouse — and it's the only stock until the
-      final run of 2026.</p>
+    <h2 class="sec">The Last Run Of 2026</h2>
+    <p class="sec-sub">We build in batches and we don't overbuild. Three have sold out
+      in a row. Batch&nbsp;4 is the final production run of the year — after it, the price
+      goes to $229 and the upgrades stop.</p>
 
     <div class="batch-card">
-      <div class="batch-head">Batch 3 · 1,200 units · United States</div>
+      <div class="batch-head">Batch 4 · 1,500 units · Arrives Oct 15</div>
       <div class="bar-outer"><div class="bar-inner" id="bar"></div></div>
-      <div class="bar-stats"><strong id="sold">1,113</strong> of <strong id="size">1,200</strong> reserved</div>
+      <div class="bar-stats"><strong id="sold">0</strong> of <strong id="size">1,500</strong> reserved</div>
       <div class="bar-rate" id="rate"></div>
       <div id="today" style="text-align:center;font-size:.83rem;color:var(--slate);margin-top:7px"></div>
 
@@ -204,15 +204,15 @@ footer a{color:var(--sand)}
         <div class="tl-row done"><div class="tl-dot"></div><div>
           <div class="tl-t">Batch 2 — 1,000 units <span class="badge">SOLD OUT</span></div>
           <div class="tl-d">Fully reserved before it shipped</div></div></div>
+        <div class="tl-row done"><div class="tl-dot"></div><div>
+          <div class="tl-t">Batch 3 — 1,200 units <span class="badge">SOLD OUT</span></div>
+          <div class="tl-d">Closed August 26 · shipping September 15</div></div></div>
         <div class="tl-row now"><div class="tl-dot"></div><div>
-          <div class="tl-t">Batch 3 — 1,200 units <span class="badge live">IN STOCK NOW</span></div>
-          <div class="tl-d">Ships within <span class="shipDays">3</span> business days · $159 with all six add-ons</div></div></div>
-        <div class="tl-row"><div class="tl-dot"></div><div>
-          <div class="tl-t">Batch 4 — final run of 2026</div>
-          <div class="tl-d">Back to a production wait</div></div></div>
+          <div class="tl-t">Batch 4 — 1,500 units <span class="badge live">OPEN NOW</span></div>
+          <div class="tl-d">Arrives Oct 15 · $159 with all five upgrades</div></div></div>
         <div class="tl-row warn"><div class="tl-dot"></div><div>
-          <div class="tl-t">After Batch 4 — $229, add-ons end</div>
-          <div class="tl-d">Restock date not set</div></div></div>
+          <div class="tl-t">After Batch 4 — $229, upgrades end</div>
+          <div class="tl-d">Final run of 2026 · restock date not set</div></div></div>
       </div>
     </div>
   </div>
@@ -223,7 +223,7 @@ footer a{color:var(--sand)}
   <div class="narrow">
     <h2 class="sec">Everything In The Box</h2>
     <p class="sec-sub">The hammock tent, plus every upgrade people add to it — included at no extra
-      cost while Batch&nbsp;3 lasts.</p>
+      cost while Batch&nbsp;4 lasts.</p>
 
     <div class="stack">
       <div class="stack-head">
@@ -251,12 +251,12 @@ footer a{color:var(--sand)}
           <span id="qnum">1</span>
           <button type="button" id="plus" aria-label="Increase quantity">+</button>
         </div>
-        <span id="qnote" style="font-size:.84rem;color:var(--muted)">6 add-ons included</span>
+        <span id="qnote" style="font-size:.84rem;color:var(--muted)">5 upgrades included</span>
       </div>
       <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" class="cta" id="checkout">
-        <span>🛒</span><span id="ctaText">GET YOUR HAWK NEST — $159</span><span>→</span>
+        <span>🛒</span><span id="ctaText">RESERVE YOURS — $159</span><span>→</span>
       </a>
-      <div class="cta-ship">✓ In stock — ships within <span class="shipDays">3</span> business days</div>
+      <div class="cta-ship">✓ Batch 4 arrives <span class="shipDate">October 15</span> — reserve at $159</div>
       <div class="cta-note">Secure checkout · Free shipping · Duties included · 4 interest-free payments with Shop&nbsp;Pay</div>
     </div>
   </div>
@@ -324,14 +324,16 @@ footer a{color:var(--sand)}
   <div class="narrow">
     <h2 class="sec">Straight Answers</h2>
     <div style="margin-top:20px">
-      <details class="faq"><summary>Is this actually in stock, or another pre-order?</summary>
-        <p>In stock. Batch 3 is in the warehouse, which is why this page exists — every batch
-          before it sold out while it was still in production. Order today and it ships within
-          <span class="shipDays">3</span> business days.</p></details>
-      <details class="faq"><summary>Why is there still a limit if you have stock?</summary>
-        <p>Because we only build 1,200 units for the US per batch and we don't overbuild.
-          When Batch 3 is gone the next one is Batch 4, which goes back to a production wait,
-          and after that the price is $229 without the add-ons.</p></details>
+      <details class="faq"><summary>When does it actually arrive?</summary>
+        <p>Batch 4 lands <span class="shipDate">October 15</span> and ships out in the order
+          it was reserved. You'll get tracking the moment yours leaves the warehouse.</p></details>
+      <details class="faq"><summary>Why is it a pre-order?</summary>
+        <p>Because we build in limited runs and don't overbuild. Batches 1, 2 and 3 all sold
+          out before they landed, so the only way to guarantee one is to reserve it from the
+          next run. Batch 4 is the final one of 2026.</p></details>
+      <details class="faq"><summary>What happens after Batch 4?</summary>
+        <p>The price goes to $229 and the five free upgrades end. We haven't set a restock
+          date beyond that.</p></details>
       <details class="faq"><summary>What colour do I get?</summary>
         <p>Navy. It's the only colour on the current production run.</p></details>
       <details class="faq"><summary>Where does it ship from?</summary>
@@ -349,10 +351,10 @@ footer a{color:var(--sand)}
 <section style="background:var(--earth);color:var(--cream);text-align:center">
   <div class="narrow">
     <h2 class="sec" style="color:var(--cream)">Stop Sleeping On The Ground</h2>
-    <p style="color:#c9bda6;font-size:.98rem">Batch 3 is on the shelf. When it's gone,
-      the next one is a wait again.</p>
+    <p style="color:#c9bda6;font-size:.98rem">Batch 4 is the last run of 2026. After it,
+      the price goes to $229 and the upgrades stop.</p>
     <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" class="cta" id="checkout2" style="margin-top:18px">
-      <span>🛒</span><span id="ctaText2">GET YOURS — $159</span><span>→</span>
+      <span>🛒</span><span id="ctaText2">RESERVE YOURS — $159</span><span>→</span>
     </a>
     <div class="cta-note" style="color:#a89a80">Free shipping · Duties included · 30-day guarantee</div>
   </div>
@@ -374,11 +376,11 @@ footer a{color:var(--sand)}
    is the safe direction.
    ────────────────────────────────────────────────────────────── */
 var BATCH = {
-  size: 1200,         // US allocation — CONFIRM with Lukas (bg config says the run is 1,500 total)
-  sold: 1113,         // real: every unit ordered since batch 3 opened 2026-06-30
-  openedOn: '2026-06-30',
-  shipDays: 3,        // conservative — we beat this in practice
-  last24: 36,         // real units ordered in the last 24h
+  size: 1500,            // Batch 4 run size
+  sold: 0,               // real reservations against Batch 4 — refresh from Shopify
+  openedOn: '2026-08-26',
+  shipDate: 'October 15',
+  last24: 0,             // real units in the last 24h; 0 hides the ticker
 };
 
 (function(){
@@ -390,9 +392,10 @@ var BATCH = {
   document.getElementById('sold').textContent = BATCH.sold.toLocaleString();
   document.getElementById('size').textContent = BATCH.size.toLocaleString();
   document.getElementById('sLeft').textContent = left.toLocaleString();
-  document.getElementById('shipDays').textContent = BATCH.shipDays;
-  Array.prototype.forEach.call(document.querySelectorAll('.shipDays'), function(el){
-    el.textContent = BATCH.shipDays;
+  var sd=document.getElementById('shipDate');
+  if (sd) sd.textContent = BATCH.shipDate;
+  Array.prototype.forEach.call(document.querySelectorAll('.shipDate'), function(el){
+    el.textContent = BATCH.shipDate;
   });
   // Set it straight away. The element renders at width:0 first, so the CSS transition
   // still animates it on a real load — but it never depends on a timer firing, which is
@@ -426,10 +429,10 @@ function cartURL(n){
 }
 function render(){
   document.getElementById('qnum').textContent = q;
-  document.getElementById('qnote').textContent = (q*6) + ' add-ons included';
+  document.getElementById('qnote').textContent = (q*5) + ' upgrades included';
   var total = '$' + (UNIT*q);
-  document.getElementById('ctaText').textContent  = 'GET YOUR HAWK NEST — ' + total;
-  document.getElementById('ctaText2').textContent = 'GET YOURS — ' + total;
+  document.getElementById('ctaText').textContent  = 'RESERVE YOURS — ' + total;
+  document.getElementById('ctaText2').textContent = 'RESERVE YOURS — ' + total;
   var url = cartURL(q);
   document.getElementById('checkout').href  = url;
   document.getElementById('checkout2').href = url;
