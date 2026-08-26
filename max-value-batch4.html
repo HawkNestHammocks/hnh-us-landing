@@ -154,7 +154,7 @@ footer a{color:var(--sand)}
 /* ── hero carousel ──────────────────────────────────────── */
 .carousel{position:relative;border-radius:12px;overflow:hidden;background:#0f0c08;
   box-shadow:0 18px 50px rgba(0,0,0,.45)}
-.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
   -webkit-overflow-scrolling:touch;scrollbar-width:none}
 .track::-webkit-scrollbar{display:none}
 .track img{width:100%;flex:0 0 100%;scroll-snap-align:center;display:block;aspect-ratio:1/1;object-fit:cover}
@@ -167,8 +167,12 @@ footer a{color:var(--sand)}
 .dots i.on{background:#fff;width:18px;border-radius:99px}
 
 /* ── reveal on scroll ───────────────────────────────────── */
-.rev{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.3,1)}
-.rev.in{opacity:1;transform:none}
+/* Content is visible by default. JS adds .arm on load to hide-then-reveal, so if
+   the script never runs the page still reads — the failure mode that took this page
+   down was exactly the reverse. */
+.rev{transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.3,1)}
+.rev.arm{opacity:0;transform:translateY(22px)}
+.rev.arm.in{opacity:1;transform:none}
 
 /* ── long-form story ────────────────────────────────────── */
 .chapter{font-family:var(--sans);font-weight:800;font-size:.7rem;letter-spacing:.2em;
@@ -215,7 +219,7 @@ footer a{color:var(--sand)}
 body{padding-bottom:64px}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}
-  .rev{opacity:1;transform:none}}
+  .rev,.rev.arm{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
@@ -664,6 +668,87 @@ function passThrough(){
   }catch(e){ /* never block checkout */ }
 }
 render();
+
+var UGC = [{"n": "Brandon Williams", "t": "A great system for moto-camping", "b": "I just returned from and 8-day moto-camping trip around Quebec and the Gaspe Peninsula. I purchased this system specifically for this trip as an upgrade to the camping hammock setup I’ve been using for the past 6 years. My reasons were to about space saving, ease of use, greater comfort, and adaptability. There have been a few times during past trips where it was a challenge finding enough trees that could accommodate a couple of hammock setups (I’m not the only guy on the trip running a hammock). I can honestly say that everything I was hoping for in buying this system was met or surpassed during my trip. We had rain, we had cold, the first time I set it up on the trip was after dark and it was easy as pie. I had set it up in my backyard once prior to the trip but was definitely not an expert on it. It took about half the time to set up and take down compared to my…", "p": "https://review-images.judgeme.com/hawk-nest-hammocks/1753894672__img_9169__original.jpeg?quality=80&width=1024", "d": "2025-07-30", "v": true}, {"n": "Hailey Kusche", "t": "The best product", "b": "I ordered a couple of Hawk Nest V.3’s after my friend had ordered one and I was not disappointed. I took them immediately on an overnight girls kayaking trip. They pack down small and not to mention water resistant so the fit in the back of the kayaks and stayed dry. They are a decent weight to pack. The set up went super smooth and was so easy to do for one person. My 15 year old set hers up solo with no issues and plans on taking hers to her Outdoor Education Classes for their school hiking trips. Sleeping in them was a dream. It felt safe, and had pockets inside to hang our flash lights and keep our bear spray close, yet in a safe location. To be off the ground was a dream, it felt cozy, warm and we didn’t find any condensation in the a.m. I do recommend using the inflatable that can be purchased through the company. The Hawk Nest V.3’s have a perfect pocket on…", "p": "https://review-images.judgeme.com/hawk-nest-hammocks/1754765785__img_9593__original.jpeg?quality=80&width=1024", "d": "2025-08-09", "v": true}, {"n": "Rusty Goat", "t": "Hawk Nest Hammock: Rusty Goat review", "b": "The hammock was a total experiment initiated by one of the guys I go on canoe trips with who can fall asleep faster than anyone else in the tent and immediately break into a chorus of snoring. The online search showed the hammock met the criteria of being light weight, easy to set up and comfortable. For our needs, it had to be comfortable for myself or the camp snorer as solitude and distance can make for a pleasant backcountry sleep. To test the hammock, I picked two trees on a slope in the bush behind our house, a place where a tent could never go. I took the set up very serious in that I watched a the setup video and even read the instructions! This novel approach seemed to work as the hammock went up easily and to my untrained eye, looked as it should. My first time ever sleeping in a hammock and I’ll give it an 8 out of 10. Points were deducted because the…", "p": "https://review-images.judgeme.com/hawk-nest-hammocks/1754849271__img_6893__original.jpeg?quality=80&width=1024", "d": "2025-08-10", "v": true}, {"n": "Mark Seaman", "t": "This Hammock Keeps You Hanging But in a Good Way", "b": "I have all three versions of this hammock and I must say it’s the best and most comfortable hammocks I have ever used. Lukas, the founder, is always looking at ways to improve these hammocks. Well he sure did on V.3 , not that there’s anything wrong with V.1 and V.2. The material upgrades as well as little touches such as more interior pockets have made all the difference. These hammocks set up so easy and are an all in one. They are light and so easy to pack into the field. I am not sponsored by Hawk Nest and I have purchased everything with my own money . I have joined their Ambassador program as I truly believe in this product. I have highlighted this hammock on several of my YouTube videos on my channel and I have a specific set up and review of V.2 I recently tried the new Hawk Nest sleeping pad and it was so comfortable. The upgraded adjustable tree straps make…", "p": "https://review-images.judgeme.com/hawk-nest-hammocks/1758331418__img_5188__original.jpeg?quality=80&width=1024", "d": "2025-09-20", "v": true}, {"n": "Chris Leonard", "t": "Sleeping in the Air", "b": "Initially decided to try a Hawk Nest hammock based on research and reviews as well as the return policy. Received the first hammock and because it is winter have not spent a night in it yet; we do not winter camp. After watching the instructional video we did venture out to give it a try. The video was spot on and we had it set up in 7 minutes and taken down/ packed away in less than 5. The lightweight design will be ideal for backpacking. We were so impressed by the product quality, design and comfort we ordered a second one. Our communication with Lucas had been excellent as i messed up my second order and his attention and assist was far more than I expected, thank you again. After we have had a chance to officially use our hammocks I will update it provide another review. We cannot wait to give them a try during our planned hiking and back country canoe adventures.", "p": "https://review-images.judgeme.com/hawk-nest-hammocks/1738597764__1000001265__original.jpg?quality=80&width=1024", "d": "2025-02-03", "v": true}, {"n": "LibBee", "t": "Love love love it!", "b": "First trip out with the tent, perched on a cliff over looking the Bay of Fundy. Solid warm and comfy sleep despite the deep temperature drop at night with the damp Atlantic Ocean air and dew thick as rain, even without the fly.. I loved every second of the crystal clear screen, it was virtually invisible. It’s OBVIOUS that the designer is passionate about camping and hiking with the design of this tent. Everything from the ease of set up to the way the tent feels. Solid performance! Felt snug, secure, warm, and comfortable.. I used a lightweight mat to stop my bag from sliding on the fabric so I was able to comfortably sit up and read bug free .. I was able to create more storage by stringing a line between the hooks to hang gear that wasn’t able to fit in the side pocket. I can’t wait to order V3 to hopefully arrive in time for hunting season!", "p": "https://review-images.judgeme.com/hawk-nest-hammocks/1754702942__img_4623__original.jpeg?quality=80&width=1024", "d": "2025-08-09", "v": true}, {"n": "Cooper Mercer", "t": "The ultimate backcountry sleep system!", "b": "I’ve taken my Hawk Nest Hammock on several weekend camping trips, and I have to say, it’s completely changed how I camp. Setup is quick and easy, which is always appreciated after a long day paddling. The material is tough, lightweight, and actually waterproof. After multiple days of wind and rain, the inside stayed completely dry. What impressed me most is the comfort. I used it for lounging during the day and sleeping overnight, and I had some of the best rest I’ve ever had outdoors. The best feature for me is the weight and size. As a kayak camper, space is at a premium, and this hammock packs down small without compromising comfort. It makes portaging a kayak a breeze. I’ll be using this on all my solo kayak camping and backpacking trips from now on. Highly recommend!!", "p": "https://review-images.judgeme.com/hawk-nest-hammocks/1752457272__1752457081825-img_7838__original.jpeg?quality=80&width=1024", "d": "2025-07-14", "v": true}];
+
+/* ── hero carousel ─────────────────────────────────────────────── */
+(function(){
+  var t=document.getElementById('track'); if(!t) return;
+  var imgs=t.querySelectorAll('img'), dots=document.getElementById('cDots');
+  var n=imgs.length;
+  for(var i=0;i<n;i++){ var d=document.createElement('i'); if(!i)d.className='on'; dots.appendChild(d); }
+  function idx(){ return Math.round(t.scrollLeft / t.clientWidth); }
+  function sync(){
+    var k=idx(), ds=dots.children;
+    for(var i=0;i<ds.length;i++) ds[i].className = (i===k ? 'on' : '');
+  }
+  t.addEventListener('scroll', function(){ window.requestAnimationFrame(sync); }, {passive:true});
+  /* wrap around at both ends so the chevrons always do something */
+  function go(step){
+    var k = (idx() + step + n) % n;
+    var target = imgs[k].offsetLeft;
+    try { t.scrollTo({ left: target, behavior:'smooth' }); }
+    catch(e) { t.scrollLeft = target; }
+    // If smooth scrolling didn't take (older engines, reduced motion), jump.
+    setTimeout(function(){
+      if (Math.abs(t.scrollLeft - target) > 4) t.scrollLeft = target;
+      sync();
+    }, 400);
+  }
+  document.getElementById('cPrev').addEventListener('click', function(e){ e.preventDefault(); go(-1); });
+  document.getElementById('cNext').addEventListener('click', function(e){ e.preventDefault(); go(1); });
+})();
+
+/* ── reveal on scroll ──────────────────────────────────────────── */
+(function(){
+  var els=document.querySelectorAll('.rev');
+  function showAll(){ for(var i=0;i<els.length;i++){ els[i].classList.add('in'); } }
+  if(!('IntersectionObserver' in window)) return;   // leave everything visible
+  for(var a=0;a<els.length;a++) els[a].classList.add('arm');
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold:0, rootMargin:'0px 0px -60px 0px' });
+  for(var i=0;i<els.length;i++) io.observe(els[i]);
+  /* Safety net: if anything stops the observer firing, the page must still be
+     readable. Nothing on this page may depend on an animation to be visible. */
+  setTimeout(showAll, 2500);
+})();
+
+/* ── tap a customer photo -> full review ───────────────────────── */
+(function(){
+  var sheet=document.getElementById('sheet'); if(!sheet) return;
+  function open(i){
+    var r=UGC[i]; if(!r) return;
+    document.getElementById('shImg').src=r.p;
+    document.getElementById('shTitle').textContent=r.t;
+    document.getElementById('shName').textContent=r.n+(r.v?' · Verified buyer':'')+(r.d?' · '+r.d:'');
+    document.getElementById('shBody').textContent=r.b;
+    sheet.classList.add('on'); document.body.style.overflow='hidden';
+  }
+  function close(){ sheet.classList.remove('on'); document.body.style.overflow=''; }
+  Array.prototype.forEach.call(document.querySelectorAll('.ucard'), function(c){
+    c.addEventListener('click', function(){ open(+c.getAttribute('data-i')); });
+  });
+  document.getElementById('sheetX').addEventListener('click', close);
+  sheet.addEventListener('click', function(e){ if(e.target===sheet) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+
+/* ── sticky footer ─────────────────────────────────────────────── */
+(function(){
+  var bar=document.getElementById('footbar'), hero=document.querySelector('.hero');
+  if(!bar||!hero) return;
+  var num=document.getElementById('fbNum');
+  if(num && typeof BATCH!=='undefined') num.textContent=BATCH.last24;
+  function check(){
+    if(window.scrollY > hero.offsetHeight*0.7) bar.classList.add('on');
+    else bar.classList.remove('on');
+  }
+  window.addEventListener('scroll', check, {passive:true}); check();
+})();
+
 </script>
 <div class="footbar" id="footbar">
   <div class="fb-l"><b id="fbNum">33</b> reserved in the last 24 hours<br>Batch 4 · arrives Oct 15</div>
