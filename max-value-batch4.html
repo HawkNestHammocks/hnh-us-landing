@@ -191,25 +191,25 @@ footer a{color:var(--sand)}
       goes to $229 and the upgrades stop.</p>
 
     <div class="batch-card">
-      <div class="batch-head">2026 US Production · 4,390 units total</div>
+      <div class="batch-head">Batch 4 · Final Run of 2026</div>
       <div class="bar-outer"><div class="bar-inner" id="bar"></div></div>
-      <div class="bar-stats"><strong id="sold">2,958</strong> of <strong id="size">4,390</strong> units reserved for 2026</div>
+      <div class="bar-stats"><strong id="sold">67</strong> of <strong id="size">1,500</strong> reserved</div>
       <div class="bar-rate" id="rate"></div>
       <div id="today" style="text-align:center;font-size:.83rem;color:var(--slate);margin-top:7px"></div>
 
       <div class="tl">
         <div class="tl-row done"><div class="tl-dot"></div><div>
           <div class="tl-t">Batch 1 — 1,000 units <span class="badge">SOLD OUT</span></div>
-          <div class="tl-d">Fully reserved before it shipped</div></div></div>
+          <div class="tl-d">Closed June 4 · shipped Aug 3</div></div></div>
         <div class="tl-row done"><div class="tl-dot"></div><div>
-          <div class="tl-t">Batch 2 — 1,000 units <span class="badge">SOLD OUT</span></div>
-          <div class="tl-d">Fully reserved before it shipped</div></div></div>
+          <div class="tl-t">Batch 2 — 690 units <span class="badge">SOLD OUT</span></div>
+          <div class="tl-d">Closed June 27 · shipped Aug 15</div></div></div>
         <div class="tl-row done"><div class="tl-dot"></div><div>
           <div class="tl-t">Batch 3 — 1,200 units <span class="badge">SOLD OUT</span></div>
-          <div class="tl-d">Closed August 26 · shipping September 15</div></div></div>
+          <div class="tl-d">Closed August 23 · shipping September 15</div></div></div>
         <div class="tl-row now"><div class="tl-dot"></div><div>
           <div class="tl-t">Batch 4 — 1,500 units <span class="badge live">OPEN NOW</span></div>
-          <div class="tl-d">Arrives Oct 15 · $159 with all five upgrades</div></div></div>
+          <div class="tl-d">Open now · arrives Oct 15 · $159 with all five upgrades</div></div></div>
         <div class="tl-row warn"><div class="tl-dot"></div><div>
           <div class="tl-t">After Batch 4 — $229, upgrades end</div>
           <div class="tl-d">Final run of 2026 · restock date not set</div></div></div>
@@ -376,23 +376,26 @@ footer a{color:var(--sand)}
    is the safe direction.
    ────────────────────────────────────────────────────────────── */
 var BATCH = {
-  /* The bar measures the WHOLE YEAR, not just batch 4. Every one of these is a real
-     figure — 2,958 units genuinely reserved out of 4,390 built for the US in 2026 —
-     which puts the fill at 67% honestly, instead of a curve that invents 30%. */
-  yearTotal: 4390,       // B1 1000 + B2 690 + B3 1200 + B4 1500
-  yearSold:  2958,       // real: all 3 US pre-order variants, all-time, cancelled excluded
-  b4Size:    1500,
-  b4Sold:    68,         // batch 3 overflow, fulfilled from batch 4 stock
-  shipDate:  'October 15',
-  last24:    33,         // real units reserved in the last 24h
+  /* releaseSize is the ONLY dial that changes how full the bar looks.
+     Leave it at 1500 and the bar reads the true batch-4 fill (~4%).
+     Set it to the number of units you'll actually sell at $159 before the price
+     moves — e.g. 250 — and the bar reads 27%, still completely true, because
+     you're then measuring a real allocation you intend to honour.
+     What it must never be is a number you don't mean. */
+  releaseSize: 1500,
+  b4Size:      1500,
+  sold:        67,          // real units into batch 4 since batch 3 closed Aug 23
+  perDay:      26.9,        // real 14-day average
+  shipDate:    'October 15',
+  last24:      33,          // real units reserved in the last 24h
 };
 
 (function(){
-  var pct  = Math.min(BATCH.yearSold / BATCH.yearTotal * 100, 100);
-  var left = Math.max(BATCH.yearTotal - BATCH.yearSold, 0);
+  var pct  = Math.min(BATCH.sold / BATCH.releaseSize * 100, 100);
+  var left = Math.max(BATCH.releaseSize - BATCH.sold, 0);
 
-  document.getElementById('sold').textContent = BATCH.yearSold.toLocaleString();
-  document.getElementById('size').textContent = BATCH.yearTotal.toLocaleString();
+  document.getElementById('sold').textContent = BATCH.sold.toLocaleString();
+  document.getElementById('size').textContent = BATCH.releaseSize.toLocaleString();
   document.getElementById('bar').style.width  = pct.toFixed(1) + '%';
 
   var sd = document.getElementById('shipDate');
@@ -401,10 +404,16 @@ var BATCH = {
     el.textContent = BATCH.shipDate;
   });
 
-  document.getElementById('rate').textContent =
-    Math.round(pct) + '% of this year\u2019s US production is already spoken for \u2014 '
-    + left.toLocaleString() + ' left for the rest of 2026';
-
+  // Real urgency: the pace is measured, so the projected close date is too.
+  if (BATCH.perDay > 0) {
+    var days = Math.round(left / BATCH.perDay);
+    var when = new Date(Date.now() + days * 864e5);
+    var MON = ['January','February','March','April','May','June','July',
+               'August','September','October','November','December'];
+    document.getElementById('rate').textContent =
+      'Going at ' + Math.round(BATCH.perDay) + ' a day \u2014 on track to close around '
+      + MON[when.getMonth()] + ' ' + when.getDate();
+  }
   if (BATCH.last24) {
     document.getElementById('today').innerHTML =
       '\uD83D\uDD25 <strong>' + BATCH.last24 + '</strong> reserved in the last 24 hours';
