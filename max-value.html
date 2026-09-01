@@ -361,6 +361,25 @@ img{max-width:100%;height:auto;display:block}
   .batch-stats{font-size:.74rem}
   .batch-next{font-size:.72rem}
 }
+/* ── Live 24h pre-order ticker under the CTA ── */
+.last24{
+  margin-top:14px;display:inline-flex;align-items:center;gap:9px;
+  padding:9px 18px;border-radius:999px;
+  background:#fff5ed;border:1px solid #f6c9a8;
+  font-size:.95rem;font-weight:600;color:#9a3f10;letter-spacing:.1px;
+}
+.last24 b{font-weight:800;color:#e8601c}
+.last24 .dot{
+  width:8px;height:8px;border-radius:50%;background:#e8601c;flex:0 0 auto;
+  box-shadow:0 0 0 0 rgba(232,96,28,.55);animation:l24 2.2s ease-out infinite;
+}
+@keyframes l24{
+  0%{box-shadow:0 0 0 0 rgba(232,96,28,.55)}
+  70%{box-shadow:0 0 0 9px rgba(232,96,28,0)}
+  100%{box-shadow:0 0 0 0 rgba(232,96,28,0)}
+}
+@media (prefers-reduced-motion:reduce){ .last24 .dot{animation:none} }
+
 /* ── Primary checkout CTA — visually distinct gradient + icon + arrow ── */
 .btn-checkout{
   display:inline-flex !important;
@@ -567,9 +586,9 @@ img{max-width:100%;height:auto;display:block}
   <div class="batch-compact-row">
     <span class="batch-pulse">🔥</span>
     <div class="batch-compact-info">
-      <div class="batch-current">BATCH 3 — Ships October 15</div>
-      <div class="batch-progress-wrap"><div class="batch-progress-bar" style="width:30%"></div></div>
-      <div class="batch-stats"><strong>450</strong> of <strong>1,500</strong> reserved <span class="batch-closing">— selling fast</span></div>
+      <div class="batch-current">BATCH 4 — Ships October 15</div>
+      <div class="batch-progress-wrap"><div class="batch-progress-bar" style="width:15.3%"></div></div>
+      <div class="batch-stats"><strong>229</strong> of <strong>1,500</strong> reserved <span class="batch-closing">— final run of 2026</span></div>
       <div class="batch-next">Batches 1, 2 &amp; 3 sold out · Batch 4 is the final run of 2026</div>
     </div>
   </div>
@@ -582,6 +601,9 @@ img{max-width:100%;height:auto;display:block}
     <span class="btn-checkout-arrow">→</span>
   </a>
   <span class="btn-sub" style="color:#94a3b8">Secure checkout · Save $270 · Free shipping · 30-day guarantee</span>
+  <!-- Live 24h ticker. Hidden until batch-status.json actually answers — a scarcity number
+       that isn't real is worse than no number, so it never renders a hardcoded default. -->
+  <div id="last24" class="last24" hidden></div>
 </div>
 </div>
 </section>
@@ -1085,6 +1107,15 @@ const BATCH_DATA = {
         + `<strong>${RELEASE.toLocaleString()}</strong> reserved`
         + ' <span class="batch-closing">— final run of 2026</span>';
     });
+    // 24h ticker under the checkout button. Stays hidden unless the live feed gives us a
+    // number worth showing — a scarcity badge reading "2 in the last 24 hours" argues
+    // against us, and a hardcoded one is just a lie with a pulse animation on it.
+    const t = document.getElementById('last24');
+    if (t && last24 >= 5) {
+      t.innerHTML = '<span class="dot"></span><span><b>' + last24
+        + '</b> hammocks pre-ordered in the last 24 hours</span>';
+      t.hidden = false;
+    }
   }
 
   // ── Live batch counter ────────────────────────────────────────────────────
@@ -1135,7 +1166,7 @@ const popupData = {
   gridless: {
     img: 'gridless_icon.png',
     title: '1 Year Gridless Premium',
-    desc: 'Gridless is a gamified offline survival and camping education app with 600+ articles, emergency guides, gear checklists, and a quiz game. Your 1-year Premium subscription gives you full offline access — perfect for backcountry trips with your Hawk Nest.',
+    desc: 'Gridless scores how ready you actually are from 0 to 1000, then gives you 100+ photo-verified missions to raise it. 600+ survival guides download for full offline use — no signal needed, which is the whole point out in the backcountry with your Hawk Nest.',
     value: '$79 Value — FREE'
   }
 };
