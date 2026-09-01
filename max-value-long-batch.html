@@ -818,12 +818,12 @@ function showUpgrade(key){
 
 // ── Batch status widget — data-driven ──
 const BATCH_DATA = {
-  current: 1,
+  current: 4,
   batches: [
     { id: 1, size: 1000, ship: "July 30",      sold: 823 },
     { id: 2, size: 1000, ship: "August 30",    sold: 0   },
     { id: 3, size: 1500, ship: "September 30", sold: 0   },
-    { id: 4, size: 1500, ship: "October 30",   sold: 0   },
+    { id: 4, size: 1500, ship: "October 15",   sold: 229   },
   ],
 };
 (function renderBatchStatus(){
@@ -846,6 +846,25 @@ const BATCH_DATA = {
     el.innerHTML = `<strong>${displayedSold.toLocaleString()}</strong> of <strong>${cur.size.toLocaleString()}</strong> reserved`
       + (closing ? ' <span class="batch-closing">— Closing soon</span>' : '');
   });
+  function applyLive(soldN){
+    const pct = Math.min((soldN / RELEASE) * 100, 100);
+    document.querySelectorAll('.batch-progress-bar').forEach(el => { el.style.width = pct.toFixed(1) + '%'; });
+    document.querySelectorAll('.batch-stats').forEach(el => {
+      el.innerHTML = `<strong>${soldN.toLocaleString()}</strong> of `
+        + `<strong>${RELEASE.toLocaleString()}</strong> reserved`
+        + ' <span class="batch-closing">— final run of 2026</span>';
+    });
+  }
+
+  // ── Live batch counter ────────────────────────────────────────────────────
+  // `sold` above is a FALLBACK. batch-status.json is rewritten from Shopify every two
+  // hours by bg-scripts/update_batch_status.py, using the same Batch 4 attribution rule
+  // as the inventory alerts. Hardcoding this is what let the counter sit 162 units stale.
+  fetch('batch-status.json?t=' + Date.now(), { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) { if (d && d.sold > 0) applyLive(d.sold); })
+    .catch(function () { /* keep the fallback */ });
+
   const next = BATCH_DATA.batches.find(b => b.id === cur.id + 1);
   document.querySelectorAll('.batch-next').forEach(el => {
     el.textContent = next
