@@ -1005,7 +1005,7 @@ const BATCH_DATA = {
     { id: 1, size: 1000, ship: "July 30",      sold: 1000 },
     { id: 2, size: 690,  ship: "August 15",    sold: 690  },
     { id: 3, size: 1200, ship: "September 15", sold: 1200 },
-    { id: 4, size: 1500, ship: "October 15",   sold: 67, release: 1500 },
+    { id: 4, size: 1500, ship: "October 15",   sold: 229, release: 1500 },
   ],
 };
 (function renderBatchStatus(){
@@ -1031,6 +1031,27 @@ const BATCH_DATA = {
       + `<strong>${RELEASE.toLocaleString()}</strong> reserved`
       + ' <span class="batch-closing">— final run of 2026</span>';
   });
+  function apply(soldN, last24){
+    const pct = Math.min((soldN / RELEASE) * 100, 100);
+    document.querySelectorAll('.batch-progress-bar').forEach(el => { el.style.width = pct.toFixed(1) + '%'; });
+    document.querySelectorAll('.batch-stats').forEach(el => {
+      el.innerHTML = `<strong>${soldN.toLocaleString()}</strong> of `
+        + `<strong>${RELEASE.toLocaleString()}</strong> reserved`
+        + ' <span class="batch-closing">— final run of 2026</span>';
+    });
+  }
+
+  // ── Live batch counter ────────────────────────────────────────────────────
+  // The numbers above are a FALLBACK. batch-status.json is rewritten from Shopify on a
+  // schedule (bg-scripts/update_batch_status.py) using the same Batch 4 attribution rule
+  // as the inventory alerts, so the page and the alerts can't drift apart. Before this,
+  // `sold` was hardcoded and had gone 162 units stale without anyone noticing.
+  // If the fetch fails the baked-in number still renders, so the page never shows a blank.
+  fetch('batch-status.json?t=' + Date.now(), { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) { if (d && d.sold > 0) apply(d.sold, d.last24); })
+    .catch(function () { /* keep the fallback */ });
+
   const next = BATCH_DATA.batches.find(b => b.id === cur.id + 1);
   document.querySelectorAll('.batch-next').forEach(el => {
     el.textContent = next

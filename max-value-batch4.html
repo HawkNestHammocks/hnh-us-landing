@@ -687,13 +687,14 @@ var BATCH = {
      What it must never be is a number you don't mean. */
   releaseSize: 1500,
   b4Size:      1500,
-  sold:        67,          // real units into batch 4 since batch 3 closed Aug 23
-  perDay:      26.9,        // real 14-day average
+  sold:        229,         // FALLBACK only — batch-status.json overrides this at runtime
+  perDay:      35.7,        // FALLBACK only — real 14-day average, excludes today
   shipDate:    'October 15',
-  last24:      33,          // real units reserved in the last 24h
+  last24:      43,          // FALLBACK only — overridden by batch-status.json
 };
 
 (function(){
+  function render(){
   var pct  = Math.min(BATCH.sold / BATCH.releaseSize * 100, 100);
   var left = Math.max(BATCH.releaseSize - BATCH.sold, 0);
 
@@ -721,6 +722,25 @@ var BATCH = {
     document.getElementById('today').innerHTML =
       '\uD83D\uDD25 <strong>' + BATCH.last24 + '</strong> reserved in the last 24 hours';
   }
+  }
+  render();
+
+  // ── Live counter ──────────────────────────────────────────────────────────
+  // Everything above is a FALLBACK. batch-status.json is rewritten from Shopify on a
+  // schedule (bg-scripts/update_batch_status.py) using the same Batch 4 attribution rule
+  // as the inventory alerts. Before this, sold/perDay/last24 were all hardcoded — `sold`
+  // had gone 162 units stale, and "33 reserved in the last 24 hours" read as a live
+  // ticker while never moving. A number presented as live has to actually be live.
+  fetch('batch-status.json?t=' + Date.now(), { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      if (!d || !(d.sold > 0)) return;
+      BATCH.sold = d.sold;
+      if (d.perDay > 0) BATCH.perDay = d.perDay;
+      if (typeof d.last24 === 'number') BATCH.last24 = d.last24;
+      render();
+    })
+    .catch(function () { /* keep the fallback */ });
 })();
 
 /* ── quantity + checkout ──────────────────────────────────────
