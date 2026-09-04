@@ -1,9 +1,9 @@
 {
  "batch": 4,
- "sold": 324,
- "last24": 50,
+ "sold": 327,
+ "last24": 48,
  "release": 1500,
- "perDay": 36.0,
+ "perDay": 36.3,
  "ship": "October 15",
- "updated": "2026-09-04T00:06:01Z"
+ "updated": "2026-09-04T02:06:01Z"
 }
