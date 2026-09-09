@@ -25,7 +25,7 @@ FAQ=[("When does it actually arrive?",
 # US units throughout — this is a United States page
 SPECS=[("Trail weight","About 4 lbs"),("Packed size","5.5 x 5.5 x 16 in"),
  ("Capacity","500 lb"),("Pad pocket","Fits pads up to 25 in wide"),
- ("Setup","About 4 minutes, two trees"),("Color","Navy")]
+ ("Setup","About 5 minutes, two trees"),("Color","Navy")]
 TEMP_COLD="50&deg;F"      # below this, bare hammocks get cold underneath
 TEMP_TESTED="&minus;22&deg;F"   # -30C, converted for a US audience
 SHIPPED="9,000+"
@@ -33,3 +33,28 @@ FONTS=('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="pr
  'href="https://fonts.gstatic.com" crossorigin>')
 def cta(label,cls="cta"):
     return f'<a class="{cls}" href="{CART}" rel="nofollow">{label}</a>'
+# Real verified review titles + names, exactly as they appear on the live review widget.
+# We only hold titles locally, so no review bodies are written anywhere — nothing invented.
+REVIEWS=[("Algonquin Park, Ontario true Hawknest test","Pat Christie"),
+ ("Best sleep in the backcountry in a long time","Jordan Danchuk"),
+ ("The ultimate backcountry sleep system!","Cooper Mercer"),
+ ("A great system for moto-camping","Brandon Williams"),
+ ("Most comfortable hammock","MR MOUNTAIN"),
+ ("Very spacious!","Jesse Stanley"),
+ ("Amazing Hammock!","Andrew Kryshak"),
+ ("The best product","Hailey Kusche")]
+INSTEAD=[("A tent","and flat ground to put it on"),("A hammock","for when there isn't any"),
+ ("A tarp","strung over the top, in the dark"),("A bug net","that snags and tears"),
+ ("An underquilt","or a cold back all night"),("A footprint tarp","for the wet under the floor")]
+STEPS=[("You reserve it","Card is charged now, which is what funds the run."),
+ ("We build it",f"Batch {BATCH} is {UNITS} units, made in one go."),
+ ("It ships",f"From South Carolina on {SHIP}, duties already paid."),
+ ("You get 30 days","If it's not for you, full refund. No questions.")]
+
+INBOX=[("Rain fly","Full-coverage waterproof cover, detachable"),
+ ("Hammock body","With the bug net and pad pocket sewn in"),
+ ("Spreader poles","Four sections, hold the net off your face"),
+ ("Tree straps","Two, no knots to learn"),
+ ("Guy lines","Two, to pull the fly taut"),
+ ("Stakes","Two, for the guy lines"),
+ ("Stuff sack","Waterproof, the whole thing packs into it")]

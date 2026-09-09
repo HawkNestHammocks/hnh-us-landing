@@ -58,6 +58,33 @@ figcaption{font:14px/1.45 ui-sans-serif,system-ui,sans-serif;color:var(--mut);ma
 .up:nth-of-type(2){animation-delay:.06s}.up:nth-of-type(3){animation-delay:.12s}
 @keyframes u{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.up{animation:none;opacity:1;transform:none}}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.cols img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;border:1px solid var(--line);
+ box-shadow:3px 3px 0 rgba(27,26,23,.1)}
+.inst{margin:16px 0}
+.inst div{display:flex;gap:10px;padding:9px 0;border-bottom:1px dotted var(--line);font-size:16px}
+.inst div:last-child{border-bottom:0}
+.inst b{min-width:120px}
+.inst span{color:var(--mut)}
+.revs{margin:16px 0}
+.rv{border-left:3px solid var(--line);padding:3px 0 3px 14px;margin-bottom:15px}
+.rv .st{color:#c08a26;font-size:14px;letter-spacing:.1em}
+.rv .ti{font-weight:700;margin:2px 0 1px}
+.rv .by{font:13.5px/1.4 ui-sans-serif,system-ui,sans-serif;color:var(--mut)}
+.steps{counter-reset:s;margin:18px 0}
+.steps div{counter-increment:s;position:relative;padding:10px 0 10px 40px;border-bottom:1px dotted var(--line)}
+.steps div:last-child{border-bottom:0}
+.steps div::before{content:counter(s);position:absolute;left:0;top:11px;width:26px;height:26px;
+ border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;
+ font:700 14px/1 ui-sans-serif,system-ui,sans-serif}
+.steps b{display:block}
+.steps span{color:var(--mut);font-size:16px}
+.bstrip{display:flex;gap:6px;margin:16px 0}
+.bstrip div{flex:1;border:1.5px solid var(--line);padding:9px 4px;text-align:center;
+ font:700 12px/1.3 ui-sans-serif,system-ui,sans-serif;color:var(--mut);background:#fffdf7}
+.bstrip div.now{border-color:var(--red);color:var(--red);background:#fff4ef}
+.bstrip div i{display:block;font-style:normal;font-size:10.5px;letter-spacing:.06em;margin-top:3px;font-weight:600}
 @media(max-width:420px){h1{font-size:27px}body{font-size:16px}}
 </style></head><body>
 <div class="w">
@@ -67,15 +94,27 @@ figcaption{font:14px/1.45 ui-sans-serif,system-ui,sans-serif;color:var(--mut);ma
  <p class="lede up">We build these in runs of a thousand or so. Batches 1, 2 and 3 all sold out before they landed. Batch 4 is 1,500 units and it&rsquo;s the last run of 2026.</p>
  <p class="up">That&rsquo;s the whole pitch. No countdown timer, no fake stock bar. Just a small Canadian company that makes one thing and can only make so many of them at a time.</p>
 
- <figure class="tilt"><img loading="lazy" src="story-camp.jpg" width="1000" height="667"
-  alt="A Hawk Nest hammock tent pitched between two trees at a forest camp">
-  <figcaption>Batch 3, somewhere in the Rockies. Same thing you&rsquo;d get.</figcaption></figure>
+ <figure class="tilt"><img loading="lazy" src="story-camp.jpg" width="1000" height="1000"
+  alt="A Hawk Nest hammock tent pitched between two trees with someone inside and a friend cooking beside it">
+  <figcaption>Batch 3. Same thing you&rsquo;d get, minus the friend.</figcaption></figure>
 
  <h2>What it actually is</h2>
  <p>A hammock and a tent in one. Bug net sewn in, rain fly over the top, waterproof floor underneath, and a pocket that takes a sleeping pad up to <span class="hl">25 inches wide</span> so your back isn&rsquo;t cold.</p>
  <p class="note">A regular hammock isn&rsquo;t the same thing. No net, no cover, and below about 50&deg;F the air moving underneath makes it a wind tunnel. That&rsquo;s a nap, not a night&rsquo;s sleep.</p>
- <ul><li><b>Trail weight:</b> About 4 lbs</li><li><b>Packed size:</b> 5.5 x 5.5 x 16 in</li><li><b>Capacity:</b> 500 lb</li><li><b>Pad pocket:</b> Fits pads up to 25 in wide</li><li><b>Setup:</b> About 4 minutes, two trees</li><li><b>Color:</b> Navy</li></ul>
- <p>Goes up in about four minutes once you&rsquo;ve done it twice. Tested in Canadian winters down to &minus;22&deg;F.</p>
+ <ul><li><b>Trail weight:</b> About 4 lbs</li><li><b>Packed size:</b> 5.5 x 5.5 x 16 in</li><li><b>Capacity:</b> 500 lb</li><li><b>Pad pocket:</b> Fits pads up to 25 in wide</li><li><b>Setup:</b> About 5 minutes, two trees</li><li><b>Color:</b> Navy</li></ul>
+ <p>Goes up in about five minutes once you&rsquo;ve done it twice. Tested in Canadian winters down to &minus;22&deg;F.</p>
+
+ <h2>What you&rsquo;d otherwise be carrying</h2>
+ <div class="inst"><div><b>A tent</b><span>and flat ground to put it on</span></div><div><b>A hammock</b><span>for when there isn't any</span></div><div><b>A tarp</b><span>strung over the top, in the dark</span></div><div><b>A bug net</b><span>that snags and tears</span></div><div><b>An underquilt</b><span>or a cold back all night</span></div><div><b>A footprint tarp</b><span>for the wet under the floor</span></div></div>
+ <p>All of that, replaced by one thing you sling between two trees. That&rsquo;s the entire reason it exists.</p>
+
+ <figure class="tilt2"><img loading="lazy" src="story-rain.jpg" width="1000" height="1000"
+  alt="Rain beading on the waterproof fly fabric of a Hawk Nest hammock tent">
+  <figcaption>The fly, doing the one job a fly has.</figcaption></figure>
+
+ <h2>The part people get wrong</h2>
+ <p>Everyone worries about rain. Rain is the easy part &mdash; that&rsquo;s just fabric. <span class="hl">Cold is what ruins a night in a hammock</span>, and it comes from underneath, where your sleeping bag is squashed flat and does nothing.</p>
+ <p>That&rsquo;s what the pad pocket is for. Your pad sits under your back, held in place, instead of sliding off at 2am like it does in a normal hammock.</p>
 
  <h2>What you pay, and what you get</h2>
  <div class="box">
@@ -87,13 +126,36 @@ figcaption{font:14px/1.45 ui-sans-serif,system-ui,sans-serif;color:var(--mut);ma
   <p class="sm">Free shipping &middot; duties included &middot; 30-day refund<br>Ships from South Carolina on October 15</p>
  </div>
 
- <figure class="tilt2"><img loading="lazy" src="story-winter.jpg" width="1000" height="750"
-  alt="The hammock tent set up in deep snow with someone inside">
+ <figure class="tilt"><img loading="lazy" src="story-winter.jpg" width="1000" height="750"
+  alt="A Hawk Nest hammock tent set up in deep snow with someone inside">
   <figcaption>Not a studio shot. That&rsquo;s a customer, in February.</figcaption></figure>
 
+ <h2>What people who own one say</h2>
+ <p>9,000+ shipped so far. These are real review titles from verified buyers &mdash; their words, not ours.</p>
+ <div class="revs"><div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="ti">Algonquin Park, Ontario true Hawknest test</div><div class="by">Pat Christie &middot; verified buyer</div></div><div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="ti">Best sleep in the backcountry in a long time</div><div class="by">Jordan Danchuk &middot; verified buyer</div></div><div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="ti">The ultimate backcountry sleep system!</div><div class="by">Cooper Mercer &middot; verified buyer</div></div><div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="ti">A great system for moto-camping</div><div class="by">Brandon Williams &middot; verified buyer</div></div><div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="ti">Most comfortable hammock</div><div class="by">MR MOUNTAIN &middot; verified buyer</div></div><div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="ti">Very spacious!</div><div class="by">Jesse Stanley &middot; verified buyer</div></div><div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="ti">Amazing Hammock!</div><div class="by">Andrew Kryshak &middot; verified buyer</div></div><div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="ti">The best product</div><div class="by">Hailey Kusche &middot; verified buyer</div></div></div>
+
+ <div class="cols">
+  <img loading="lazy" src="story-morning.jpg" width="1000" height="663" alt="Someone inside a Hawk Nest hammock tent in the morning">
+  <img loading="lazy" src="story-pack.jpg" width="900" height="1200" alt="A Hawk Nest hammock tent being unpacked">
+ </div>
+
  <h2>Why it&rsquo;s a pre-order and not a buy button</h2>
- <p>Because we&rsquo;d rather build 1,500 and sell them than build five thousand and eat the rest. It means you wait, and it means we don&rsquo;t raise the price to cover guesswork. <span class="hl">9,000+ shipped so far.</span></p>
+ <p>Because we&rsquo;d rather build 1,500 and sell them than build five thousand and eat the rest. It means you wait, and it means we don&rsquo;t raise the price to cover guesswork.</p>
+ <div class="bstrip"><div class="">Batch 1<i>SOLD OUT</i></div><div class="">Batch 2<i>SOLD OUT</i></div><div class="">Batch 3<i>SOLD OUT</i></div><div class="now">Batch 4<i>OPEN</i></div></div>
  <p><span class="stamp">Batches 1&ndash;3 sold out</span></p>
+
+ <h2>What happens after you order</h2>
+ <div class="steps"><div><b>You reserve it</b><span>Card is charged now, which is what funds the run.</span></div><div><b>We build it</b><span>Batch 4 is 1,500 units, made in one go.</span></div><div><b>It ships</b><span>From South Carolina on October 15, duties already paid.</span></div><div><b>You get 30 days</b><span>If it's not for you, full refund. No questions.</span></div></div>
+
+ <h2>Who this isn&rsquo;t for</h2>
+ <p>If you camp above the treeline, there&rsquo;s nothing to hang it from and you want a tent. If you need it next week, it won&rsquo;t be there. And if you&rsquo;ve never slept in a hammock, know that the first night takes some getting used to &mdash; you lie across it on a diagonal, not straight down the middle.</p>
+ <p>Told you it wouldn&rsquo;t be a sales pitch.</p>
+
+ <div class="cols">
+  <img loading="lazy" src="story-ugc-setup.jpg" width="760" height="1351" alt="A customer setting up their Hawk Nest hammock">
+  <img loading="lazy" src="story-open.jpg" width="1000" height="1333" alt="A Hawk Nest hammock tent open with someone inside, mountains behind">
+ </div>
+ <p class="sm" style="text-align:left;margin-top:-6px">Left: a customer&rsquo;s own footage, setting one up.</p>
 
  <h2>Straight answers</h2>
  <div class="q"><b>When does it actually arrive?</b><p>Batch 4 lands October 15 and ships in the order it was reserved. You get tracking the moment yours leaves the warehouse.</p></div><div class="q"><b>Why is it a pre-order?</b><p>We build in limited runs and don&rsquo;t overbuild. Batches 1, 2 and 3 all sold out before they landed. Reserving from the next run is the only way to guarantee one.</p></div><div class="q"><b>What happens after Batch 4?</b><p>The price goes to $229 and the free upgrades end. No restock date is set beyond that.</p></div><div class="q"><b>What color do I get?</b><p>Navy. It&rsquo;s the only color on the current production run.</p></div><div class="q"><b>Where does it ship from?</b><p>South Carolina, with duties included. No customs bill on arrival.</p></div><div class="q"><b>Can I order more than one?</b><p>Yes. The bundle applies per hammock, so a second one is the same $159 with its own full set of upgrades.</p></div><div class="q"><b>What if it doesn&rsquo;t work for me?</b><p>30 days, full refund, no questions. Anything defective is replaced under the lifetime warranty.</p></div>

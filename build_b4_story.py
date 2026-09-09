@@ -89,6 +89,23 @@ summary::after{content:"+";color:var(--org2);font-size:21px;font-weight:400;line
 details[open] summary::after{content:"\\2013"}
 details p{padding:0 17px 16px;margin:0;font:15.5px/1.6 "DM Sans",sans-serif;color:var(--mut)}
 footer{padding:32px 0 54px;text-align:center;color:var(--soft);font:14px/1.6 "DM Sans",sans-serif}
+
+.inline{background:linear-gradient(180deg,#FFFFFF,#F7F6F1);border:1px solid var(--line);
+ border-radius:18px;padding:20px;margin:30px 0;box-shadow:var(--s2);text-align:center}
+.inline .h{font:700 17px/1.35 "DM Sans",sans-serif;color:var(--ink);margin-bottom:4px}
+.inline .s{font:14.5px/1.5 "DM Sans",sans-serif;color:var(--soft);margin-bottom:2px}
+.sci{background:#fff;border:1px solid var(--line);border-left:4px solid var(--grn2);
+ border-radius:14px;padding:19px 20px;margin:26px 0;box-shadow:var(--s1)}
+.sci .lb{font:700 11px/1 "DM Sans",sans-serif;letter-spacing:.18em;text-transform:uppercase;
+ color:var(--grn2);margin-bottom:9px}
+.sci p{font:16px/1.6 "DM Sans",sans-serif;margin:0 0 11px}
+.sci .cite{font:13px/1.5 "DM Sans",sans-serif;color:var(--soft);margin:0}
+.sci .cite a{color:var(--grn2)}
+.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:24px 0}
+.sn{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 15px;
+ box-shadow:var(--s1);text-align:center}
+.sn b{display:block;font-family:"Crimson Pro",serif;font-size:32px;font-weight:600;line-height:1;color:var(--grn)}
+.sn span{display:block;font:13.5px/1.4 "DM Sans",sans-serif;color:var(--soft);margin-top:7px}
 .r{opacity:0;transform:translateY(15px)}
 .r.in{opacity:1;transform:none;transition:opacity .65s cubic-bezier(.2,.7,.3,1),transform .65s cubic-bezier(.2,.7,.3,1)}
 @media (prefers-reduced-motion:reduce){.r,.r.in{opacity:1;transform:none;transition:none}}
@@ -96,6 +113,10 @@ footer{padding:32px 0 54px;text-align:center;color:var(--soft);font:14px/1.6 "DM
 def fig(src,w,h,alt,cap,cls=""):
     return (f'<figure class="r {cls}"><img loading="lazy" decoding="async" src="{src}" width="{w}" '
             f'height="{h}" alt="{alt}"><figcaption>{cap}</figcaption></figure>')
+def inline(h,sub):
+    return (f'<div class="inline r"><div class="h">{h}</div><div class="s">{sub}</div>'
+            + cta("Reserve yours &mdash; $"+PRICE) +
+            f'<p class="fine">Free shipping &middot; duties included &middot; 30-day refund</p></div>')
 revs="".join(f'<div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>'
  f'<div class="ti">{t}</div><div class="by"><b>{n}</b> &middot; Verified buyer</div></div>'
  for t,n in REVIEWS)
@@ -105,6 +126,7 @@ bundle="".join(f'<div class="bi"><span>{n}</span><span>'
 batch="".join(f'<div class="bc{" now" if i==3 else ""}"><div class="a">Batch {i+1}</div>'
  f'<div class="b">{"Open now" if i==3 else "Sold out"}</div></div>' for i in range(4))
 faq="".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in FAQ)
+inbox="".join(f'<li><b>{a}</b> &mdash; {b}</li>' for a,b in INBOX)
 
 HTML=f"""<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -121,71 +143,121 @@ HTML=f"""<!doctype html><html lang="en"><head>
   <span class="kick">Batch {BATCH} &middot; the last run of 2026</span>
   <h1 style="margin:16px 0 14px">I spent three years<br>trying to fix<br>one bad night.</h1>
  </div>
- <p class="big">You know the night. You hiked all day, found the flattest ground there was &mdash; which wasn&rsquo;t flat &mdash; and lay down on it. A root found your hip. The cold came up through the floor. At two in the morning you were still turning over, doing the arithmetic on how many hours were left.</p>
+ <p class="big">You know the night. You hiked all day, found the flattest ground there was &mdash; which wasn&rsquo;t flat &mdash; and lay down on it. A root found your hip. The cold came up through the floor. At two in the morning you were still turning over, doing the arithmetic on how many hours were left until it got light.</p>
  <p>Everyone who camps has had that night. Most of us decided it was the price of admission.</p>
 </div>
 
-{fig("story-camp.jpg",1000,667,"A Hawk Nest hammock tent pitched between two trees at a forest camp","Batch 3, in the Rockies.","bleed")}
+{fig("story-camp.jpg",1000,1000,"A Hawk Nest hammock tent pitched between two trees with someone inside and a friend cooking beside it","Batch 3, in the woods. Same thing you would get.","bleed")}
 
 <div class="w">
- <div class="ch">Chapter one</div>
- <h2 class="r">The ground was never the problem.</h2>
- <p>The problem was insisting on sleeping on it. Two trees will hold you off it entirely &mdash; no rocks, no roots, no puddle forming under your shoulder at 3am.</p>
- <p>So I tried a hammock. And a hammock, on its own, is worse.</p>
- <div class="pull r">No bug net. No cover when it rains. And below {TEMP_COLD}, the air moving underneath turns it into a wind tunnel. It&rsquo;s a nap, not a night&rsquo;s sleep.</div>
- <p>Which is how you end up carrying a hammock <em>and</em> a tarp <em>and</em> a net <em>and</em> an underquilt, and pitching four separate things in the dark.</p>
+ <div class="ch">Chapter one &middot; the problem</div>
+ <h2 class="r">It was never one bad night.</h2>
+ <p>That was the part I kept getting wrong. I treated each terrible night as bad luck &mdash; wrong site, wrong weather, wrong day. Then I started keeping track, and it was most of them. Four nights out, one of them decent. That is a hobby you slowly stop booking.</p>
+ <p>What actually happens on the ground is not complicated. You are lying on a cold, hard, uneven surface that pulls heat out of you all night, and there is a limit to how much foam you can put between you and it before you are carrying a mattress up a mountain.</p>
+ <div class="pull r">I was not sleeping badly because I was doing it wrong. I was sleeping badly because I was on the ground.</div>
 </div>
 
-<div class="w">{fig("story-inside.jpg",1000,1333,"Someone lying inside the hammock tent reading a book","Inside, on a rainy afternoon. Net zipped, fly on.")}</div>
+<div class="w">
+ <div class="ch">Chapter two &middot; the failures</div>
+ <h2 class="r">Everything I tried first.</h2>
+ <p><b>A thicker pad.</b> Three inches of air, and a pack that no longer closed. It helped with the roots. It did nothing about the slope, and I still woke up cold at four.</p>
+ <p><b>A better tent.</b> Lighter, more expensive, same floor, same ground under it. I had bought a nicer container for the same problem.</p>
+ <p><b>Better sites.</b> An hour of daylight burned every evening hunting for flat, dry, clear ground. In real terrain that spot is often not there, and you pitch on the least bad option and pay for it at 2am.</p>
+ <p><b>Sleeping pills, earplugs, a nightcap.</b> All the things people quietly try. They make you unconscious. They do not make you rested.</p>
+ <p>Three seasons of this. I remember lying awake on a slope in the rain, water tracking under the groundsheet, thinking the thought a lot of people think and nobody says out loud: <em>maybe I am getting too old to enjoy this.</em></p>
+</div>
+
+{inline("Skip to the part where it works.","Batch "+BATCH+" arrives "+SHIP+".")}
 
 <div class="w">
- <div class="ch">Chapter two</div>
- <h2 class="r">So we sewed them together.</h2>
- <p>One shelter. The net is part of it. The rain fly goes over the top. The floor underneath is waterproof, and there&rsquo;s a pocket in it that takes a sleeping pad up to 25 inches wide &mdash; which is the actual fix for the cold, because it puts insulation between you and the moving air.</p>
+ <div class="ch">Chapter three &middot; the idea</div>
+ <h2 class="r">Two trees, and no ground at all.</h2>
+ <p>The realisation was almost annoying in how obvious it was. The problem was not my pad, my tent or my technique. It was the insistence on lying on the ground when there were two trees right there.</p>
+ <p>So I bought a hammock. And I want to be straight with you, because this is where most people give up on the idea: <b>a plain hammock made it worse.</b></p>
+ <p>No bug net, so the first warm night was unusable. No cover, so the first wet night was worse. And below about {TEMP_COLD}, the air moving underneath strips heat off your back faster than the ground ever did, because your sleeping bag is squashed flat beneath you and the insulation in it does nothing at all.</p>
+</div>
+
+<div class="w">{fig("story-inside.jpg",1000,1333,"Someone lying inside the hammock tent reading a book","Inside, on a wet afternoon. Net zipped, fly on.")}</div>
+
+<div class="w">
+ <div class="ch">Chapter four &middot; the frankenstein</div>
+ <h2 class="r">Four separate things, in the dark, in the rain.</h2>
+ <p>The hammock people solve this with a kit list: hammock, tarp, bug net, underquilt, plus the cord and stakes to rig it. It works. I did it for two seasons.</p>
+ <p>It is also four things to pitch in the dark, four things to pack wet, and four things to forget. The night I put the tarp up backwards and spent twenty minutes in the rain undoing it was the night I decided somebody should just sew the whole thing together.</p>
+ <p>Nobody had, in the way I wanted it. So that became the project.</p>
+</div>
+
+<div class="w">
+ <div class="ch">Chapter five &middot; three years of prototypes</div>
+ <h2 class="r">Most of them were bad.</h2>
+ <p>The first had the net too close to your face. The second pooled water where the fly met the body. The third was warm and weighed as much as a tent, which defeated the point. Every material choice in the current version came from something failing on an earlier one, usually at an inconvenient hour.</p>
+ <p>The version that finally worked did one thing the others did not: it put the sleeping pad <em>inside</em> a pocket under your back, so it cannot slide out from under you at 2am. That is the fix for the cold. Everything else is weatherproofing.</p>
  <div class="detail r">
-  <div class="ch">The numbers</div>
-  <ul><li>About 4 lbs on the trail</li><li>Packs to 5.5 x 5.5 x 16 in</li>
-   <li>Holds 500 lb</li><li>Pad pocket fits up to 25 in wide</li>
-   <li>Up in about four minutes, two trees, no poles or stakes</li><li>Navy, this run only</li></ul>
+  <div class="ch">What comes in the box</div>
+  <ul>{inbox}</ul>
  </div>
 </div>
 
 <div class="w"><div class="two r">
  <img loading="lazy" decoding="async" src="story-rain.jpg" width="1000" height="1000" alt="Rain beading on the waterproof fly fabric">
- <img loading="lazy" decoding="async" src="story-open.jpg" width="1000" height="1333" alt="The hammock tent open with someone inside">
+ <img loading="lazy" decoding="async" src="story-pack.jpg" width="900" height="1200" alt="The hammock tent being unpacked">
 </div></div>
 
 <div class="w">
- <div class="ch">Chapter three</div>
- <h2 class="r">Three years of getting it wrong first.</h2>
- <p>Prototypes were built and slept in through Canadian winters &mdash; the kind that hit {TEMP_TESTED} &mdash; and through summer storms that arrive without warning. Every material choice in the current version came from something failing on an earlier one.</p>
+ <div class="ch">Chapter six &middot; the skepticism</div>
+ <h2 class="r">The three things everybody says.</h2>
+ <p><b>&ldquo;I&rsquo;ll be cold.&rdquo;</b> You will be, in a bare hammock. With a pad held under your back you are insulated from the moving air, which is the entire mechanism. This is not a claim about fabric, it is where the heat is actually going.</p>
+ <p><b>&ldquo;I&rsquo;ll sleep folded like a banana.&rdquo;</b> Only if you lie straight down the middle. You lie diagonally, which flattens it out. It takes one night to learn and then you stop thinking about it.</p>
+ <p><b>&ldquo;There won&rsquo;t be trees.&rdquo;</b> Sometimes there won&rsquo;t. Above the treeline this is the wrong shelter and I am not going to pretend otherwise. Below it, two trees are easier to find than flat, dry, rock-free ground.</p>
 </div>
 
-{fig("story-winter.jpg",1000,750,"The hammock tent pitched in deep snow with someone inside","A customer's photo. February, and he stayed in it.","bleed")}
+<div class="w">
+ <div class="ch">Chapter seven &middot; the evidence</div>
+ <h2 class="r">Why hanging actually sleeps better.</h2>
+ <p>Two things are going on, and one of them is genuinely well studied.</p>
+ <p>The first is heat. Lying on the ground you lose warmth by conduction into a very large, very cold object. Off the ground that path is gone, and the remaining problem &mdash; moving air underneath &mdash; is what the pad pocket exists to solve.</p>
+ <p>The second is the gentle movement, and there is real research on it.</p>
+ <div class="sci r">
+  <div class="lb">What the research found</div>
+  <p>In a 2019 study published in <em>Current Biology</em>, researchers had healthy adults sleep one night on a still bed and one on an identical bed rocking gently side to side. On the rocking bed they fell into deep sleep about <b>6.5 minutes faster</b>, spent <b>around 5% more of the night</b> in those deeper stages, and scored slightly better on a memory test the next morning.</p>
+  <p class="cite">Perrault et al., &ldquo;Whole-Night Continuous Rocking Entrains Spontaneous Neural Oscillations with Benefits for Sleep and Memory,&rdquo; <em>Current Biology</em>, 2019. Worth saying plainly: that was 18 young adults on a motorised bed, not a hammock in a forest. It is evidence that gentle motion helps people sleep deeper, not proof about this product.</p>
+ </div>
+ <p>Which matches what people report, and what I found after the first hundred nights: you drop off faster, and you stop waking up to turn over, because there is nothing to turn away from.</p>
+</div>
+
+{fig("story-winter.jpg",1000,750,"The hammock tent pitched in deep snow with someone inside","A customer&rsquo;s photo. February, and he stayed out in it.","bleed")}
+
+{inline("Batch "+BATCH+" is the last run of 2026.","{UNITS} units, arriving {SHIP}.".format(UNITS=UNITS,SHIP=SHIP))}
 
 <div class="w">
- <div class="ch">Chapter four</div>
- <h2 class="r">{SHIPPED} people have one now.</h2>
- <p>These are their words, not ours &mdash; real titles from verified buyers.</p>
+ <div class="ch">Chapter eight &middot; the owners</div>
+ <h2 class="r">{SHIPPED} of them are out there now.</h2>
+ <p>These are real review titles from verified buyers, their words rather than ours.</p>
+ <div class="stat r">
+  <div class="sn"><b>{SHIPPED}</b><span>shipped since we started</span></div>
+  <div class="sn"><b>3</b><span>runs, all sold out</span></div>
+  <div class="sn"><b>30</b><span>days to change your mind</span></div>
+ </div>
  <div class="revs r">{revs}</div>
 </div>
 
 <div class="w"><div class="two r">
  <img loading="lazy" decoding="async" src="story-ugc-setup.jpg" width="760" height="1351" alt="A customer setting up their Hawk Nest hammock in a field">
- <img loading="lazy" decoding="async" src="story-ugc-net.jpg" width="760" height="1351" alt="Inside the bug net of a customer's Hawk Nest hammock">
+ <img loading="lazy" decoding="async" src="story-open.jpg" width="1000" height="1333" alt="A Hawk Nest hammock tent open with someone inside, mountains behind">
 </div>
-<p class="fine" style="margin-top:-12px">Customer footage. Setup, start to finish.</p></div>
+<p class="fine" style="margin-top:-12px">Left: a customer&rsquo;s own footage, setting one up.</p></div>
 
 <div class="w">
- <div class="ch">Chapter five</div>
- <h2 class="r">Why you have to wait for one.</h2>
- <p>We build in limited runs and don&rsquo;t overbuild. Batches 1, 2 and 3 all sold out before they landed. Batch {BATCH} is {UNITS} units and it is the last run of 2026.</p>
+ <div class="ch">Chapter nine &middot; why you have to wait</div>
+ <h2 class="r">We build these in runs.</h2>
+ <p>We do not hold a warehouse full of stock. We commit to a production run, sell it, and build the next one. Batches 1, 2 and 3 all sold out before they landed. Batch {BATCH} is {UNITS} units and it is the last run of 2026.</p>
  <div class="batch r">{batch}</div>
- <p>Reserving is the only way to guarantee one. After this run the price goes to ${AFTER} and the free upgrades end.</p>
+ <p>That is the honest reason it is a pre-order rather than a buy button, and it is also why the price is what it is. Reserving funds the run. When Batch {BATCH} is gone the price goes to ${AFTER} and the free upgrades end, and there is no restock date after that.</p>
 </div>
 
 <div class="w">
  <h2 class="r" style="text-align:center">Everything, one price.</h2>
+ <p style="text-align:center">The upgrades people normally add are included while this run lasts.</p>
  <div class="offer r">
   {bundle}
   <div class="tot"><div class="l">Buy it all<br>separately</div><div class="p"><s>${WAS}</s>${PRICE}</div></div>
@@ -201,10 +273,12 @@ HTML=f"""<!doctype html><html lang="en"><head>
 </div>
 
 <div class="w" style="text-align:center;padding-bottom:10px">
+ <div class="ch" style="text-align:center">The end of it</div>
  <h2 class="r">Stop sleeping on the ground.</h2>
- <p>Batch {BATCH} arrives {SHIP}, in the order it was reserved.</p>
+ <p>I built this because I was tired of lying awake on a slope in the rain working out how many hours were left. If that sentence landed, you already know whether this is for you.</p>
  {cta("Reserve yours &mdash; $"+PRICE)}
  <p class="fine">30 days to change your mind. Full refund, no questions.</p>
+ <p style="margin-top:22px;font-style:italic">&mdash; Lukas, Hawk Nest Hammocks</p>
 </div>
 
 <footer>Hawk Nest Hammocks &middot; Built in Canada &middot; Shipped from South Carolina, duties included</footer>
