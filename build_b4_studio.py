@@ -142,6 +142,15 @@ section{padding:44px 0}
 .sp{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 15px;box-shadow:var(--s1)}
 .sp .k{font:700 11px/1 "DM Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
 .sp .v{margin-top:7px;font-weight:500}
+.ragg{display:inline-flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:center;
+ background:#fff;border:1px solid var(--line);border-radius:99px;padding:10px 17px;
+ box-shadow:var(--s1);font-size:15px;color:var(--mut);margin-top:6px}
+.ragg .st{color:#D9A21B;font-size:15px;letter-spacing:.09em;line-height:1}
+.ragg b{color:var(--ink)}
+.allrev{display:block;text-align:center;text-decoration:none;margin-top:14px;
+ font:700 15px/1 "DM Sans",sans-serif;color:var(--nav);background:#fff;border:1px solid var(--line);
+ border-radius:12px;padding:15px 18px;box-shadow:var(--s1);transition:.16s}
+.allrev:hover{border-color:var(--nav);box-shadow:var(--s2)}
 .revs{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:10px}
 .rv{padding:4px 2px 14px;border-bottom:1px solid var(--line)}
 .rv .hd{display:flex;align-items:center;gap:9px;margin-bottom:6px}
@@ -244,12 +253,8 @@ HTML=f"""<!doctype html><html lang="en"><head>
 
 <section><div class="w">
  <div class="lead r"><h2>It packs down to this.</h2></div>
- <div class="diag r"><div class="scale">
-  <figure><div class="bar" style="width:74px;height:148px"></div>
-   <figcaption><b>The Hawk Nest</b>5.5 &times; 5.5 &times; 16 in<br>about 4 lbs</figcaption></figure>
-  <figure><div class="btl" style="width:52px;height:112px"></div>
-   <figcaption><b>A 1-liter bottle</b>for scale<br>&nbsp;</figcaption></figure>
- </div><div class="dcap">Drawn to scale. It rides inside a pack, not strapped to the outside.</div></div>
+ <div class="shot r"><img loading="lazy" src="packed-size.jpg" width="900" height="905"
+   alt="The Hawk Nest packed into its carrying case, 16.5 inches by 5.5 inches, shown beside a hand for scale"></div>
 </div></section>
 
 <section><div class="w">
@@ -280,8 +285,11 @@ HTML=f"""<!doctype html><html lang="en"><head>
 </div></section>
 
 <section><div class="w">
- <div class="lead r"><h2>{SHIPPED} shipped.</h2><p>Real review titles from verified buyers.</p></div>
+ <div class="lead r"><h2>{SHIPPED} shipped.</h2>
+  <div class="ragg"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+   <b>{REV_RATING}</b> out of 5 &middot; <b>{REV_COUNT}</b> reviews</div></div>
  <div class="revs r">{revs}</div>
+ <a class="allrev r" href="{REV_URL}" rel="nofollow">View all {REV_COUNT} reviews</a>
 </div></section>
 
 <section><div class="w">

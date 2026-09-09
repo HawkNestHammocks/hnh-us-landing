@@ -23,8 +23,8 @@ FAQ=[("When does it actually arrive?",
  ("What if it doesn&rsquo;t work for me?",
   "30 days, full refund, no questions. Anything defective is replaced under the lifetime warranty.")]
 # US units throughout — this is a United States page
-SPECS=[("Trail weight","About 4 lbs"),("Packed size","5.5 x 5.5 x 16 in"),
- ("Capacity","500 lb"),("Pad pocket","Fits pads up to 25 in wide"),
+SPECS=[("Trail weight","About 4 lbs"),("Packed size","16.5 x 5.5 in"),
+ ("Capacity","500 lb"),("Pad pocket","Fits pads to 78 x 28 x 3 in"),
  ("Setup","About 5 minutes, two trees"),("Color","Navy")]
 TEMP_COLD="50&deg;F"      # below this, bare hammocks get cold underneath
 TEMP_TESTED="&minus;22&deg;F"   # -30C, converted for a US audience
@@ -57,7 +57,7 @@ INBOX=[("Rain fly","Full-coverage waterproof cover, detachable"),
  ("Stakes","Two, for the guy lines"),
  ("Tree straps","Two, no knots to learn"),
  ("Guy lines","Two, to pull the fly taut"),
- ("Rigid support poles","Hold the fly and net up and off you")]
+ ("Rigid support poles","Patent-pending design. Holds the fly and net up and off you")]
 # Never describe this as a flat-lay hammock — it is not one. Diagonal lie helps, but the
 # claim to make is about interior space and headroom from the rigid poles.
 BUNDLE_IMG=["product-thumb.jpg","bonus-4-sm.jpg","bonus-3-sm.jpg","bonus-1-sm.jpg","bonus-2-sm.jpg","bonus-6-sm.jpg"]
@@ -85,3 +85,19 @@ COLD_SVG='''<svg viewBox="0 0 560 250" role="img" aria-label="Cross-section: a b
  <path d="M360 196v-30M390 202v-32M420 206v-34M450 202v-32M480 196v-30"/></g>
 <text x="420" y="222" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="13" font-weight="600" fill="#1E7A52">Pad blocks it, heat stays in</text>
 </svg>'''
+
+# Real customer letter, verbatim: ~/projects/hnh-assets/ugc-reviews/2026-07-06_ken_sutherland_v3_review.docx
+# Do NOT paraphrase these into new claims, and do not invent additional customer narratives.
+KEN_NAME="Ken Sutherland"
+KEN_TRIP="Winnipeg, Manitoba to Vancouver Island, by motorcycle. Three weeks."
+KEN=[
+ "No level ground, no room for a tent, no trees&hellip; no problem! The Hawk Nest Hammock does it all!",
+ "I have just returned from a 3 week motorcycle/salmon fishing trip on Vancouver Island BC. I travelled from Winnipeg MB. All but a couple nights were spent in my Hawk Nest Hammock using the Hawk Nest inflatable sleeping pad. I&rsquo;m extremely pleased with comfort and performance of both products.",
+ "Temperatures were between 5&deg;C (40&deg;F) and 22&deg;C (72&deg;F) with 3 nights of rain which was a complete non-issue, absolutely zero leaks or drips in the hammock.",
+ "I bought an extra set of hammock straps because one strap often won&rsquo;t make it around some of the huge trees in the Pacific Northwest. Set up takes about 5 minutes once you&rsquo;ve done it a few times.",
+ "3 nights were spent either on the beach or in areas where trees were too small to support a hammock. Setup on the ground was again, quick and easy. Not much clearance above when pitched on the ground but enough room to read or roll over.",
+ "When it looked like my Hawk Nest inflatable sleeping pad would not arrive in time for my departure, Lukas offered to send one ahead to my sons place in Victoria BC at no charge, so it would be there when I arrived. That&rsquo;s above and beyond good customer service.",
+ "I&rsquo;m looking forward to many enjoyable sleeps in my Hawk Nest Hammock on future motorcycle, kayaking, hiking and canoeing adventures. Hawk Nest&rsquo;s hammock and sleeping pad are well thought out, quality products at a very reasonable price."]
+
+REV_COUNT="539"; REV_RATING="4.87"
+REV_URL="https://hawknesthammocks.ca/products/hawk-nest-all-season-hammock-tent-v-3"
