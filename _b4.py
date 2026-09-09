@@ -101,3 +101,13 @@ KEN=[
 
 REV_COUNT="539"; REV_RATING="4.87"
 REV_URL="https://hawknesthammocks.ca/products/hawk-nest-all-season-hammock-tent-v-3"
+
+# Full review bodies with real names, pulled from the judgeme.review_snippet_widget metafield
+# on the Shopify product. Verbatim. Never paraphrase these into new claims.
+REAL_REVIEWS={
+  'leeanne': ('Lee-Anne', 'The best hammock slepp ever. So easy to set up on the ground or in trees. Absolutely love it'),
+  'pete': ('Pete BROOKS', 'Purchased right from the site. Got an email shortly after stating the order was being processed right away and my hammock arrived in Ontario from BC wishing three days.'),
+  'sebastian': ('Sebastian Wilson', 'So far this is awesome: easy set up, comfy. I bought this for camping trip end of Sept in the Okanagan (Canada) as I have puppies and wanted to give them my tent. My brother has spent hundreds on hammocks for camping and I didn&rsquo;t want to spend crazy amounts, but wanted to show I could have just as nice a set up, and so far I&rsquo;m super happy as this was light, comfy, and easy set up. It also looks really cool. I&rsquo;m sharing photos without the rainfly (for the view obvs) and my sleeping pad also hasn&rsquo;t come in yet (bought separately). I will post another review or edit this one after my first camping trip with this in the Canadian boonies end of Sept. P.s. it was also quick shipping and had that nice new smell.'),
+  'charles': ('Charles Reny', 'Deux nuits passées à dormir comme un bébé. De plus, j&rsquo;adore le concept intelligemment pensé et qui permet d&rsquo;utiliser le hamac comme tente au sol. La Qualité de fabrication est également au dela de mes attentes. J&rsquo;ai hâte à la prochaine fois où je pourrai l&rsquo;utiliser à nouveau !'),
+  'ryan': ('Ryan Conner', 'Super fast shipping considering I reside in Ontario! The hammock was super easy to set up, I watched the video only once. I feel like it’s very straight forward and doesn’t take long to have it all together. It’s light weight but durable and super comfortable. I will say that I would suggest not using pine trees or perhaps placing something under the straps as sadly got some pine pitch on the straps. My son used it when our family went camping he’s 180lbs and it worked perfectly for him. He’s never been big on sleeping on the ground and had the best camping trip he’s had. All in all this is the right hammock for the right price and the quality is more than I expected. Glad to support a fellow Canadian and can’t wait to see the evolution of his hammocks.'),
+}

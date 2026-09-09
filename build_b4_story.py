@@ -147,6 +147,12 @@ CHK=('<svg viewBox="0 0 24 24" fill="none" stroke="#1E7A52" stroke-width="3.2" s
      'stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 7"/></svg>')
 def said(q,a):
     return f'<div class="said r"><p class="q">&ldquo;{q}&rdquo;</p><p class="a">{a}</p></div>'
+def rq(key,note="",trim=None):
+    """A real, attributed customer review. Text is verbatim from Judge.me."""
+    who,txt=REAL_REVIEWS[key]
+    if trim: txt=txt[:trim].rstrip().rstrip(".,")+"&hellip;"
+    return (f'<div class="said r"><p class="q">&ldquo;{txt}&rdquo;</p>'
+            f'<p class="a"><b>{who}</b> &middot; verified buyer{note}</p></div>')
 revs="".join(f'<div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>'
  f'<div class="ti">{t}</div><div class="by"><b>{n}</b> &middot; Verified buyer</div></div>'
  for t,n in REVIEWS)
@@ -172,8 +178,7 @@ HTML=f"""<!doctype html><html lang="en"><head>
 <div class="w">
  <div style="text-align:center;padding:8px 0 4px">
   <span class="kick">Batch {BATCH} &middot; the last run of 2026</span>
-  <h1 style="margin:16px 0 14px">&ldquo;No level ground,<br>no room for a tent,<br>no trees&hellip; no problem.&rdquo;</h1>
-  <p class="fine" style="margin-bottom:6px">{KEN_NAME}, after three weeks on the road</p>
+  <h1 style="margin:16px 0 14px">No level ground.<br>No room for a tent.<br>No trees. No problem.</h1>
  </div>
  <p class="big">You know the night this is about. You hiked all day, found the flattest ground there was &mdash; which wasn&rsquo;t flat &mdash; and lay down on it. A root found your hip. The cold came up through the floor. At two in the morning you were still turning over, doing the arithmetic on how many hours were left until it got light.</p>
  <p>Everyone who sleeps outside has had that night. Most people decide it&rsquo;s the price of admission. This page is about the people who stopped accepting that, and one of them in particular.</p>
@@ -196,6 +201,8 @@ HTML=f"""<!doctype html><html lang="en"><head>
  <p><b>A better tent.</b> Lighter, more expensive, same floor, same ground underneath it. A nicer container for the same problem.</p>
  <p><b>Better sites.</b> An hour of daylight burned every evening hunting for flat, dry, clear ground. In real terrain that spot is often not there, so you pitch on the least bad option and pay for it at 2am.</p>
  <p><b>Pills, earplugs, a nightcap.</b> The things people quietly try. They make you unconscious. They do not make you rested.</p>
+ <p>And the hammock people are not immune either. Plenty arrive at this having already spent a lot on the problem.</p>
+ {rq("sebastian", trim=250)}
  <p>Somewhere in that list is the evening most people have had: lying awake on a slope in the rain, water tracking under the groundsheet, thinking the thought nobody says out loud &mdash; <em>maybe I am getting too old to enjoy this.</em></p>
 </div>
 
@@ -240,16 +247,17 @@ HTML=f"""<!doctype html><html lang="en"><head>
 
  <p><b>&ldquo;I&rsquo;ll be cold in it.&rdquo;</b> You would be, in a bare hammock. With a pad held in the pocket under your back you are insulated from the moving air, which is the whole mechanism. Ken slept in it down to {TEMP_COLD} on that trip and had nothing to say about the cold at all &mdash; the thing he singled out was the rain.</p>
  {said("Temperatures were between 5&deg;C (40&deg;F) and 22&deg;C (72&deg;F) with 3 nights of rain which was a complete non-issue, absolutely zero leaks or drips in the hammock.","{KEN_NAME}, on three weeks of west coast weather".format(KEN_NAME=KEN_NAME))}
+ {rq("charles", note=", writing in French &mdash; two nights sleeping like a baby, and the build quality beyond his expectations")}
 
- <p><b>&ldquo;I&rsquo;ll be folded up inside it.&rdquo;</b> This is what the rigid support poles are for. They hold the fly and the net up and off you, so there is genuine interior space and headroom above your face instead of fabric resting on it. Lying at a slight angle rather than straight down the middle helps as well, and takes one night to get used to.</p>
+ <p><b>&ldquo;I&rsquo;ll be folded up inside it.&rdquo;</b> This is what the patent-pending rigid support poles are for. They hold the fly and the net up and off you, so there is genuine interior space and headroom above your face instead of fabric resting on it. Lying at a slight angle rather than straight down the middle helps as well, and takes one night to get used to.</p>
+ {rq("ryan", trim=210)}
 
  <p><b>&ldquo;There won&rsquo;t always be trees.&rdquo;</b> Sometimes there won&rsquo;t &mdash; on a beach, above the treeline, or where the trees are too small to take the load. <b>It pitches on the ground as well.</b> You lose the height and most of the clearance, but it still works as a shelter, and that is not a theoretical answer. Three of Ken&rsquo;s nights were exactly that.</p>
- {said("3 nights were spent either on the beach or in areas where trees were too small to support a hammock. Setup on the ground was again, quick and easy. Not much clearance above when pitched on the ground but enough room to read or roll over.","{KEN_NAME}, on the nights with nothing to hang from".format(KEN_NAME=KEN_NAME))}
+ {rq("leeanne")}
  <figure class="r" style="margin:18px 0 6px"><img loading="lazy" decoding="async" src="ground-setup.jpg"
   width="900" height="900" alt="The Hawk Nest hammock tent pitched directly on the ground in snow"></figure>
 
- <p>One more thing worth repeating from his letter, because it is the question everybody actually has: <em>how long does it take to put up?</em></p>
- {said("Set up takes about 5 minutes once you&rsquo;ve done it a few times.","{KEN_NAME}. Your first go will be slower.".format(KEN_NAME=KEN_NAME))}
+ <p>And the question everybody actually has: <em>how long does it take to put up?</em> About five minutes once you have done it a few times. Your first go will be slower.</p>
 </div>
 
 {inline("Batch "+BATCH+" is the last run of 2026.",UNITS+" units, arriving "+SHIP+".")}
@@ -324,7 +332,7 @@ HTML=f"""<!doctype html><html lang="en"><head>
 <div class="w" style="text-align:center;padding-bottom:10px">
  <div class="ch" style="text-align:center">The end of it</div>
  <h2 class="r">Stop sleeping on the ground.</h2>
- <p>Ken put it better than any of our copy ever has: no level ground, no room for a tent, no trees, no problem. If that sounds like the trip you have been putting up with, Batch {BATCH} is the one you can still get on.</p>
+ <p>No level ground, no room for a tent, no trees, no problem. If that sounds like the trip you have been putting up with rather than enjoying, Batch {BATCH} is the one you can still get on.</p>
  {cta("Reserve yours &mdash; $"+PRICE)}
  <p class="fine">30 days to change your mind. Full refund, no questions.</p>
 </div>
