@@ -55,6 +55,10 @@ figcaption{font:14px/1.45 ui-sans-serif,system-ui,sans-serif;color:var(--mut);ma
 @keyframes u{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.up{animation:none;opacity:1;transform:none}}
 
+.diag{border:2px solid var(--ink);background:#fffdf7;padding:16px 14px;margin:22px 0;
+ box-shadow:4px 4px 0 rgba(27,26,23,.12)}
+.diag svg{width:100%;height:auto;display:block}
+.dcap{font:14px/1.5 ui-sans-serif,system-ui,sans-serif;color:var(--mut);text-align:center;margin-top:10px}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
 .cols img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;border:1px solid var(--line);
  box-shadow:3px 3px 0 rgba(27,26,23,.1)}
@@ -130,6 +134,7 @@ HTML=f"""<!doctype html><html lang="en"><head>
  <h2>The part people get wrong</h2>
  <p>Everyone worries about rain. Rain is the easy part &mdash; that&rsquo;s just fabric. <span class="hl">Cold is what ruins a night in a hammock</span>, and it comes from underneath, where your sleeping bag is squashed flat and does nothing.</p>
  <p>That&rsquo;s what the pad pocket is for. Your pad sits under your back, held in place, instead of sliding off at 2am like it does in a normal hammock.</p>
+ <div class="diag">{COLD_SVG}<div class="dcap">Left: nothing under you but moving air. Right: a pad held in the pocket.</div></div>
 
  <h2>What you pay, and what you get</h2>
  <div class="box">

@@ -94,6 +94,9 @@ footer{padding:32px 0 54px;text-align:center;color:var(--soft);font:14px/1.6 "DM
  border-radius:18px;padding:20px;margin:30px 0;box-shadow:var(--s2);text-align:center}
 .inline .h{font:700 17px/1.35 "DM Sans",sans-serif;color:var(--ink);margin-bottom:4px}
 .inline .s{font:14.5px/1.5 "DM Sans",sans-serif;color:var(--soft);margin-bottom:2px}
+.diag{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin:26px 0;box-shadow:var(--s1)}
+.diag svg{width:100%;height:auto;display:block}
+.dcap{font:14.5px/1.55 "DM Sans",sans-serif;color:var(--soft);text-align:center;margin-top:12px}
 .sci{background:#fff;border:1px solid var(--line);border-left:4px solid var(--grn2);
  border-radius:14px;padding:19px 20px;margin:26px 0;box-shadow:var(--s1)}
 .sci .lb{font:700 11px/1 "DM Sans",sans-serif;letter-spacing:.18em;text-transform:uppercase;
@@ -207,7 +210,7 @@ HTML=f"""<!doctype html><html lang="en"><head>
  <div class="ch">Chapter six &middot; the skepticism</div>
  <h2 class="r">The three things everybody says.</h2>
  <p><b>&ldquo;I&rsquo;ll be cold.&rdquo;</b> You will be, in a bare hammock. With a pad held under your back you are insulated from the moving air, which is the entire mechanism. This is not a claim about fabric, it is where the heat is actually going.</p>
- <p><b>&ldquo;I&rsquo;ll sleep folded like a banana.&rdquo;</b> Only if you lie straight down the middle. You lie diagonally, which flattens it out. It takes one night to learn and then you stop thinking about it.</p>
+ <p><b>&ldquo;I&rsquo;ll be folded up in it.&rdquo;</b> This is where the rigid support poles earn their weight. They hold the fly and the net up and off you, so there is real interior space and headroom above your face rather than fabric resting on it. Lying at a slight angle rather than straight down the middle helps too, and takes one night to get used to.</p>
  <p><b>&ldquo;There won&rsquo;t be trees.&rdquo;</b> Sometimes there won&rsquo;t. Above the treeline this is the wrong shelter and I am not going to pretend otherwise. Below it, two trees are easier to find than flat, dry, rock-free ground.</p>
 </div>
 
@@ -216,6 +219,7 @@ HTML=f"""<!doctype html><html lang="en"><head>
  <h2 class="r">Why hanging actually sleeps better.</h2>
  <p>Two things are going on, and one of them is genuinely well studied.</p>
  <p>The first is heat. Lying on the ground you lose warmth by conduction into a very large, very cold object. Off the ground that path is gone, and the remaining problem &mdash; moving air underneath &mdash; is what the pad pocket exists to solve.</p>
+ <div class="diag r">{COLD_SVG}<div class="dcap">Off the ground you stop losing heat into it. The pad pocket handles what is left &mdash; the moving air underneath.</div></div>
  <p>The second is the gentle movement, and there is real research on it.</p>
  <div class="sci r">
   <div class="lb">What the research found</div>

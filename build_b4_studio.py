@@ -89,7 +89,8 @@ section{padding:44px 0}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--s1);
  transition:transform .2s,box-shadow .2s}
 .card:hover{transform:translateY(-2px);box-shadow:var(--s2)}
-.card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.card .ph{display:block;aspect-ratio:4/3;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;display:block}
 .card .bd{padding:16px 17px 18px}
 .card h3{margin-bottom:5px}
 .card p{font-size:15px}
@@ -120,8 +121,12 @@ section{padding:44px 0}
 /* bundle */
 .bundle{background:linear-gradient(180deg,#FFFFFF,#F7FAFD);border:1px solid var(--line);border-radius:22px;
  padding:26px 22px;box-shadow:var(--s3)}
-.bi{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;
- border-bottom:1px solid var(--line);font-size:16px}
+.bi{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;
+ border-bottom:1px solid var(--line);font-size:15.5px}
+.bn{display:flex;align-items:center;gap:11px;min-width:0}
+.bn img{width:42px;height:42px;flex:none;border-radius:9px;object-fit:cover;background:#fff;
+ border:1px solid var(--line);box-shadow:var(--s1)}
+.bv{flex:none;white-space:nowrap}
 .bi:last-of-type{border-bottom:0}
 .bi s{color:var(--soft);font-size:14px}
 .tag2{font:800 11px/1 "DM Sans",sans-serif;letter-spacing:.1em;color:#fff;background:var(--grn);
@@ -138,10 +143,15 @@ section{padding:44px 0}
 .sp .k{font:700 11px/1 "DM Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
 .sp .v{margin-top:7px;font-weight:500}
 .revs{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:10px}
-.rv{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 15px;box-shadow:var(--s1)}
-.rv .st{color:#D9A21B;font-size:14px;letter-spacing:.09em}
-.rv .ti{font-weight:600;margin:5px 0 3px;font-size:15.5px;line-height:1.35}
-.rv .by{font-size:13px;color:var(--soft)}
+.rv{padding:4px 2px 14px;border-bottom:1px solid var(--line)}
+.rv .hd{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.rv .st{color:#D9A21B;font-size:14.5px;letter-spacing:.09em;line-height:1}
+.rv .vb{display:inline-flex;align-items:center;gap:5px;font:700 10.5px/1 "DM Sans",sans-serif;
+ letter-spacing:.09em;text-transform:uppercase;color:var(--grn);background:#E9F6EF;
+ border:1px solid #BFE3D2;border-radius:99px;padding:4px 8px 4px 6px}
+.rv .vb svg{width:12px;height:12px;flex:none}
+.rv .ti{font-weight:600;font-size:16px;line-height:1.35;color:var(--ink)}
+.rv .by{font-size:13.5px;color:var(--soft);margin-top:3px}
 details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:9px;box-shadow:var(--s1);
  overflow:hidden}
 summary{cursor:pointer;padding:16px 18px;font-weight:700;list-style:none;display:flex;
@@ -156,28 +166,7 @@ footer{padding:32px 0 54px;text-align:center;color:var(--soft);font-size:14px}
 @media (prefers-reduced-motion:reduce){.r,.r.in{opacity:1;transform:none;transition:none}}
 """
 
-COLD = '''<svg viewBox="0 0 560 250" role="img" aria-label="Cross-section: a bare hammock loses heat underneath, a pad in the pocket blocks it">
-<defs><linearGradient id="cold" x1="0" y1="1" x2="0" y2="0">
- <stop offset="0" stop-color="#8FB6DA" stop-opacity=".0"/><stop offset="1" stop-color="#5E93C4" stop-opacity=".55"/></linearGradient>
-<linearGradient id="warm" x1="0" y1="0" x2="0" y2="1">
- <stop offset="0" stop-color="#F0733A" stop-opacity=".5"/><stop offset="1" stop-color="#F0733A" stop-opacity="0"/></linearGradient></defs>
-<text x="140" y="22" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="15" font-weight="700" fill="#0F1B2A">A bare hammock</text>
-<text x="420" y="22" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="15" font-weight="700" fill="#0F1B2A">Pad in the pocket</text>
-<path d="M40 70 C90 130 190 130 240 70" stroke="#20406B" stroke-width="7" fill="none" stroke-linecap="round"/>
-<ellipse cx="140" cy="88" rx="52" ry="15" fill="#0E2440" opacity=".22"/>
-<g stroke="#5E93C4" stroke-width="3" stroke-linecap="round">
- <path d="M80 190v-38M110 200v-42M140 205v-46M170 200v-42M200 190v-38"/></g>
-<g fill="#5E93C4"><path d="M76 148l4-8 4 8zM106 154l4-8 4 8zM136 158l4-8 4 8zM166 154l4-8 4 8zM196 148l4-8 4 8z"/></g>
-<rect x="40" y="196" width="200" height="34" rx="9" fill="url(#cold)"/>
-<text x="140" y="222" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="13" font-weight="600" fill="#2C5C8C">Moving air takes your heat</text>
-<path d="M320 70 C370 130 470 130 520 70" stroke="#20406B" stroke-width="7" fill="none" stroke-linecap="round"/>
-<path d="M334 92 C376 124 464 124 506 92" stroke="#F0733A" stroke-width="11" fill="none" stroke-linecap="round" opacity=".92"/>
-<ellipse cx="420" cy="80" rx="52" ry="14" fill="#0E2440" opacity=".22"/>
-<rect x="320" y="40" width="200" height="30" rx="9" fill="url(#warm)"/>
-<g stroke="#B9C6D4" stroke-width="3" stroke-linecap="round" opacity=".6">
- <path d="M360 196v-30M390 202v-32M420 206v-34M450 202v-32M480 196v-30"/></g>
-<text x="420" y="222" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="13" font-weight="600" fill="#1E7A52">Pad blocks it, heat stays in</text>
-</svg>'''
+COLD = COLD_SVG
 
 pins="".join(f'<span class="pin" style="left:{x}%;top:{y}%">{n}</span>' for x,y,n in CALL)
 legend="".join(f'<div class="lg"><b>{i+1}</b><div><div class="t">{t}</div><div class="d">{d}</div></div></div>'
@@ -188,9 +177,11 @@ steps="".join(f'<div class="st"><div class="n">{i+1}</div><b>{a}</b><span>{b}</s
   ("Fly over the top","Guy it out with the two stakes."),
   ("Pad in the pocket","Slide it under your back and get in.")]))
 FEATS=[("story-rain.jpg","Rain runs off, not through","A full-coverage fly over the top and a waterproof floor beneath. Both, not one or the other."),
- ("story-inside.jpg","Room to actually lie down","You lie diagonally across it, which is what makes a hammock flat instead of a banana."),
+ ("story-inside.jpg","Room to sit up in","The rigid support poles hold the fly and net up and off you, which is what gives it the interior space and headroom a bare hammock has none of."),
  ("story-winter.jpg","Built for the cold end","Three years of prototypes tested through Canadian winters, down to "+TEMP_TESTED+".")]
-feats="".join(f'<div class="card r"><img loading="lazy" src="{s}" width="1000" height="750" alt="{t}">'
+DIMS={'story-rain.jpg': (1000, 1000), 'story-inside.jpg': (1000, 1333), 'story-winter.jpg': (1000, 750)}
+feats="".join(f'<div class="card r"><span class="ph"><img loading="lazy" src="{s}" '
+ f'width="{DIMS[s][0]}" height="{DIMS[s][1]}" alt="{t}"></span>'
  f'<div class="bd"><h3>{t}</h3><p>{d}</p></div></div>' for s,t,d in FEATS)
 TL=[("Batch 1","Sold out","1,000 units"),("Batch 2","Sold out","1,000 units"),
     ("Batch 3","Sold out","1,500 units"),("Batch 4","Open now",UNITS+" units &middot; "+SHIP)]
@@ -199,11 +190,16 @@ tl="".join(f'<div class="c{" now" if i==3 else ""}"><div class="a">{a}</div><div
 bon="".join(f'<div class="bx r"><img loading="lazy" src="{s}" width="420" height="420" alt="{t}">'
  f'<span class="tag">FREE</span><div class="bd"><div class="t">{t}</div>'
  f'<div class="v">{"" if v=="&mdash;" else "<s>$"+v+"</s>"}included</div></div></div>' for s,t,v in BONUS)
-bundle="".join(f'<div class="bi"><span>{n}</span><span>'
- f'{"<s>$"+v+"</s> <span class=tag2>FREE</span>" if free else "$"+v}</span></div>' for n,v,free in BUNDLE)
+bundle="".join(
+ f'<div class="bi"><span class="bn"><img loading="lazy" src="{BUNDLE_IMG[i]}" width="160" height="160" alt="">'
+ f'<span>{n}</span></span><span class="bv">'
+ f'{"<s>$"+v+"</s> <span class=tag2>FREE</span>" if free else "$"+v}</span></div>'
+ for i,(n,v,free) in enumerate(BUNDLE))
 specs="".join(f'<div class="sp"><div class="k">{k}</div><div class="v">{v}</div></div>' for k,v in SPECS)
-revs="".join(f'<div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>'
- f'<div class="ti">{t}</div><div class="by">{n} &middot; verified buyer</div></div>' for t,n in REVIEWS[:6])
+CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="#1E7A52" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 7"/></svg>'
+revs="".join(f'<div class="rv"><div class="hd"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span>'
+ f'<span class="vb">{CHECK}Verified</span></div>'
+ f'<div class="ti">{t}</div><div class="by">{n}</div></div>' for t,n in REVIEWS[:6])
 faq="".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in FAQ)
 
 HTML=f"""<!doctype html><html lang="en"><head>
@@ -265,12 +261,6 @@ HTML=f"""<!doctype html><html lang="en"><head>
  <div class="lead r"><h2>Three runs, three sell-outs.</h2>
   <p>We build in limited batches and don&rsquo;t overbuild. Batch {BATCH} is the last of the year.</p></div>
  <div class="diag r"><div class="tl"><div class="track"></div><div class="row">{tl}</div></div></div>
-</div></section>
-
-<section><div class="w">
- <div class="lead r"><h2>The six that come free.</h2>
-  <p>The upgrades people normally add, included while Batch {BATCH} lasts.</p></div>
- <div class="bon">{bon}</div>
 </div></section>
 
 <section><div class="w">

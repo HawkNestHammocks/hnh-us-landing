@@ -85,7 +85,8 @@ section{padding:44px 0}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--s1);
  transition:transform .2s,box-shadow .2s}
 .card:hover{transform:translateY(-2px);box-shadow:var(--s2)}
-.card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.card .ph{display:block;aspect-ratio:4/3;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;display:block}
 .card .bd{padding:16px 17px 18px}
 .card h3{margin-bottom:5px}
 .card p{font-size:15px}
@@ -116,8 +117,12 @@ section{padding:44px 0}
 /* bundle */
 .bundle{background:linear-gradient(180deg,#FFFFFF,#F7FAFD);border:1px solid var(--line);border-radius:22px;
  padding:26px 22px;box-shadow:var(--s3)}
-.bi{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;
- border-bottom:1px solid var(--line);font-size:16px}
+.bi{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;
+ border-bottom:1px solid var(--line);font-size:15.5px}
+.bn{display:flex;align-items:center;gap:11px;min-width:0}
+.bn img{width:42px;height:42px;flex:none;border-radius:9px;object-fit:cover;background:#fff;
+ border:1px solid var(--line);box-shadow:var(--s1)}
+.bv{flex:none;white-space:nowrap}
 .bi:last-of-type{border-bottom:0}
 .bi s{color:var(--soft);font-size:14px}
 .tag2{font:800 11px/1 "DM Sans",sans-serif;letter-spacing:.1em;color:#fff;background:var(--grn);
@@ -134,10 +139,15 @@ section{padding:44px 0}
 .sp .k{font:700 11px/1 "DM Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
 .sp .v{margin-top:7px;font-weight:500}
 .revs{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:10px}
-.rv{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 15px;box-shadow:var(--s1)}
-.rv .st{color:#D9A21B;font-size:14px;letter-spacing:.09em}
-.rv .ti{font-weight:600;margin:5px 0 3px;font-size:15.5px;line-height:1.35}
-.rv .by{font-size:13px;color:var(--soft)}
+.rv{padding:4px 2px 14px;border-bottom:1px solid var(--line)}
+.rv .hd{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.rv .st{color:#D9A21B;font-size:14.5px;letter-spacing:.09em;line-height:1}
+.rv .vb{display:inline-flex;align-items:center;gap:5px;font:700 10.5px/1 "DM Sans",sans-serif;
+ letter-spacing:.09em;text-transform:uppercase;color:var(--grn);background:#E9F6EF;
+ border:1px solid #BFE3D2;border-radius:99px;padding:4px 8px 4px 6px}
+.rv .vb svg{width:12px;height:12px;flex:none}
+.rv .ti{font-weight:600;font-size:16px;line-height:1.35;color:var(--ink)}
+.rv .by{font-size:13.5px;color:var(--soft);margin-top:3px}
 details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:9px;box-shadow:var(--s1);
  overflow:hidden}
 summary{cursor:pointer;padding:16px 18px;font-weight:700;list-style:none;display:flex;
@@ -169,7 +179,7 @@ footer{padding:32px 0 54px;text-align:center;color:var(--soft);font-size:14px}
   <p>One order. Nothing else to buy before your first night out.</p></div>
  <div class="anat r"><img loading="lazy" src="product-v3-main.jpg" width="820" height="820"
    alt="The Hawk Nest V.3 laid out: rain fly, hammock body with bug net, stuff sack, stakes, straps, guy lines and spreader poles"><span class="pin" style="left:50%;top:13%">1</span><span class="pin" style="left:50%;top:41%">2</span><span class="pin" style="left:14%;top:79%">3</span><span class="pin" style="left:26%;top:79%">4</span><span class="pin" style="left:43%;top:77%">5</span><span class="pin" style="left:62%;top:77%">6</span><span class="pin" style="left:81%;top:85%">7</span></div>
- <div class="legend r"><div class="lg"><b>1</b><div><div class="t">Rain fly</div><div class="d">Full-coverage waterproof cover, detachable</div></div></div><div class="lg"><b>2</b><div><div class="t">Hammock body</div><div class="d">With the bug net and pad pocket sewn in</div></div></div><div class="lg"><b>3</b><div><div class="t">Spreader poles</div><div class="d">Four sections, hold the net off your face</div></div></div><div class="lg"><b>4</b><div><div class="t">Tree straps</div><div class="d">Two, no knots to learn</div></div></div><div class="lg"><b>5</b><div><div class="t">Guy lines</div><div class="d">Two, to pull the fly taut</div></div></div><div class="lg"><b>6</b><div><div class="t">Stakes</div><div class="d">Two, for the guy lines</div></div></div><div class="lg"><b>7</b><div><div class="t">Stuff sack</div><div class="d">Waterproof, the whole thing packs into it</div></div></div></div>
+ <div class="legend r"><div class="lg"><b>1</b><div><div class="t">Rain fly</div><div class="d">Full-coverage waterproof cover, detachable</div></div></div><div class="lg"><b>2</b><div><div class="t">Hammock body</div><div class="d">With the bug net and pad pocket sewn in</div></div></div><div class="lg"><b>3</b><div><div class="t">Carrying case</div><div class="d">Waterproof, the whole thing packs into it</div></div></div><div class="lg"><b>4</b><div><div class="t">Stakes</div><div class="d">Two, for the guy lines</div></div></div><div class="lg"><b>5</b><div><div class="t">Tree straps</div><div class="d">Two, no knots to learn</div></div></div><div class="lg"><b>6</b><div><div class="t">Guy lines</div><div class="d">Two, to pull the fly taut</div></div></div><div class="lg"><b>7</b><div><div class="t">Rigid support poles</div><div class="d">Hold the fly and net up and off you</div></div></div></div>
 </div></section>
 
 <section><div class="w">
@@ -216,7 +226,7 @@ footer{padding:32px 0 54px;text-align:center;color:var(--soft);font-size:14px}
 
 <section><div class="w">
  <div class="lead r"><h2>What it does that a hammock doesn&rsquo;t.</h2></div>
- <div class="feats"><div class="card r"><img loading="lazy" src="story-rain.jpg" width="1000" height="750" alt="Rain runs off, not through"><div class="bd"><h3>Rain runs off, not through</h3><p>A full-coverage fly over the top and a waterproof floor beneath. Both, not one or the other.</p></div></div><div class="card r"><img loading="lazy" src="story-inside.jpg" width="1000" height="750" alt="Room to actually lie down"><div class="bd"><h3>Room to actually lie down</h3><p>You lie diagonally across it, which is what makes a hammock flat instead of a banana.</p></div></div><div class="card r"><img loading="lazy" src="story-winter.jpg" width="1000" height="750" alt="Built for the cold end"><div class="bd"><h3>Built for the cold end</h3><p>Three years of prototypes tested through Canadian winters, down to &minus;22&deg;F.</p></div></div></div>
+ <div class="feats"><div class="card r"><span class="ph"><img loading="lazy" src="story-rain.jpg" width="1000" height="1000" alt="Rain runs off, not through"></span><div class="bd"><h3>Rain runs off, not through</h3><p>A full-coverage fly over the top and a waterproof floor beneath. Both, not one or the other.</p></div></div><div class="card r"><span class="ph"><img loading="lazy" src="story-inside.jpg" width="1000" height="1333" alt="Room to sit up in"></span><div class="bd"><h3>Room to sit up in</h3><p>The rigid support poles hold the fly and net up and off you, which is what gives it the interior space and headroom a bare hammock has none of.</p></div></div><div class="card r"><span class="ph"><img loading="lazy" src="story-winter.jpg" width="1000" height="750" alt="Built for the cold end"></span><div class="bd"><h3>Built for the cold end</h3><p>Three years of prototypes tested through Canadian winters, down to &minus;22&deg;F.</p></div></div></div>
 </div></section>
 
 <section><div class="w">
@@ -226,15 +236,9 @@ footer{padding:32px 0 54px;text-align:center;color:var(--soft);font-size:14px}
 </div></section>
 
 <section><div class="w">
- <div class="lead r"><h2>The six that come free.</h2>
-  <p>The upgrades people normally add, included while Batch 4 lasts.</p></div>
- <div class="bon"><div class="bx r"><img loading="lazy" src="bonus-1.jpg" width="420" height="420" alt="Waterproof &amp; Windproof Fabric"><span class="tag">FREE</span><div class="bd"><div class="t">Waterproof &amp; Windproof Fabric</div><div class="v"><s>$39</s>included</div></div></div><div class="bx r"><img loading="lazy" src="bonus-2.jpg" width="420" height="420" alt="Waterproof Carrying Bag"><span class="tag">FREE</span><div class="bd"><div class="t">Waterproof Carrying Bag</div><div class="v"><s>$19</s>included</div></div></div><div class="bx r"><img loading="lazy" src="bonus-3.jpg" width="420" height="420" alt="Lifetime Warranty"><span class="tag">FREE</span><div class="bd"><div class="t">Lifetime Warranty</div><div class="v"><s>$59</s>included</div></div></div><div class="bx r"><img loading="lazy" src="bonus-4.jpg" width="420" height="420" alt="1 Year Gridless Premium"><span class="tag">FREE</span><div class="bd"><div class="t">1 Year Gridless Premium</div><div class="v"><s>$79</s>included</div></div></div><div class="bx r"><img loading="lazy" src="bonus-5.jpg" width="420" height="420" alt="Free U.S. Shipping"><span class="tag">FREE</span><div class="bd"><div class="t">Free U.S. Shipping</div><div class="v">included</div></div></div><div class="bx r"><img loading="lazy" src="bonus-6.jpg" width="420" height="420" alt="Hassle-Free Returns"><span class="tag">FREE</span><div class="bd"><div class="t">Hassle-Free Returns</div><div class="v"><s>$4.99</s>included</div></div></div></div>
-</div></section>
-
-<section><div class="w">
  <div class="lead r"><h2>Everything, one price.</h2></div>
  <div class="bundle r">
-  <div class="bi"><span>Hawk Nest&trade; V.3 All-Season Hammock Tent</span><span>$229</span></div><div class="bi"><span>Gridless Survival App &mdash; 1 year Premium</span><span><s>$79</s> <span class=tag2>FREE</span></span></div><div class="bi"><span>Lifetime Warranty Upgrade</span><span><s>$59</s> <span class=tag2>FREE</span></span></div><div class="bi"><span>Waterproof Bottom Fabric upgrade</span><span><s>$39</s> <span class=tag2>FREE</span></span></div><div class="bi"><span>Waterproof Carrying Bag upgrade</span><span><s>$19</s> <span class=tag2>FREE</span></span></div><div class="bi"><span>Free Returns</span><span><s>$4.99</s> <span class=tag2>FREE</span></span></div>
+  <div class="bi"><span class="bn"><img loading="lazy" src="product-thumb.jpg" width="160" height="160" alt=""><span>Hawk Nest&trade; V.3 All-Season Hammock Tent</span></span><span class="bv">$229</span></div><div class="bi"><span class="bn"><img loading="lazy" src="bonus-4-sm.jpg" width="160" height="160" alt=""><span>Gridless Survival App &mdash; 1 year Premium</span></span><span class="bv"><s>$79</s> <span class=tag2>FREE</span></span></div><div class="bi"><span class="bn"><img loading="lazy" src="bonus-3-sm.jpg" width="160" height="160" alt=""><span>Lifetime Warranty Upgrade</span></span><span class="bv"><s>$59</s> <span class=tag2>FREE</span></span></div><div class="bi"><span class="bn"><img loading="lazy" src="bonus-1-sm.jpg" width="160" height="160" alt=""><span>Waterproof Bottom Fabric upgrade</span></span><span class="bv"><s>$39</s> <span class=tag2>FREE</span></span></div><div class="bi"><span class="bn"><img loading="lazy" src="bonus-2-sm.jpg" width="160" height="160" alt=""><span>Waterproof Carrying Bag upgrade</span></span><span class="bv"><s>$19</s> <span class=tag2>FREE</span></span></div><div class="bi"><span class="bn"><img loading="lazy" src="bonus-6-sm.jpg" width="160" height="160" alt=""><span>Free Returns</span></span><span class="bv"><s>$4.99</s> <span class=tag2>FREE</span></span></div>
   <div class="tot"><div class="l">Buy it all<br>separately</div><div class="p"><s>$429</s>$159</div></div>
   <div class="keep">You keep $270</div>
   <a class="cta" href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" rel="nofollow">Reserve yours &mdash; $159</a>
@@ -249,7 +253,7 @@ footer{padding:32px 0 54px;text-align:center;color:var(--soft);font-size:14px}
 
 <section><div class="w">
  <div class="lead r"><h2>9,000+ shipped.</h2><p>Real review titles from verified buyers.</p></div>
- <div class="revs r"><div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="ti">Algonquin Park, Ontario true Hawknest test</div><div class="by">Pat Christie &middot; verified buyer</div></div><div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="ti">Best sleep in the backcountry in a long time</div><div class="by">Jordan Danchuk &middot; verified buyer</div></div><div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="ti">The ultimate backcountry sleep system!</div><div class="by">Cooper Mercer &middot; verified buyer</div></div><div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="ti">A great system for moto-camping</div><div class="by">Brandon Williams &middot; verified buyer</div></div><div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="ti">Most comfortable hammock</div><div class="by">MR MOUNTAIN &middot; verified buyer</div></div><div class="rv"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="ti">Very spacious!</div><div class="by">Jesse Stanley &middot; verified buyer</div></div></div>
+ <div class="revs r"><div class="rv"><div class="hd"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="vb"><svg viewBox="0 0 24 24" fill="none" stroke="#1E7A52" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 7"/></svg>Verified</span></div><div class="ti">Algonquin Park, Ontario true Hawknest test</div><div class="by">Pat Christie</div></div><div class="rv"><div class="hd"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="vb"><svg viewBox="0 0 24 24" fill="none" stroke="#1E7A52" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 7"/></svg>Verified</span></div><div class="ti">Best sleep in the backcountry in a long time</div><div class="by">Jordan Danchuk</div></div><div class="rv"><div class="hd"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="vb"><svg viewBox="0 0 24 24" fill="none" stroke="#1E7A52" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 7"/></svg>Verified</span></div><div class="ti">The ultimate backcountry sleep system!</div><div class="by">Cooper Mercer</div></div><div class="rv"><div class="hd"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="vb"><svg viewBox="0 0 24 24" fill="none" stroke="#1E7A52" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 7"/></svg>Verified</span></div><div class="ti">A great system for moto-camping</div><div class="by">Brandon Williams</div></div><div class="rv"><div class="hd"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="vb"><svg viewBox="0 0 24 24" fill="none" stroke="#1E7A52" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 7"/></svg>Verified</span></div><div class="ti">Most comfortable hammock</div><div class="by">MR MOUNTAIN</div></div><div class="rv"><div class="hd"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="vb"><svg viewBox="0 0 24 24" fill="none" stroke="#1E7A52" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 7"/></svg>Verified</span></div><div class="ti">Very spacious!</div><div class="by">Jesse Stanley</div></div></div>
 </div></section>
 
 <section><div class="w">

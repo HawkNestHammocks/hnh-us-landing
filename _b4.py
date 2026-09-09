@@ -53,8 +53,35 @@ STEPS=[("You reserve it","Card is charged now, which is what funds the run."),
 
 INBOX=[("Rain fly","Full-coverage waterproof cover, detachable"),
  ("Hammock body","With the bug net and pad pocket sewn in"),
- ("Spreader poles","Four sections, hold the net off your face"),
+ ("Carrying case","Waterproof, the whole thing packs into it"),
+ ("Stakes","Two, for the guy lines"),
  ("Tree straps","Two, no knots to learn"),
  ("Guy lines","Two, to pull the fly taut"),
- ("Stakes","Two, for the guy lines"),
- ("Stuff sack","Waterproof, the whole thing packs into it")]
+ ("Rigid support poles","Hold the fly and net up and off you")]
+# Never describe this as a flat-lay hammock — it is not one. Diagonal lie helps, but the
+# claim to make is about interior space and headroom from the rigid poles.
+BUNDLE_IMG=["product-thumb.jpg","bonus-4-sm.jpg","bonus-3-sm.jpg","bonus-1-sm.jpg","bonus-2-sm.jpg","bonus-6-sm.jpg"]
+
+# Heat-loss explainer, shared by all three pages.
+COLD_SVG='''<svg viewBox="0 0 560 250" role="img" aria-label="Cross-section: a bare hammock loses heat underneath, a pad in the pocket blocks it">
+<defs><linearGradient id="cold" x1="0" y1="1" x2="0" y2="0">
+ <stop offset="0" stop-color="#8FB6DA" stop-opacity=".0"/><stop offset="1" stop-color="#5E93C4" stop-opacity=".55"/></linearGradient>
+<linearGradient id="warm" x1="0" y1="0" x2="0" y2="1">
+ <stop offset="0" stop-color="#F0733A" stop-opacity=".5"/><stop offset="1" stop-color="#F0733A" stop-opacity="0"/></linearGradient></defs>
+<text x="140" y="22" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="15" font-weight="700" fill="#0F1B2A">A bare hammock</text>
+<text x="420" y="22" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="15" font-weight="700" fill="#0F1B2A">Pad in the pocket</text>
+<path d="M40 70 C90 130 190 130 240 70" stroke="#20406B" stroke-width="7" fill="none" stroke-linecap="round"/>
+<ellipse cx="140" cy="88" rx="52" ry="15" fill="#0E2440" opacity=".22"/>
+<g stroke="#5E93C4" stroke-width="3" stroke-linecap="round">
+ <path d="M80 190v-38M110 200v-42M140 205v-46M170 200v-42M200 190v-38"/></g>
+<g fill="#5E93C4"><path d="M76 148l4-8 4 8zM106 154l4-8 4 8zM136 158l4-8 4 8zM166 154l4-8 4 8zM196 148l4-8 4 8z"/></g>
+<rect x="40" y="196" width="200" height="34" rx="9" fill="url(#cold)"/>
+<text x="140" y="222" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="13" font-weight="600" fill="#2C5C8C">Moving air takes your heat</text>
+<path d="M320 70 C370 130 470 130 520 70" stroke="#20406B" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M334 92 C376 124 464 124 506 92" stroke="#F0733A" stroke-width="11" fill="none" stroke-linecap="round" opacity=".92"/>
+<ellipse cx="420" cy="80" rx="52" ry="14" fill="#0E2440" opacity=".22"/>
+<rect x="320" y="40" width="200" height="30" rx="9" fill="url(#warm)"/>
+<g stroke="#B9C6D4" stroke-width="3" stroke-linecap="round" opacity=".6">
+ <path d="M360 196v-30M390 202v-32M420 206v-34M450 202v-32M480 196v-30"/></g>
+<text x="420" y="222" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="13" font-weight="600" fill="#1E7A52">Pad blocks it, heat stays in</text>
+</svg>'''
