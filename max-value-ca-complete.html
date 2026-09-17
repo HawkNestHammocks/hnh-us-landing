@@ -329,7 +329,7 @@ function showDetails(key){
   document.getElementById("dmNow").textContent = d.now;
   const btn = document.getElementById("dmAdd");
   btn.dataset.key = key;
-  btn.textContent = selected.has(key) ? "✓ Added to pre-order" : "Add to order";
+  btn.textContent = selected.has(key) ? "✓ Added to order" : "Add to order";
   document.getElementById("detailsModal").style.display = "flex";
   document.body.style.overflow = "hidden";
 }

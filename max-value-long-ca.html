@@ -735,8 +735,7 @@ footer a{color:var(--sand);text-decoration:underline}
 <div id="stickyBar" style="position:fixed;bottom:0;left:0;right:0;z-index:999;background:linear-gradient(180deg,#1a1208,#0f0b04);border-top:1px solid rgba(232,218,200,.15);padding:12px 20px;display:none;align-items:center;justify-content:center;gap:16px;box-shadow:0 -4px 20px rgba(0,0,0,.4);backdrop-filter:blur(10px)">
   <div style="display:flex;align-items:center;gap:8px">
     <span style="width:8px;height:8px;background:#4ade80;border-radius:50%;display:inline-block;animation:pulse-dot 1.5s infinite"></span>
-    <span style="font-family:var(--sans);font-size:.8rem;color:var(--sand);font-weight:500"><strong id="stickyViewers">34</strong> people viewing this offer</span>
-  </div>
+    </div>
   <a href="#offer" style="background:linear-gradient(180deg,var(--rust),var(--rust-dark));color:#fff;font-family:var(--sans);font-size:.8rem;font-weight:700;padding:10px 20px;border-radius:6px;text-decoration:none;white-space:nowrap;box-shadow:0 2px 10px rgba(180,83,9,.3)">Claim Your Offer →</a>
 </div>
 <style>
@@ -759,19 +758,11 @@ footer a{color:var(--sand);text-decoration:underline}
 // Sticky bottom bar — show after scrolling past hero
 (function(){
   const bar = document.getElementById('stickyBar');
-  const viewerEl = document.getElementById('stickyViewers');
-  let baseCount = 28 + Math.floor(Math.random()*25);
-  viewerEl.textContent = baseCount;
-
-  // Fluctuate viewer count
-  setInterval(() => {
-    baseCount += Math.floor(Math.random()*5) - 2;
-    baseCount = Math.max(18, Math.min(72, baseCount));
-    viewerEl.textContent = baseCount;
-  }, 3000);
-
-  // Show after scrolling past hero
+  if (!bar) return;
+  // (the fabricated live-viewer counter that used to live here was removed with its element;
+  //  it was unguarded and would have thrown, taking the sticky bar down with it)
   const hero = document.querySelector('.hero');
+  if (!hero) return;
   const barObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       bar.style.display = e.isIntersecting ? 'none' : 'flex';
@@ -786,25 +777,25 @@ const upgradeData = {
     img: 'https://cdn.shopify.com/s/files/1/0815/8498/0265/files/DeepForestColorLogoGuide_2.png?v=1754938190',
     title: 'Waterproof Bottom Upgrade',
     desc: 'Heavy-duty waterproof floor panel that snaps onto the bottom of your hammock tent. Protects against rain splashback, morning dew, and adds an extra layer of wind protection underneath.',
-    value: 'Value: $39 — FREE with pre-order'
+    value: 'Value: $39 — FREE with your order'
   },
   bag: {
     img: 'https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Deep_Forest_ColorLogo_Guide_6.png?v=1754939669',
     title: 'Waterproof Carrying Bag',
     desc: 'Premium roll-top waterproof carrying bag that keeps your entire kit dry during transport. Compression straps reduce pack size by 30%. Doubles as a dry bag for river trips.',
-    value: 'Value: $19 — FREE with pre-order'
+    value: 'Value: $19 — FREE with your order'
   },
   warranty: {
     img: 'https://cdn.shopify.com/s/files/1/0815/8498/0265/files/lifetime_warranty_badge.png?v=1779393862',
     title: 'Lifetime Warranty',
     desc: 'For as long as you own your Hawk Nest. Tears, rips, frayed seams, broken zippers, snapped poles, faulty buckles — if it fails under normal use, we replace it. Forever. Email a photo + your order number and an express replacement ships out.',
-    value: 'Value: $59 — FREE with pre-order'
+    value: 'Value: $59 — FREE with your order'
   },
   gridless: {
     img: 'gridless_icon.png',
     title: '1 Year Gridless Premium',
     desc: 'The survival education app that teaches real outdoor skills through bite-sized lessons and quizzes. Master fire-starting, navigation, shelter building, water purification and 600+ wilderness topics. Works offline so you can learn anywhere — even off the grid.',
-    value: 'Value: $79 — FREE with pre-order'
+    value: 'Value: $79 — FREE with your order'
   }
 };
 function showUpgrade(key){
