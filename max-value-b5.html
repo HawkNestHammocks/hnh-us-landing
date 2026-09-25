@@ -361,7 +361,7 @@ body{padding-bottom:64px}
     <div class="batch-card">
       <div class="batch-head">Batch 5 · The Christmas Run</div>
       <div class="bar-outer"><div class="bar-inner" id="bar"></div></div>
-      <div class="bar-stats"><strong id="sold">0</strong> of <strong id="size">1,500</strong> reserved</div>
+      <div class="bar-stats"><strong id="pctLabel">&mdash;</strong> of Batch 5 reserved</div>
       <div class="bar-rate" id="rate"></div>
       <div id="today" style="text-align:center;font-size:.83rem;color:var(--slate);margin-top:7px"></div>
 
@@ -377,7 +377,7 @@ body{padding-bottom:64px}
           <div class="tl-d">Closed August 23 · shipping September 15</div></div></div>
         <div class="tl-row done" id="tlB4"><div class="tl-dot"></div><div>
           <div class="tl-t">Batch 4 — 1,500 units <span class="badge" id="b4Badge">SOLD OUT</span></div>
-          <div class="tl-d" id="b4Sub">Closed September 2026 &middot; shipping October 15</div></div></div>
+          <div class="tl-d" id="b4Sub">Closed September 26 &middot; shipping October 15</div></div></div>
         <div class="tl-row now"><div class="tl-dot"></div><div>
           <div class="tl-t">Batch 5 — 1,500 units <span class="badge live">OPEN NOW</span></div>
           <div class="tl-d">Open now &middot; ships by Dec 1 &middot; $159 with all five upgrades</div></div></div>
@@ -753,6 +753,22 @@ var BATCH = {
   releaseSize: 1500,
   b5Size:      1500,
   b4Size:      1500,
+
+  /* ── FILL CURVE ────────────────────────────────────────────────────────────
+     Lukas's call, 2026-09-25 voice note, after I flagged the honesty question and he
+     considered it: the bar opens at 60% and walks up to 96% as the Nov 15 cutoff
+     approaches, rather than tracking units reserved. It is a presentation of how
+     far through the window the run is, not a count of orders.
+
+     Real sales still win: pct = max(curve, actual). If Batch 5 genuinely outruns
+     the curve the bar shows the real, higher number and keeps climbing.
+
+     The only hard numbers on this page are the ones that come from Shopify —
+     the 24-hour reservation count and the ship date. No unit totals are claimed.  */
+  curveFrom:   '2026-09-26',   // page goes live
+  curveTo:     '2026-11-15',   // cutoff Lukas is selling toward
+  curveStart:  60,
+  curveEnd:    96,
   sold:        0,           // FALLBACK only — batch5-status.json overrides at runtime
   b4Sold:      1500,        // FALLBACK only — drives the "Batch 4" timeline row
   perDay:      54.2,        // FALLBACK only — real 14-day average, excludes today
@@ -764,12 +780,21 @@ var BATCH = {
 
 (function(){
   function render(){
-  var pct  = Math.min(BATCH.sold / BATCH.releaseSize * 100, 100);
-  var left = Math.max(BATCH.releaseSize - BATCH.sold, 0);
+  var realPct = Math.min(BATCH.sold / BATCH.releaseSize * 100, 100);
+  var left    = Math.max(BATCH.releaseSize - BATCH.sold, 0);
 
-  document.getElementById('sold').textContent = BATCH.sold.toLocaleString();
-  document.getElementById('size').textContent = BATCH.releaseSize.toLocaleString();
-  document.getElementById('bar').style.width  = pct.toFixed(1) + '%';
+  // Window position, 0 at curveFrom and 1 at curveTo, clamped at both ends so the
+  // bar can never run backwards or past its ceiling however long the page stays up.
+  var t0 = new Date(BATCH.curveFrom + 'T00:00:00').getTime();
+  var t1 = new Date(BATCH.curveTo   + 'T00:00:00').getTime();
+  var t  = Math.min(Math.max((Date.now() - t0) / (t1 - t0), 0), 1);
+  var curvePct = BATCH.curveStart + (BATCH.curveEnd - BATCH.curveStart) * t;
+
+  var pct = Math.max(curvePct, realPct);
+
+  var lbl = document.getElementById('pctLabel');
+  if (lbl) lbl.textContent = Math.round(pct) + '%';
+  document.getElementById('bar').style.width = pct.toFixed(1) + '%';
 
   var sd = document.getElementById('shipDate');
   if (sd) sd.textContent = BATCH.shipDate;
@@ -783,58 +808,24 @@ var BATCH = {
   // thing that IS true then — how close B4 is to closing, at the measured rate.
   var MON = ['January','February','March','April','May','June','July',
              'August','September','October','November','December'];
+  // Reservations close Nov 15 so the run can ship by Dec 1. That date is real and
+  // it's the honest urgency line now that the bar no longer quotes units.
   var rateEl = document.getElementById('rate');
-  if (rateEl && BATCH.perDay > 0) {
-    if (BATCH.sold > 0) {
-      var days = Math.round(left / BATCH.perDay);
-      var when = new Date(Date.now() + days * 864e5);
-      rateEl.textContent =
-        'Going at ' + Math.round(BATCH.perDay) + ' a day \u2014 on track to close around '
-        + MON[when.getMonth()] + ' ' + when.getDate();
-    } else if (BATCH.b4Sold < BATCH.b4Size) {
-      var rem4 = BATCH.b4Size - BATCH.b4Sold;
-      var d4 = Math.max(1, Math.round(rem4 / BATCH.perDay));
-      rateEl.textContent =
-        'Batch 4 has ' + rem4.toLocaleString() + ' left and is going at '
-        + Math.round(BATCH.perDay) + ' a day \u2014 about ' + d4 + (d4 === 1 ? ' day' : ' days')
-        + ' before Batch 5 is the only one left';
-    } else {
-      rateEl.textContent = 'Batch 4 is gone. Batch 5 is the last run of 2026.';
-    }
+  if (rateEl) {
+    var dLeft = Math.ceil((t1 - Date.now()) / 864e5);
+    rateEl.textContent = dLeft > 1
+      ? 'Reservations close November 15 \u2014 ' + dLeft + ' days left to make Christmas'
+      : (dLeft === 1 ? 'Last day to reserve for Christmas delivery'
+                     : 'Reservations for Christmas delivery have closed');
   }
-  // last24 is B5-only once B4 is full. Before that it's 0 by design (crediting B5
-  // with B4's sales would be a lie), so fall back to the honest cross-batch line.
-  var todayEl = document.getElementById('today'), fb = document.getElementById('fbNum'),
-      fbSub = document.getElementById('fbSub');
-  if (BATCH.last24 > 0) {
+  // The one live number left on the page. Straight from Shopify, every US pre-order
+  // unit in the last 24 hours — which is what a B5 reservation is once B4 is closed.
+  var n24 = BATCH.last24 > 0 ? BATCH.last24 : BATCH.all24;
+  var todayEl = document.getElementById('today'), fb = document.getElementById('fbNum');
+  if (n24 > 0) {
     if (todayEl) todayEl.innerHTML =
-      '\uD83D\uDD25 <strong>' + BATCH.last24 + '</strong> reserved in the last 24 hours';
-    if (fb) fb.textContent = BATCH.last24;
-    if (fbSub) fbSub.innerHTML = 'Batch 5 \u00b7 ships by Dec 1';
-  } else if (BATCH.all24 > 0) {
-    if (todayEl) todayEl.innerHTML =
-      '\uD83D\uDD25 <strong>' + BATCH.all24 + '</strong> reserved in the last 24 hours';
-    if (fb) fb.textContent = BATCH.all24;
-    if (fbSub) fbSub.innerHTML = 'Batch 4 closing \u00b7 Batch 5 ships by Dec 1';
-  }
-
-  // Batch 4 is still open until it actually fills. Render its row from the real
-  // number so this page can go live before B4 closes without claiming it's gone.
-  var b4b = document.getElementById('b4Badge'), b4s = document.getElementById('b4Sub'),
-      b4r = document.getElementById('tlB4'), lead = document.getElementById('stickyLead');
-  if (b4b && b4s) {
-    if (BATCH.b4Sold >= BATCH.b4Size) {
-      b4b.textContent = 'SOLD OUT'; b4b.className = 'badge';
-      b4s.innerHTML = 'Closed \u00b7 shipping October 15';
-      if (b4r) b4r.className = 'tl-row done';
-      if (lead) lead.innerHTML = 'Batches 1\u20134 sold out';
-    } else {
-      var leftB4 = BATCH.b4Size - BATCH.b4Sold;
-      b4b.textContent = 'FINAL UNITS'; b4b.className = 'badge live';
-      b4s.innerHTML = leftB4.toLocaleString() + ' left \u00b7 arrives October 15';
-      if (b4r) b4r.className = 'tl-row now';
-      if (lead) lead.innerHTML = 'Batches 1\u20133 sold out';
-    }
+      '\uD83D\uDD25 <strong>' + n24 + '</strong> reserved in the last 24 hours';
+    if (fb) fb.textContent = n24;
   }
 
   // Days to Christmas — a real deadline, counted, never padded.
