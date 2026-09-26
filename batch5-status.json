@@ -1,11 +1,11 @@
 {
  "batch": 5,
  "sold": 0,
- "b4Sold": 1317,
+ "b4Sold": 1323,
  "last24": 0,
- "all24": 27,
+ "all24": 28,
  "release": 1500,
- "perDay": 52.2,
+ "perDay": 52.6,
  "shipDate": "December 1",
- "updated": "2026-09-26T02:07:04Z"
+ "updated": "2026-09-26T04:07:03Z"
 }
