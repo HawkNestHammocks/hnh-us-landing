@@ -855,6 +855,11 @@ var UGC = [{"n": "Alex Catherwood", "t": "Alex’s Hawk Nest Hammock", "b": "An 
 
 /* ── sticky footer ─────────────────────────────────────────────── */
 (function(){
+  // This script block sits ABOVE the .footbar markup in the document, so at parse
+  // time getElementById('footbar') returned null, the guard below bailed, and the
+  // scroll listener was never attached — the sticky CTA could never appear on any
+  // device. Wait for the DOM before looking it up. Found 2026-09-28.
+  function init(){
   var bar=document.getElementById('footbar'), hero=document.querySelector('.hero');
   if(!bar||!hero) return;
   var num=document.getElementById('fbNum');
@@ -864,6 +869,9 @@ var UGC = [{"n": "Alex Catherwood", "t": "Alex’s Hawk Nest Hammock", "b": "An 
     else bar.classList.remove('on');
   }
   window.addEventListener('scroll', check, {passive:true}); check();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();
 
 </script>
