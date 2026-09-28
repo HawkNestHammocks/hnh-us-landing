@@ -226,8 +226,27 @@ footer a{color:var(--sand)}
   backdrop-filter:blur(8px);border-top:1px solid #5c4a32;padding:9px 12px;
   display:flex;align-items:center;gap:10px;transform:translateY(110%);transition:transform .35s ease}
 .footbar.on{transform:none}
-.footbar .fb-l{flex:1;min-width:0;color:#e8dcc8;font-size:.76rem;line-height:1.3}
-.footbar .fb-l b{color:#facc15}
+.footbar .fb-l{flex:1;min-width:0;color:#e8dcc8;font-size:.76rem;line-height:1.32}
+.footbar .fb-l b{color:#facc15;font-weight:800}
+.footbar .fb-live{display:block}
+.footbar .fb-live[hidden]{display:none}
+.footbar .fb-sub{display:block;color:#c9bda6;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.footbar .fb-sub b{color:#fbbf24}
+/* a number presented as live should look live — the dot only shows when the
+   figure actually came back from batch5-status.json */
+.footbar .fb-dot{display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:#4ade80;margin-right:6px;vertical-align:middle;
+  box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:fbpulse 2s infinite}
+@keyframes fbpulse{
+  0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}
+  70%{box-shadow:0 0 0 7px rgba(74,222,128,0)}
+  100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+@media(max-width:380px){
+  .footbar{padding:8px 10px;gap:8px}
+  .footbar .fb-l{font-size:.71rem}
+  .footbar a{font-size:.8rem;padding:11px 14px}
+}
 .footbar a{flex:none;background:linear-gradient(135deg,var(--rust),var(--rust-dark));color:#fff;
   text-decoration:none;font-weight:800;font-size:.86rem;padding:12px 18px;border-radius:10px;
   white-space:nowrap}
@@ -821,11 +840,25 @@ var BATCH = {
   // The one live number left on the page. Straight from Shopify, every US pre-order
   // unit in the last 24 hours — which is what a B5 reservation is once B4 is closed.
   var n24 = BATCH.last24 > 0 ? BATCH.last24 : BATCH.all24;
-  var todayEl = document.getElementById('today'), fb = document.getElementById('fbNum');
+  var todayEl = document.getElementById('today'), fb = document.getElementById('fbNum'),
+      fbLive = document.getElementById('fbLive'), fbSub = document.getElementById('fbSub');
   if (n24 > 0) {
     if (todayEl) todayEl.innerHTML =
       '\uD83D\uDD25 <strong>' + n24 + '</strong> reserved in the last 24 hours';
     if (fb) fb.textContent = n24;
+    if (fbLive) fbLive.hidden = false;
+  } else if (fbLive) {
+    // The markup used to ship a hardcoded 0, so a failed fetch rendered
+    // "0 reserved in the last 24 hours" — the worst possible number to show.
+    fbLive.hidden = true;
+  }
+  // Line two carries the deadline, which is true whether or not the feed answers.
+  if (fbSub) {
+    var dl = Math.ceil((t1 - Date.now()) / 864e5);
+    fbSub.innerHTML = dl > 1
+      ? 'Order by Nov 15 \u00b7 <b>' + dl + ' days left</b>'
+      : (dl === 1 ? '<b>Last day</b> to make Christmas'
+                  : 'Batch 5 \u00b7 ships by Dec 1');
   }
 
   // Days to Christmas — a real deadline, counted, never padded.
@@ -981,7 +1014,10 @@ var UGC = [{"n": "Alex Catherwood", "t": "Alex’s Hawk Nest Hammock", "b": "An 
 
 </script>
 <div class="footbar" id="footbar">
-  <div class="fb-l"><b id="fbNum">0</b> reserved in the last 24 hours<br><span id="fbSub">Batch 5 &middot; ships by Dec 1</span></div>
+  <div class="fb-l">
+    <span class="fb-live" id="fbLive" hidden><i class="fb-dot"></i><b id="fbNum"></b> reserved in the last 24 hours</span>
+    <span class="fb-sub" id="fbSub">Batch 5 &middot; ships by Dec 1</span>
+  </div>
   <a href="#buy">RESERVE — $159</a>
 </div>
 </body>
