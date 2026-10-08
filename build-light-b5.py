@@ -54,6 +54,13 @@ def build(price, outname):
                   "The hammock tent, plus every upgrade people normally add to it, "
                   "included at no extra cost while Batch&nbsp;5 lasts.")
     h = h.replace("5-Year Extended Warranty", "Lifetime Warranty Upgrade")
+    # the 5-year row reused the bottom-upgrade photo; the real badge exists on the
+    # Lifetime Warranty Upgrade product
+    h = h.replace("https://cdn.shopify.com/s/files/1/0815/8498/0265/files/"
+                  "Bottom_Upgrade_1.png?v=1741284804",
+                  "https://cdn.shopify.com/s/files/1/0815/8498/0265/files/"
+                  "lifetime_warranty_badge.png?v=1779393862")
+    h = h.replace('alt="5-Year Warranty"', 'alt="Lifetime Warranty"')
     h = h.replace("3 Months Gridless Premium", "1 Year Gridless Premium")
     h = h.replace("'$29 Value — FREE'", "'$59 Value — FREE'", 1)          # warranty popup
     h = h.replace("'$30 Value — FREE'", "'$79 Value — FREE'")             # gridless popup
@@ -67,10 +74,39 @@ def build(price, outname):
     # add the sixth line (free returns) just above the total row
     h = h.replace('  <div class="stack-row free">\n    <span class="stack-label">Standard US Shipping</span>',
                   '  <div class="stack-row free">\n'
-                  '    <span class="stack-label">Hassle-Free Returns</span>\n'
+                  '    <span class="stack-label"><img class="stack-thumb" '
+                  'src="returns-badge.png" alt="Hassle-free returns"> '
+                  'Hassle-Free Returns</span>\n'
                   '    <span class="stack-val"><s style="color:#94a3b8">$4.99</s> FREE</span>\n'
                   '  </div>\n'
-                  '  <div class="stack-row free">\n    <span class="stack-label">Standard US Shipping</span>')
+                  '  <div class="stack-row free">\n'
+                  '    <span class="stack-label"><img class="stack-thumb" '
+                  'src="shipping-badge.png" alt="Free US shipping"> '
+                  'Standard US Shipping</span>')
+    # ── quantity selector above the main purchase button ────────────────────
+    # Six line items scale together; the BXGY gives five free add-ons per hammock,
+    # so the cart total is simply qty x unit price.
+    old_cta = ('<div class="value-cta fade-in">\n'
+               f'  <a href="{CART}" target="_blank" class="btn" '
+               'style="font-size:1.2rem;padding:20px 48px">GET THE FULL BUNDLE'
+               f' &mdash; ${price}</a>')
+    old_cta = old_cta.replace("&mdash;", "—")
+    if old_cta not in h:
+        sys.exit("value-cta block not found — light-test.html changed shape")
+    h = h.replace(old_cta,
+        '<div class="value-cta fade-in">\n'
+        '  <div class="qty-pick">\n'
+        '    <span class="qty-lbl">Quantity</span>\n'
+        '    <div class="qty-box">\n'
+        '      <button type="button" id="qMinus" aria-label="Decrease quantity">&minus;</button>\n'
+        '      <span id="qNum" aria-live="polite">1</span>\n'
+        '      <button type="button" id="qPlus" aria-label="Increase quantity">+</button>\n'
+        '    </div>\n'
+        '    <span class="qty-note" id="qNote">5 upgrades included</span>\n'
+        '  </div>\n'
+        f'  <a href="{CART}" target="_blank" class="btn" id="mainCta" '
+        f'style="font-size:1.2rem;padding:20px 48px">GET THE FULL BUNDLE — ${price}</a>')
+
     h = h.replace('Save $157 · Free shipping · 30-day guarantee',
                   f'Save ${save} · Free shipping · 30-day guarantee')
     h = h.replace("Includes free bonuses worth $157", f"Includes free bonuses worth ${save}")
@@ -178,6 +214,21 @@ def build(price, outname):
 .bar-rate{text-align:center;margin-top:5px;font-size:.83rem;color:#6b7280}
 .bar-today{text-align:center;font-size:.83rem;color:#4b5563;margin-top:7px}
 .sticky-bar-urgency[hidden]{display:none}
+/* quantity selector above the main purchase button */
+.qty-pick{display:flex;align-items:center;justify-content:center;gap:14px;
+ flex-wrap:wrap;margin-bottom:18px}
+.qty-lbl{font-weight:800;font-size:.95rem;color:var(--navy);letter-spacing:.02em}
+.qty-box{display:inline-flex;align-items:center;background:var(--white);
+ border:2px solid #d8dee6;border-radius:10px;overflow:hidden}
+.qty-box button{width:44px;height:44px;border:0;background:transparent;
+ font-size:1.35rem;font-weight:700;color:var(--navy);cursor:pointer;line-height:1;
+ transition:background .15s}
+.qty-box button:hover{background:#eef2f7}
+.qty-box button:disabled{opacity:.3;cursor:not-allowed}
+.qty-box button:focus-visible{outline:2px solid var(--orange);outline-offset:-2px}
+.qty-box span{min-width:46px;text-align:center;font-weight:800;font-size:1.1rem;
+ color:var(--navy);font-variant-numeric:tabular-nums}
+.qty-note{font-size:.85rem;color:#64748b}
 </style>
 <script>
 /* Batch 5 fill curve — Lukas's call 2026-09-25: the bar shows how far through the
@@ -209,6 +260,52 @@ function b5render(){
     :(dLeft===1?'<b>Last day</b> to reserve':'Reservations closed');
 }
 b5render();
+
+/* ── quantity ──────────────────────────────────────────────────────────────
+   Six line items scale together and the BXGY applies per hammock, so the cart
+   total is just qty x unit. Every cart link on the page is rewritten, not only
+   the main button, so the header and sticky-bar CTAs stay in step. The markup
+   ships a working 1-unit URL, so a JS failure degrades to a valid checkout.  */
+var VARIANTS=[53200326557993,53198306312489,53198306345257,
+              46948621254953,46948623810857,47874384953641];
+var UNIT=__PRICE__, q=1, MAXQ=10;
+function cartURL(n){
+  return 'https://hawknesthammocks.ca/cart/'+
+    VARIANTS.map(function(v){return v+':'+n;}).join(',')+'?country=US';
+}
+function qrender(){
+  var num=document.getElementById('qNum'); if(!num) return;
+  num.textContent=q;
+  document.getElementById('qNote').textContent=(q*5)+' upgrades included';
+  document.getElementById('qMinus').disabled=(q<=1);
+  document.getElementById('qPlus').disabled=(q>=MAXQ);
+  var cta=document.getElementById('mainCta');
+  if(cta)cta.textContent='GET THE FULL BUNDLE \u2014 $'+(UNIT*q);
+  var url=cartURL(q);
+  Array.prototype.forEach.call(document.querySelectorAll('a[href*="/cart/"]'),
+    function(a){ a.href=url; });
+  qpass();
+}
+/* keep UTM + click ids on every cart link, same as the other LPs */
+function qpass(){
+  try{
+    var keep=['utm_source','utm_medium','utm_campaign','utm_content','utm_term',
+              'fbclid','gclid','ttclid','ref'];
+    var inc=new URLSearchParams(location.search), extra=[];
+    keep.forEach(function(k){var v=inc.get(k); if(v)extra.push(k+'='+encodeURIComponent(v));});
+    if(!extra.length) return;
+    Array.prototype.forEach.call(document.querySelectorAll('a[href*="/cart/"]'),
+      function(a){ a.href+='&'+extra.join('&'); });
+  }catch(e){ /* never block checkout */ }
+}
+(function(){
+  var m=document.getElementById('qMinus'), p=document.getElementById('qPlus');
+  if(!m||!p) return;
+  m.onclick=function(){ if(q>1){q--;qrender();} };
+  p.onclick=function(){ if(q<MAXQ){q++;qrender();} };
+  qrender();
+})();
+
 fetch('batch5-status.json?t='+Date.now()).then(function(r){return r.json()})
   .then(function(d){
     if(typeof d.sold==='number')BATCH.sold=d.sold;
@@ -218,7 +315,7 @@ fetch('batch5-status.json?t='+Date.now()).then(function(r){return r.json()})
   }).catch(function(){});
 </script>
 </body>"""
-    h = h.replace("</body>", css, 1)
+    h = h.replace("</body>", css.replace("__PRICE__", str(price)), 1)
 
     out = os.path.join(HERE, outname)
     open(out, "w").write(h)
