@@ -181,11 +181,21 @@ def build(price, outname):
     # ── sticky bar: real 24h number, not a made-up viewer count ──────────────
     h = h.replace('<span class="sticky-bar-text"><span class="price-old">$336</span>',
                   f'<span class="sticky-bar-text"><span class="price-old">${VALUE}</span>')
+    # One urgency row, not two stacked — on a 390px phone the bar was four lines
+    # tall and the price text wrapped behind an oversized button.
     h = h.replace('<div class="sticky-bar-urgency"><span class="dot"></span> '
                   '<span id="viewerCount">47</span> people viewing this right now</div>',
-                  '<div class="sticky-bar-urgency" id="fbLive" hidden><span class="dot"></span> '
-                  '<strong id="fbNum">0</strong> reserved in the last 24 hours</div>\n'
-                  '  <div class="sticky-bar-urgency" id="fbSub"></div>')
+                  '<div class="sticky-bar-urgency" id="fbRow" hidden>'
+                  '<span id="fbLive" hidden><span class="dot"></span>'
+                  '<strong id="fbNum">0</strong> reserved today</span>'
+                  '<span class="fb-sep" id="fbSep" hidden>&middot;</span>'
+                  '<span id="fbSub"></span></div>')
+    # the bar's own copy has to fit one line at 360px
+    # "+ Free Shipping" pushed the price onto a second line at 360px and below,
+    # which is what made the bar look squashed against the button. The free-shipping
+    # promise is already in the row underneath and all over the page.
+    h = h.replace(f'<strong style="color:var(--orange)">${price}</strong> + Free Shipping',
+                  f'<strong style="color:var(--orange)">${price}</strong>')
     h = h.replace('<span class="viewing-badge"><span class="dot" style="width:6px;height:6px;'
                   'background:#4ade80;border-radius:50%;display:inline-block;'
                   'animation:pulse-dot 1.5s infinite;margin-right:4px"></span>'
@@ -213,7 +223,24 @@ def build(price, outname):
 .bar-stats strong{color:var(--navy);font-weight:800;font-size:1.15rem}
 .bar-rate{text-align:center;margin-top:5px;font-size:.83rem;color:#6b7280}
 .bar-today{text-align:center;font-size:.83rem;color:#4b5563;margin-top:7px}
-.sticky-bar-urgency[hidden]{display:none}
+.sticky-bar-urgency[hidden],#fbLive[hidden],.fb-sep[hidden]{display:none}
+/* sticky bar: price block takes the slack, button never grows, nothing wraps */
+.sticky-bar-main{gap:12px}
+.sticky-bar-text{flex:1 1 auto;min-width:0;display:flex;align-items:baseline;
+ gap:7px;line-height:1.2;white-space:nowrap}
+/* THE mobile bug: @media(max-width:768px) sets .btn{width:100%} for every button
+   on the page, including the one inside the sticky bar's flex row. It took the
+   whole bar, crushed the price text against the left edge and pushed everything
+   right. Scoped back here — the sticky bar's button sizes to its own label. */
+.sticky-bar .btn{width:auto;flex:0 0 auto}
+.sticky-bar-urgency{gap:6px;flex-wrap:wrap}
+@media(max-width:420px){
+  .sticky-bar-main{gap:9px;padding:9px 12px}
+  .sticky-bar-text{font-size:.8rem}
+  .sticky-bar-text .price-old{font-size:.7rem}
+  .sticky-bar .btn{padding:10px 15px;font-size:.78rem}
+  .sticky-bar-urgency{font-size:.62rem;padding:4px 12px}
+}
 /* quantity selector above the main purchase button */
 .qty-wrap{display:flex;justify-content:center;margin-bottom:20px}
 .qty-pick{display:inline-flex;align-items:center;justify-content:center;gap:14px;
@@ -261,6 +288,9 @@ function b5render(){
   } else if(fl){ fl.hidden=true; }   /* never render a hardcoded 0 */
   if(fs)fs.innerHTML=dLeft>1?'Order by Nov 15 \\u00b7 <b>'+dLeft+' days left</b>'
     :(dLeft===1?'<b>Last day</b> to reserve':'Reservations closed');
+  var sep=document.getElementById('fbSep'), row=document.getElementById('fbRow');
+  if(sep)sep.hidden=(n24<=0);
+  if(row)row.hidden=false;   /* the deadline line is always true, so the row always shows */
 }
 b5render();
 
