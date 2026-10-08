@@ -449,7 +449,7 @@ img{max-width:100%;height:auto;display:block}
       <span id="qNum" aria-live="polite">1</span>
       <button type="button" id="qPlus" aria-label="Increase quantity">+</button>
     </div>
-    <span class="qty-note" id="qNote">5 upgrades included</span>
+    <span class="qty-note" id="qNote">6 upgrades included</span>
   </div></div>
   <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" target="_blank" class="btn" id="mainCta" style="font-size:1.2rem;padding:20px 48px">GET THE FULL BUNDLE — $179</a>
   <span class="btn-sub" style="color:#94a3b8">Save $250 · Free shipping · 30-day guarantee</span>
@@ -1073,7 +1073,7 @@ function cartURL(n){
 function qrender(){
   var num=document.getElementById('qNum'); if(!num) return;
   num.textContent=q;
-  document.getElementById('qNote').textContent=(q*5)+' upgrades included';
+  document.getElementById('qNote').textContent=(q*6)+' upgrades included';
   document.getElementById('qMinus').disabled=(q<=1);
   document.getElementById('qPlus').disabled=(q>=MAXQ);
   var cta=document.getElementById('mainCta');

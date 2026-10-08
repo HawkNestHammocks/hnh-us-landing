@@ -102,7 +102,7 @@ def build(price, outname):
         '      <span id="qNum" aria-live="polite">1</span>\n'
         '      <button type="button" id="qPlus" aria-label="Increase quantity">+</button>\n'
         '    </div>\n'
-        '    <span class="qty-note" id="qNote">5 upgrades included</span>\n'
+        '    <span class="qty-note" id="qNote">6 upgrades included</span>\n'
         '  </div></div>\n'
         f'  <a href="{CART}" target="_blank" class="btn" id="mainCta" '
         f'style="font-size:1.2rem;padding:20px 48px">GET THE FULL BUNDLE — ${price}</a>')
@@ -309,7 +309,7 @@ function cartURL(n){
 function qrender(){
   var num=document.getElementById('qNum'); if(!num) return;
   num.textContent=q;
-  document.getElementById('qNote').textContent=(q*5)+' upgrades included';
+  document.getElementById('qNote').textContent=(q*6)+' upgrades included';
   document.getElementById('qMinus').disabled=(q<=1);
   document.getElementById('qPlus').disabled=(q>=MAXQ);
   var cta=document.getElementById('mainCta');
