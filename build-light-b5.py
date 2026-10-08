@@ -75,13 +75,13 @@ def build(price, outname):
     h = h.replace('  <div class="stack-row free">\n    <span class="stack-label">Standard US Shipping</span>',
                   '  <div class="stack-row free">\n'
                   '    <span class="stack-label"><img class="stack-thumb" '
-                  'src="returns-badge.png" alt="Hassle-free returns"> '
+                  'src="icon-returns.png" alt="Hassle-free returns"> '
                   'Hassle-Free Returns</span>\n'
                   '    <span class="stack-val"><s style="color:#94a3b8">$4.99</s> FREE</span>\n'
                   '  </div>\n'
                   '  <div class="stack-row free">\n'
                   '    <span class="stack-label"><img class="stack-thumb" '
-                  'src="shipping-badge.png" alt="Free US shipping"> '
+                  'src="icon-shipping.png" alt="Free US shipping"> '
                   'Standard US Shipping</span>')
     # ── quantity selector above the main purchase button ────────────────────
     # Six line items scale together; the BXGY gives five free add-ons per hammock,
@@ -95,7 +95,7 @@ def build(price, outname):
         sys.exit("value-cta block not found — light-test.html changed shape")
     h = h.replace(old_cta,
         '<div class="value-cta fade-in">\n'
-        '  <div class="qty-pick">\n'
+        '  <div class="qty-wrap"><div class="qty-pick">\n'
         '    <span class="qty-lbl">Quantity</span>\n'
         '    <div class="qty-box">\n'
         '      <button type="button" id="qMinus" aria-label="Decrease quantity">&minus;</button>\n'
@@ -103,7 +103,7 @@ def build(price, outname):
         '      <button type="button" id="qPlus" aria-label="Increase quantity">+</button>\n'
         '    </div>\n'
         '    <span class="qty-note" id="qNote">5 upgrades included</span>\n'
-        '  </div>\n'
+        '  </div></div>\n'
         f'  <a href="{CART}" target="_blank" class="btn" id="mainCta" '
         f'style="font-size:1.2rem;padding:20px 48px">GET THE FULL BUNDLE — ${price}</a>')
 
@@ -215,9 +215,12 @@ def build(price, outname):
 .bar-today{text-align:center;font-size:.83rem;color:#4b5563;margin-top:7px}
 .sticky-bar-urgency[hidden]{display:none}
 /* quantity selector above the main purchase button */
-.qty-pick{display:flex;align-items:center;justify-content:center;gap:14px;
- flex-wrap:wrap;margin-bottom:18px}
+.qty-wrap{display:flex;justify-content:center;margin-bottom:20px}
+.qty-pick{display:inline-flex;align-items:center;justify-content:center;gap:14px;
+ flex-wrap:wrap;background:var(--white);border:1px solid #dbe2ea;border-radius:14px;
+ padding:14px 22px;box-shadow:0 6px 22px rgba(0,0,0,.18)}
 .qty-lbl{font-weight:800;font-size:.95rem;color:var(--navy);letter-spacing:.02em}
+@media(max-width:520px){.qty-pick{padding:12px 16px;gap:10px}}
 .qty-box{display:inline-flex;align-items:center;background:var(--white);
  border:2px solid #d8dee6;border-radius:10px;overflow:hidden}
 .qty-box button{width:44px;height:44px;border:0;background:transparent;

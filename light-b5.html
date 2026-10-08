@@ -423,11 +423,11 @@ img{max-width:100%;height:auto;display:block}
     <span class="stack-val"><s style="color:#94a3b8">$79</s> FREE</span>
   </div>
   <div class="stack-row free">
-    <span class="stack-label"><img class="stack-thumb" src="returns-badge.png" alt="Hassle-free returns"> Hassle-Free Returns</span>
+    <span class="stack-label"><img class="stack-thumb" src="icon-returns.png" alt="Hassle-free returns"> Hassle-Free Returns</span>
     <span class="stack-val"><s style="color:#94a3b8">$4.99</s> FREE</span>
   </div>
   <div class="stack-row free">
-    <span class="stack-label"><img class="stack-thumb" src="shipping-badge.png" alt="Free US shipping"> Standard US Shipping</span>
+    <span class="stack-label"><img class="stack-thumb" src="icon-shipping.png" alt="Free US shipping"> Standard US Shipping</span>
     <span class="stack-val">FREE</span>
   </div>
   <div class="stack-row total">
@@ -442,7 +442,7 @@ img{max-width:100%;height:auto;display:block}
 </div>
 <p class="stack-tap-hint">Tap any item above to learn more</p>
 <div class="value-cta fade-in">
-  <div class="qty-pick">
+  <div class="qty-wrap"><div class="qty-pick">
     <span class="qty-lbl">Quantity</span>
     <div class="qty-box">
       <button type="button" id="qMinus" aria-label="Decrease quantity">&minus;</button>
@@ -450,7 +450,7 @@ img{max-width:100%;height:auto;display:block}
       <button type="button" id="qPlus" aria-label="Increase quantity">+</button>
     </div>
     <span class="qty-note" id="qNote">5 upgrades included</span>
-  </div>
+  </div></div>
   <a href="https://hawknesthammocks.ca/cart/53200326557993:1,53198306312489:1,53198306345257:1,46948621254953:1,46948623810857:1,47874384953641:1?country=US" target="_blank" class="btn" id="mainCta" style="font-size:1.2rem;padding:20px 48px">GET THE FULL BUNDLE — $179</a>
   <span class="btn-sub" style="color:#94a3b8">Save $250 · Free shipping · 30-day guarantee</span>
 </div>
@@ -990,9 +990,12 @@ setInterval(carouselNext,5000);
 .bar-today{text-align:center;font-size:.83rem;color:#4b5563;margin-top:7px}
 .sticky-bar-urgency[hidden]{display:none}
 /* quantity selector above the main purchase button */
-.qty-pick{display:flex;align-items:center;justify-content:center;gap:14px;
- flex-wrap:wrap;margin-bottom:18px}
+.qty-wrap{display:flex;justify-content:center;margin-bottom:20px}
+.qty-pick{display:inline-flex;align-items:center;justify-content:center;gap:14px;
+ flex-wrap:wrap;background:var(--white);border:1px solid #dbe2ea;border-radius:14px;
+ padding:14px 22px;box-shadow:0 6px 22px rgba(0,0,0,.18)}
 .qty-lbl{font-weight:800;font-size:.95rem;color:var(--navy);letter-spacing:.02em}
+@media(max-width:520px){.qty-pick{padding:12px 16px;gap:10px}}
 .qty-box{display:inline-flex;align-items:center;background:var(--white);
  border:2px solid #d8dee6;border-radius:10px;overflow:hidden}
 .qty-box button{width:44px;height:44px;border:0;background:transparent;
