@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ThermoNest Underquilt — $50 Off For Hawk Nest Owners</title>
+<title>ThermoNest Underquilts Are Here — $50 Off For Hawk Nest Owners</title>
 <meta name="description" content="The ThermoNest Premium Cold-Weather Underquilt. 700 fill power duck down, box baffled, rated to 0°F. Built to contour to your Hawk Nest. $50 off for existing owners.">
 <meta property="og:title" content="ThermoNest Underquilt — $50 Off For Hawk Nest Owners">
 <meta property="og:description" content="700 fill power duck down, box baffled, rated to 0°F. The part that turns your Hawk Nest into a winter hammock.">
@@ -71,10 +71,11 @@ h3{font-weight:700;font-size:1.22rem;line-height:1.26}
   backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;
   gap:14px;padding-block:13px}
-.brandmark{font-family:Bitter,serif;font-weight:800;font-size:1.02rem;color:var(--forest);
-  letter-spacing:.015em;text-decoration:none;white-space:nowrap}
-.brandmark span{display:block;font-family:Inter,sans-serif;font-weight:600;font-size:.6rem;
-  letter-spacing:.24em;color:var(--moss);margin-top:1px}
+/* hnh-logo-sm is the dark-text mark, the one that works on light ground.
+   hnh-logo-light is the pale variant and disappears here. */
+.brandmark{display:block;text-decoration:none;flex:none}
+.brandmark img{height:46px;width:auto}
+@media(max-width:480px){.brandmark img{height:38px}}
 .nav .btn{padding:11px 20px;font-size:.86rem;box-shadow:none}
 
 /* ── hero ────────────────────────────────────────────────────────────── */
@@ -203,6 +204,20 @@ th,td{text-align:left;padding:14px 22px;border-bottom:1px solid var(--line)}
 th{font-family:Inter;font-weight:700;color:var(--forest);width:46%;white-space:nowrap}
 td{font-variant-numeric:tabular-nums}
 tr:last-child th,tr:last-child td{border-bottom:0}
+/* On a phone a two-column table is unreadable however wide you let it scroll.
+   Stack each row into a label above its value instead, and switch the
+   horizontal scroll container off so nothing is hidden off-screen. */
+@media(max-width:700px){
+  .spec-wrap{overflow-x:visible}
+  table{min-width:0}
+  table,tbody,tr,th,td{display:block;width:auto}
+  tr{padding:15px 20px;border-bottom:1px solid var(--line)}
+  tr:last-child{border-bottom:0}
+  th,td{padding:0;border:0;white-space:normal}
+  th{font-family:Inter;font-weight:700;font-size:.73rem;letter-spacing:.14em;
+     text-transform:uppercase;color:var(--moss)}
+  td{margin-top:4px;font-size:1.04rem;color:var(--forest);font-weight:600;line-height:1.4}
+}
 
 /* ── guarantee ───────────────────────────────────────────────────────── */
 .guar{background:var(--forest);color:#E9E2D2}
@@ -302,7 +317,8 @@ footer a{color:#A9B3A4}
 <!-- ══ NAV ══════════════════════════════════════════════════════════════ -->
 <nav class="nav">
   <div class="wrap">
-    <a class="brandmark" href="#top">Hawk Nest<span>Hammocks</span></a>
+    <a class="brandmark" href="#top" aria-label="Hawk Nest Hammocks">
+      <img src="hnh-logo-sm.png" alt="Hawk Nest Hammocks" width="340" height="266"></a>
     <a class="btn" href="#buy" data-cta>Get $50 Off</a>
   </div>
 </nav>
@@ -312,10 +328,11 @@ footer a{color:#A9B3A4}
   <div class="wrap">
     <div>
       <div class="owners">🇺🇸 For Hawk Nest owners only</div>
-      <h1 style="margin-top:16px">You already own<br>the hammock.</h1>
-      <p class="lede">This is the part that turns it into a winter hammock. 700 fill power
-        duck down, box baffled, hung on the outside where your body weight can't crush it.
-        Rated to 0&deg;F.</p>
+      <h1 style="margin-top:16px">The underquilts<br>are here. All 300.</h1>
+      <p class="lede">Shipped down from Canada and sitting in our South Carolina warehouse
+        since <b>October&nbsp;13</b>. 700 fill power duck down, box baffled, rated to
+        0&deg;F, and built to contour to the hammock you already own.
+        <b>$50 off while this batch lasts.</b></p>
 
       <div class="price-card">
         <div class="price-row">
@@ -348,9 +365,9 @@ footer a{color:#A9B3A4}
 <section class="landed" style="padding:22px 0">
   <div class="wrap">
     <span class="dot"></span>
-    <p><b>300 quilts, and that is the lot.</b> We brought this batch down from Canada and
-      it landed at our South Carolina warehouse on <b>October&nbsp;13</b>. When they are
-      gone, the next ones are a long way behind them.</p>
+    <p><b>300 quilts, and that is the lot.</b> This is the only ThermoNest batch in the
+      United States this season. When these are gone the next ones are a long way behind
+      them, and the owner&rsquo;s price goes with them.</p>
   </div>
 </section>
 
@@ -363,27 +380,32 @@ footer a{color:#A9B3A4}
       up cold from below. The reason is simple, and it has nothing to do with how warm the
       bag is rated.</p>
     <p class="lede" style="margin-top:12px"><b>Down only insulates when it is lofted.</b>
-      Lie on it and your body weight flattens it to nothing. In a hammock the fabric pulls
-      tight around you, so every bit of insulation underneath you is squashed flat exactly
-      where you need it most.</p>
+      Anything underneath you in a hammock is pressed flat by your own weight, which is why
+      the bottom half of a sleeping bag does almost nothing once you lie on it.</p>
+    <p class="lede" style="margin-top:12px">A pad sidesteps that, because it does not rely on
+      loft. And your Hawk Nest has the pad pocket on the underside, so yours is not sliding
+      around at 2am either. <b>But a pad is a flat rectangle, and a hammock wraps you.</b>
+      It insulates the strip it covers and nothing past the edges of it.</p>
 
     <div class="compare">
       <div class="bad">
-        <h3><span class="mark x">&times;</span> Insulation inside</h3>
+        <h3><span class="mark x">&times;</span> A pad on its own</h3>
         <ul>
-          <li>Your weight crushes the loft flat</li>
-          <li>Sleeping pads slide out from under you all night</li>
-          <li>Cold runs along your shoulders, hips and the backs of your legs</li>
-          <li>You feel it most at 2am, when you can do least about it</li>
+          <li>Covers the strip under your back, and stops at its edges</li>
+          <li>Your shoulders, hips and sides sit out past it, against bare fabric</li>
+          <li>Crinkles and squeaks every time you turn over</li>
+          <li>Has to be inflated, and is no use at all once it punctures</li>
+          <li>Cold finds the seam where the pad ends and the hammock carries on</li>
         </ul>
       </div>
       <div class="good">
-        <h3><span class="mark t">&#10003;</span> Insulation outside</h3>
+        <h3><span class="mark t">&#10003;</span> A full-length underquilt</h3>
         <ul>
-          <li>Nothing presses on it, so the down stays at full loft</li>
-          <li>It hangs with the hammock and moves with you</li>
-          <li>Unbroken coverage from your shoulders to your feet</li>
-          <li>Nothing to roll off, nothing to re-position in the dark</li>
+          <li>Wraps the whole underside, shoulder to foot, edge to edge</li>
+          <li>Hangs outside the hammock, so nothing presses the loft flat</li>
+          <li>Silent. No crinkle, no squeak, nothing to wake you</li>
+          <li>Nothing to inflate and nothing to puncture</li>
+          <li>Toggles pull it out to the hammock&rsquo;s edges so there is no cold gap</li>
         </ul>
       </div>
     </div>
@@ -498,9 +520,6 @@ footer a{color:#A9B3A4}
       <div class="plate"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0815/8498/0265/files/Storage.jpg?v=1791996329" alt="Storage and care — never store it compressed"></div>
     </div>
 
-    <p class="center" style="margin-top:28px;font-family:'EB Garamond',serif;font-style:italic;
-       font-size:1.08rem;color:var(--moss)">
-      The full illustrated manual ships in the box.</p>
   </div>
 </section>
 
@@ -613,7 +632,6 @@ footer a{color:#A9B3A4}
         <ul class="feat" style="margin-top:14px">
           <li><b>ThermoNest underquilt</b>Full length, all black shell, light grey lining.</li>
           <li><b>Compression sack</b>For the trail. Not for storage, see the last plate above.</li>
-          <li><b>Illustrated setup manual</b>The five plates, printed.</li>
         </ul>
       </div>
     </div>
@@ -689,11 +707,12 @@ footer a{color:#A9B3A4}
           extra hardware to buy.</p>
       </details>
       <details>
-        <summary>Can I use this instead of a sleeping pad?</summary>
-        <p>Yes, and that is the point of it. A pad has to be re-positioned every time you
-          move and it squashes flat under your hips. The ThermoNest hangs outside the
-          hammock so nothing presses on it. Plenty of people run both in deep cold, but for
-          most nights the quilt alone does the job.</p>
+        <summary>I already use the pad pocket. Do I need this as well?</summary>
+        <p>The pad pocket solves where a pad sits. It cannot change what a pad is, which is a
+          flat rectangle in a hammock that curves around you. Your shoulders, hips and sides
+          end up past its edges, against bare fabric, and a pad crinkles every time you move.
+          The ThermoNest covers the whole underside with no gap and makes no noise at all. In
+          deep cold plenty of people run both, and that is the warmest setup there is.</p>
       </details>
       <details>
         <summary>What does the comfort rating actually mean?</summary>
