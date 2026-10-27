@@ -209,42 +209,40 @@ section{position:relative}
   .ex-nav{bottom:7px;width:36px;height:36px}
 }
 .lmob{display:none}
-.jbar,.jx,.jfin,.jskip{display:none}
+.jui{display:none}
 @media(max-width:899px){
   .lmob{display:inline}.jm .ldesk{display:none}
-  .jm .ex-stage{padding-bottom:100%}
-  .jm .ex-nav,.jm .view .hs,.jm .ex-tabs{display:none}
-  .jm.skip .ex-tabs{display:flex}
-  .jm .jx{display:block;position:absolute;inset:0;z-index:7;pointer-events:none}
-  .jm .jx.any{pointer-events:auto;cursor:pointer}
-  .jt{position:absolute;left:var(--x);top:var(--y);width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;border:0;background:transparent;pointer-events:auto;cursor:pointer;opacity:0;transform:scale(.6);transition:opacity .35s,transform .45s cubic-bezier(.2,1.4,.4,1)}
+  .jm .ex-head,.jm .ex-nav,.jm .view .hs,.jm .ex-tabs,.jm .ex-caption,.jm .tip{display:none!important}
+  .jm .ex-stage{padding-bottom:100%;border-radius:30px 30px 0 0}
+  .jm .view{transition:none;will-change:transform,opacity,clip-path;transform-origin:50% 50%}
+  .jm .jui{display:block}
+  .jm .jtop{display:flex}
+  .jm [hidden]{display:none!important}
+  .jtop{position:absolute;left:14px;right:14px;top:12px;z-index:8;display:flex;align-items:center;gap:10px;pointer-events:none}
+  .jprog{flex:1;display:flex;gap:4px}
+  .jprog i{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.75);box-shadow:0 0 0 1px rgba(10,15,36,.08);overflow:hidden;position:relative}
+  .jprog i:after{content:"";position:absolute;inset:0;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
+  .jprog i.d:after{transform:none}
+  .jbk{pointer-events:auto;border:0;background:rgba(255,255,255,.88);border-radius:999px;padding:5px 11px;box-shadow:0 4px 10px -4px rgba(10,15,36,.35);font:700 12px "Space Grotesk";color:#3b4470;cursor:pointer;min-height:32px}
+  .jbk[disabled]{visibility:hidden}
+  .jt{position:absolute;left:var(--x);top:var(--y);z-index:8;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;border:0;background:transparent;cursor:pointer;opacity:0;transform:scale(.5);transition:opacity .3s,transform .45s cubic-bezier(.2,1.4,.4,1),left .01s,top .01s}
   .jt.in{opacity:1;transform:none}
-  .jsb{position:absolute;left:4%;bottom:4%;pointer-events:auto;border:0;background:#fff;color:#0a0f24;font:700 12px "Space Grotesk";padding:9px 13px;border-radius:999px;box-shadow:0 8px 18px -6px rgba(10,15,36,.45);cursor:pointer;border:2px solid var(--orange)}
-  .jsb.back{background:#0a0f24;color:#fff;border-color:#0a0f24;left:auto;right:4%}
-  .jt:before{content:"";position:absolute;inset:17px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 5px #fff,0 8px 18px rgba(0,0,0,.4)}
-  .jt:after,.jt i{content:"";position:absolute;inset:4px;border-radius:50%;border:3px solid var(--orange);animation:ring 1.6s ease-out infinite}
+  .jt:before{content:"";position:absolute;inset:18px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px #fff,0 6px 16px rgba(0,0,0,.4)}
+  .jt:after,.jt i{content:"";position:absolute;inset:6px;border-radius:50%;border:3px solid var(--orange);animation:ring 1.6s ease-out infinite}
   .jt i{animation-delay:.8s}
-  .jp{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,40px);background:#0a0f24;color:#fff;font:700 13px/1.2 "Space Grotesk";padding:8px 12px;border-radius:999px;white-space:nowrap;box-shadow:0 10px 24px -8px rgba(0,0,0,.6);opacity:0;transition:opacity .35s .15s;pointer-events:none}
-  .jp.up{transform:translate(-50%,-78px)}
-  .jp.in{opacity:1}
-  .jp small{display:block;font:400 11px "Space Grotesk";color:#cfd6ff;margin-top:2px;text-align:center}
-  .jc{position:absolute;left:var(--x);top:var(--y);max-width:58%;background:#fff;color:#0a0f24;border-radius:14px;padding:9px 12px;box-shadow:0 14px 30px -10px rgba(10,15,36,.55);border-left:4px solid var(--orange);opacity:0;transform:scale(.85) translateY(6px);transform-origin:left top;transition:opacity .4s,transform .5s cubic-bezier(.2,1.4,.4,1);pointer-events:none}
-  .jc.r{left:auto;right:calc(100% - var(--x));transform-origin:right top}
-  .jc.in{opacity:1;transform:none}
-  .jc.n{max-width:46%}
-  @media(max-width:400px){.jc{padding:7px 10px}.jc b{font-size:15px}.jc span{font-size:11.5px;line-height:1.3}}
-  .jc b{display:block;font:400 17px/1.05 Anton;letter-spacing:.03em;text-transform:uppercase;color:#0a0f24}
-  .jc span{display:block;font-size:12.5px;line-height:1.35;color:#3b4470;margin-top:3px}
-  .jm .jbar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;background:#e6e7ea}
-  .jb{border:0;background:#fff;color:#0a0f24;font:700 12px "Space Grotesk";padding:9px 12px;border-radius:999px;box-shadow:0 6px 14px -6px rgba(10,15,36,.4);cursor:pointer;min-height:36px}
-  .jb:disabled{opacity:.35;cursor:default}
-  .jdots{display:flex;gap:6px}
-  .jdots i{width:8px;height:8px;border-radius:50%;background:#b9bfd3;transition:.3s}
-  .jdots i.done{background:#0a0f24}
-  .jdots i.on{background:var(--orange);width:20px;border-radius:5px}
-  .jm .jfin:not([hidden]){display:block;padding:0 16px 12px}
-  .jm .jfin .cta{width:100%}
-  .jm .jskip:not([hidden]){display:block;margin:0 auto 12px;border:0;background:none;color:#3b4470;font:700 12px "Space Grotesk";text-decoration:underline;cursor:pointer;padding:6px 10px}
+  .jcard{min-height:150px;padding:16px 18px 6px;background:#fff;border-top:1px solid #e3e7f3}
+  .jcard .jin{will-change:transform,opacity}
+  .jcard .jk{font:700 11px "Space Mono";letter-spacing:.08em;color:#5b6490;text-transform:uppercase}
+  .jcard h4{font:400 clamp(24px,7vw,30px)/1.02 Anton;letter-spacing:.02em;text-transform:uppercase;color:#0a0f24;margin:4px 0 10px}
+  .jcard ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  .jcard li{position:relative;padding-left:26px;font-size:14px;line-height:1.4;color:#3b4470}
+  .jcard li:before{content:"";position:absolute;left:0;top:2px;width:17px;height:17px;border-radius:50%;background:var(--orange)}
+  .jcard li:after{content:"";position:absolute;left:6px;top:5px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+  .jact{padding:14px 18px 18px;background:#fff;border-radius:0 0 30px 30px}
+  .jact .cta,.jact .jnext{display:flex;width:100%;justify-content:center;align-items:center}
+  .jnext{border:0;cursor:pointer;min-height:58px;border-radius:999px;background:#0a0f24;color:#fff;font:400 clamp(16px,5vw,21px)/1.1 Anton;letter-spacing:.05em;text-transform:uppercase;padding:0 clamp(16px,6vw,28px);white-space:nowrap;box-shadow:0 14px 30px -14px rgba(10,15,36,.7)}
+  .jre{display:block;margin:10px auto 0;border:0;background:none;color:#5b6490;font:700 12px "Space Grotesk";text-decoration:underline;cursor:pointer;padding:6px 10px}
+  .jre[hidden]{display:none}
 }
 .ex-caption{padding:0 16px 12px;font-size:14px;color:#3b4470;min-height:42px}
 .ex-caption b{color:#0a0f24}
@@ -471,16 +469,11 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
         <button class="ex-nav p" aria-label="Previous view">‹</button>
         <button class="ex-nav n" aria-label="Next view">›</button>
       </div>
-      <div class="jbar" id="jbar" hidden>
-        <button type="button" class="jb jback" aria-label="Back to the previous step">‹ Back</button>
-        <div class="jdots" id="jdots" role="progressbar" aria-label="Journey progress" aria-valuemin="1" aria-valuemax="6"></div>
-        <button type="button" class="jb jre" aria-label="Start the journey over">Start over</button>
-      </div>
       <div class="tip" id="tip" role="dialog" aria-live="polite"><button aria-label="Close">×</button><h5 id="tipH"></h5><p id="tipP"></p></div>
       <p class="ex-caption" id="exCap"></p>
-      <div class="jfin" id="jfin" hidden><a class="cta" href="#" data-checkout>Claim the BFCM deal →</a></div>
-      <button type="button" class="jskip" id="jskip" hidden aria-expanded="false" aria-controls="exTabs">Skip to a step</button>
       <div class="ex-tabs" id="exTabs" role="tablist"></div>
+      <div class="jcard jui" id="jcard" aria-live="polite"><div class="jin"><div class="jk" id="jk"></div><h4 id="jh"></h4><ul id="jl"></ul></div></div>
+      <div class="jact jui"><button type="button" class="jnext" id="jnext"></button><a class="cta" id="jcta" href="#" data-checkout hidden>Claim the BFCM deal →</a><button type="button" class="jre" id="jre" hidden>Start over</button></div>
     </div>
   </div>
 </section>
@@ -691,18 +684,18 @@ addEventListener('scroll',()=>{if(!px||innerWidth<900)return;const r=px.parentEl
 const VIEWS=[
  {id:'flyon',m:'bfcm-assets/ex/x1-flyon-e-sq.webp',mhs:[[53, 29], [6, 35], [46, 62], [30, 46]],name:'Fly on',img:'bfcm-assets/ex/x1-flyon-e.webp',th:'bfcm-assets/ex/x1-flyon-e-t.webp',kind:'cut',src:'ai',cap:'<b>Fly on.</b> Door zipped shut and ready for weather. Hangs from the two included tree straps.',
   hs:[[55,24,'Built-in rain fly','The rain fly is part of the shelter &mdash; it comes with it and sheds water off the sides.'],[12,32,'Tree straps included','Wrap the straps around two trees, clip in, and you\'re hanging.'],[50,66,'Waterproof bottom','The waterproof bottom fabric upgrade (free in this deal) keeps wind and wet off from below.'],[38,46,'Zip-open door','The side of the fly zips open as a door &mdash; tap next to open it.']]},
- {id:'under',m:'bfcm-assets/ex/x5-under-me-sq.webp',mhs:[[67, 51], [38, 54], [87, 53], [55, 33]],name:'Underside',img:'bfcm-assets/ex/x5-under-me.webp',th:'bfcm-assets/ex/x5-under-me-t.webp',kind:'ai',src:'ai',cap:'<b>Underside.</b> The stretch-fabric pad pocket holds your own sleeping pad in place for warmth.',
-  hs:[[67,52,'Sleeping-pad pocket','Slide your own pad into the pocket underneath. It stays put all night and keeps your back warm. Pad not included.'],[38,58,'Stretch fabric','The pad pocket is stretch fabric, so it hugs your pad snugly.'],[87,56,'Snap clips','Three snap clips on the end of the rain fly let the loose ends snap together, so they don\'t flap in the wind.'],[55,20,'Fly wraps the sides','The rain fly drapes down over both sides.']]},
+ {id:'under',m:'bfcm-assets/ex/x5-under-real-sq.webp',mhs:[[33,55],[52,45],[75,38]],name:'Underside',img:'bfcm-assets/ex/x5-under-real.webp',th:'bfcm-assets/ex/x5-under-real-t.webp',kind:'cut',src:'real',cap:'<b>Underside.</b> The stretch-fabric pad pocket holds your own sleeping pad in place for warmth. Fits pads up to 28&Prime; wide.',
+  hs:[[38,55,'Sleeping-pad pocket','Slide your own pad into the pocket underneath. It stays put all night and keeps your back warm. Pad not included. Fits pads up to 28&Prime; wide.'],[51,42,'Stretch fabric','The pad pocket is stretch fabric, so it hugs your pad snugly.'],[68,33,'Rain fly','The fly drapes over the top; snap clips on its ends keep them from flapping in the wind.']]},
  {id:'door',m:'bfcm-assets/ex/x2-door-e-sq.webp',mhs:[[41, 36], [17, 41], [63, 32], [94, 46]],name:'Door open',img:'bfcm-assets/ex/x2-door-e.webp',th:'bfcm-assets/ex/x2-door-e-t.webp',kind:'cut',src:'real',cap:'<b>Door open.</b> Roll the fly back to get in, read, or watch the view.',
   hs:[[46,33,'Climb-in door','Big side opening, so getting in and out is easy.'],[29,39,'4 storage pockets','4 interior storage pockets: 2 larger ones, plus 2 small ones by your head.'],[62,22,'Rain fly overhead','Even with the door open, the fly still covers you from above.'],[89,46,'Straps &amp; clips','Strap ends clip in on both sides.']]},
+ {id:'inside',m:'bfcm-assets/ex/x8-inside-e-sq.webp',mhs:[[50, 40], [55, 66]],name:'Inside',img:'bfcm-assets/ex/x8-inside-e.webp',th:'bfcm-assets/ex/x8-inside-e-t.webp',kind:'photo',src:'real',cap:'<b>Inside.</b> Zipped in for the night under the fly and bug net. Sleeping bag not included.',
+  hs:[[50,28,'Bug net all around','No-see-um mesh keeps bugs out while air flows through.'],[55,75,'Room for your sleeping bag','Spread out a full sleeping bag inside. Sleeping bag not included.']]},
  {id:'flyoff',m:'bfcm-assets/ex/x4-flyoff-me-sq.webp',mhs:[[74, 28], [36, 34], [80, 65], [94, 43]],name:'Fly off',img:'bfcm-assets/ex/x4-flyoff-me.webp',th:'bfcm-assets/ex/x4-flyoff-me-t.webp',kind:'cut',src:'real',cap:'<b>Fly off.</b> Just the bug net on clear nights. You can see straight through the mesh.',
   hs:[[63,28,'Arched poles','Poles lift the net up off your face.'],[44,34,'360° bug net','No-see-um mesh all the way around.'],[66,61,'Stakes &amp; guy lines','2 aluminum stakes and 2 elastic guy lines are included to hold it steady.'],[85,42,'Tree straps','Wrap the straps around two trees, clip in, and you\'re hanging.']]},
  {id:'ground',m:'bfcm-assets/ex/x6-ground-c-sq.webp',mhs:[[36, 49], [71, 47]],name:'Ground mode',img:'bfcm-assets/ex/x6-ground-r2.webp',th:'bfcm-assets/ex/x6-ground-r2-t.webp',kind:'photo',src:'real',cap:'<b>Ground mode.</b> No trees? Pitch it on the ground as a tent.',
   hs:[[42,76,'Hang it or ground it','The same shelter sets up on the ground when there are no trees around.'],[62,74,'Fly on the ground too','The fly and bug net work the same in ground mode.']]},
  {id:'bag',m:'bfcm-assets/ex/x7-bag-sq.webp',mhs:[[50, 17], [50, 48], [14, 80], [64, 77], [64, 89]],name:'In the box',img:'bfcm-assets/ex/x7-bag-r2.webp',th:'bfcm-assets/ex/x7-bag-r2-t.webp',kind:'cut',src:'real',cap:'<b>In the box.</b> Everything you need to hang it tonight.',
-  hs:[[50,18,'Rain fly','Included.'],[50,41,'Hammock + bug net','Included.'],[35,84,'Carry bag','Waterproof carrying bag upgrade &mdash; free in this deal.'],[49,75,'Straps, stakes &amp; guy lines','2 tree straps, 2 aluminum stakes and 2 elastic guy lines are included.'],[62,87,'Poles','Spreader and arch poles included.']]},
- {id:'inside',m:'bfcm-assets/ex/x8-inside-e-sq.webp',mhs:[[50, 40], [55, 66]],name:'Inside',img:'bfcm-assets/ex/x8-inside-e.webp',th:'bfcm-assets/ex/x8-inside-e-t.webp',kind:'photo',src:'real',cap:'<b>Inside.</b> Zipped in for the night under the fly and bug net. Sleeping bag not included.',
-  hs:[[50,28,'Bug net all around','No-see-um mesh keeps bugs out while air flows through.'],[55,75,'Room for your sleeping bag','Spread out a full sleeping bag inside. Sleeping bag not included.']]}
+  hs:[[50,18,'Rain fly','Included.'],[50,41,'Hammock + bug net','Included.'],[35,84,'Carry bag','Waterproof carrying bag upgrade &mdash; free in this deal.'],[49,75,'Straps, stakes &amp; guy lines','2 tree straps, 2 aluminum stakes and 2 elastic guy lines are included.'],[62,87,'Poles','Spreader and arch poles included.']]}
 ];
 const stage=document.getElementById('exStage'), tabs=document.getElementById('exTabs'), tip=document.getElementById('tip');
 let cur=0;
@@ -729,63 +722,80 @@ stage.querySelector('.ex-nav.p').onclick=()=>go(cur-1,-1); stage.querySelector('
 tip.querySelector('button').onclick=()=>{tip.classList.remove('on');stage.querySelectorAll('.hs').forEach(x=>x.classList.remove('active'))};
 stage.addEventListener('click',e=>{if(!e.target.closest('.hs,.ex-nav'))tip.querySelector('button').click()});
 let sx=null; stage.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
-stage.addEventListener('touchend',e=>{if(sx===null)return;if(JON){const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>45){if(jside){jside=false;jgo(0)}else jgo(jstep+(dx<0?1:-1))}return}const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>45)go(cur+(dx<0?1:-1),dx<0?1:-1);sx=null});
+stage.addEventListener('touchend',e=>{if(sx===null)return;if(JON){const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>45){dx<0?jgo(jstep+1):jgo(jstep-1,true)}return}const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>45)go(cur+(dx<0?1:-1),dx<0?1:-1);sx=null});
 addEventListener('load',()=>{const mob=matchMedia('(max-width:899px)').matches;VIEWS.forEach(v=>{const im=new Image();im.src=mob?v.m:v.img})});
 const start=VIEWS.findIndex(v=>location.hash==='#view-'+v.id); go(start>=0?start:0,1);
 if(qs.get('hs')!==null){const b=stage.querySelectorAll('.view.on .hs')[+qs.get('hs')||0]; if(b) setTimeout(()=>b.click(),50);}
 
-/* ---- mobile guided journey (<900px only) ---- */
-let JON=false,jstep=0,jtimer=0;
-const shell=document.getElementById('explorer'),jbar=document.getElementById('jbar'),jdots=document.getElementById('jdots'),jfin=document.getElementById('jfin'),jskip=document.getElementById('jskip');
+/* ---- mobile step-by-step walkthrough (<900px only) ---- */
+let JON=false,jstep=0,jbusy=null;
+const shell=document.getElementById('explorer'),jcard=document.getElementById('jcard'),jnext=document.getElementById('jnext'),jcta=document.getElementById('jcta'),jre=document.getElementById('jre');
 const IDX={};VIEWS.forEach((v,i)=>IDX[v.id]=i);
 const STEPS=[
- {v:'flyon',t:[30,46],pr:'Tap the door to open it',side:true,co:[{x:50,y:5,h:'Built-in rain fly',p:'Comes with it and sheds water off the sides.'}]},
- {v:'door',t:[41,40],pr:'Tap to look inside',co:[{x:4,y:5,h:'Roll-back door',p:'Get in, read, or watch the view.'},{x:42,y:70,h:'4 storage pockets',p:'2 larger, plus 2 small by your head.'}]},
- {v:'inside',t:[26,16],pr:'Tap the rain fly to remove it',co:[{x:4,y:64,h:'Bug net all around',p:'No-see-um mesh keeps bugs out while air flows through.'}]},
- {v:'flyoff',t:[50,46],pr:'Tap to set it up on the ground',co:[{x:4,y:5,h:'Built-in bug net',p:'No-see-um mesh all the way around.'},{x:42,y:72,h:'Arched poles',p:'Poles lift the net up off your face.'}]},
- {v:'ground',t:[40,50],pr:'Tap to pack it up',co:[{x:4,y:5,h:'Hang it or ground it',p:'The same shelter sets up on the ground when there are no trees around.'}]},
- {v:'bag',t:null,fin:true,co:[{x:52,y:24,h:'All in the box',p:'2 tree straps, 2 aluminum stakes, 2 elastic guy lines and the poles.'},{x:30,y:64,h:'Waterproof carry bag',p:'Free in this deal.'}]}
+ {v:'flyon',t:[46,62],nx:'Flip it over',k:'Fly on',h:'Rain fly on, door zipped',l:['Built-in rain fly sheds water off the sides','Hangs from the 2 included tree straps','Waterproof bottom keeps wind and wet off from below']},
+ {v:'under',t:[40,52],nx:'Open the door',tr:'flip',k:'Underside',h:'The sleeping-pad pocket',l:['Slide your own pad into the pocket underneath (pad not included)','Stretch fabric holds it in place all night, so your back stays warm','Fits sleeping pads up to 28" wide']},
+ {v:'door',t:[41,36],nx:'Look inside',tr:'flipzip',k:'Door open',h:'Roll-back door',l:['Big side opening, so getting in and out is easy','The fly still covers you from above','4 interior storage pockets: 2 larger, plus 2 small by your head']},
+ {v:'inside',t:[24,28],nx:'Remove the fly',k:'Inside',h:'Zipped in for the night',l:['No-see-um mesh keeps bugs out while air flows through','Room for a full sleeping bag (not included)']},
+ {v:'flyoff',t:[50,46],nx:'Set it up on the ground',tr:'lift',k:'Fly off',h:'Just the bug net',l:['360° no-see-um mesh for clear nights','Arched poles lift the net up off your face','2 aluminum stakes and 2 elastic guy lines hold it steady']},
+ {v:'ground',t:[42,50],nx:'Pack it up',k:'Ground mode',h:'No trees? No problem',l:['Pitch it on the ground as a tent','The fly and bug net work the same on the ground']},
+ {v:'bag',t:null,k:'In the box',h:'Everything you need',l:['Hammock with built-in bug net, rain fly, spreader &amp; arch poles','2 tree straps, 2 aluminum stakes and 2 elastic guy lines','Waterproof carry bag, free in this deal']}
 ];
-const SIDE={v:'under',co:[{x:3,y:3,n:1,h:'Stretch pad pocket',p:'Holds your own sleeping pad in place. Pad not included.'},{x:97,y:3,n:1,h:'Snap clips',p:'Three snap clips keep the loose fly ends from flapping.'},{x:3,y:68,n:1,h:'Waterproof bottom',p:'Keeps wind and wet off from below.'}]};
-let jside=false;
-const jx=document.createElement('div');jx.className='jx';jx.id='jx';
-const jt=document.createElement('button');jt.type='button';jt.className='jt';jt.innerHTML='<i></i>';
-const jp=document.createElement('div');jp.className='jp';jp.setAttribute('aria-hidden','true');
-const jsb=document.createElement('button');jsb.type='button';jsb.className='jsb';jsb.hidden=true;
-jx.appendChild(jt);jx.appendChild(jp);jx.appendChild(jsb);stage.appendChild(jx);
-function callouts(list){jx.querySelectorAll('.jc').forEach(c=>c.remove());list.forEach((c,k)=>{const el=document.createElement('div');el.className='jc'+(c.x>60?' r':'')+(c.n?' n':'');el.style.setProperty('--x',c.x+'%');el.style.setProperty('--y',c.y+'%');
-    el.innerHTML='<b>'+c.h+'</b><span>'+c.p+'</span>';el.setAttribute('role','note');jx.appendChild(el);setTimeout(()=>el.classList.add('in'),450+k*260)})}
-function jsideOpen(){jside=true;clearTimeout(jtimer);go(IDX[SIDE.v],1);jx.classList.remove('any');jt.classList.remove('in');jp.classList.remove('in');jt.hidden=true;jp.hidden=true;callouts(SIDE.co);
-  document.getElementById('exCount').textContent='Bonus view';jbar.querySelector('.jback').disabled=false;jsb.textContent='↩ Back to the journey';jsb.setAttribute('aria-label','Back to the journey');jsb.hidden=false;jsb.classList.add('back')}
-jsb.addEventListener('click',e=>{e.stopPropagation();if(jside){jside=false;jgo(0)}else jsideOpen()});
-STEPS.forEach(()=>jdots.appendChild(document.createElement('i')));
-function jgo(n){
-  n=Math.max(0,Math.min(STEPS.length-1,n));const dir=n>=jstep?1:-1;jstep=n;const st=STEPS[n];
-  go(IDX[st.v],dir);clearTimeout(jtimer);
-  jx.classList.remove('any');jt.classList.remove('in');jp.classList.remove('in');
-  [...jdots.children].forEach((d,k)=>{d.className=k<n?'done':(k===n?'on':'')});jdots.setAttribute('aria-valuenow',n+1);
-  jbar.querySelector('.jback').disabled=n===0;
-  jfin.hidden=!st.fin;
-  document.getElementById('exCount').textContent='Step '+(n+1)+' of '+STEPS.length;
-  callouts(st.co);jside=false;jsb.classList.remove('back');
-  if(st.side){jsb.textContent='View the underside';jsb.setAttribute('aria-label','View the underside');jsb.hidden=false}else jsb.hidden=true;
-  if(st.t){
-    jt.style.setProperty('--x',st.t[0]+'%');jt.style.setProperty('--y',st.t[1]+'%');jp.style.setProperty('--x',st.t[0]+'%');jp.style.setProperty('--y',st.t[1]+'%');
-    jp.classList.toggle('up',!!st.up);jp.textContent=st.pr;jt.setAttribute('aria-label',st.pr+' (step '+(n+1)+' of '+STEPS.length+')');jt.hidden=false;jp.hidden=false;
-    setTimeout(()=>{jt.classList.add('in');jp.classList.add('in')},250);
-    jtimer=setTimeout(()=>{jx.classList.add('any');jp.innerHTML=st.pr+'<small>or tap anywhere on the photo</small>'},4500);
-  }else{jt.hidden=true;jp.hidden=true}
+const RM=matchMedia('(prefers-reduced-motion: reduce)');
+const jtop=document.createElement('div');jtop.className='jtop jui';
+jtop.innerHTML='<button type="button" class="jbk" aria-label="Back to the previous step">‹ Back</button><div class="jprog" role="progressbar" aria-label="Walkthrough progress" aria-valuemin="1" aria-valuemax="'+STEPS.length+'">'+STEPS.map(()=>'<i></i>').join('')+'</div>';
+const jt=document.createElement('button');jt.type='button';jt.className='jt jui';jt.innerHTML='<i></i>';
+stage.appendChild(jtop);stage.appendChild(jt);
+const jbk=jtop.querySelector('.jbk'),jprog=jtop.querySelector('.jprog');
+let jseq=0;
+function finish(){clearTimeout(jseq);if(jbusy){jbusy.forEach(a=>{try{a.finish()}catch(e){}});jbusy=null}}
+function jshow(idx,kind){
+  const views=stage.querySelectorAll('.view'),nv=views[idx],ov=views[cur];
+  finish();
+  if(nv===ov){nv.classList.add('on');return}
+  views.forEach((v,k)=>{if(v!==nv&&v!==ov)v.classList.remove('on');v.style.zIndex=''});
+  nv.classList.add('on');nv.style.zIndex=2;ov.style.zIndex=1;
+  const D=RM.matches?1:1;const E='cubic-bezier(.45,0,.2,1)';let A=[];
+  if(RM.matches){A=[nv.animate([{opacity:0},{opacity:1}],{duration:1})]}
+  else if(kind==='zip'){A=[nv.animate([{clipPath:'inset(64% 47% 34% 13% round 8px)'},{clipPath:'inset(20% 47% 34% 13% round 8px)'}],{duration:650,easing:E})]}
+  else if(kind==='flip'){A=[ov.animate([{transform:'perspective(900px) rotateX(0)'},{transform:'perspective(900px) rotateX(88deg)',opacity:.4}],{duration:300,easing:'ease-in',fill:'forwards'}),
+      nv.animate([{transform:'perspective(900px) rotateX(-88deg)',opacity:.4},{transform:'perspective(900px) rotateX(0)',opacity:1}],{duration:340,delay:300,easing:'ease-out',fill:'backwards'})]}
+  else if(kind==='lift'){A=[ov.animate([{transform:'none',opacity:1},{transform:'translateY(-22%) scale(.96)',opacity:0}],{duration:600,easing:E,fill:'forwards'}),
+      nv.animate([{opacity:0,transform:'translateY(4%)'},{opacity:1,transform:'none'}],{duration:600,easing:E})]}
+  else{A=[ov.animate([{opacity:1},{opacity:0}],{duration:550,easing:E,fill:'forwards'}),nv.animate([{opacity:0,transform:'translateY(5%)'},{opacity:1,transform:'none'}],{duration:550,easing:E})]}
+  jbusy=A;
+  Promise.all(A.map(a=>a.finished.catch(()=>{}))).then(()=>{if(jbusy!==A)return;ov.classList.remove('on');A.forEach(a=>{try{a.cancel()}catch(e){}});ov.style.zIndex='';nv.style.zIndex='';jbusy=null});
+}
+function jgo(n,back){
+  n=Math.max(0,Math.min(STEPS.length-1,n));const st=STEPS[n],prev=STEPS[jstep];
+  const kind=back?'fade':(n===jstep+1?(st.tr||'fade'):'fade');
+  jstep=n;const idx=IDX[st.v];
+  if(kind==='flipzip'&&!RM.matches){const f=IDX.flyon;jshow(f,'flip');cur=f;jseq=setTimeout(()=>{jshow(idx,'zip');cur=idx},700)}
+  else{jshow(idx,kind==='flipzip'?'zip':kind);cur=idx}
+  document.getElementById('exTitle').textContent=VIEWS[idx].name;
+  history.replaceState(null,'',location.pathname+location.search+'#view-'+st.v);
+  [...jprog.children].forEach((d,k)=>d.classList.toggle('d',k<=n));jprog.setAttribute('aria-valuenow',n+1);
+  jbk.disabled=n===0;
+  const inn=jcard.querySelector('.jin');
+  document.getElementById('jk').textContent='Step '+(n+1)+' of '+STEPS.length+' · '+st.k;
+  document.getElementById('jh').textContent=st.h;
+  document.getElementById('jl').innerHTML=st.l.map(x=>'<li>'+x+'</li>').join('');
+  if(!RM.matches)inn.animate([{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'none'}],{duration:500,delay:120,easing:'cubic-bezier(.2,.8,.2,1)',fill:'backwards'});
+  const last=!st.t;
+  jnext.hidden=last;jcta.hidden=!last;jre.hidden=!last;
+  if(!last){jnext.textContent=st.nx+' →';jnext.setAttribute('aria-label',st.nx+' (step '+(n+2)+' of '+STEPS.length+')')}
+  jt.classList.remove('in');
+  if(st.t){jt.hidden=false;jt.style.setProperty('--x',st.t[0]+'%');jt.style.setProperty('--y',st.t[1]+'%');jt.setAttribute('aria-label',st.nx);setTimeout(()=>jt.classList.add('in'),RM.matches?0:520)}else jt.hidden=true;
+  const nx=STEPS[n+1];if(nx){const im=new Image();im.src=VIEWS[IDX[nx.v]].m}
 }
 jt.addEventListener('click',e=>{e.stopPropagation();jgo(jstep+1)});
-jx.addEventListener('click',e=>{if(jx.classList.contains('any')&&e.target===jx)jgo(jstep+1)});
-jbar.querySelector('.jback').onclick=()=>{if(jside){jside=false;jgo(0)}else jgo(jstep-1)};
-jbar.querySelector('.jre').onclick=()=>{shell.classList.remove('skip');jskip.setAttribute('aria-expanded','false');jgo(0)};
-jskip.onclick=()=>{const o=shell.classList.toggle('skip');jskip.setAttribute('aria-expanded',o?'true':'false');jskip.textContent=o?'Hide step list':'Skip to a step'};
-tabs.addEventListener('click',()=>{if(!JON)return;setTimeout(()=>{const k=STEPS.findIndex(s=>IDX[s.v]===cur);if(k>=0)jgo(k);else if(cur===IDX[SIDE.v]){jgo(0);jsideOpen()}shell.classList.remove('skip');jskip.setAttribute('aria-expanded','false');jskip.textContent='Skip to a step'},0)});
+jnext.addEventListener('click',()=>jgo(jstep+1));
+jbk.addEventListener('click',e=>{e.stopPropagation();jgo(jstep-1,true)});
+jre.addEventListener('click',()=>jgo(0,true));
 const JM=matchMedia('(max-width:899px)');
 function jset(){
-  JON=JM.matches;shell.classList.toggle('jm',JON);jbar.hidden=!JON;jskip.hidden=!JON;
-  if(JON){const k=STEPS.findIndex(s=>IDX[s.v]===cur);const u=cur===IDX[SIDE.v];jgo(k>=0?k:0);if(u)jsideOpen()}else{jfin.hidden=true;clearTimeout(jtimer);shell.classList.remove('skip')}
+  JON=JM.matches;shell.classList.toggle('jm',JON);
+  if(JON){const k=STEPS.findIndex(s=>IDX[s.v]===cur);jstep=k>=0?k:0;jgo(jstep,true)}
+  else{finish();go(cur,1)}
 }
 JM.addEventListener?JM.addEventListener('change',jset):JM.addListener(jset);jset();
 })();
