@@ -199,6 +199,15 @@ section{position:relative}
 .tab.on{border-color:var(--orange);background:#fff3ea;box-shadow:0 10px 20px -12px var(--orange);transform:translateY(-2px)}
 .ex-nav{position:absolute;top:auto;bottom:10px;z-index:6;width:38px;height:38px;border-radius:50%;border:0;background:#fff;box-shadow:0 8px 20px -6px rgba(10,15,36,.4);font-size:18px;cursor:pointer;color:#0a0f24}
 .ex-nav.p{left:10px}.ex-nav.n{right:10px}
+@media(max-width:899px){
+  .ex-stage{aspect-ratio:auto;height:0;padding-bottom:calc(100% + 52px)}
+  .view{inset:auto;top:0;left:0;right:0;aspect-ratio:1/1}
+  .frame picture,.frame img{display:block;width:100%;height:100%}
+  .hs{left:var(--mx,var(--x));top:var(--my,var(--y))}
+  .ex-stage:before{inset:4% 4% 20%}
+  .ex-floor{display:none}
+  .ex-nav{bottom:7px;width:36px;height:36px}
+}
 .ex-caption{padding:0 16px 12px;font-size:14px;color:#3b4470;min-height:42px}
 .ex-caption b{color:#0a0f24}
 .hint{display:inline-flex;gap:6px;align-items:center;font-size:inherit;color:#fff;font-weight:700}
@@ -323,7 +332,6 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
 </style>
 </head>
 <body>
-<div class="draft">REVIEW PAGE · NOT ADVERTISED</div>
 
 <!-- TOP BAR: real deadline only -->
 <div class="bar" role="region" aria-label="Deal ends">
@@ -636,28 +644,28 @@ addEventListener('scroll',()=>{if(!px||innerWidth<900)return;const r=px.parentEl
 
 /* ---- explorer ---- */
 const VIEWS=[
- {id:'flyon',name:'Fly on',img:'bfcm-assets/ex/x1-flyon-r2.webp',th:'bfcm-assets/ex/x1-flyon-r2-t.webp',kind:'cut',src:'ai',cap:'<b>Fly on.</b> Door zipped shut and ready for weather. Hangs from the two included tree straps.',
+ {id:'flyon',m:'bfcm-assets/ex/x1-flyon-sq.webp',mhs:[[53, 29], [6, 35], [46, 62], [30, 46]],name:'Fly on',img:'bfcm-assets/ex/x1-flyon-r2.webp',th:'bfcm-assets/ex/x1-flyon-r2-t.webp',kind:'cut',src:'ai',cap:'<b>Fly on.</b> Door zipped shut and ready for weather. Hangs from the two included tree straps.',
   hs:[[55,24,'Built-in rain fly','The rain fly is part of the shelter &mdash; it comes with it and sheds water off the sides.'],[12,32,'Tree straps included','Wrap the straps around two trees, clip in, and you\'re hanging.'],[50,66,'Waterproof bottom','The waterproof bottom fabric upgrade (free in this deal) keeps wind and wet off from below.'],[38,46,'Zip-open door','The side of the fly zips open as a door &mdash; tap next to open it.']]},
- {id:'door',name:'Door open',img:'bfcm-assets/ex/x2-door.webp',th:'bfcm-assets/ex/x2-door-t.webp',kind:'cut',src:'real',cap:'<b>Door open.</b> Roll the fly back to get in, read, or watch the view.',
+ {id:'door',m:'bfcm-assets/ex/x2-door-sq.webp',mhs:[[41, 36], [17, 41], [63, 32], [94, 46]],name:'Door open',img:'bfcm-assets/ex/x2-door.webp',th:'bfcm-assets/ex/x2-door-t.webp',kind:'cut',src:'real',cap:'<b>Door open.</b> Roll the fly back to get in, read, or watch the view.',
   hs:[[46,33,'Climb-in door','Big side opening, so getting in and out is easy.'],[29,39,'4 storage pockets','4 interior storage pockets: 2 larger ones, plus 2 small ones by your head.'],[62,22,'Rain fly overhead','Even with the door open, the fly still covers you from above.'],[89,46,'Straps &amp; clips','Strap ends clip in on both sides.']]},
- {id:'flyoff',name:'Fly off',img:'bfcm-assets/ex/x4-flyoff-r2.webp',th:'bfcm-assets/ex/x4-flyoff-r2-t.webp',kind:'cut',src:'real',cap:'<b>Fly off.</b> Just the bug net on clear nights. You can see straight through the mesh.',
+ {id:'flyoff',m:'bfcm-assets/ex/x4-flyoff-sq.webp',mhs:[[26, 28], [64, 34], [20, 65], [6, 43]],name:'Fly off',img:'bfcm-assets/ex/x4-flyoff-r2.webp',th:'bfcm-assets/ex/x4-flyoff-r2-t.webp',kind:'cut',src:'real',cap:'<b>Fly off.</b> Just the bug net on clear nights. You can see straight through the mesh.',
   hs:[[37,28,'Arched poles','Poles lift the net up off your face.'],[56,34,'360° bug net','No-see-um mesh all the way around.'],[34,61,'Stakes &amp; guy lines','2 aluminum stakes and 2 elastic guy lines are included to hold it steady.'],[15,42,'Tree straps','Wrap the straps around two trees, clip in, and you\'re hanging.']]},
- {id:'under',name:'Underside',img:'bfcm-assets/ex/x5-under.webp',th:'bfcm-assets/ex/x5-under-t.webp',kind:'ai',src:'ai',cap:'<b>Underside.</b> The stretch-fabric pad pocket holds your own sleeping pad in place for warmth.',
+ {id:'under',m:'bfcm-assets/ex/x5-under-sq.webp',mhs:[[33, 51], [62, 54], [13, 53], [45, 33]],name:'Underside',img:'bfcm-assets/ex/x5-under.webp',th:'bfcm-assets/ex/x5-under-t.webp',kind:'ai',src:'ai',cap:'<b>Underside.</b> The stretch-fabric pad pocket holds your own sleeping pad in place for warmth.',
   hs:[[33,52,'Sleeping-pad pocket','Slide your own pad into the pocket underneath. It stays put all night and keeps your back warm. Pad not included.'],[62,58,'Stretch fabric','The pad pocket is stretch fabric, so it hugs your pad snugly.'],[13,56,'Snap clips','Three snap clips on the end of the rain fly let the loose ends snap together, so they don\'t flap in the wind.'],[45,20,'Fly wraps the sides','The rain fly drapes down over both sides.']]},
- {id:'ground',name:'Ground mode',img:'bfcm-assets/ex/x6-ground-r2.webp',th:'bfcm-assets/ex/x6-ground-r2-t.webp',kind:'photo',src:'real',cap:'<b>Ground mode.</b> No trees? Pitch it on the ground as a tent.',
+ {id:'ground',m:'bfcm-assets/ex/x6-ground-sq.webp',mhs:[[36, 76], [71, 74]],name:'Ground mode',img:'bfcm-assets/ex/x6-ground-r2.webp',th:'bfcm-assets/ex/x6-ground-r2-t.webp',kind:'photo',src:'real',cap:'<b>Ground mode.</b> No trees? Pitch it on the ground as a tent.',
   hs:[[42,76,'Hang it or ground it','The same shelter sets up on the ground when there are no trees around.'],[62,74,'Fly on the ground too','The fly and bug net work the same in ground mode.']]},
- {id:'bag',name:'In the box',img:'bfcm-assets/ex/x7-bag-r2.webp',th:'bfcm-assets/ex/x7-bag-r2-t.webp',kind:'cut',src:'real',cap:'<b>In the box.</b> Everything you need to hang it tonight.',
+ {id:'bag',m:'bfcm-assets/ex/x7-bag-sq.webp',mhs:[[50, 17], [50, 48], [14, 80], [64, 77], [64, 89]],name:'In the box',img:'bfcm-assets/ex/x7-bag-r2.webp',th:'bfcm-assets/ex/x7-bag-r2-t.webp',kind:'cut',src:'real',cap:'<b>In the box.</b> Everything you need to hang it tonight.',
   hs:[[50,18,'Rain fly','Included.'],[50,41,'Hammock + bug net','Included.'],[35,84,'Carry bag','Waterproof carrying bag upgrade &mdash; free in this deal.'],[49,75,'Straps, stakes &amp; guy lines','2 tree straps, 2 aluminum stakes and 2 elastic guy lines are included.'],[62,87,'Poles','Spreader and arch poles included.']]},
- {id:'pov',name:'Your view',img:'bfcm-assets/ex/x8-pov.webp',th:'bfcm-assets/ex/x8-pov-t.webp',kind:'photo',src:'real',cap:'<b>Your view.</b> What waking up in it actually looks like.',
-  hs:[[70,40,'Wake up to this','Unzip the door and the whole view is yours.'],[30,82,'Off the ground','No rocks, roots or cold ground under you.']]}
+ {id:'inside',m:'bfcm-assets/ex/x8-inside-sq.webp',mhs:[[50, 40], [55, 66]],name:'Inside',img:'bfcm-assets/ex/x8-inside.webp',th:'bfcm-assets/ex/x8-inside-t.webp',kind:'photo',src:'real',cap:'<b>Inside.</b> Zipped in for the night under the fly and bug net. Sleeping bag not included.',
+  hs:[[50,28,'Bug net all around','No-see-um mesh keeps bugs out while air flows through.'],[55,75,'Room for your sleeping bag','Spread out a full sleeping bag inside. Sleeping bag not included.']]}
 ];
 const stage=document.getElementById('exStage'), tabs=document.getElementById('exTabs'), tip=document.getElementById('tip');
 let cur=0;
 VIEWS.forEach((v,i)=>{
   const el=document.createElement('div'); el.className='view'; el.dataset.i=i;
   const fr=document.createElement('div'); fr.className='frame';
-  fr.innerHTML='<img src="'+v.img+'" alt="'+v.name+' view of the Hawk Nest V.3" loading="'+(i<2?'eager':'lazy')+'" draggable="false">'+(v.src==='ai'?'<span class="ai-tag">AI-ASSISTED</span>':'');
-  v.hs.forEach((h,j)=>{const b=document.createElement('button');b.className='hs';b.style.setProperty('--x',h[0]+'%');b.style.setProperty('--y',h[1]+'%');b.innerHTML='<span>'+(j+1)+'</span>';b.setAttribute('aria-label',h[2]);
+  fr.innerHTML='<picture><source media="(max-width:899px)" srcset="'+v.m+'"><img src="'+v.img+'" alt="'+v.name+' view of the Hawk Nest V.3" loading="'+(i<2?'eager':'lazy')+'" draggable="false"></picture>';
+  v.hs.forEach((h,j)=>{const b=document.createElement('button');b.className='hs';b.style.setProperty('--x',h[0]+'%');b.style.setProperty('--y',h[1]+'%');if(v.mhs&&v.mhs[j]){b.style.setProperty('--mx',v.mhs[j][0]+'%');b.style.setProperty('--my',v.mhs[j][1]+'%')}b.innerHTML='<span>'+(j+1)+'</span>';b.setAttribute('aria-label',h[2]);
     b.onclick=e=>{e.stopPropagation();stage.querySelectorAll('.hs').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('tipH').textContent=h[2];document.getElementById('tipP').innerHTML=h[3];tip.classList.add('on')};fr.appendChild(b)});
   el.appendChild(fr); stage.insertBefore(el,stage.querySelector('.ex-nav'));
   const t=document.createElement('button'); t.className='tab'; t.setAttribute('role','tab'); t.innerHTML='<img src="'+v.th+'" alt="" loading="lazy">'+v.name; t.onclick=()=>go(i); tabs.appendChild(t);
@@ -677,7 +685,7 @@ tip.querySelector('button').onclick=()=>{tip.classList.remove('on');stage.queryS
 stage.addEventListener('click',e=>{if(!e.target.closest('.hs,.ex-nav'))tip.querySelector('button').click()});
 let sx=null; stage.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
 stage.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>45)go(cur+(dx<0?1:-1),dx<0?1:-1);sx=null});
-addEventListener('load',()=>VIEWS.forEach(v=>{const im=new Image();im.src=v.img}));
+addEventListener('load',()=>{const mob=matchMedia('(max-width:899px)').matches;VIEWS.forEach(v=>{const im=new Image();im.src=mob?v.m:v.img})});
 const start=VIEWS.findIndex(v=>location.hash==='#view-'+v.id); go(start>=0?start:0,1);
 if(qs.get('hs')!==null){const b=stage.querySelectorAll('.view.on .hs')[+qs.get('hs')||0]; if(b) setTimeout(()=>b.click(),50);}
 })();
@@ -694,6 +702,8 @@ document.querySelectorAll('.stack-list .item[aria-controls]').forEach(function(i
 (function(){
   var EP=''; /* set to the deployed counter URL, e.g. https://hnh-bfcm-viewers.<account>.workers.dev/ */
   var MIN=5, el=document.getElementById('viewers');
+  /* Preview only: ?demo=viewers shows an example number so the design can be reviewed. Never shown without that parameter. */
+  if(el&&new URLSearchParams(location.search).get('demo')==='viewers'){el.querySelector('[data-vn]').textContent='42';el.hidden=false;return}
   if(!EP||!el||!window.fetch||navigator.webdriver||/bot|crawl|spider|slurp|headless|lighthouse|preview/i.test(navigator.userAgent))return;
   var k='hnh-vsid',id;
   try{id=sessionStorage.getItem(k);if(!id){id=(crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2,14));sessionStorage.setItem(k,id)}}catch(e){return}
