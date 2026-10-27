@@ -80,7 +80,7 @@ section{position:relative}
 .chip{position:absolute;z-index:3;background:#fff;color:#0a0f24;border-radius:12px;padding:7px 10px;font-weight:700;font-size:12px;box-shadow:var(--shadow);display:flex;gap:6px;align-items:center;opacity:0;animation:pop .5s cubic-bezier(.2,1.6,.4,1) forwards}
 .chip i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
 .chip.c1{left:4%;top:34%;animation-delay:1.25s}
-.chip.c2{right:4%;top:8%;animation-delay:1.4s}
+.chip.c2{right:4%;bottom:2%;animation-delay:1.4s}
 .chip.c3{left:12%;bottom:2%;animation-delay:1.55s}
 /* mobile: chips sit in a row under the hammock so they never cover it */
 @media(max-width:899px){.stage-hero{margin-bottom:var(--chipsH,46px)}.chips{position:absolute;left:12px;right:12px;top:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 8px;z-index:3}.chips .chip{position:static;font-size:11.5px;padding:6px 9px}}
@@ -139,6 +139,17 @@ section{position:relative}
 .item .v{text-align:right;font-weight:700;font-size:13px;color:#cfd6ff}
 .item .v b{display:block;font:400 18px Anton;color:#fff;letter-spacing:.04em}
 .item .v b.free{color:var(--amber)}
+.viewers{margin:10px 0 0;text-align:center;font-size:12.5px;color:#cfd6ff;letter-spacing:.02em}.viewers b{color:#fff;font-weight:700}.viewers i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--amber);margin-right:7px;vertical-align:1px;animation:vpulse 2s ease-in-out infinite}@keyframes vpulse{50%{opacity:.35}}.viewers[hidden]{display:none}
+.tapnote{font-size:12px;color:var(--muted);margin:0 0 8px;letter-spacing:.03em}
+.item{grid-template-columns:64px 1fr auto 14px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .25s}
+.item:hover,.item:focus-visible{border-color:rgba(255,255,255,.28);outline:none}
+.item .chev{width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg) translateY(-3px);transition:transform .3s}
+.item.open .chev{transform:rotate(225deg) translate(-2px,-2px)}
+.item .more{grid-column:1/-1;display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.item .more>p{overflow:hidden;font-size:13.5px;line-height:1.5;color:#d7dbe8;margin:0}
+.item.open .more{grid-template-rows:1fr}
+.item.open .more>p{padding-top:10px;border-top:1px solid var(--line);margin-top:2px}
+.item .tap{font-size:11px;color:var(--muted);letter-spacing:.04em}
 .total{margin-top:16px;border-radius:24px;padding:22px;background:linear-gradient(135deg,#3a62f0,#6a49f5 60%,#ff4f8b);box-shadow:0 30px 60px -20px rgba(106,73,245,.7);display:grid;gap:6px}
 .total .row{display:flex;justify-content:space-between;align-items:baseline;font-weight:700}
 .total .big{font:400 clamp(44px,13vw,64px)/1 Anton}
@@ -355,6 +366,7 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
           <div class="badges"><span class="badge vi">6 FREE PRODUCTS</span><span class="badge or">+ FREE U.S. SHIPPING</span></div>
           <a class="cta" href="#" data-checkout>Claim the BFCM deal →</a>
           <p class="fine">Pre-order · ships Feb 1 · 60-day money-back guarantee</p>
+          <p class="viewers" id="viewers" hidden aria-live="polite"><i aria-hidden="true"></i>👀 <b data-vn></b> people viewing this deal right now</p>
           <div class="stock" hidden aria-live="polite">
             <div class="stock-top"><span>BFCM orders &middot; ship Feb 1 <span class="sample">SAMPLE COUNT</span></span><em><span data-left>—</span> of 1,500 left</em></div>
             <div class="meter"><span data-meter></span></div>
@@ -375,14 +387,15 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
       <div class="preorder"><b>PRE-ORDER</b><span>This is a pre-order. BFCM orders ship Feb 1, 2027. Charged today to lock in the deal.</span></div>
     </div>
     <div>
-      <div class="stack-list">
-        <div class="item reveal"><div class="ic"><img src="bfcm-assets/box/b1-hammock.webp" alt="Hawk Nest All-Season Hammock Tent V.3" width="240" height="240" loading="lazy"></div><div><h4>Hawk Nest All-Season Hammock Tent V.3</h4><p>Rain fly, bug net, spreader poles, tree straps, 2 aluminum stakes &amp; 2 elastic guy lines in the box</p></div><div class="v"><b>$229</b></div></div>
-        <div class="item reveal"><div class="ic"><img src="bfcm-assets/box/b2-bottom.webp" alt="Waterproof Bottom Fabric Upgrade" width="240" height="240" loading="lazy"></div><div><h4>Waterproof Bottom Fabric Upgrade</h4><p>Keeps wind and wet off from below</p></div><div class="v">$39<b class="free">FREE</b></div></div>
-        <div class="item reveal"><div class="ic"><img src="bfcm-assets/box/b3-bag.webp" alt="Waterproof Carrying Bag Upgrade" width="240" height="240" loading="lazy"></div><div><h4>Waterproof Carrying Bag Upgrade</h4><p>Packs to 16.5″ × 5.5″</p></div><div class="v">$19<b class="free">FREE</b></div></div>
-        <div class="item reveal"><div class="ic"><img src="bfcm-assets/box/b4-warranty.webp" alt="Lifetime Warranty Upgrade" width="240" height="240" loading="lazy"></div><div><h4>Lifetime Warranty Upgrade</h4><p>Covered for as long as you own it</p></div><div class="v">$59<b class="free">FREE</b></div></div>
-        <div class="item reveal"><div class="ic"><img src="bfcm-assets/box/b5-gridless.webp" alt="1 Year Gridless Premium" width="240" height="240" loading="lazy"></div><div><h4>1 Year Gridless Premium</h4><p>Offline camping &amp; survival app, 12 months</p></div><div class="v">$79<b class="free">FREE</b></div></div>
-        <div class="item reveal"><div class="ic"><img src="bfcm-assets/box/b6-returns.webp" alt="Hassle-Free Returns" width="240" height="240" loading="lazy"></div><div><h4>Hassle-Free Returns</h4><p>Free returns &amp; exchanges</p></div><div class="v">$4.99<b class="free">FREE</b></div></div>
-        <div class="item reveal"><div class="ic"><img src="bfcm-assets/box/b7-shipping.webp" alt="Standard U.S. Shipping" width="240" height="240" loading="lazy"></div><div><h4>Standard U.S. Shipping</h4><p>Pre-order &middot; BFCM orders ship Feb 1 from our U.S. warehouse</p></div><div class="v"><b class="free">FREE</b></div></div>
+      <p class="tapnote">Tap any item for details</p>
+        <div class="stack-list">
+        <div class="item reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="m-b1-hammock"><div class="ic"><img src="bfcm-assets/box/b1-hammock.webp" alt="Hawk Nest All-Season Hammock Tent V.3" width="240" height="240" loading="lazy"></div><div><h4>Hawk Nest All-Season Hammock Tent V.3</h4><p>Rain fly, bug net, spreader poles, tree straps, 2 aluminum stakes &amp; 2 elastic guy lines in the box</p></div><div class="v"><b>$229</b></div><span class="chev" aria-hidden="true"></span><div class="more" id="m-b1-hammock"><p>Strings between any two trees, pitches in about 90 seconds and keeps you off the wet ground. Built-in rain fly and mosquito netting; holds up to 500 lb. No trees? It also pitches on the ground as a tent.</p></div></div>
+        <div class="item reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="m-b2-bottom"><div class="ic"><img src="bfcm-assets/box/b2-bottom.webp" alt="Waterproof Bottom Fabric Upgrade" width="240" height="240" loading="lazy"></div><div><h4>Waterproof Bottom Fabric Upgrade</h4><p>Keeps wind and wet off from below</p></div><div class="v">$39<b class="free">FREE</b></div><span class="chev" aria-hidden="true"></span><div class="more" id="m-b2-bottom"><p>Built into your hammock as upgraded material, not shipped as a separate item. 70D nylon ripstop (parachute fabric) keeps ground moisture out if you pitch it as a ground tent, and its tight weave blocks cold wind from below.</p></div></div>
+        <div class="item reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="m-b3-bag"><div class="ic"><img src="bfcm-assets/box/b3-bag.webp" alt="Waterproof Carrying Bag Upgrade" width="240" height="240" loading="lazy"></div><div><h4>Waterproof Carrying Bag Upgrade</h4><p>Packs to 16.5″ × 5.5″</p></div><div class="v">$19<b class="free">FREE</b></div><span class="chev" aria-hidden="true"></span><div class="more" id="m-b3-bag"><p>Included as an upgrade to your order. Waterproof 500D PVC with welded seams, with room for the hammock tent, rain fly and all accessories. Packs to 16.5″ × 5.5″.</p></div></div>
+        <div class="item reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="m-b4-warranty"><div class="ic"><img src="bfcm-assets/box/b4-warranty.webp" alt="Lifetime Warranty Upgrade" width="240" height="240" loading="lazy"></div><div><h4>Lifetime Warranty Upgrade</h4><p>Covered for as long as you own it</p></div><div class="v">$59<b class="free">FREE</b></div><span class="chev" aria-hidden="true"></span><div class="more" id="m-b4-warranty"><p>Tears, rips, frayed seams, broken zippers, snapped poles, faulty buckles: if it fails under normal use, it's covered for as long as you own it. Email info@hawknesthammocks.ca with photos and your order number; once your claim is approved, we ship the replacement.</p></div></div>
+        <div class="item reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="m-b5-gridless"><div class="ic"><img src="bfcm-assets/box/b5-gridless.webp" alt="1 Year Gridless Premium" width="240" height="240" loading="lazy"></div><div><h4>1 Year Gridless Premium</h4><p>Offline camping &amp; survival app, 12 months</p></div><div class="v">$79<b class="free">FREE</b></div><span class="chev" aria-hidden="true"></span><div class="more" id="m-b5-gridless"><p>A full year of Gridless Premium, the survival education app with bite-sized lessons and quizzes on fire-starting, navigation, shelter building, water purification and 600+ wilderness topics. Works offline. For iOS and Android; your redemption code comes in your order confirmation email.</p></div></div>
+        <div class="item reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="m-b6-returns"><div class="ic"><img src="bfcm-assets/box/b6-returns.webp" alt="Hassle-Free Returns" width="240" height="240" loading="lazy"></div><div><h4>Hassle-Free Returns</h4><p>Free returns &amp; exchanges</p></div><div class="v">$4.99<b class="free">FREE</b></div><span class="chev" aria-hidden="true"></span><div class="more" id="m-b6-returns"><p>Free returns and exchanges, backed by our 60-day money-back guarantee from delivery.</p></div></div>
+        <div class="item reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="m-b7-shipping"><div class="ic"><img src="bfcm-assets/box/b7-shipping.webp" alt="Standard U.S. Shipping" width="240" height="240" loading="lazy"></div><div><h4>Standard U.S. Shipping</h4><p>Pre-order &middot; BFCM orders ship Feb 1 from our U.S. warehouse</p></div><div class="v"><b class="free">FREE</b></div><span class="chev" aria-hidden="true"></span><div class="more" id="m-b7-shipping"><p>Free standard shipping within the U.S. from our U.S. warehouse. This is a pre-order: BFCM orders ship Feb 1, 2027.</p></div></div>
       </div>
       <div class="total reveal">
         <div class="row"><span>Total value</span><span><b data-count="429">$429</b> value</span></div>
@@ -496,7 +509,7 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
       <figure><img src="bfcm-assets/wall/d634730f_2.webp" alt="Customer photo from Dave E." loading="lazy" width="480" height="480"><figcaption>Dave E.</figcaption></figure>
       <figure><img src="bfcm-assets/wall/3c56249b_0.webp" alt="Customer photo from Lib B." loading="lazy" width="480" height="480"><figcaption>Lib B.</figcaption></figure>
       <figure><img src="bfcm-assets/wall/7dc4052c_1.webp" alt="Customer photo from RallyCanuck" loading="lazy" width="480" height="480"><figcaption>RallyCanuck</figcaption></figure>
-      <figure><img src="bfcm-assets/wall/69a5edbf_1.webp" alt="Customer photo from Mathew B." loading="lazy" width="480" height="480"><figcaption>Mathew B.</figcaption></figure>
+      <figure><img src="bfcm-assets/wall/e44bf0be_1.webp" alt="Customer photo from Jordan D." loading="lazy" width="480" height="480"><figcaption>Jordan D.</figcaption></figure>
       <figure><img src="bfcm-assets/wall/98023123_0.webp" alt="Customer photo from Alex C." loading="lazy" width="480" height="480"><figcaption>Alex C.</figcaption></figure>
       <figure><img src="bfcm-assets/wall/af8b9e84_1.webp" alt="Customer photo from Pat C." loading="lazy" width="480" height="480"><figcaption>Pat C.</figcaption></figure>
       <figure><img src="bfcm-assets/wall/44d24619_3.webp" alt="Customer photo from Vincent P." loading="lazy" width="480" height="480"><figcaption>Vincent P.</figcaption></figure>
@@ -623,19 +636,17 @@ addEventListener('scroll',()=>{if(!px||innerWidth<900)return;const r=px.parentEl
 
 /* ---- explorer ---- */
 const VIEWS=[
- {id:'flyon',name:'Fly on',img:'bfcm-assets/ex/x1-flyon.webp',th:'bfcm-assets/ex/x1-flyon-t.webp',kind:'cut',src:'ai',cap:'<b>Fly on.</b> Door zipped shut and ready for weather. Hangs from the two included tree straps.',
-  hs:[[45,24,'Built-in rain fly','The rain fly is part of the shelter &mdash; it comes with it and sheds water off the sides.'],[12,32,'Tree straps included','Wrap the straps around two trees, clip in, and you\'re hanging.'],[50,66,'Waterproof bottom','The waterproof bottom fabric upgrade (free in this deal) keeps wind and wet off from below.'],[36,46,'Zip-open door','The side of the fly opens up as a door &mdash; tap next to open it.']]},
+ {id:'flyon',name:'Fly on',img:'bfcm-assets/ex/x1-flyon-r2.webp',th:'bfcm-assets/ex/x1-flyon-r2-t.webp',kind:'cut',src:'ai',cap:'<b>Fly on.</b> Door zipped shut and ready for weather. Hangs from the two included tree straps.',
+  hs:[[55,24,'Built-in rain fly','The rain fly is part of the shelter &mdash; it comes with it and sheds water off the sides.'],[12,32,'Tree straps included','Wrap the straps around two trees, clip in, and you\'re hanging.'],[50,66,'Waterproof bottom','The waterproof bottom fabric upgrade (free in this deal) keeps wind and wet off from below.'],[38,46,'Zip-open door','The side of the fly zips open as a door &mdash; tap next to open it.']]},
  {id:'door',name:'Door open',img:'bfcm-assets/ex/x2-door.webp',th:'bfcm-assets/ex/x2-door-t.webp',kind:'cut',src:'real',cap:'<b>Door open.</b> Roll the fly back to get in, read, or watch the view.',
-  hs:[[38,42,'Climb-in door','Big side opening, so getting in and out is easy.'],[55,24,'Rain fly overhead','Even with the door open, the fly still covers you from above.'],[89,46,'Straps &amp; clips','Strap ends clip in on both sides.']]},
- {id:'inside',name:'Peek inside',img:'bfcm-assets/ex/x3-inside.webp',th:'bfcm-assets/ex/x3-inside-t.webp',kind:'cut',src:'ai',cap:'<b>Peek inside.</b> Room for your sleeping bag and pillow, under the fly and behind the bug net.',
-  hs:[[44,57,'Room to stretch out','The spreader poles keep the body open wide, so there is space for you and your sleeping bag.'],[31,33,'Hang a light','Clip a lantern to the ridge line and read in bed.'],[48,36,'Bug net built in','Mesh all around keeps bugs out while air flows through.']]},
- {id:'flyoff',name:'Fly off',img:'bfcm-assets/ex/x4-flyoff.webp',th:'bfcm-assets/ex/x4-flyoff-t.webp',kind:'cut',src:'ai',cap:'<b>Fly off.</b> Just the bug net on clear nights. You can see straight through the mesh.',
-  hs:[[33,24,'Arched poles','Poles lift the net up off your face.'],[50,38,'360° bug net','No-see-um mesh all the way around.'],[55,64,'Spreader poles','Rigid spreader poles hold the hammock open for wide shoulder room.'],[14,33,'Stakes &amp; guy lines','2 aluminum stakes and 2 elastic guy lines are included to hold it steady.']]},
+  hs:[[46,33,'Climb-in door','Big side opening, so getting in and out is easy.'],[29,39,'4 storage pockets','4 interior storage pockets: 2 larger ones, plus 2 small ones by your head.'],[62,22,'Rain fly overhead','Even with the door open, the fly still covers you from above.'],[89,46,'Straps &amp; clips','Strap ends clip in on both sides.']]},
+ {id:'flyoff',name:'Fly off',img:'bfcm-assets/ex/x4-flyoff-r2.webp',th:'bfcm-assets/ex/x4-flyoff-r2-t.webp',kind:'cut',src:'real',cap:'<b>Fly off.</b> Just the bug net on clear nights. You can see straight through the mesh.',
+  hs:[[37,28,'Arched poles','Poles lift the net up off your face.'],[56,34,'360° bug net','No-see-um mesh all the way around.'],[34,61,'Stakes &amp; guy lines','2 aluminum stakes and 2 elastic guy lines are included to hold it steady.'],[15,42,'Tree straps','Wrap the straps around two trees, clip in, and you\'re hanging.']]},
  {id:'under',name:'Underside',img:'bfcm-assets/ex/x5-under.webp',th:'bfcm-assets/ex/x5-under-t.webp',kind:'ai',src:'ai',cap:'<b>Underside.</b> The stretch-fabric pad pocket holds your own sleeping pad in place for warmth.',
   hs:[[33,52,'Sleeping-pad pocket','Slide your own pad into the pocket underneath. It stays put all night and keeps your back warm. Pad not included.'],[62,58,'Stretch fabric','The pad pocket is stretch fabric, so it hugs your pad snugly.'],[13,56,'Snap clips','Three snap clips on the end of the rain fly let the loose ends snap together, so they don\'t flap in the wind.'],[45,20,'Fly wraps the sides','The rain fly drapes down over both sides.']]},
- {id:'ground',name:'Ground mode',img:'bfcm-assets/ex/x6-ground.webp',th:'bfcm-assets/ex/x6-ground-t.webp',kind:'cut',src:'real',cap:'<b>Ground mode.</b> No trees? Pitch it on the ground as a tent.',
-  hs:[[45,55,'Hang it or ground it','The same shelter sets up on the ground when there are no trees around.'],[80,52,'Fly on the ground too','The fly and bug net work the same in ground mode.']]},
- {id:'bag',name:'In the box',img:'bfcm-assets/ex/x7-bag.webp',th:'bfcm-assets/ex/x7-bag-t.webp',kind:'cut',src:'real',cap:'<b>In the box.</b> Everything you need to hang it tonight.',
+ {id:'ground',name:'Ground mode',img:'bfcm-assets/ex/x6-ground-r2.webp',th:'bfcm-assets/ex/x6-ground-r2-t.webp',kind:'photo',src:'real',cap:'<b>Ground mode.</b> No trees? Pitch it on the ground as a tent.',
+  hs:[[42,76,'Hang it or ground it','The same shelter sets up on the ground when there are no trees around.'],[62,74,'Fly on the ground too','The fly and bug net work the same in ground mode.']]},
+ {id:'bag',name:'In the box',img:'bfcm-assets/ex/x7-bag-r2.webp',th:'bfcm-assets/ex/x7-bag-r2-t.webp',kind:'cut',src:'real',cap:'<b>In the box.</b> Everything you need to hang it tonight.',
   hs:[[50,18,'Rain fly','Included.'],[50,41,'Hammock + bug net','Included.'],[35,84,'Carry bag','Waterproof carrying bag upgrade &mdash; free in this deal.'],[49,75,'Straps, stakes &amp; guy lines','2 tree straps, 2 aluminum stakes and 2 elastic guy lines are included.'],[62,87,'Poles','Spreader and arch poles included.']]},
  {id:'pov',name:'Your view',img:'bfcm-assets/ex/x8-pov.webp',th:'bfcm-assets/ex/x8-pov-t.webp',kind:'photo',src:'real',cap:'<b>Your view.</b> What waking up in it actually looks like.',
   hs:[[70,40,'Wake up to this','Unzip the door and the whole view is yours.'],[30,82,'Off the ground','No rocks, roots or cold ground under you.']]}
@@ -669,6 +680,33 @@ stage.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouc
 addEventListener('load',()=>VIEWS.forEach(v=>{const im=new Image();im.src=v.img}));
 const start=VIEWS.findIndex(v=>location.hash==='#view-'+v.id); go(start>=0?start:0,1);
 if(qs.get('hs')!==null){const b=stage.querySelectorAll('.view.on .hs')[+qs.get('hs')||0]; if(b) setTimeout(()=>b.click(),50);}
+})();
+</script>
+<script>
+document.querySelectorAll('.stack-list .item[aria-controls]').forEach(function(it){
+  function t(){var o=it.classList.toggle('open');it.setAttribute('aria-expanded',o?'true':'false');}
+  it.addEventListener('click',t);
+  it.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}});
+});
+</script>
+<script>
+/* Live viewer counter: real count of anonymous sessions seen in the last 4 min. Hidden unless an endpoint is set and the count is >= 5. */
+(function(){
+  var EP=''; /* set to the deployed counter URL, e.g. https://hnh-bfcm-viewers.<account>.workers.dev/ */
+  var MIN=5, el=document.getElementById('viewers');
+  if(!EP||!el||!window.fetch||navigator.webdriver||/bot|crawl|spider|slurp|headless|lighthouse|preview/i.test(navigator.userAgent))return;
+  var k='hnh-vsid',id;
+  try{id=sessionStorage.getItem(k);if(!id){id=(crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2,14));sessionStorage.setItem(k,id)}}catch(e){return}
+  function ping(){
+    if(document.visibilityState==='hidden')return;
+    fetch(EP,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({s:id}),credentials:'omit',cache:'no-store'})
+      .then(function(r){return r.ok?r.json():null})
+      .then(function(d){var n=d&&typeof d.count==='number'?Math.floor(d.count):0;
+        if(n>=MIN){el.querySelector('[data-vn]').textContent=n.toLocaleString('en-US');el.hidden=false}else el.hidden=true})
+      .catch(function(){el.hidden=true});
+  }
+  ping();setInterval(ping,30000);
+  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')ping()});
 })();
 </script>
 </body>
