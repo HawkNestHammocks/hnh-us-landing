@@ -688,9 +688,9 @@ const VIEWS=[
   hs:[[55,24,'Built-in rain fly','The rain fly is part of the shelter &mdash; it comes with it and sheds water off the sides.'],[12,32,'Tree straps included','Wrap the straps around two trees, clip in, and you\'re hanging.'],[50,66,'Waterproof bottom','The waterproof bottom fabric upgrade (free in this deal) keeps wind and wet off from below.'],[38,46,'Zip-open door','The side of the fly zips open as a door &mdash; tap next to open it.']]},
  {id:'under',m:'bfcm-assets/ex/x5-under-lab-sq.webp',mhs:[[67,55],[48,45],[25,38]],name:'Underside',img:'bfcm-assets/ex/x5-under-lab.webp',th:'bfcm-assets/ex/x5-under-lab-t.webp',kind:'cut',src:'real',cap:'<b>Underside.</b> The stretch-fabric pad pocket holds your own sleeping pad in place for warmth. Fits pads up to 28&Prime; wide.',
   hs:[[62,57,'Sleeping-pad pocket','Slide your own pad into the pocket underneath. It stays put all night and keeps your back warm. Pad not included. Fits pads up to 28&Prime; wide.'],[47,40,'Stretch fabric','The pad pocket is stretch fabric, so it hugs your pad snugly.'],[30,33,'Rain fly','The fly drapes over the top; snap clips on its ends keep them from flapping in the wind.']]},
- {id:'door',m:'bfcm-assets/ex/x2-door-e-sq.webp',mhs:[[41, 36], [17, 41], [63, 32], [94, 46]],name:'Door open',img:'bfcm-assets/ex/x2-door-e.webp',th:'bfcm-assets/ex/x2-door-e-t.webp',kind:'cut',src:'real',cap:'<b>Door open.</b> Roll the fly back to get in, read, or watch the view.',
+ {id:'door',m:'bfcm-assets/ex/x2-door-r7-sq.webp',mhs:[[41, 36], [17, 41], [63, 32], [94, 46]],name:'Door open',img:'bfcm-assets/ex/x2-door-r7.webp',th:'bfcm-assets/ex/x2-door-r7-t.webp',kind:'cut',src:'real',cap:'<b>Door open.</b> Roll the fly back to get in, read, or watch the view.',
   hs:[[46,33,'Climb-in door','Big side opening, so getting in and out is easy.'],[29,39,'4 storage pockets','4 interior storage pockets: 2 larger ones, plus 2 small ones by your head.'],[62,22,'Rain fly overhead','Even with the door open, the fly still covers you from above.'],[89,46,'Straps &amp; clips','Strap ends clip in on both sides.']]},
- {id:'inside',m:'bfcm-assets/ex/x8-inside-e-sq.webp',mhs:[[50, 40], [55, 66]],name:'Inside',img:'bfcm-assets/ex/x8-inside-e.webp',th:'bfcm-assets/ex/x8-inside-e-t.webp',kind:'photo',src:'real',cap:'<b>Inside.</b> Zipped in for the night under the fly and bug net. Sleeping bag not included.',
+ {id:'inside',m:'bfcm-assets/ex/x8-inside-g-sq.webp',mhs:[[50, 40], [55, 66]],name:'Inside',img:'bfcm-assets/ex/x8-inside-g.webp',th:'bfcm-assets/ex/x8-inside-g-t.webp',kind:'photo',src:'real',cap:'<b>Inside.</b> Zipped in for the night under the fly and bug net. Sleeping bag not included.',
   hs:[[50,28,'Bug net all around','No-see-um mesh keeps bugs out while air flows through.'],[55,75,'Room for your sleeping bag','Spread out a full sleeping bag inside. Sleeping bag not included.']]},
  {id:'flyoff',m:'bfcm-assets/ex/x4-flyoff-me-sq.webp',mhs:[[74, 28], [36, 34], [80, 65], [94, 43]],name:'Fly off',img:'bfcm-assets/ex/x4-flyoff-me.webp',th:'bfcm-assets/ex/x4-flyoff-me-t.webp',kind:'cut',src:'real',cap:'<b>Fly off.</b> Just the bug net on clear nights. You can see straight through the mesh.',
   hs:[[63,28,'Arched poles','Poles lift the net up off your face.'],[44,34,'360° bug net','No-see-um mesh all the way around.'],[66,61,'Stakes &amp; guy lines','2 aluminum stakes and 2 elastic guy lines are included to hold it steady.'],[85,42,'Tree straps','Wrap the straps around two trees, clip in, and you\'re hanging.']]},
@@ -735,12 +735,14 @@ const shell=document.getElementById('explorer'),jcard=document.getElementById('j
 const IDX={};VIEWS.forEach((v,i)=>IDX[v.id]=i);
 const STEPS=[
  {v:'flyon',nx:'Flip it over',k:'Fly on',h:'Rain fly on, door zipped',l:['Built-in rain fly sheds water off the sides','Hangs from the 2 included tree straps','Waterproof bottom keeps wind and wet off from below']},
- {v:'under',nx:'Flip it back over',tr:'flip',k:'Underside',h:'The sleeping-pad pocket',l:['Slide your own pad into the pocket underneath (pad not included)','Stretch fabric holds it in place all night, so your back stays warm','Fits sleeping pads up to 28" wide']},
- {v:'flyon',nx:'Open the door',tr:'flip',k:'Back upright',h:'Sealed up and storm-ready',l:['Fly drapes past the sides so rain runs off','Door zips fully shut against wind and bugs']},
- {v:'door',nx:'Hop inside',tr:'zip',k:'Door open',h:'Roll-back door',l:['Big side opening, so getting in and out is easy','The fly still covers you from above','4 interior storage pockets: 2 larger, plus 2 small by your head']},
+ {v:'under',nx:'Flip it back over',tr:'turn',k:'Underside',h:'The sleeping-pad pocket',l:['Slide your own pad into the pocket underneath (pad not included)','Stretch fabric holds it in place all night, so your back stays warm','Fits sleeping pads up to 28" wide']},
+ {v:'flyon',nx:'Open the door',tr:'turnback',k:'Back upright',h:'Sealed up and storm-ready',l:['Fly drapes past the sides so rain runs off','Door zips fully shut against wind and bugs']},
+ {v:'door',nx:'Hop inside',tr:'door',k:'Door open',h:'Roll-back door',l:['Big side opening, so getting in and out is easy','The fly still covers you from above','4 interior storage pockets: 2 larger, plus 2 small by your head']},
  {v:'inside',nx:'Get back out',tr:'zoomin',k:'Inside',h:'Zipped in for the night',l:['No-see-um mesh keeps bugs out while air flows through','Room for a full sleeping bag (not included)']},
  {v:'door',nx:'Remove the rain fly',tr:'zoomout',k:'Get back out',h:'Easy in, easy out',l:['Wide door, no crawling through a tiny tent flap','Roll the fly back to sit, read or watch the view']},
- {v:'flyoff',nx:'See what\u2019s in the box',tr:'lift',k:'Fly off',h:'Just the bug net',l:['360° no-see-um mesh for clear nights','Arched poles lift the net up off your face','2 aluminum stakes and 2 elastic guy lines hold it steady']},
+ {v:'flyoff',nx:'Put the rain fly back on',tr:'lift',k:'Fly off',h:'Just the bug net',l:['360° no-see-um mesh for clear nights','Arched poles lift the net up off your face','2 aluminum stakes and 2 elastic guy lines hold it steady']},
+ {v:'flyon',nx:'Set it up on the ground',tr:'drop',k:'Fly back on',h:'Weather rolling in? Fly back on',l:['The rain fly goes back over the bug net','Door zips shut to seal out wind and rain']},
+ {v:'ground',nx:'See what\u2019s in the box',k:'Ground mode',h:'No trees? No problem',l:['The same shelter pitches on the ground as a tent','The fly and bug net work the same in ground mode','Stakes and guy lines are already in the bag']},
  {v:'bag',last:1,k:'In the box',h:'Everything you need',l:['Hammock with built-in bug net, rain fly, spreader &amp; arch poles','2 tree straps, 2 aluminum stakes and 2 elastic guy lines','Waterproof carry bag, free in this deal']}
 ];
 const RM=matchMedia('(prefers-reduced-motion: reduce)');
@@ -750,7 +752,8 @@ const jt=document.createElement('button');jt.type='button';jt.className='jt jui'
 stage.appendChild(jtop);stage.appendChild(jt);
 const jbk=jtop.querySelector('.jbk'),jprog=jtop.querySelector('.jprog');
 let jseq=0;
-function finish(){clearTimeout(jseq);if(jbusy){jbusy.forEach(a=>{try{a.finish()}catch(e){}});jbusy=null}}
+let jclean=null;
+function finish(){clearTimeout(jseq);if(jbusy){jbusy.forEach(a=>{try{a.finish()}catch(e){}});jbusy=null}if(jclean){jclean();jclean=null}}
 function jshow(idx,kind){
   const views=stage.querySelectorAll('.view'),nv=views[idx],ov=views[cur];
   finish();
@@ -759,9 +762,15 @@ function jshow(idx,kind){
   nv.classList.add('on');nv.style.zIndex=2;ov.style.zIndex=1;
   const D=RM.matches?1:1;const E='cubic-bezier(.45,0,.2,1)';let A=[];
   if(RM.matches){A=[nv.animate([{opacity:0},{opacity:1}],{duration:1})]}
-  else if(kind==='zip'){A=[nv.animate([{clipPath:'inset(64% 47% 34% 13% round 8px)'},{clipPath:'inset(20% 47% 34% 13% round 8px)'}],{duration:650,easing:E})]}
-  else if(kind==='flip'){A=[ov.animate([{transform:'perspective(900px) rotateX(0)'},{transform:'perspective(900px) rotateX(88deg)',opacity:.4}],{duration:300,easing:'ease-in',fill:'forwards'}),
-      nv.animate([{transform:'perspective(900px) rotateX(-88deg)',opacity:.4},{transform:'perspective(900px) rotateX(0)',opacity:1}],{duration:340,delay:300,easing:'ease-out',fill:'backwards'})]}
+  else if(kind==='door'){const G='linear-gradient(to top,#000 0%,#000 33%,transparent 50%,transparent 100%)';
+      ['maskImage','webkitMaskImage'].forEach(k=>nv.style[k]=G);['maskSize','webkitMaskSize'].forEach(k=>nv.style[k]='100% 300%');['maskRepeat','webkitMaskRepeat'].forEach(k=>nv.style[k]='no-repeat');
+      A=[nv.animate([{maskPosition:'0 0%',webkitMaskPosition:'0 0%',opacity:.25},{opacity:1,offset:.55},{maskPosition:'0 100%',webkitMaskPosition:'0 100%',opacity:1}],{duration:700,easing:'cubic-bezier(.4,0,.25,1)',fill:'both'})];
+      jclean=()=>{['maskImage','webkitMaskImage','maskSize','webkitMaskSize','maskRepeat','webkitMaskRepeat'].forEach(k=>nv.style[k]='')}}
+  else if(kind==='turn'||kind==='turnback'){const u=kind==='turn'?1:-1;
+      A=[ov.animate([{transform:'none',opacity:1,filter:'blur(0px)'},{transform:`translateY(${-6*u}%) scale(.92) rotate(${-2*u}deg)`,opacity:0,filter:'blur(6px)'}],{duration:340,easing:'cubic-bezier(.5,0,.75,0)',fill:'forwards'}),
+      nv.animate([{transform:`translateY(${8*u}%) scale(.94) rotate(${2*u}deg)`,opacity:0,filter:'blur(6px)'},{transform:'none',opacity:1,filter:'blur(0px)'}],{duration:420,delay:200,easing:'cubic-bezier(.2,.8,.2,1)',fill:'backwards'})]}
+  else if(kind==='drop'){A=[ov.animate([{opacity:1},{opacity:0}],{duration:600,easing:E,fill:'forwards'}),
+      nv.animate([{transform:'translateY(-22%) scale(.96)',opacity:0},{transform:'none',opacity:1}],{duration:600,easing:E})]}
   else if(kind==='zoomin'){A=[ov.animate([{transform:'none',opacity:1},{transform:'scale(1.6)',opacity:0}],{duration:600,easing:E,fill:'forwards',transformOrigin:'40% 45%'}),
       nv.animate([{transform:'scale(.82)',opacity:0},{transform:'none',opacity:1}],{duration:600,easing:E})]}
   else if(kind==='zoomout'){A=[ov.animate([{transform:'none',opacity:1},{transform:'scale(.8)',opacity:0}],{duration:600,easing:E,fill:'forwards'}),
@@ -770,7 +779,7 @@ function jshow(idx,kind){
       nv.animate([{opacity:0,transform:'translateY(4%)'},{opacity:1,transform:'none'}],{duration:600,easing:E})]}
   else{A=[ov.animate([{opacity:1},{opacity:0}],{duration:550,easing:E,fill:'forwards'}),nv.animate([{opacity:0,transform:'translateY(5%)'},{opacity:1,transform:'none'}],{duration:550,easing:E})]}
   jbusy=A;
-  Promise.all(A.map(a=>a.finished.catch(()=>{}))).then(()=>{if(jbusy!==A)return;ov.classList.remove('on');A.forEach(a=>{try{a.cancel()}catch(e){}});ov.style.zIndex='';nv.style.zIndex='';jbusy=null});
+  Promise.all(A.map(a=>a.finished.catch(()=>{}))).then(()=>{if(jbusy!==A)return;ov.classList.remove('on');A.forEach(a=>{try{a.cancel()}catch(e){}});if(jclean){jclean();jclean=null}ov.style.zIndex='';nv.style.zIndex='';jbusy=null});
 }
 function jgo(n,back){
   n=Math.max(0,Math.min(STEPS.length-1,n));const st=STEPS[n],prev=STEPS[jstep];
