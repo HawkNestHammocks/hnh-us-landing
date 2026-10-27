@@ -440,7 +440,7 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
     <div class="reveal"><div class="eyebrow">How it works</div><h2 class="h2 display">Lock it in.<br><span class="grad">Ships Feb 1.</span></h2></div>
     <ol class="tl reveal">
       <li><h4>Today &mdash; claim the deal</h4><p>$179.99 locks in the hammock tent + all 6 free products. Charged today.</p></li>
-      <li><h4>Mon Nov 30, 11:59 PM PT &mdash; BFCM ends</h4><p>The Black Friday deal closes at midnight Pacific on Cyber Monday.</p></li>
+      <li><h4>Mon Nov 30, 11:59 PM ET &mdash; BFCM ends</h4><p>The Black Friday deal closes at midnight Eastern on Cyber Monday.</p></li>
       <li><h4>Feb 1 &mdash; First Run of 2027 ships</h4><p>Only 1,500 made. Free U.S. shipping from our U.S. warehouse.</p></li>
     </ol>
   </div>
@@ -491,7 +491,7 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
       <details><summary>What if I don't love it?</summary><p>You're covered by our 60-day money-back guarantee from delivery, plus hassle-free returns and a lifetime warranty upgrade, both included in this deal.</p></details>
       <details><summary>Does it include a sleeping pad?</summary><p>No. The pocket underneath holds your own sleeping pad in place for warmth. Straps, poles, stakes, rain fly and bug net are all included.</p></details>
       <details><summary>What's Gridless Premium?</summary><p>Gridless is our offline camping and survival app. This deal includes 1 year (12 months) of Gridless Premium.</p></details>
-      <details><summary>What happens after Cyber Monday?</summary><p>The BFCM deal (all the free upgrades) ends Mon Nov 30 at 11:59 PM PT.</p></details>
+      <details><summary>What happens after Cyber Monday?</summary><p>The BFCM deal (all the free upgrades) ends Mon Nov 30 at 11:59 PM ET.</p></details>
     </div>
   </div>
 </section>
@@ -542,18 +542,24 @@ qrender();
 const qs=new URLSearchParams(location.search);
 const offset=qs.get('now')?(new Date(qs.get('now')).getTime()-Date.now()):0;
 const now=()=>Date.now()+offset;
-const START=Date.parse('2026-11-27T00:00:00-08:00'), END=Date.parse('2026-11-30T23:59:59-08:00'), LAST=Date.parse('2026-11-30T00:00:00-08:00');
+/* Timing (Lukas, Oct 27): synced to the Meta ad set in Toronto time.
+   Starts Fri Nov 27 12:00 AM ET; countdown runs to Mon Nov 30 11:59 PM ET; "ENDS TONIGHT" on Nov 30 ET.
+   Offer (and code BFCM2026) actually ends Mon Nov 30 11:59 PM PT: between the two the page stays
+   buyable with a "final hours" message (no countdown reset), then switches to "ended". */
+const START=Date.parse('2026-11-27T00:00:00-05:00'), LAST=Date.parse('2026-11-30T00:00:00-05:00'),
+      END_ET=Date.parse('2026-11-30T23:59:59-05:00'), END=Date.parse('2026-11-30T23:59:59-08:00');
 const pad=n=>String(n).padStart(2,'0');
 function tick(){
   const t=now(); const bar=document.getElementById('barText'), clk=document.getElementById('barClock');
   let ms, label;
   if(t<START){ms=START-t;label='BLACK FRIDAY DEAL STARTS FRI NOV 27';}
-  else if(t<=END){ms=END-t; const lastDay=t>=LAST; label=lastDay?'📢 6 FREE PRODUCTS ENDS TONIGHT':'6 FREE PRODUCTS · ENDS CYBER MONDAY';}
+  else if(t<=END_ET){ms=END_ET-t; label=t>=LAST?'📢 6 FREE PRODUCTS ENDS TONIGHT':'6 FREE PRODUCTS · ENDS CYBER MONDAY';}
+  else if(t<=END){ms=0;label='📢 FINAL HOURS · 6 FREE PRODUCTS';}
   else{ms=0;label='THE BFCM DEAL HAS ENDED';}
   const d=Math.floor(ms/864e5),h=Math.floor(ms/36e5)%24,m=Math.floor(ms/6e4)%60,s=Math.floor(ms/1e3)%60;
   bar.textContent=label; clk.textContent=(d?d+'d ':'')+pad(h)+':'+pad(m)+':'+pad(s);
   const T=document.getElementById('timer'); if(T){T.querySelector('[data-t=d]').textContent=d;T.querySelector('[data-t=h]').textContent=pad(h);T.querySelector('[data-t=m]').textContent=pad(m);T.querySelector('[data-t=s]').textContent=pad(s);}
-  if(t>END) clk.style.display='none';
+  clk.style.display=(t>END_ET)?'none':'';
 }
 tick(); setInterval(tick,1000);
 
