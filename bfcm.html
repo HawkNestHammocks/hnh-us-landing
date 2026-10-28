@@ -637,8 +637,17 @@ function cartURL(n){
   try{const inc=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','ttclid','ref'].forEach(k=>{const v=inc.get(k);if(v)u+='&'+k+'='+encodeURIComponent(v)})}catch(e){}
   return u;
 }
+/* Underquilt add-on step (draft): when the ThermoNest underquilt is in stock, "Claim" buttons go to
+   bfcm-addon.html first; otherwise (or on any error/timeout) they go straight to checkout as before. */
+const UQ_JS='https://hawknesthammocks.ca/products/thermonest%E2%84%A2-cold-weather-underquilt-pre-order-add-on.js?country=US';
+let uqOK=false;
+function addonURL(n){
+  let u='bfcm-addon.html?q='+n;
+  try{const inc=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','ttclid','ref'].forEach(k=>{const v=inc.get(k);if(v)u+='&'+k+'='+encodeURIComponent(v)})}catch(e){}
+  return u;
+}
 function qrender(){
-  const url=cartURL(q); document.querySelectorAll('[data-checkout]').forEach(a=>a.href=url);
+  const url=uqOK?addonURL(q):cartURL(q); document.querySelectorAll('[data-checkout]').forEach(a=>a.href=url);
   document.querySelectorAll('[data-qn]').forEach(e=>e.textContent=q);
   document.querySelectorAll('[data-qnote]').forEach(e=>e.textContent=(q*6)+' free upgrades included');
   document.querySelectorAll('[data-q="-1"]').forEach(e=>e.disabled=q<=1);
@@ -647,6 +656,11 @@ function qrender(){
 }
 document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{q=Math.min(MAXQ,Math.max(1,q+ +b.dataset.q));qrender()});
 qrender();
+try{if(!/[?&]uq=off/.test(location.search)&&Date.now()<Date.parse('2026-11-30T23:59:59-08:00')){
+  const ac=new AbortController(),t=setTimeout(()=>ac.abort(),2500);
+  fetch(UQ_JS,{signal:ac.signal,credentials:'omit'}).then(r=>r.ok?r.json():null).then(j=>{clearTimeout(t);
+    if(j&&j.available===true&&j.variants&&j.variants.some(v=>v.id===53249433469225&&v.available)){uqOK=true;qrender()}}).catch(()=>{});
+}}catch(e){}
 
 /* ---- time (real deadline; ?now=ISO lets us preview) ---- */
 const qs=new URLSearchParams(location.search);
