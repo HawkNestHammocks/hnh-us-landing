@@ -48,6 +48,16 @@ main{width:min(1080px,100% - 32px);margin:0 auto;padding:16px 0 40px}
 .gal .dots b{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 0 1px rgba(0,0,0,.25)}
 .gal .dots b.on{background:#fff}
 .gal .save{position:absolute;top:12px;left:12px;background:var(--night);color:#fff;font:700 12px/1 "Space Mono",monospace;letter-spacing:.06em;padding:8px 10px;border-radius:10px;box-shadow:0 6px 16px -6px rgba(0,0,0,.6)}
+.gal .track{overscroll-behavior-x:contain}
+.gal .cnt{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.55);color:#fff;font:700 12px/1 "Space Mono",monospace;padding:7px 9px;border-radius:99px;pointer-events:none}
+.gal .dots b{cursor:pointer}
+.gal .ga{display:none;position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:#111;font-size:28px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.gal .ga.prev{left:10px}.gal .ga.next{right:10px}.gal .ga[hidden]{display:none!important}
+@media(min-width:900px),(hover:hover) and (pointer:fine){.gal .ga{display:grid;place-items:center}}
+.gal .lb{padding:0;border:0;background:transparent;max-width:min(96vw,1080px);max-height:96vh;overflow:visible}
+.gal .lb::backdrop{background:rgba(0,0,0,.88)}
+.gal .lb img{display:block;width:auto;max-width:min(96vw,1080px);max-height:92vh;aspect-ratio:auto;object-fit:contain;border-radius:12px;cursor:zoom-out}
+.gal .lbx{position:fixed;top:12px;right:12px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:#111;font-size:28px;line-height:1;cursor:pointer}
 .card{border-radius:24px;padding:20px 18px;background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.16);box-shadow:var(--shadow)}
 .eyebrow{font-size:11px;color:var(--amber)}
 h1{font-size:clamp(34px,10vw,54px);margin:8px 0 12px}
@@ -104,9 +114,17 @@ ul.ben li:before{background:rgba(227,180,104,.18);color:#e3b468}
       <div class="track" id="track">
         <img src="../bfcm-assets/addon/uq-hero.webp" srcset="../bfcm-assets/addon/uq-hero-s.webp 450w,../bfcm-assets/addon/uq-hero.webp 900w" sizes="(min-width:900px) 540px,100vw" width="900" height="900" alt="ThermoNest down underquilt under a Hawk Nest hammock">
         <img src="../bfcm-assets/addon/uq-baffle.webp" srcset="../bfcm-assets/addon/uq-baffle-s.webp 450w,../bfcm-assets/addon/uq-baffle.webp 900w" sizes="(min-width:900px) 540px,100vw" width="900" height="900" alt="ThermoNest underquilt with its stuff sack, showing the boxed baffle construction" loading="lazy">
+        <img src="../bfcm-assets/addon/gallery/uq-step1.webp" srcset="../bfcm-assets/addon/gallery/uq-step1-s.webp 600w,../bfcm-assets/addon/gallery/uq-step1.webp 1080w" sizes="(min-width:900px) 540px,100vw" width="1080" height="1080" alt="Setup step 1: hang the hammock as usual and lay the ThermoNest underquilt out flat underneath it" loading="lazy" decoding="async">
+        <img src="../bfcm-assets/addon/gallery/uq-step3.webp" srcset="../bfcm-assets/addon/gallery/uq-step3-s.webp 600w,../bfcm-assets/addon/gallery/uq-step3.webp 1080w" sizes="(min-width:900px) 540px,100vw" width="1080" height="1080" alt="Setup step 3: shorten the long cords until the underquilt sits snug under the hammock with no gap" loading="lazy" decoding="async">
+        <img src="../bfcm-assets/addon/gallery/uq-step4.webp" srcset="../bfcm-assets/addon/gallery/uq-step4-s.webp 600w,../bfcm-assets/addon/gallery/uq-step4.webp 1080w" sizes="(min-width:900px) 540px,100vw" width="1080" height="1080" alt="Setup step 4: push each side toggle into the loop on the hammock so the quilt hugs the sides" loading="lazy" decoding="async">
+        <img src="../bfcm-assets/addon/gallery/uq-storage.webp" srcset="../bfcm-assets/addon/gallery/uq-storage-s.webp 600w,../bfcm-assets/addon/gallery/uq-storage.webp 800w" sizes="(min-width:900px) 540px,100vw" width="800" height="800" alt="Storage and care: keep the down underquilt loosely stored in a large bag or bin, not compressed" loading="lazy" decoding="async">
+        <img src="../bfcm-assets/addon/gallery/uq-hero-dark.webp" srcset="../bfcm-assets/addon/gallery/uq-hero-dark-s.webp 600w,../bfcm-assets/addon/gallery/uq-hero-dark.webp 1080w" sizes="(min-width:900px) 540px,100vw" width="1080" height="1080" alt="ThermoNest premium cold-weather down underquilt hanging under a hammock, 700 fill power duck down" loading="lazy" decoding="async">
       </div>
       <span class="save" data-savetag>SAVE $83</span>
-      <div class="dots"><b class="on"></b><b></b></div>
+      <div class="dots" role="tablist" aria-label="Choose photo"><b role="tab" aria-label="Photo 1 of 7" class="on" aria-selected="true"></b><b role="tab" aria-label="Photo 2 of 7"></b><b role="tab" aria-label="Photo 3 of 7"></b><b role="tab" aria-label="Photo 4 of 7"></b><b role="tab" aria-label="Photo 5 of 7"></b><b role="tab" aria-label="Photo 6 of 7"></b><b role="tab" aria-label="Photo 7 of 7"></b></div>
+      <span class="cnt" aria-live="polite"><span data-gi>1</span> / 7</span>
+      <button type="button" class="ga prev" aria-label="Previous photo" hidden>&#8249;</button><button type="button" class="ga next" aria-label="Next photo">&#8250;</button>
+      <dialog class="lb" aria-label="Enlarged photo"><img alt=""><button type="button" class="lbx" aria-label="Close">&times;</button></dialog>
     </div>
     <div class="card">
       <div class="eyebrow mono">Add-on · ThermoNest™</div>
@@ -158,9 +176,14 @@ fetch(UQ_JS,{signal:ac.signal,credentials:'omit'}).then(r=>r.ok?r.json():null).t
   if(!(j&&j.available===true&&v&&v.available)) return gone();
   if(typeof v.price==='number'&&typeof v.compare_at_price==='number'&&v.compare_at_price>v.price) render(v.price/100,v.compare_at_price/100); else return gone();
 }).catch(()=>{clearTimeout(t);gone()});
-/* gallery dots */
-const tr=document.getElementById('track'), dots=$('.gal .dots b');
-tr.addEventListener('scroll',()=>{const i=Math.round(tr.scrollLeft/tr.clientWidth);dots.forEach((d,k)=>d.classList.toggle('on',k===i))},{passive:true});
+/* gallery: dots, counter, arrows, tap to enlarge */
+const tr=document.getElementById('track'), dots=$('.gal .dots b'), gi=document.querySelector('[data-gi]'), gp=document.querySelector('.ga.prev'), gn=document.querySelector('.ga.next'), gimgs=[...tr.querySelectorAll('img')];
+const gcur=()=>Math.round(tr.scrollLeft/tr.clientWidth);
+const ggo=i=>tr.scrollTo({left:Math.max(0,Math.min(gimgs.length-1,i))*tr.clientWidth,behavior:'smooth'});
+tr.addEventListener('scroll',()=>{const i=gcur();dots.forEach((d,k)=>{d.classList.toggle('on',k===i);d.setAttribute('aria-selected',k===i)});gi.textContent=i+1;gp.hidden=i===0;gn.hidden=i===gimgs.length-1},{passive:true});
+dots.forEach((d,k)=>d.addEventListener('click',()=>ggo(k)));gp.addEventListener('click',()=>ggo(gcur()-1));gn.addEventListener('click',()=>ggo(gcur()+1));
+tr.tabIndex=0;tr.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();ggo(gcur()+1)}if(e.key==='ArrowLeft'){e.preventDefault();ggo(gcur()-1)}});
+const lb=document.querySelector('.gal .lb');if(lb&&lb.showModal){const li=lb.querySelector('img');gimgs.forEach(im=>{im.style.cursor='zoom-in';im.addEventListener('click',()=>{li.src=im.currentSrc||im.src;li.alt=im.alt;lb.showModal()})});lb.addEventListener('click',e=>{if(e.target!==li)lb.close()})}
 })();
 </script>
 </body>
