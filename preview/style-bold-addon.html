@@ -49,8 +49,9 @@ main{width:min(1080px,100% - 32px);margin:0 auto;padding:16px 0 40px}
 .gal .dots b.on{background:#fff}
 .gal .save{position:absolute;top:12px;left:12px;background:var(--night);color:#fff;font:700 12px/1 "Space Mono",monospace;letter-spacing:.06em;padding:8px 10px;border-radius:10px;box-shadow:0 6px 16px -6px rgba(0,0,0,.6)}
 .gal .track{overscroll-behavior-x:contain}
-.gal .cnt{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.55);color:#fff;font:700 12px/1 "Space Mono",monospace;padding:7px 9px;border-radius:99px;pointer-events:none}
+.gal .cnt{position:absolute;bottom:8px;right:10px;background:rgba(0,0,0,.55);color:#fff;font:700 12px/1 "Space Mono",monospace;padding:7px 9px;border-radius:99px;pointer-events:none}
 .gal .dots b{cursor:pointer}
+.gal .save{transition:opacity .2s}.gal.past1 .save{opacity:0}
 .gal .ga{display:none;position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:#111;font-size:28px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.3)}
 .gal .ga.prev{left:10px}.gal .ga.next{right:10px}.gal .ga[hidden]{display:none!important}
 @media(min-width:900px),(hover:hover) and (pointer:fine){.gal .ga{display:grid;place-items:center}}
@@ -166,7 +167,7 @@ fetch(UQ_JS,{signal:ac.signal,credentials:'omit'}).then(r=>r.ok?r.json():null).t
 const tr=document.getElementById('track'), dots=$('.gal .dots b'), gi=document.querySelector('[data-gi]'), gp=document.querySelector('.ga.prev'), gn=document.querySelector('.ga.next'), gimgs=[...tr.querySelectorAll('img')];
 const gcur=()=>Math.round(tr.scrollLeft/tr.clientWidth);
 const ggo=i=>tr.scrollTo({left:Math.max(0,Math.min(gimgs.length-1,i))*tr.clientWidth,behavior:'smooth'});
-tr.addEventListener('scroll',()=>{const i=gcur();dots.forEach((d,k)=>{d.classList.toggle('on',k===i);d.setAttribute('aria-selected',k===i)});gi.textContent=i+1;gp.hidden=i===0;gn.hidden=i===gimgs.length-1},{passive:true});
+tr.addEventListener('scroll',()=>{const i=gcur();dots.forEach((d,k)=>{d.classList.toggle('on',k===i);d.setAttribute('aria-selected',k===i)});gi.textContent=i+1;tr.parentNode.classList.toggle('past1',i>0);gp.hidden=i===0;gn.hidden=i===gimgs.length-1},{passive:true});
 dots.forEach((d,k)=>d.addEventListener('click',()=>ggo(k)));gp.addEventListener('click',()=>ggo(gcur()-1));gn.addEventListener('click',()=>ggo(gcur()+1));
 tr.tabIndex=0;tr.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();ggo(gcur()+1)}if(e.key==='ArrowLeft'){e.preventDefault();ggo(gcur()-1)}});
 const lb=document.querySelector('.gal .lb');if(lb&&lb.showModal){const li=lb.querySelector('img');gimgs.forEach(im=>{im.style.cursor='zoom-in';im.addEventListener('click',()=>{li.src=im.currentSrc||im.src;li.alt=im.alt;lb.showModal()})});lb.addEventListener('click',e=>{if(e.target!==li)lb.close()})}
