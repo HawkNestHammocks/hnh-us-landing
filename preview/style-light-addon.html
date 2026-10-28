@@ -29,9 +29,16 @@ a{color:inherit}
 .bar div{display:flex;align-items:center;justify-content:center;gap:8px;min-height:40px;font-size:12px;font-weight:700;padding:6px 14px;text-align:center}
 .bar .tag{background:var(--night);padding:3px 8px;border-radius:6px;font:700 11px/1.2 "Space Mono",monospace;letter-spacing:.08em}
 main{width:min(1080px,100% - 32px);margin:0 auto;padding:16px 0 40px}
-.steps{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-bottom:14px}
-.steps .ok{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:99px;padding:5px 10px;color:#fff}
-.steps .ok i{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;background:var(--orange);font-style:normal;font-size:10px}
+.steps{display:flex;align-items:center;gap:6px;list-style:none;margin:0 0 14px;padding:0;font-size:13px;line-height:1.2;color:var(--muted)}
+.steps li{display:flex;align-items:center;gap:6px;white-space:nowrap;flex:none}
+.steps li i{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;border:1.5px solid currentColor;font-style:normal;font-size:11px;font-weight:700;line-height:1;flex:none;box-sizing:border-box}
+.steps .sep{flex:1 1 0;justify-content:center;min-width:10px;opacity:.55;font-size:14px}
+.steps .ok{background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:99px;padding:4px 11px 4px 4px;color:#fff}
+.steps .ok i{background:var(--orange);border-color:var(--orange);color:#fff}
+.steps .cur{color:#fff;font-weight:700}.steps .cur i{border-color:var(--orange);color:var(--orange)}
+.steps .sm{display:none}
+@media(max-width:419px){.steps .px{display:none}}
+@media(max-width:339px){.steps{font-size:12px;gap:4px}.steps .lg{display:none}.steps .sm{display:inline}.steps .ok{padding-right:9px}}
 .grid{display:grid;gap:18px}
 .gal{position:relative;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);background:#e9762c}
 .gal .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
@@ -76,7 +83,7 @@ ul.ben li:before{content:"✓";display:grid;place-items:center;width:22px;height
 <style id="theme-light">
 body{color:#14233c;background:#f4f6f9}
 .bar{color:#fff;background:linear-gradient(90deg,#ff6b1a,#ff8f2e 60%,#ffab3a)}.bar .tag{background:#14233c}
-.steps{color:#6b778c}.steps .ok{background:#fff;border-color:#e2e6ee;color:#14233c}
+.steps{color:#6b778c}.steps .ok{background:#fff;border-color:#e2e6ee;color:#14233c}.steps .cur{color:#14233c}
 .card{background:#fff;border-color:#e2e6ee;box-shadow:0 24px 50px -28px rgba(20,35,60,.35)}
 .eyebrow{color:#d9620b}.sub{color:#46536a}.price del{color:#6b778c}
 h1 em{background:linear-gradient(90deg,#ff6b1a,#ffb020);-webkit-background-clip:text;background-clip:text}
@@ -89,7 +96,7 @@ h1 em{background:linear-gradient(90deg,#ff6b1a,#ffb020);-webkit-background-clip:
 <body>
 <div class="bar"><div><span class="tag">2027</span> Your V.3 bundle is saved. One quick add-on, then checkout.</div></div>
 <main>
-  <div class="steps"><span class="ok"><i>✓</i> V.3 bundle · <b data-bundle>$179.99</b></span><span>→ Add-on</span><span>→ Checkout</span></div>
+  <ol class="steps" aria-label="Order steps"><li class="ok"><i aria-hidden="true">✓</i><span><span class="lg">V.3 bundle</span><span class="sm">Bundle</span><span class="px"> · <b data-bundle>$179.99</b></span></span></li><li class="sep" aria-hidden="true">→</li><li class="cur" aria-current="step"><i aria-hidden="true">2</i><span>Add-on</span></li><li class="sep" aria-hidden="true">→</li><li><i aria-hidden="true">3</i><span>Checkout</span></li></ol>
   <div class="grid">
     <div class="gal">
       <div class="track" id="track">
