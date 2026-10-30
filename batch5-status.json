@@ -5,9 +5,9 @@
  "last24": 0,
  "all24": 1,
  "release": 1500,
- "perDay": 3.0,
+ "perDay": 1.6,
  "shipDate": "December 1",
- "updated": "2026-10-29T19:37:58Z",
+ "updated": "2026-10-30T01:37:51Z",
  "closedAt": "2026-10-27T13:10:00-07:00",
  "next": {
   "label": "Feb 1 batch (PO 9A)",
