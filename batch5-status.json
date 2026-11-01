@@ -3,16 +3,16 @@
  "sold": 384,
  "b4Sold": 1331,
  "last24": 0,
- "all24": 1,
+ "all24": 2,
  "release": 1500,
  "perDay": 1.6,
  "shipDate": "December 1",
- "updated": "2026-10-31T19:37:08Z",
+ "updated": "2026-11-01T05:37:38Z",
  "closedAt": "2026-10-27T13:10:00-07:00",
  "next": {
   "label": "Feb 1 batch (PO 9A)",
-  "sold": 4,
-  "last24": 1,
+  "sold": 5,
+  "last24": 2,
   "release": 1500,
   "shipDate": "2027-02-01"
  }
