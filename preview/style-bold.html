@@ -1,6 +1,24 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '654633620066866');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {content_name:'Hawk Nest V.3 First of 2027',content_type:'product',value:179.99,currency:'USD'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=654633620066866&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Hawk Nest V.3 Hammock Tent | 2027 First Batch Pre-Order</title>
@@ -654,6 +672,7 @@ function qrender(){
 }
 document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{q=Math.min(MAXQ,Math.max(1,q+ +b.dataset.q));qrender()});
 qrender();
+document.querySelectorAll('[data-checkout]').forEach(a=>a.addEventListener('click',()=>{try{if(typeof fbq==='function')fbq('track','InitiateCheckout',{value:UNIT*q,currency:'USD',num_items:q,content_name:'Hawk Nest V.3 First of 2027',content_type:'product'});}catch(e){}}));
 try{if(!/[?&]uq=off/.test(location.search)){
   const ac=new AbortController(),t=setTimeout(()=>ac.abort(),2500);
   fetch(UQ_JS,{signal:ac.signal,credentials:'omit'}).then(r=>r.ok?r.json():null).then(j=>{clearTimeout(t);
