@@ -1,6 +1,24 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '654633620066866');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {content_name:'ThermoNest Underquilt Add-On',content_type:'product',value:191.99,currency:'USD'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=654633620066866&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Add the ThermoNest Underquilt | Hawk Nest</title>
@@ -155,6 +173,8 @@ function render(now,was){
   document.getElementById('yes').textContent='Yes, add it — '+money(now)+' →';
 }
 document.getElementById('no').href=noURL; document.getElementById('yes').href=yesURL; render(191.99,274.99);
+document.getElementById('yes').addEventListener('click',()=>{try{if(typeof fbq==='function'){fbq('track','AddToCart',{value:191.99,currency:'USD',content_name:'ThermoNest Underquilt Add-On',content_type:'product'});fbq('track','InitiateCheckout',{value:UNIT*q+191.99,currency:'USD',num_items:q+1,content_name:'Hawk Nest V.3 First of 2027 + ThermoNest',content_type:'product'});}}catch(e){}});
+document.getElementById('no').addEventListener('click',()=>{try{if(typeof fbq==='function')fbq('track','InitiateCheckout',{value:UNIT*q,currency:'USD',num_items:q,content_name:'Hawk Nest V.3 First of 2027',content_type:'product'});}catch(e){}});
 /* Only show while the underquilt is in stock: anything else goes straight to the normal checkout. */
 const gone=()=>location.replace(noURL);
 const ac=new AbortController(), t=setTimeout(()=>{ac.abort();gone()},3000);
