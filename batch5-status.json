@@ -7,11 +7,11 @@
  "release": 1500,
  "perDay": 2.2,
  "shipDate": "December 1",
- "updated": "2026-11-22T05:37:38Z",
+ "updated": "2026-11-22T17:37:58Z",
  "closedAt": "2026-10-27T13:10:00-07:00",
  "next": {
   "label": "Feb 1 batch (PO 9A, 1,200)",
-  "sold": 35,
+  "sold": 36,
   "last24": 6,
   "release": 1200,
   "shipDate": "2027-02-01"
