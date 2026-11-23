@@ -401,17 +401,24 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
   .ggal figure.wide{width:auto;flex:1 1 240px}
 }
 
-.gmock{position:relative;margin:0 0 10px}
-.gmock img{display:block;width:100%;height:auto;border-radius:12px;background:rgba(7,11,28,.6);box-shadow:0 18px 36px -16px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.08)}
-.gmock .gbox-badge{left:auto;right:10px;bottom:12px;transform:rotate(-6deg);font-size:9px;padding:5px 8px}
-.ggal.thumbs{justify-content:center;gap:8px;overflow:visible}
-.ggal.thumbs figure{width:64px;flex:0 0 64px}
-.ggal.thumbs figure:nth-child(2){width:92px;flex:0 0 92px}
-.ggal.thumbs img{border-radius:5px}
+.gflat{display:flex;align-items:flex-end;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:6px 2px 8px;margin:0 0 2px;scrollbar-width:thin}
+.gflat-card{position:relative;flex:0 0 auto;scroll-snap-align:start;text-decoration:none;color:inherit;display:block;cursor:zoom-in}
+.gflat-card img{display:block;width:100%;height:auto;border-radius:6px;background:#0a0f24;box-shadow:0 12px 22px -10px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.14)}
+.gflat-cap{display:block;margin-top:5px;font:700 9px/1 "Space Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:rgba(223,228,255,.75);text-align:center}
+.gflat-front{width:92px;z-index:2}
+.gflat-inside{width:min(230px,62%);flex:1 1 180px;z-index:1}
+.gflat-back{width:92px;z-index:2}
+.gflat-front .gbox-badge{left:50%;bottom:20px;transform:translateX(-50%) rotate(-6deg);font-size:8px;padding:4px 6px}
+.gzoom{position:fixed;inset:0;z-index:200;background:rgba(6,8,18,.88);display:flex;align-items:center;justify-content:center;padding:24px 16px 28px;cursor:zoom-out}
+.gzoom[hidden]{display:none}
+.gzoom img{max-width:min(1100px,94vw);max-height:88vh;width:auto;height:auto;border-radius:8px;box-shadow:0 24px 60px -16px rgba(0,0,0,.8);background:#fbf3e4}
+.gzoom-x{position:absolute;top:12px;right:14px;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font:700 24px/40px "Space Grotesk",sans-serif;cursor:pointer}
 @media(min-width:900px){
-  .ggal.thumbs figure{width:72px;flex-basis:72px}
-  .ggal.thumbs figure:nth-child(2){width:110px;flex-basis:110px}
-  .gmock .gbox-badge{font-size:10px;right:14px;bottom:14px}
+  .gflat{overflow:visible;padding:8px 8px 6px;gap:0;justify-content:center}
+  .gflat-front{width:108px;transform:rotate(-5deg);margin-right:-18px}
+  .gflat-inside{width:auto;flex:1 1 260px;max-width:340px;transform:rotate(0.4deg);z-index:3}
+  .gflat-back{width:108px;transform:rotate(5deg);margin-left:-18px}
+  .gflat-card img{box-shadow:0 16px 28px -12px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.12)}
 }
 
 /* Sticky CTA: must fully fit on narrow phones (S21 Ultra ~384x854, plus 360/375/390/412).
@@ -518,25 +525,22 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
         <div class="gbox-copy">
           <div class="eyebrow">Free with gift orders</div>
           <h3>The Christmas card ships early.</h3>
-          <p>The printed card is mailed to arrive <b>before Christmas</b>. Your Hawk Nest is made to order for the First Run of 2027 and <b>ships Feb 1</b>. The printable version is emailed instantly.</p>
+          <p>The printed card is mailed to arrive <b>before Christmas</b>. Your Hawk Nest is made to order for the First Run of 2027 and <b>ships Feb 1</b>. The inside has a short note from our founder, plus space for you to write your own. The printable version is emailed instantly.</p>
         </div>
-        <figure class="gmock">
-          <img src="xmas-gift-assets/card-3d-mockup.webp" alt="Christmas gift card standing open: the front cover beside the inside, with photos of the hammock tent and a handwritten note from Lukas" width="1600" height="945" loading="lazy">
-          <span class="gbox-badge">Ships early</span>
-        </figure>
-        <div class="ggal thumbs" aria-label="Front, inside and back of the gift card">
-          <figure>
-            <img src="xmas-gift-assets/card-front.jpg" alt="Gift card front" width="900" height="1259" loading="lazy">
-            <figcaption>Front</figcaption>
-          </figure>
-          <figure>
-            <img src="xmas-gift-assets/card-inside.jpg" alt="Gift card inside, with a handwritten note" width="1600" height="1120" loading="lazy">
-            <figcaption>Inside</figcaption>
-          </figure>
-          <figure>
-            <img src="xmas-gift-assets/card-back.jpg" alt="Gift card back" width="900" height="1260" loading="lazy">
-            <figcaption>Back</figcaption>
-          </figure>
+        <div class="gflat" aria-label="The gift card, front, inside and back">
+          <a class="gflat-card gflat-front" href="xmas-gift-assets/card-front.jpg" data-zoom>
+            <img src="xmas-gift-assets/card-front.jpg" alt="Gift card front: Merry Christmas, Your Hawk Nest is on its way" width="900" height="1259" loading="lazy">
+            <span class="gbox-badge">Ships early</span>
+            <span class="gflat-cap">Front</span>
+          </a>
+          <a class="gflat-card gflat-inside" href="xmas-gift-assets/card-inside.jpg" data-zoom>
+            <img src="xmas-gift-assets/card-inside.jpg" alt="Gift card inside: photos of the hammock, a note from Lukas, and space for the giver to write a message" width="1600" height="1120" loading="lazy">
+            <span class="gflat-cap">Inside</span>
+          </a>
+          <a class="gflat-card gflat-back" href="xmas-gift-assets/card-back.jpg" data-zoom>
+            <img src="xmas-gift-assets/card-back.jpg" alt="Gift card back: what is in the box" width="900" height="1260" loading="lazy">
+            <span class="gflat-cap">Back</span>
+          </a>
         </div>
         <ol class="gtl">
           <li><b>Today</b><span>Order &amp; get the printable</span></li>
@@ -932,6 +936,30 @@ document.querySelectorAll('.stack-list .item[aria-controls]').forEach(function(i
   }
   ping();setInterval(ping,30000);
   document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')ping()});
+})();
+</script>
+<script>
+(()=>{
+  const box=document.createElement('div');
+  box.className='gzoom';
+  box.hidden=true;
+  box.setAttribute('role','dialog');
+  box.setAttribute('aria-label','Gift card preview');
+  box.innerHTML='<button type="button" class="gzoom-x" aria-label="Close">×</button><img alt="">';
+  document.body.appendChild(box);
+  const img=box.querySelector('img');
+  const close=()=>{box.hidden=true;img.removeAttribute('src');document.body.style.overflow='';};
+  document.querySelectorAll('[data-zoom]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      img.src=a.getAttribute('href');
+      img.alt=a.querySelector('img')?.alt||'';
+      box.hidden=false;
+      document.body.style.overflow='hidden';
+    });
+  });
+  box.addEventListener('click',e=>{if(e.target===box||e.target.closest('.gzoom-x'))close();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!box.hidden)close();});
 })();
 </script>
 </body>
