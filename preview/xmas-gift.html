@@ -57,7 +57,7 @@ h2{font:600 42px/1.1 Fraunces,serif;color:var(--navy);margin:10px 0 16px}
 .deadline b{display:block;font:700 20px Fraunces;color:var(--gold)}
 .cardshow{background:var(--deep);color:var(--cream)}
 .cardshow h2{color:var(--cream)}.cardshow p.sub{color:rgba(253,244,227,.8)}
-.cardshow .row{display:grid;grid-template-columns:.62fr 1.38fr;gap:30px;margin-top:44px;align-items:center}
+.cardshow .row{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin:44px auto 0;max-width:900px;align-items:start}.cardshow .row .wide{grid-column:1/-1}
 .cardshow img{border-radius:6px;box-shadow:0 24px 50px rgba(0,0,0,.5)}
 .cardshow .cap{text-align:center;font:600 13px Montserrat;color:rgba(253,244,227,.7);margin-top:14px}
 .feat{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
@@ -98,7 +98,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
  .stage .env{width:165px;height:116px;right:auto;left:0;bottom:30px}.stage .env:after{height:70px}.stage .env b{font-size:20px;left:14px;bottom:10px}
  .stage .tag{right:auto;left:0;top:14px;font-size:11.5px;max-width:150px;padding:10px 12px}
  section{padding:56px 0}h2{font-size:30px}
- .honest .grid,.cardshow .row,.deadline{grid-template-columns:1fr;gap:26px}
+ .honest .grid,.deadline{grid-template-columns:1fr;gap:26px}.cardshow .row{gap:14px}
  .honest .pics{height:300px}
  .steps,.revgrid{grid-template-columns:1fr;gap:16px}
  .feat{grid-template-columns:1fr 1fr}
@@ -144,8 +144,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 </div></section>
 
 <section class="cardshow"><div class="wrap center"><div class="eyebrow">The gift card</div><h2>Something real to unwrap</h2>
- <p class="sub">A folded 5×7 card on heavy matte stock, mailed in a red envelope. Inside: what’s coming, when it ships, and room for your note.</p>
- <div class="row"><div><img src="xmas-gift-assets/card-front.jpg" alt="Gift card front"><div class="cap">Front</div></div><div><img src="xmas-gift-assets/card-inside.jpg" alt="Gift card inside with To, From and note lines"><div class="cap">Inside: write your own note</div></div></div>
+ <p class="sub">A folded 5×7 card on heavy matte stock, mailed in a red envelope. It shows them exactly what’s coming: real photos, everything in the box, the specs, when it ships, and room for your note.</p>
+ <div class="row"><div><img src="xmas-gift-assets/card-front.jpg" alt="Gift card front"><div class="cap">Front</div></div><div><img src="xmas-gift-assets/card-back.jpg" alt="Gift card back: what’s in the box"><div class="cap">Back: what’s in the box</div></div><div class="wide"><img src="xmas-gift-assets/card-inside.jpg" alt="Gift card inside: product photos, specs and note lines"><div class="cap">Inside: photos and specs on the left, your note on the right</div></div></div>
 </div></section>
 
 <section><div class="wrap center"><div class="eyebrow" style="color:var(--orange)">What they’re getting</div><h2>The Hawk Nest All‑Season Hammock Tent V.3</h2>
