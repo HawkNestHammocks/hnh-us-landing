@@ -400,6 +400,39 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
   .ggal figure{width:92px}
   .ggal figure.wide{width:auto;flex:1 1 240px}
 }
+
+.gmock{position:relative;margin:0 0 10px}
+.gmock img{display:block;width:100%;height:auto;border-radius:12px;background:rgba(7,11,28,.6);box-shadow:0 18px 36px -16px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.08)}
+.gmock .gbox-badge{left:auto;right:10px;bottom:12px;transform:rotate(-6deg);font-size:9px;padding:5px 8px}
+.ggal.thumbs{justify-content:center;gap:8px;overflow:visible}
+.ggal.thumbs figure{width:64px;flex:0 0 64px}
+.ggal.thumbs figure:nth-child(2){width:92px;flex:0 0 92px}
+.ggal.thumbs img{border-radius:5px}
+@media(min-width:900px){
+  .ggal.thumbs figure{width:72px;flex-basis:72px}
+  .ggal.thumbs figure:nth-child(2){width:110px;flex-basis:110px}
+  .gmock .gbox-badge{font-size:10px;right:14px;bottom:14px}
+}
+
+/* Sticky CTA: must fully fit on narrow phones (S21 Ultra ~384x854, plus 360/375/390/412).
+   The base .cta{width:100%} was making the button overflow the bar and get clipped. */
+.sticky{box-sizing:border-box;left:max(8px,env(safe-area-inset-left,0px));right:max(8px,env(safe-area-inset-right,0px));bottom:calc(8px + env(safe-area-inset-bottom,0px));width:auto;max-width:none;gap:8px;padding:8px 8px 8px 10px;min-width:0;align-items:center}
+.sticky .p{flex:0 1 auto;min-width:0;max-width:46%;line-height:1.1}
+.sticky .p b{font-size:clamp(18px,5.2vw,24px);display:block}
+.sticky .p small{display:block;font-size:clamp(9px,2.5vw,11px);line-height:1.25;white-space:normal}
+.sticky .cta{width:auto!important;flex:1 1 0;min-width:0;min-height:44px;height:auto;padding:0 10px;font-size:clamp(14px,4.1vw,18px);white-space:nowrap;overflow:visible;box-sizing:border-box}
+@media(max-width:400px){
+  .sticky{gap:6px;padding:7px}
+  .sticky .p{max-width:42%}
+  .sticky .p b{font-size:18px}
+  .sticky .cta{min-height:44px;font-size:14px;padding:0 8px;letter-spacing:.02em}
+}
+@media(min-width:900px){
+  .sticky{left:50%;right:auto;width:560px;max-width:560px;padding:10px 10px 10px 14px;gap:10px}
+  .sticky .p{max-width:none}
+  .sticky .p b{font-size:26px}
+  .sticky .cta{min-height:50px;font-size:19px;padding:0 14px}
+}
 </style>
 </head>
 <body>
@@ -487,18 +520,21 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
           <h3>The Christmas card ships early.</h3>
           <p>The printed card is mailed to arrive <b>before Christmas</b>. Your Hawk Nest is made to order for the First Run of 2027 and <b>ships Feb 1</b>. The printable version is emailed instantly.</p>
         </div>
-        <div class="ggal" aria-label="The gift card, front, inside and back">
+        <figure class="gmock">
+          <img src="xmas-gift-assets/card-3d-mockup.webp" alt="Christmas gift card standing open: the front cover beside the inside, with photos of the hammock tent and a handwritten note from Lukas" width="1600" height="945" loading="lazy">
+          <span class="gbox-badge">Ships early</span>
+        </figure>
+        <div class="ggal thumbs" aria-label="Front, inside and back of the gift card">
           <figure>
-            <img src="xmas-gift-assets/card-front.jpg" alt="Gift card front: Merry Christmas, Your Hawk Nest is on its way" width="900" height="1259" loading="lazy">
-            <span class="gbox-badge">Ships early</span>
+            <img src="xmas-gift-assets/card-front.jpg" alt="Gift card front" width="900" height="1259" loading="lazy">
             <figcaption>Front</figcaption>
           </figure>
-          <figure class="wide">
-            <img src="xmas-gift-assets/card-inside.jpg" alt="Gift card inside: photos of the hammock tent and a handwritten note from Lukas" width="1600" height="1120" loading="lazy">
+          <figure>
+            <img src="xmas-gift-assets/card-inside.jpg" alt="Gift card inside, with a handwritten note" width="1600" height="1120" loading="lazy">
             <figcaption>Inside</figcaption>
           </figure>
           <figure>
-            <img src="xmas-gift-assets/card-back.jpg" alt="Gift card back: what is in the box" width="900" height="1260" loading="lazy">
+            <img src="xmas-gift-assets/card-back.jpg" alt="Gift card back" width="900" height="1260" loading="lazy">
             <figcaption>Back</figcaption>
           </figure>
         </div>
@@ -660,7 +696,7 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
 
 <footer>© 2026 Hawk Nest Hammocks Inc. · support@hawknesthammocks.ca<br>Pre-order: BFCM orders ship Feb 1. Free standard U.S. shipping.</footer>
 
-<div class="sticky" id="sticky"><div class="p"><b>$159</b><small><s>$179.99</s> · $429 value · this weekend only</small></div><a class="cta" href="#" data-checkout>Claim deal →</a></div>
+<div class="sticky" id="sticky"><div class="p"><b>$159</b><small><s>$179.99</s> · $429 value</small></div><a class="cta" href="#" data-checkout>Claim deal →</a></div>
 
 <script>
 (()=>{
