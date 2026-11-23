@@ -377,16 +377,25 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
 .hero-gc img{width:100%;border-radius:4px;box-shadow:0 18px 30px -10px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.15)}
 .hero-gc .gctag{position:absolute;left:50%;bottom:-11px;transform:translateX(-50%) rotate(-9deg);white-space:nowrap;background:linear-gradient(180deg,#ffb020,#ff6b1a);color:#0a0f24;font:700 10px/1 "Space Grotesk",sans-serif;letter-spacing:.04em;text-transform:uppercase;padding:5px 7px;border-radius:999px;box-shadow:0 6px 14px -4px rgba(0,0,0,.6)}
 @keyframes gcin{from{opacity:0;transform:translateY(-24px) rotate(0deg)}to{opacity:1;transform:rotate(9deg)}}
-.gtl{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px;counter-reset:g}
-.gtl li{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 10px 11px;font-size:13px;color:#dfe4ff;line-height:1.25}
-.gtl li b{display:block;color:var(--amber);font:700 11px "Space Mono",monospace;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
-.gtl li:not(:last-child):after{content:"→";position:absolute;right:-9px;top:50%;transform:translateY(-50%);color:var(--orange);font-weight:700;z-index:1}
-.gcards{position:relative;margin:0;padding-bottom:6%}
-.gcards .gi{width:88%;border-radius:10px;box-shadow:var(--shadow)}
-.gcards .gf{position:absolute;right:0;bottom:0;width:30%;border-radius:6px;transform:rotate(6deg);box-shadow:0 24px 40px -14px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.15)}
 .hero-gc{right:6%;top:49%;width:72px}
 @media(min-width:900px){.hero-gc{right:5%;top:58%;width:90px}}
-.gcards figcaption{font-size:12px;color:var(--muted);margin-top:10px}
+.gbox{margin-top:16px;display:grid;grid-template-columns:88px 1fr;gap:14px 16px;align-items:center;padding:14px 14px 15px;border-radius:18px;background:linear-gradient(165deg,rgba(255,176,32,.16),rgba(10,15,36,.55) 42%,rgba(255,107,26,.08));border:1px solid rgba(255,176,32,.55);box-shadow:0 0 0 1px rgba(255,107,26,.18),0 16px 36px -14px rgba(255,107,26,.55),0 0 40px -8px rgba(255,176,32,.32)}
+.gbox-art{position:relative;margin:4px 0 6px}
+.gbox-art img{display:block;width:100%;border-radius:6px;transform:rotate(-7deg);box-shadow:0 16px 26px -10px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.16)}
+.gbox-badge{position:absolute;left:50%;bottom:-8px;transform:translateX(-50%) rotate(7deg);white-space:nowrap;background:linear-gradient(180deg,#ffb020,#ff6b1a);color:#0a0f24;font:700 9px/1 "Space Grotesk",sans-serif;letter-spacing:.04em;text-transform:uppercase;padding:5px 6px;border-radius:999px;box-shadow:0 6px 12px -4px rgba(0,0,0,.55)}
+.gbox-copy .eyebrow{margin-bottom:4px}
+.gbox-copy h3{margin:0 0 6px;font:700 clamp(18px,4.6vw,22px)/1.15 "Space Grotesk",sans-serif;color:#fff;letter-spacing:-.02em}
+.gbox-copy p{margin:0;font-size:13px;line-height:1.45;color:#dfe4ff}
+.gbox-copy p b{color:#fff}
+.gtl{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:12px 0 0;padding:0;counter-reset:g}
+.gtl li{position:relative;background:rgba(10,15,36,.45);border:1px solid rgba(255,176,32,.28);border-radius:12px;padding:8px 8px 9px;font-size:12px;color:#dfe4ff;line-height:1.25}
+.gtl li b{display:block;color:var(--amber);font:700 10px "Space Mono",monospace;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+.gtl li:not(:last-child):after{content:"→";position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:var(--orange);font-weight:700;z-index:1}
+@media(max-width:380px){
+  .gbox{grid-template-columns:1fr;justify-items:center;text-align:center;padding:16px 14px 15px}
+  .gbox-art{width:100px}
+  .gtl{text-align:left;width:100%}
+}
 </style>
 </head>
 <body>
@@ -468,6 +477,22 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
         <div class="qty"><span>Quantity</span><button type="button" data-q="-1" aria-label="One less">−</button><b data-qn>1</b><button type="button" data-q="1" aria-label="One more">+</button><small data-qnote>6 free upgrades included</small></div>
       </div>
       <p class="inbox"><b>In the box:</b> hammock with built-in bug net, rain fly, spreader &amp; arch poles, 2 tree straps, 2 aluminum stakes, 2 elastic guy lines and the waterproof carry bag.</p>
+      <aside class="gbox reveal" id="gift">
+        <div class="gbox-art">
+          <img src="xmas-gift-assets/card-front.jpg" alt="Christmas gift card front: Your Hawk Nest is on its way" width="900" height="1273">
+          <span class="gbox-badge">Ships early</span>
+        </div>
+        <div class="gbox-copy">
+          <div class="eyebrow">Free with gift orders</div>
+          <h3>The Christmas card ships early.</h3>
+          <p>The printed card is mailed to arrive <b>before Christmas</b>. Your Hawk Nest is made to order for the First Run of 2027 and <b>ships Feb 1</b>. The printable version is emailed instantly.</p>
+          <ol class="gtl">
+            <li><b>Today</b><span>Order &amp; get the printable</span></li>
+            <li><b>Before Dec 25</b><span>Printed card arrives</span></li>
+            <li><b>Feb 1</b><span>Hammock ships, made to order</span></li>
+          </ol>
+        </div>
+      </aside>
       <a class="cta reveal" style="margin-top:16px" href="#" data-checkout data-qcta>Get the full bundle — $179.99 →</a>
     </div>
   </div>
@@ -514,23 +539,6 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
   <img src="/bfcm-assets/pov-wide.webp" alt="View from inside the Hawk Nest at sunrise over a mountain lake" loading="lazy" data-parallax>
   <div class="q wrap"><blockquote><span class="quote-box">“Like sleeping on a cloud.”</span></blockquote><cite>&mdash; Hawk Nest customer</cite></div>
 </div>
-
-<!-- GIFT -->
-<section class="sec gift" id="gift">
-  <div class="wrap gift-grid">
-    <div class="reveal">
-      <div class="eyebrow">Free with gift orders</div>
-      <h2 class="h2 display">Gift it now.<br><span class="grad">Unwrap the card.</span></h2>
-      <p class="lead">Your Hawk Nest is made to order for the First Run of 2027 and ships Feb 1. Until then, they get something to unwrap: a <b>free gift card</b> with real photos of what&rsquo;s coming. The printable is emailed instantly, and the printed card is mailed to arrive before Christmas.</p>
-      <ol class="gtl">
-        <li><b>Today</b><span>Order &amp; get the printable</span></li>
-        <li><b>Before Dec 25</b><span>Printed card arrives</span></li>
-        <li><b>Feb 1</b><span>Hammock ships, made to order</span></li>
-      </ol>
-    </div>
-    <figure class="gcards reveal"><img class="gi" src="xmas-gift-assets/card-inside.jpg" alt="Inside the gift card: six photos of the hammock tent, specs, and lines for a note" loading="lazy" width="1600" height="1132"><img class="gf" src="xmas-gift-assets/card-front.jpg" alt="Gift card front: Your Hawk Nest is on its way" loading="lazy" width="900" height="1273"><figcaption>The gift card, front and inside</figcaption></figure>
-  </div>
-</section>
 
 <!-- TIMELINE -->
 <section class="sec" id="when">
