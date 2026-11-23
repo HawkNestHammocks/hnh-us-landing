@@ -410,6 +410,10 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
 .gflat-back{grid-area:back;width:78%;max-width:130px;justify-self:start;z-index:2}
 .gflat-front .gbox-badge{left:50%;bottom:20px;transform:translateX(-50%) rotate(-6deg);font-size:8px;padding:4px 6px}
 .gflat-hint{margin:0 0 2px;text-align:center;font:500 11px/1.2 "Space Grotesk",sans-serif;color:rgba(223,228,255,.55)}
+.gift-opt{display:flex;align-items:flex-start;gap:8px;margin:12px 0 0;cursor:pointer;font:600 13px/1.35 "Space Grotesk",sans-serif;color:#fff}
+.gift-opt input{flex:none;width:18px;height:18px;margin:2px 0 0;accent-color:#ff6b1a;cursor:pointer}
+.gift-opt-cta{margin:14px 0 0;color:#dfe4ff}
+
 .gzoom{position:fixed;inset:0;z-index:200;background:rgba(6,8,18,.88);display:flex;align-items:center;justify-content:center;padding:24px 16px 28px;cursor:zoom-out}
 .gzoom[hidden]{display:none}
 .gzoom img{max-width:min(1100px,94vw);max-height:88vh;width:auto;height:auto;border-radius:8px;box-shadow:0 24px 60px -16px rgba(0,0,0,.8);background:#fbf3e4}
@@ -524,9 +528,9 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
       <p class="inbox"><b>In the box:</b> hammock with built-in bug net, rain fly, spreader &amp; arch poles, 2 tree straps, 2 aluminum stakes, 2 elastic guy lines and the waterproof carry bag.</p>
       <aside class="gbox reveal" id="gift">
         <div class="gbox-copy">
-          <div class="eyebrow">Free with gift orders</div>
-          <h3>The Christmas card ships early.</h3>
-          <p>The printed card is mailed to arrive <b>before Christmas</b>. Your Hawk Nest is made to order for the First Run of 2027 and <b>ships Feb 1</b>. The inside has a short note from our founder, plus space for you to write your own. The printable version is emailed instantly.</p>
+          <div class="eyebrow">For Christmas orders</div>
+          <h3>Buying it as a Christmas gift?</h3>
+          <p>Your Hawk Nest is made to order and <b>ships Feb 1</b>, so it won&rsquo;t arrive by Christmas. That&rsquo;s why we made a custom Christmas card we mail to you first, free, so you have something to wrap and put under the tree.</p>
         </div>
         <div class="gflat" aria-label="The gift card, front, inside and back">
           <a class="gflat-card gflat-front" href="xmas-gift-assets/card-front.jpg" data-zoom>
@@ -548,8 +552,10 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
           <li><b>By Dec 25</b><span>Printed card arrives</span></li>
           <li><b>Feb 1</b><span>Hammock ships, made to order</span></li>
         </ol>
+        <label class="gift-opt"><input type="checkbox" class="gift-card-opt" checked> <span>🎄 It&rsquo;s a gift: mail me the free Christmas card (arrives before Dec 25)</span></label>
       </aside>
-      <a class="cta reveal" style="margin-top:16px" href="#" data-checkout data-qcta>Get the full bundle — $159 →</a>
+      <label class="gift-opt gift-opt-cta"><input type="checkbox" class="gift-card-opt" checked> <span>🎄 It&rsquo;s a gift: mail me the free Christmas card (arrives before Dec 25)</span></label>
+      <a class="cta reveal" style="margin-top:12px" href="#" data-checkout data-qcta>Get the full bundle — $159 →</a>
     </div>
   </div>
 </section>
@@ -674,7 +680,7 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
     <div class="faq reveal">
       <details open><summary>When does it ship?</summary><p>This is a pre-order. BFCM orders ship Feb 1 with free U.S. shipping.</p></details>
       <details><summary>When am I charged?</summary><p>Today, at checkout. That locks in $159 and all the free upgrades. The free upgrades are applied automatically at checkout.</p></details>
-      <details><summary>Can I give it as a Christmas gift?</summary><p>Yes. The hammock tent won&rsquo;t arrive before Christmas (BFCM orders ship Feb 1), so gift orders get a free gift card to unwrap: a printable version emailed instantly, and a printed card mailed from our U.S. warehouse to arrive before Christmas.</p></details>
+      <details><summary>Can I give it as a Christmas gift?</summary><p>Yes. The hammock is made to order and ships Feb 1, so it won&rsquo;t arrive by Christmas. Check the box for a free custom Christmas card, mailed to you first so you have something to wrap and put under the tree (arrives before Dec 25). A printable version is also emailed instantly.</p></details>
       <details><summary>What if I don't love it?</summary><p>You're covered by our 60-day money-back guarantee from delivery, plus hassle-free returns and a lifetime warranty upgrade, both included in this deal.</p></details>
       <details><summary>Does it include a sleeping pad?</summary><p>No. The pocket underneath holds your own sleeping pad in place for warmth. Straps, poles, stakes, rain fly and bug net are all included.</p></details>
       <details><summary>What's Gridless Premium?</summary><p>Gridless is our offline camping and survival app. This deal includes 1 year (12 months) of Gridless Premium.</p></details>
@@ -709,8 +715,10 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
    buy-1-get-5 discount), plus the BFCM2026 code. Incoming UTM/click ids are passed through. */
 const VARIANTS=[53200326557993,53198306312489,53198306345257,46948621254953,46948623810857,47874384953641];
 const CODE='BFCM2026', UNIT=159, MAXQ=10; let q=1;
+let giftCard=true;
 function cartURL(n){
   let u='https://hawknesthammocks.ca/cart/'+VARIANTS.map(v=>v+':'+n).join(',')+'?country=US&discount='+CODE;
+  if(giftCard) u+='&'+encodeURIComponent('attributes[Christmas card]')+'=Yes';
   try{const inc=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','ttclid','ref'].forEach(k=>{const v=inc.get(k);if(v)u+='&'+k+'='+encodeURIComponent(v)})}catch(e){}
   return u;
 }
@@ -719,7 +727,7 @@ function cartURL(n){
 const UQ_JS='https://hawknesthammocks.ca/products/thermonest%E2%84%A2-cold-weather-underquilt-pre-order-add-on.js?country=US';
 let uqOK=false;
 function addonURL(n){
-  let u='/bfcm-addon.html?q='+n;
+  let u='/bfcm-addon.html?q='+n+(giftCard?'&giftcard=1':'');
   try{const inc=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','ttclid','ref'].forEach(k=>{const v=inc.get(k);if(v)u+='&'+k+'='+encodeURIComponent(v)})}catch(e){}
   return u;
 }
@@ -732,6 +740,7 @@ function qrender(){
   document.querySelectorAll('[data-qcta]').forEach(e=>e.textContent=(q>1?'Get '+q+' bundles — $':'Get the full bundle — $')+Math.round(UNIT*q)+' →');
 }
 document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{q=Math.min(MAXQ,Math.max(1,q+ +b.dataset.q));qrender()});
+document.querySelectorAll('.gift-card-opt').forEach(b=>{b.checked=giftCard;b.addEventListener('change',()=>{giftCard=b.checked;document.querySelectorAll('.gift-card-opt').forEach(x=>x.checked=giftCard);qrender();});});
 qrender();
 try{if(!/[?&]uq=off/.test(location.search)&&Date.now()<Date.parse('2026-11-30T23:59:59-08:00')){
   const ac=new AbortController(),t=setTimeout(()=>ac.abort(),2500);
