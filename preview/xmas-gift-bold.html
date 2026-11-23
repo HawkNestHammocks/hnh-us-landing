@@ -401,23 +401,24 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
   .ggal figure.wide{width:auto;flex:1 1 240px}
 }
 
-.gflat{display:flex;align-items:flex-end;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:6px 2px 8px;margin:0 0 2px;scrollbar-width:thin}
-.gflat-card{position:relative;flex:0 0 auto;scroll-snap-align:start;text-decoration:none;color:inherit;display:block;cursor:zoom-in}
+.gflat{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"inside inside" "front back";gap:10px 12px;align-items:end;justify-items:center;padding:2px 0 6px;margin:0 0 2px}
+.gflat-card{position:relative;text-decoration:none;color:inherit;display:block;cursor:zoom-in;width:100%}
 .gflat-card img{display:block;width:100%;height:auto;border-radius:6px;background:#0a0f24;box-shadow:0 12px 22px -10px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.14)}
 .gflat-cap{display:block;margin-top:5px;font:700 9px/1 "Space Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:rgba(223,228,255,.75);text-align:center}
-.gflat-front{width:92px;z-index:2}
-.gflat-inside{width:min(230px,62%);flex:1 1 180px;z-index:1}
-.gflat-back{width:92px;z-index:2}
+.gflat-inside{grid-area:inside;z-index:1}
+.gflat-front{grid-area:front;width:78%;max-width:130px;justify-self:end;z-index:2}
+.gflat-back{grid-area:back;width:78%;max-width:130px;justify-self:start;z-index:2}
 .gflat-front .gbox-badge{left:50%;bottom:20px;transform:translateX(-50%) rotate(-6deg);font-size:8px;padding:4px 6px}
+.gflat-hint{margin:0 0 2px;text-align:center;font:500 11px/1.2 "Space Grotesk",sans-serif;color:rgba(223,228,255,.55)}
 .gzoom{position:fixed;inset:0;z-index:200;background:rgba(6,8,18,.88);display:flex;align-items:center;justify-content:center;padding:24px 16px 28px;cursor:zoom-out}
 .gzoom[hidden]{display:none}
 .gzoom img{max-width:min(1100px,94vw);max-height:88vh;width:auto;height:auto;border-radius:8px;box-shadow:0 24px 60px -16px rgba(0,0,0,.8);background:#fbf3e4}
 .gzoom-x{position:absolute;top:12px;right:14px;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font:700 24px/40px "Space Grotesk",sans-serif;cursor:pointer}
 @media(min-width:900px){
-  .gflat{overflow:visible;padding:8px 8px 6px;gap:0;justify-content:center}
-  .gflat-front{width:108px;transform:rotate(-5deg);margin-right:-18px}
-  .gflat-inside{width:auto;flex:1 1 260px;max-width:340px;transform:rotate(0.4deg);z-index:3}
-  .gflat-back{width:108px;transform:rotate(5deg);margin-left:-18px}
+  .gflat{display:flex;grid-template-columns:none;grid-template-areas:none;align-items:flex-end;overflow:visible;padding:8px 8px 6px;gap:0;justify-content:center}
+  .gflat-front{flex:0 0 108px;width:108px;max-width:108px;justify-self:auto;transform:rotate(-5deg);margin-right:-18px}
+  .gflat-inside{flex:1 1 260px;width:auto;max-width:340px;transform:rotate(0.4deg);z-index:3}
+  .gflat-back{flex:0 0 108px;width:108px;max-width:108px;justify-self:auto;transform:rotate(5deg);margin-left:-18px}
   .gflat-card img{box-shadow:0 16px 28px -12px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.12)}
 }
 
