@@ -154,7 +154,7 @@ ul.ben li:before{content:"✓";display:grid;place-items:center;width:22px;height
 <script>
 (()=>{
 const VARIANTS=[53200326557993,53198306312489,53198306345257,46948621254953,46948623810857,47874384953641];
-const CODE='BFCM2026', UNIT=159.99, MAXQ=10, CARD=67854680129833;
+const UNIT=159.99, MAXQ=10, CARD=67854680129833;
 const UQ_VAR=53249433469225; /* hidden 'ThermoNest ... Add-On' variant, priced in Shopify (no extra code) */
 const UQ_JS='https://hawknesthammocks.ca/products/thermonest%E2%84%A2-cold-weather-underquilt-pre-order-add-on.js?country=US';
 const END=Date.parse('2026-11-30T23:59:59-08:00');
@@ -165,8 +165,8 @@ function pass(){let s='';['utm_source','utm_medium','utm_campaign','utm_content'
 function cardItems(){return giftCard?(','+CARD+':1'):''}
 function cardAttr(){return giftCard?('&'+encodeURIComponent('attributes[Christmas card]')+'=Yes'):''}
 /* "No thanks" = exactly the BFCM page's checkout link, including the free card when giftcard=1 */
-const noURL='https://hawknesthammocks.ca/cart/'+VARIANTS.map(v=>v+':'+q).join(',')+cardItems()+'?country=US&discount='+CODE+pass()+cardAttr();
-const yesURL='https://hawknesthammocks.ca/cart/'+VARIANTS.map(v=>v+':'+q).join(',')+','+UQ_VAR+':1'+cardItems()+'?country=US&discount='+CODE+pass()+cardAttr();
+const noURL='https://hawknesthammocks.ca/cart/'+VARIANTS.map(v=>v+':'+q).join(',')+cardItems()+'?country=US'+pass()+cardAttr();
+const yesURL='https://hawknesthammocks.ca/cart/'+VARIANTS.map(v=>v+':'+q).join(',')+','+UQ_VAR+':1'+cardItems()+'?country=US'+pass()+cardAttr();
 const $=s=>document.querySelectorAll(s), money=n=>'$'+n.toFixed(2);
 function render(now,was){
   const bundle=UNIT*q, save=Math.round(was-now);
