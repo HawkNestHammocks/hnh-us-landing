@@ -13,7 +13,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '654633620066866');
 fbq('track', 'PageView');
-fbq('track', 'ViewContent', {content_name:'Hawk Nest V.3 First of 2027',content_type:'product',value:179.99,currency:'USD'});
+fbq('track', 'ViewContent', {content_name:'Hawk Nest V.3 First of 2027',content_type:'product',value:159.99,currency:'USD'});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=654633620066866&ev=PageView&noscript=1"
@@ -114,7 +114,7 @@ ul.ben li:before{content:"✓";display:grid;place-items:center;width:22px;height
 <body>
 <div class="bar"><div><span class="tag">BFCM</span> Your V.3 bundle is saved. One quick add-on, then checkout.</div></div>
 <main>
-  <ol class="steps" aria-label="Order steps"><li class="ok"><i aria-hidden="true">✓</i><span><span class="lg">V.3 bundle</span><span class="sm">Bundle</span><span class="px"> · <b data-bundle>$179.99</b></span></span></li><li class="sep" aria-hidden="true">→</li><li class="cur" aria-current="step"><i aria-hidden="true">2</i><span>Add-on</span></li><li class="sep" aria-hidden="true">→</li><li><i aria-hidden="true">3</i><span>Checkout</span></li></ol>
+  <ol class="steps" aria-label="Order steps"><li class="ok"><i aria-hidden="true">✓</i><span><span class="lg">V.3 bundle</span><span class="sm">Bundle</span><span class="px"> · <b data-bundle>$159.99</b></span></span></li><li class="sep" aria-hidden="true">→</li><li class="cur" aria-current="step"><i aria-hidden="true">2</i><span>Add-on</span></li><li class="sep" aria-hidden="true">→</li><li><i aria-hidden="true">3</i><span>Checkout</span></li></ol>
   <div class="grid">
     <div class="gal">
       <div class="track" id="track">
@@ -143,7 +143,7 @@ ul.ben li:before{content:"✓";display:grid;place-items:center;width:22px;height
         <li>Effortless attachment to any Hawk Nest hammock model</li>
       </ul>
       <p class="ship">Ships Feb 1 with your hammock.</p>
-      <div class="tot"><span>V.3 bundle <span data-bundle>$179.99</span> + underquilt <span data-now>$191.99</span></span><b data-total>$371.98</b></div>
+      <div class="tot"><span>V.3 bundle <span data-bundle>$159.99</span> + underquilt <span data-now>$191.99</span></span><b data-total>$351.98</b></div>
       <a class="cta" id="yes" href="#">Yes, add it →</a>
       <p class="wsl">While stock lasts.</p>
       <a class="no" id="no" href="#">No thanks, continue to checkout →</a>
@@ -154,16 +154,19 @@ ul.ben li:before{content:"✓";display:grid;place-items:center;width:22px;height
 <script>
 (()=>{
 const VARIANTS=[53200326557993,53198306312489,53198306345257,46948621254953,46948623810857,47874384953641];
-const CODE='BFCM2026', UNIT=179.99, MAXQ=10;
+const CODE='BFCM2026', UNIT=159.99, MAXQ=10, CARD=67854680129833;
 const UQ_VAR=53249433469225; /* hidden 'ThermoNest ... Add-On' variant, priced in Shopify (no extra code) */
 const UQ_JS='https://hawknesthammocks.ca/products/thermonest%E2%84%A2-cold-weather-underquilt-pre-order-add-on.js?country=US';
 const END=Date.parse('2026-11-30T23:59:59-08:00');
 const inc=new URLSearchParams(location.search);
 let q=parseInt(inc.get('q'),10); if(!(q>=1)) q=1; q=Math.min(MAXQ,q);
+const giftCard=inc.get('giftcard')==='1';
 function pass(){let s='';['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','ttclid','ref'].forEach(k=>{const v=inc.get(k);if(v)s+='&'+k+'='+encodeURIComponent(v)});return s}
-/* "No thanks" = exactly the BFCM page's checkout link */
-const noURL='https://hawknesthammocks.ca/cart/'+VARIANTS.map(v=>v+':'+q).join(',')+'?country=US&discount='+CODE+pass();
-const yesURL='https://hawknesthammocks.ca/cart/'+VARIANTS.map(v=>v+':'+q).join(',')+','+UQ_VAR+':1?country=US&discount='+CODE+pass();
+function cardItems(){return giftCard?(','+CARD+':1'):''}
+function cardAttr(){return giftCard?('&'+encodeURIComponent('attributes[Christmas card]')+'=Yes'):''}
+/* "No thanks" = exactly the BFCM page's checkout link, including the free card when giftcard=1 */
+const noURL='https://hawknesthammocks.ca/cart/'+VARIANTS.map(v=>v+':'+q).join(',')+cardItems()+'?country=US&discount='+CODE+pass()+cardAttr();
+const yesURL='https://hawknesthammocks.ca/cart/'+VARIANTS.map(v=>v+':'+q).join(',')+','+UQ_VAR+':1'+cardItems()+'?country=US&discount='+CODE+pass()+cardAttr();
 const $=s=>document.querySelectorAll(s), money=n=>'$'+n.toFixed(2);
 function render(now,was){
   const bundle=UNIT*q, save=Math.round(was-now);
