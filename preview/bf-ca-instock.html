@@ -475,7 +475,7 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
 
 <!-- TOP BAR: real deadline only -->
 <div class="bar" role="region" aria-label="Deal ends">
-  <div class="wrap"><span class="tag">TODAY ONLY</span><span id="barText">8 FREE PRODUCTS · CANADIAN BLACK FRIDAY</span><span class="clock" id="barClock">--:--:--</span></div>
+  <div class="wrap"><span class="tag">CANADA</span><span id="barText">8 FREE PRODUCTS · CANADIAN BLACK FRIDAY</span><span class="clock" id="barClock">--:--:--</span></div>
 </div>
 
 <!-- HERO -->
@@ -753,7 +753,7 @@ function tick(){
   const t=now(); const bar=document.getElementById('barText'), clk=document.getElementById('barClock');
   let ms, label;
   if(t<START){ms=START-t;label='CANADIAN BLACK FRIDAY STARTS FRI NOV 27 · 12 AM PT';}
-  else if(t<=END){ms=END-t; label=t>=LAST?'📢 ENDS TONIGHT 11:59 PM PT · 8 FREE PRODUCTS':'TODAY ONLY · 8 FREE PRODUCTS · ENDS 11:59 PM PT';}
+  else if(t<=END){ms=END-t; label=t>=LAST?'📢 ENDS TONIGHT · 8 FREE PRODUCTS':'TODAY ONLY · 8 FREE PRODUCTS';}
   else{ms=0;label='THE CANADIAN BLACK FRIDAY DEAL HAS ENDED';}
   const d=Math.floor(ms/864e5),h=Math.floor(ms/36e5)%24,m=Math.floor(ms/6e4)%60,s=Math.floor(ms/1e3)%60;
   bar.textContent=label; clk.textContent=(d?d+'d ':'')+pad(h)+':'+pad(m)+':'+pad(s);
