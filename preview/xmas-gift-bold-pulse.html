@@ -478,6 +478,24 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
 .ptoast[hidden]{display:none}.ptoast.on{opacity:1;transform:none}.ptoast small{display:block;font-weight:500;font-size:11px;color:#a9b2d6;margin-top:1px}
 .ptoast:after{content:"\00d7";position:absolute;right:8px;top:4px;font-size:17px;line-height:1;color:#a9b2d6}
 @media(prefers-reduced-motion:reduce){.ptoast{transition:none}}
+.live{position:absolute;right:0;top:calc(50% + 13px);display:inline-flex;align-items:center;gap:5px;padding:3px 8px 3px 7px;border-radius:99px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font:700 11px/1 system-ui,-apple-system,sans-serif;color:#fff;white-space:nowrap}
+.live[hidden]{display:none}.live b{color:#ffb347}.live:before{content:"";width:6px;height:6px;border-radius:50%;background:#34d17a;box-shadow:0 0 0 0 rgba(52,209,122,.7);animation:lvp 1.8s infinite}
+@keyframes lvp{70%{box-shadow:0 0 0 6px rgba(52,209,122,0)}100%{box-shadow:0 0 0 0 rgba(52,209,122,0)}}
+@media(prefers-reduced-motion:reduce){.live:before{animation:none}}
+.hero-top{position:relative}
+.total{padding:20px 20px 18px;gap:0;border-radius:22px}
+.tv-k{font:700 11px/1 "Space Mono",monospace;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.tv-p{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:10px}
+.tv-now{font:400 clamp(54px,17vw,70px)/.88 Anton,sans-serif;letter-spacing:.01em}
+.tv-now sup{font-size:.42em;vertical-align:top;position:relative;top:.08em;margin-left:2px}
+.tv-w{text-align:right;line-height:1;padding-bottom:3px}
+.tv-w s{display:block;font:700 22px/1 "Space Grotesk",system-ui,sans-serif;color:rgba(255,255,255,.72);text-decoration-thickness:2px}
+.tv-w em{display:block;font:600 10.5px/1.2 system-ui,-apple-system,sans-serif;font-style:normal;text-transform:uppercase;letter-spacing:.08em;opacity:.82;margin-top:5px}
+.total .ship{margin-top:16px}
+.total .qty{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.22);justify-content:space-between;gap:0}
+.total .qty .qs{display:flex;align-items:center;gap:8px}
+.total .qty button{width:40px;height:40px}
+.total .qty small{margin-top:8px;font-weight:600;opacity:.85;width:100%}
 </style>
 </head>
 <body>
@@ -495,6 +513,7 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
     <div class="hero-top">
       <img class="logo" src="/bfcm-assets/logo-white.webp" alt="Hawk Nest Hammocks" width="70" height="34">
       <a class="rating" href="#reviews"><b>★★★★★</b> 4.8 · 579 reviews</a>
+      <div class="live" id="live" hidden></div>
     </div>
     <div class="hero-grid">
       <div>
@@ -553,10 +572,10 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
         <div class="item reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="m-b7-shipping"><div class="ic"><img src="/bfcm-assets/box/b7-shipping.webp" alt="Standard U.S. Shipping" width="240" height="240" loading="lazy"></div><div><h4>Standard U.S. Shipping</h4><p>Pre-order &middot; BFCM orders ship Feb 1 from our U.S. warehouse</p></div><div class="v"><b class="free">FREE</b></div><span class="chev" aria-hidden="true"></span><div class="more" id="m-b7-shipping"><p>Free standard shipping within the U.S. from our U.S. warehouse. This is a pre-order: BFCM orders ship Feb 1, 2027.</p></div></div>
       </div>
       <div class="total reveal">
-        <div class="row"><span>Total value</span><span><b data-count="429">$429</b> value</span></div>
-        <div class="row"><span>You pay (this weekend)</span><span class="big"><s class="was-inline">$429</s> $159.99</span></div>
+        <div class="tv-k">Your price this weekend</div>
+        <div class="tv-p"><span class="tv-now" aria-label="$159.99">$159<sup>.99</sup></span><span class="tv-w"><s aria-label="regular value $429">$429</s><em>total value</em></span></div>
         <span class="ship">+ FREE U.S. SHIPPING</span>
-        <div class="qty"><span>Quantity</span><button type="button" data-q="-1" aria-label="One less">−</button><b data-qn>1</b><button type="button" data-q="1" aria-label="One more">+</button><small data-qnote>6 free upgrades included</small></div>
+        <div class="qty"><span>Quantity</span><span class="qs"><button type="button" data-q="-1" aria-label="One less">&minus;</button><b data-qn>1</b><button type="button" data-q="1" aria-label="One more">+</button></span><small data-qnote>6 free upgrades included</small></div>
       </div>
       <p class="inbox"><b>In the box:</b> hammock with built-in bug net, rain fly, spreader &amp; arch poles, 2 tree straps, 2 aluminum stakes, 2 elastic guy lines and the waterproof carry bag.</p>
       <aside class="gbox reveal" id="gift">
@@ -816,7 +835,7 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
 
 /* ---- sticky cta ---- */
 const sticky=document.getElementById('sticky'), heroCta=document.querySelector('.hero .cta');
-new IntersectionObserver(([e])=>sticky.classList.toggle('on',!e.isIntersecting)).observe(heroCta);
+new IntersectionObserver(([e])=>sticky.classList.toggle('on',!e.isIntersecting&&e.boundingClientRect.bottom<0)).observe(heroCta);
 
 /* ---- parallax band ---- */
 const px=document.querySelector('[data-parallax]');
@@ -1014,7 +1033,7 @@ document.querySelectorAll('.stack-list .item[aria-controls]').forEach(function(i
    or below the minimum; nothing is invented. Test: ?vmin=1&c24min=1 forces low minimums, &vdebug=1 shows a status line. */
 (function(){
 var H='https://cc.hawknesthammocks.ca/lp/',q=new URLSearchParams(location.search),VM=Math.max(1,+q.get('vmin')||10),CM=Math.max(1,+q.get('c24min')||10),DBG=q.get('vdebug')==='1',
-pu=document.getElementById('pulse'),tt=document.getElementById('ptoast'),ss,sid,V=null,F=null,beats=0,hbok='-';
+pu=document.getElementById('pulse'),lv=document.getElementById('live'),tt=document.getElementById('ptoast'),ss,sid,V=null,F=null,beats=0,hbok='-';
 if(!window.fetch||!pu||!tt)return;
 try{ss=sessionStorage;sid=ss.getItem('hs');if(!sid){var a=new Uint8Array(12);crypto.getRandomValues(a);sid=Array.from(a,function(b){return('0'+b.toString(16)).slice(-2)}).join('');ss.setItem('hs',sid)}}catch(e){return}
 function J(u,f){fetch(H+u+'?t='+Date.now(),{credentials:'omit',cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(f).catch(function(){f(null)})}
@@ -1023,7 +1042,8 @@ function draw(){var p=[];
 if(ok(V,12e4)&&V.n>=VM)p.push('\uD83D\uDC40 <b>'+Math.floor(V.n)+'</b> viewing now');
 if(ok(F,27e5)&&F.c24>=CM)p.push('\uD83D\uDD25 <b>'+Math.floor(F.c24)+'</b> claimed in 24h');
 if(DBG)p.push('<em>dbg hb:'+hbok+' v:'+(V?Math.floor(V.n)+'@'+Math.round((Date.now()-Date.parse(V.updated))/1e3)+'s':'none')+' f:'+(F?'ok':'none')+'</em>');
-pu.innerHTML=p.join('<i>\u00B7</i>');pu.hidden=!p.length}
+pu.innerHTML=p.join('<i>\u00B7</i>');pu.hidden=!p.length;
+if(lv){var vs=ok(V,12e4)&&V.n>=VM;lv.innerHTML=vs?'<b>'+Math.floor(V.n)+'</b> viewing now':'';lv.hidden=!vs}}
 function hb(){if(document.visibilityState!=='visible'||beats>=60)return;beats++;fetch(H+'b?s='+sid,{mode:'no-cors',keepalive:true,credentials:'omit',cache:'no-store'}).then(function(){hbok='sent'},function(){hbok='blocked'}).then(draw)}
 function pc(){J('d/count.json',function(d){V=d;draw()})}
 function pf(){J('d/feed.json',function(d){F=d;draw()})}
