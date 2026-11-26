@@ -1006,7 +1006,7 @@ document.querySelectorAll('.stack-list .item[aria-controls]').forEach(function(i
    refreshed by bfcm_live_counter.py on the ops server. Hidden unless the file is fresh (<45 min)
    and the count is meaningful (>= MIN). Never shows an invented or demo number. */
 (function(){
-  var SRC='/bfcm-live-preview.json', MIN=25, FRESH=45*60e3;
+  var qp=new URLSearchParams(location.search), SRC=qp.get('lc')==='live'?'/bfcm-live.json':'/bfcm-live-preview.json', MIN=Math.max(1,+qp.get('lcmin')||25), FRESH=(+qp.get('lcfresh')||45)*60e3;
   var els=document.querySelectorAll('[data-lc]'); if(!els.length||!window.fetch)return;
   function show(d){
     var ok=d&&typeof d.total==='number'&&d.total>=MIN&&(Date.now()-Date.parse(d.updated))<FRESH;
