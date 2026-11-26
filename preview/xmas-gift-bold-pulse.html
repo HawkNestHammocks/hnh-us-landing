@@ -478,11 +478,12 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
 .ptoast[hidden]{display:none}.ptoast.on{opacity:1;transform:none}.ptoast small{display:block;font-weight:500;font-size:11px;color:#a9b2d6;margin-top:1px}
 .ptoast:after{content:"\00d7";position:absolute;right:8px;top:4px;font-size:17px;line-height:1;color:#a9b2d6}
 @media(prefers-reduced-motion:reduce){.ptoast{transition:none}}
-.live{position:absolute;right:0;top:calc(50% + 13px);display:inline-flex;align-items:center;gap:5px;padding:3px 8px 3px 7px;border-radius:99px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font:700 11px/1 system-ui,-apple-system,sans-serif;color:#fff;white-space:nowrap}
+.live{position:absolute;right:0;top:calc(50% + 11px);display:inline-flex;align-items:center;gap:5px;padding:3px 8px 3px 7px;border-radius:99px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font:700 11px/1 system-ui,-apple-system,sans-serif;color:#fff;white-space:nowrap}
 .live[hidden]{display:none}.live b{color:#ffb347}.live:before{content:"";width:6px;height:6px;border-radius:50%;background:#34d17a;box-shadow:0 0 0 0 rgba(52,209,122,.7);animation:lvp 1.8s infinite}
 @keyframes lvp{70%{box-shadow:0 0 0 6px rgba(52,209,122,0)}100%{box-shadow:0 0 0 0 rgba(52,209,122,0)}}
 @media(prefers-reduced-motion:reduce){.live:before{animation:none}}
 .hero-top{position:relative}
+.sticky:not(.on) .pulse{visibility:hidden}
 .total{padding:20px 20px 18px;gap:0;border-radius:22px}
 .tv-k{font:700 11px/1 "Space Mono",monospace;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
 .tv-p{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:10px}
