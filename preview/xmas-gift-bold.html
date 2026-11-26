@@ -166,6 +166,7 @@ section{position:relative}
 .item h4{font-size:16px;line-height:1.2}
 .item p{font-size:13px;color:var(--muted)}
 .item .v{text-align:right;font-weight:700;font-size:13px;color:#cfd6ff}
+.item .v s{color:#9aa3c7;text-decoration:line-through}
 .item .v b{display:block;font:400 18px Anton;color:#fff;letter-spacing:.04em}
 .item .v b.free{color:var(--amber)}
 .viewers{margin:10px 0 0;text-align:center;font-size:12.5px;color:#cfd6ff;letter-spacing:.02em}.viewers b{color:#fff;font-weight:700}.viewers i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--amber);margin-right:7px;vertical-align:1px;animation:vpulse 2s ease-in-out infinite}@keyframes vpulse{50%{opacity:.35}}.viewers[hidden]{display:none}
@@ -470,6 +471,33 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
   .sticky .cta{min-height:50px;font-size:19px;padding:0 14px}
 }
 </style>
+<style>
+.pulse{position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%);white-space:nowrap;max-width:calc(100vw - 16px);padding:5px 12px;border-radius:999px;background:rgba(10,15,36,.92);border:1px solid rgba(255,255,255,.18);font:700 12px/1.2 system-ui,-apple-system,sans-serif;color:#fff;box-shadow:0 8px 20px -8px rgba(0,0,0,.6)}
+.pulse[hidden]{display:none}.pulse b{color:#ffb347}.pulse i{font-style:normal;margin:0 7px;opacity:.45}.pulse em{font-style:normal;font-weight:500;opacity:.7}
+.ptoast{position:fixed;z-index:58;right:8px;top:72px;width:max-content;max-width:min(215px,calc(100vw - 16px));padding:8px 26px 8px 11px;border-radius:12px;background:rgba(10,15,36,.95);border:1px solid rgba(255,255,255,.2);border-right:3px solid #ff6b1a;color:#fff;font:600 12.5px/1.3 system-ui,-apple-system,sans-serif;box-shadow:0 10px 24px -10px rgba(0,0,0,.7);opacity:0;transform:translateY(-6px);transition:opacity .3s,transform .3s;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ptoast[hidden]{display:none}.ptoast.on{opacity:1;transform:none}.ptoast small{display:block;font-weight:500;font-size:11px;color:#a9b2d6;margin-top:1px}
+.ptoast:after{content:"\00d7";position:absolute;right:8px;top:4px;font-size:17px;line-height:1;color:#a9b2d6}
+@media(prefers-reduced-motion:reduce){.ptoast{transition:none}}
+.live{position:absolute;right:0;top:calc(50% + 11px);display:inline-flex;align-items:center;gap:5px;padding:3px 8px 3px 7px;border-radius:99px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font:700 11px/1 system-ui,-apple-system,sans-serif;color:#fff;white-space:nowrap}
+.live[hidden]{display:none}.live b{color:#ffb347}.live:before{content:"";width:6px;height:6px;border-radius:50%;background:#34d17a;box-shadow:0 0 0 0 rgba(52,209,122,.7);animation:lvp 1.8s infinite}
+@keyframes lvp{70%{box-shadow:0 0 0 6px rgba(52,209,122,0)}100%{box-shadow:0 0 0 0 rgba(52,209,122,0)}}
+@media(prefers-reduced-motion:reduce){.live:before{animation:none}}
+.hero-top{position:relative}
+.sticky:not(.on) .pulse{visibility:hidden}
+.total{padding:20px 20px 18px;gap:0;border-radius:22px}
+.tv-k{font:700 11px/1 "Space Mono",monospace;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.tv-p{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:10px}
+.tv-now{font:400 clamp(54px,17vw,70px)/.88 Anton,sans-serif;letter-spacing:.01em}
+.tv-now sup{font-size:.42em;vertical-align:top;position:relative;top:.08em;margin-left:2px}
+.tv-w{text-align:right;line-height:1;padding-bottom:3px}
+.tv-w s{display:block;font:700 22px/1 "Space Grotesk",system-ui,sans-serif;color:rgba(255,255,255,.72);text-decoration-thickness:2px}
+.tv-w em{display:block;font:600 10.5px/1.2 system-ui,-apple-system,sans-serif;font-style:normal;text-transform:uppercase;letter-spacing:.08em;opacity:.82;margin-top:5px}
+.total .ship{margin-top:16px}
+.total .qty{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.22);justify-content:space-between;gap:0}
+.total .qty .qs{display:flex;align-items:center;gap:8px}
+.total .qty button{width:40px;height:40px}
+.total .qty small{margin-top:8px;font-weight:600;opacity:.85;width:100%}
+</style>
 </head>
 <body>
 
@@ -486,6 +514,7 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
     <div class="hero-top">
       <img class="logo" src="/bfcm-assets/logo-white.webp" alt="Hawk Nest Hammocks" width="70" height="34">
       <a class="rating" href="#reviews"><b>★★★★★</b> 4.8 · 579 reviews</a>
+      <div class="live" id="live" hidden></div>
     </div>
     <div class="hero-grid">
       <div>
@@ -510,7 +539,7 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
         <div class="price-card">
           <div class="price-row">
             <div class="now">$159<sup>.99</sup></div>
-            <div><div class="was">$179.99</div><div class="value"><b>$429</b> value</div></div>
+            <div><div class="was">$429</div><div class="value">total value</div></div>
           </div>
           <div class="badges"><span class="badge vi">6 FREE PRODUCTS</span><span class="badge or">+ FREE U.S. SHIPPING</span></div>
           <a class="cta" href="#" data-checkout>Claim the BFCM deal →</a>
@@ -535,7 +564,7 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
     <div>
       <p class="tapnote">Tap any item for details</p>
         <div class="stack-list">
-        <div class="item reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="m-b1-hammock"><div class="ic"><img src="/bfcm-assets/box/b1-hammock.webp" alt="Hawk Nest All-Season Hammock Tent V.3" width="240" height="240" loading="lazy"></div><div><h4>Hawk Nest All-Season Hammock Tent V.3</h4><p>Rain fly, bug net, spreader poles, tree straps, 2 aluminum stakes &amp; 2 elastic guy lines in the box</p></div><div class="v"><b>$229</b></div><span class="chev" aria-hidden="true"></span><div class="more" id="m-b1-hammock"><p>Strings between any two trees, pitches in about 90 seconds and keeps you off the wet ground. Built-in rain fly and mosquito netting; holds up to 500 lb. No trees? It also pitches on the ground as a tent.</p></div></div>
+        <div class="item reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="m-b1-hammock"><div class="ic"><img src="/bfcm-assets/box/b1-hammock.webp" alt="Hawk Nest All-Season Hammock Tent V.3" width="240" height="240" loading="lazy"></div><div><h4>Hawk Nest All-Season Hammock Tent V.3</h4><p>Rain fly, bug net, spreader poles, tree straps, 2 aluminum stakes &amp; 2 elastic guy lines in the box</p></div><div class="v"><s>$229</s><b>$159.99</b></div><span class="chev" aria-hidden="true"></span><div class="more" id="m-b1-hammock"><p>Strings between any two trees, pitches in about 90 seconds and keeps you off the wet ground. Built-in rain fly and mosquito netting; holds up to 500 lb. No trees? It also pitches on the ground as a tent.</p></div></div>
         <div class="item reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="m-b2-bottom"><div class="ic"><img src="/bfcm-assets/box/b2-bottom.webp" alt="Waterproof Bottom Fabric Upgrade" width="240" height="240" loading="lazy"></div><div><h4>Waterproof Bottom Fabric Upgrade</h4><p>Keeps wind and wet off from below</p></div><div class="v">$39<b class="free">FREE</b></div><span class="chev" aria-hidden="true"></span><div class="more" id="m-b2-bottom"><p>Built into your hammock as upgraded material, not shipped as a separate item. 70D nylon ripstop (parachute fabric) keeps ground moisture out if you pitch it as a ground tent, and its tight weave blocks cold wind from below.</p></div></div>
         <div class="item reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="m-b3-bag"><div class="ic"><img src="/bfcm-assets/box/b3-bag.webp" alt="Waterproof Carrying Bag Upgrade" width="240" height="240" loading="lazy"></div><div><h4>Waterproof Carrying Bag Upgrade</h4><p>Packs to 16.5″ × 5.5″</p></div><div class="v">$19<b class="free">FREE</b></div><span class="chev" aria-hidden="true"></span><div class="more" id="m-b3-bag"><p>Included as an upgrade to your order. Waterproof 500D PVC with welded seams, with room for the hammock tent, rain fly and all accessories. Packs to 16.5″ × 5.5″.</p></div></div>
         <div class="item reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="m-b4-warranty"><div class="ic"><img src="/bfcm-assets/box/b4-warranty.webp" alt="Lifetime Warranty Upgrade" width="240" height="240" loading="lazy"></div><div><h4>Lifetime Warranty Upgrade</h4><p>Covered for as long as you own it</p></div><div class="v">$59<b class="free">FREE</b></div><span class="chev" aria-hidden="true"></span><div class="more" id="m-b4-warranty"><p>Tears, rips, frayed seams, broken zippers, snapped poles, faulty buckles: if it fails under normal use, it's covered for as long as you own it. Email support@hawknesthammocks.ca with photos and your order number; once your claim is approved, we ship the replacement.</p></div></div>
@@ -544,10 +573,10 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
         <div class="item reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="m-b7-shipping"><div class="ic"><img src="/bfcm-assets/box/b7-shipping.webp" alt="Standard U.S. Shipping" width="240" height="240" loading="lazy"></div><div><h4>Standard U.S. Shipping</h4><p>Pre-order &middot; BFCM orders ship Feb 1 from our U.S. warehouse</p></div><div class="v"><b class="free">FREE</b></div><span class="chev" aria-hidden="true"></span><div class="more" id="m-b7-shipping"><p>Free standard shipping within the U.S. from our U.S. warehouse. This is a pre-order: BFCM orders ship Feb 1, 2027.</p></div></div>
       </div>
       <div class="total reveal">
-        <div class="row"><span>Total value</span><span><b data-count="429">$429</b> value</span></div>
-        <div class="row"><span>You pay (this weekend)</span><span class="big"><s class="was-inline">$179.99</s> $159.99</span></div>
+        <div class="tv-k">Your price this weekend</div>
+        <div class="tv-p"><span class="tv-now" aria-label="$159.99">$159<sup>.99</sup></span><span class="tv-w"><s aria-label="regular value $429">$429</s><em>total value</em></span></div>
         <span class="ship">+ FREE U.S. SHIPPING</span>
-        <div class="qty"><span>Quantity</span><button type="button" data-q="-1" aria-label="One less">−</button><b data-qn>1</b><button type="button" data-q="1" aria-label="One more">+</button><small data-qnote>6 free upgrades included</small></div>
+        <div class="qty"><span>Quantity</span><span class="qs"><button type="button" data-q="-1" aria-label="One less">&minus;</button><b data-qn>1</b><button type="button" data-q="1" aria-label="One more">+</button></span><small data-qnote>6 free upgrades included</small></div>
       </div>
       <p class="inbox"><b>In the box:</b> hammock with built-in bug net, rain fly, spreader &amp; arch poles, 2 tree straps, 2 aluminum stakes, 2 elastic guy lines and the waterproof carry bag.</p>
       <aside class="gbox reveal" id="gift">
@@ -720,7 +749,7 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
     <h2 class="h2 display">Black Friday<br><span class="grad">ends soon.</span></h2>
     <div class="timer" id="timer" aria-label="Time left"><div><b data-t="d">0</b><small>DAYS</small></div><div><b data-t="h">00</b><small>HRS</small></div><div><b data-t="m">00</b><small>MIN</small></div><div><b data-t="s">00</b><small>SEC</small></div></div>
     <div class="price-card">
-      <div class="price-row"><div class="now">$159<sup>.99</sup></div><div><div class="was">$179.99</div><div class="value"><b>$429</b> value</div></div></div>
+      <div class="price-row"><div class="now">$159<sup>.99</sup></div><div><div class="was">$429</div><div class="value">total value</div></div></div>
       <div class="badges"><span class="badge vi">6 FREE PRODUCTS</span><span class="badge or">+ FREE U.S. SHIPPING</span></div>
       <a class="cta" href="#" data-checkout>Claim the BFCM deal →</a>
       <p class="urg">The lowest price we&rsquo;ll ever offer. Your last chance at $159.99 &mdash; this weekend only, Black Friday to Cyber Monday.</p>
@@ -730,7 +759,7 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
 
 <footer>© 2026 Hawk Nest Hammocks Inc. · support@hawknesthammocks.ca<br>Pre-order: BFCM orders ship Feb 1. Free standard U.S. shipping.</footer>
 
-<div class="sticky" id="sticky"><div class="p"><b>$159.99</b><small><s>$179.99</s> · $429 value</small></div><a class="cta" href="#" data-checkout>Claim deal →</a></div>
+<div class="sticky" id="sticky"><div class="p"><b>$159.99</b><small><s>$429</s> value</small></div><a class="cta" href="#" data-checkout>Claim deal →</a><div class="pulse" id="pulse" hidden></div></div><div class="ptoast" id="ptoast" role="status" aria-live="polite" hidden></div>
 
 <script>
 (()=>{
@@ -807,7 +836,7 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
 
 /* ---- sticky cta ---- */
 const sticky=document.getElementById('sticky'), heroCta=document.querySelector('.hero .cta');
-new IntersectionObserver(([e])=>sticky.classList.toggle('on',!e.isIntersecting)).observe(heroCta);
+new IntersectionObserver(([e])=>sticky.classList.toggle('on',!e.isIntersecting&&e.boundingClientRect.bottom<0)).observe(heroCta);
 
 /* ---- parallax band ---- */
 const px=document.querySelector('[data-parallax]');
@@ -997,6 +1026,41 @@ document.querySelectorAll('.stack-list .item[aria-controls]').forEach(function(i
   });
   box.addEventListener('click',e=>{if(e.target===box||e.target.closest('.gzoom-x'))close();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!box.hidden)close();});
+})();
+</script>
+<script>
+/* Real live counters: viewers = anonymous heartbeat sessions (last 3 min); order bubble and 24h count = real paid US orders
+   (first name + state only). Hidden when data is stale or below the minimum (10). Nothing is invented. */
+(function(){
+var H='https://cc.hawknesthammocks.ca/lp/',VM=10,CM=10,DBG=false,
+pu=document.getElementById('pulse'),lv=document.getElementById('live'),tt=document.getElementById('ptoast'),ss,sid,V=null,F=null,beats=0,hbok='-';
+if(!window.fetch||!pu||!tt)return;
+try{ss=sessionStorage;sid=ss.getItem('hs');if(!sid){var a=new Uint8Array(12);crypto.getRandomValues(a);sid=Array.from(a,function(b){return('0'+b.toString(16)).slice(-2)}).join('');ss.setItem('hs',sid)}}catch(e){return}
+function J(u,f){fetch(H+u+'?t='+Date.now(),{credentials:'omit',cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(f).catch(function(){f(null)})}
+function ok(d,ms){return d&&Date.now()-Date.parse(d.updated)<ms}
+function draw(){var p=[];
+if(ok(V,12e4)&&V.n>=VM)p.push('\uD83D\uDC40 <b>'+Math.floor(V.n)+'</b> viewing now');
+if(ok(F,27e5)&&F.c24>=CM)p.push('\uD83D\uDD25 <b>'+Math.floor(F.c24)+'</b> claimed in 24h');
+if(DBG)p.push('<em>dbg hb:'+hbok+' v:'+(V?Math.floor(V.n)+'@'+Math.round((Date.now()-Date.parse(V.updated))/1e3)+'s':'none')+' f:'+(F?'ok':'none')+'</em>');
+pu.innerHTML=p.join('<i>\u00B7</i>');pu.hidden=!p.length;
+if(lv){var vs=ok(V,12e4)&&V.n>=VM;lv.innerHTML=vs?'<b>'+Math.floor(V.n)+'</b> viewing now':'';lv.hidden=!vs}}
+function hb(){if(document.visibilityState!=='visible'||beats>=60)return;beats++;fetch(H+'b?s='+sid,{mode:'no-cors',keepalive:true,credentials:'omit',cache:'no-store'}).then(function(){hbok='sent'},function(){hbok='blocked'}).then(draw)}
+function pc(){J('d/count.json',function(d){V=d;draw()})}
+function pf(){J('d/feed.json',function(d){F=d;draw()})}
+function ago(t){var m=Math.round((Date.now()-Date.parse(t))/6e4);return m<2?'just now':m<60?m+' min ago':m<120?'1 hr ago':Math.floor(m/60)+' hr ago'}
+function list(){return ok(F,27e5)&&F.orders?F.orders.filter(function(o){return /^[A-Za-z\u00C0-\u024F'-]{2,14}$/.test(o.n)&&/^[A-Za-z .]{2,30}$/.test(o.s)&&Date.now()-Date.parse(o.t)<432e5&&Date.now()>=Date.parse(o.t)}):[]}
+var t0=Date.now(),tries=0,tm;
+function close(){clearTimeout(tm);tt.classList.remove('on');setTimeout(function(){tt.hidden=true},350)}
+tt.addEventListener('click',close);
+function clear(top){var L=innerWidth-8-220,R=innerWidth-8,B=top+62,c=document.querySelectorAll('.cta,[data-checkout]');for(var i=0;i<c.length;i++){var r=c[i].getBoundingClientRect();if(r.width&&r.right>L&&r.left<R&&r.bottom>top&&r.top<B)return false}return true}
+function toast(){var n=+(ss.getItem('pt')||0),l=list();if(n>=2||!l[n]||tries++>90)return;
+var bar=document.querySelector('.bar'),top=(bar?Math.max(0,bar.getBoundingClientRect().bottom):0)+8;
+if(Date.now()-t0<15e3||document.visibilityState!=='visible'||!clear(top)){setTimeout(toast,2e3);return}
+var o=l[n];tt.style.top=top+'px';tt.textContent='';tt.appendChild(document.createTextNode(o.n+' in '+o.s+' claimed theirs'));var s=document.createElement('small');s.textContent=ago(o.t);tt.appendChild(s);
+ss.setItem('pt',n+1);tt.hidden=false;requestAnimationFrame(function(){tt.classList.add('on')});
+tm=setTimeout(function(){close();setTimeout(toast,25e3)},5e3)}
+function go(){hb();setTimeout(pc,2500);pf();setInterval(hb,3e4);setInterval(function(){if(document.visibilityState==='visible')pc()},3e4);setInterval(function(){if(document.visibilityState==='visible')pf()},3e5);setTimeout(toast,15e3)}
+if(document.readyState==='complete')setTimeout(go,300);else addEventListener('load',function(){if(window.requestIdleCallback)requestIdleCallback(go,{timeout:2500});else setTimeout(go,1500)});
 })();
 </script>
 </body>
