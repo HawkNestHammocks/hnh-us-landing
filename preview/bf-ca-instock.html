@@ -752,7 +752,7 @@ qrender();
 try{if(!/[?&]uq=off/.test(location.search)&&Date.now()<Date.parse('2026-11-27T23:59:59-08:00')){
   const ac=new AbortController(),t=setTimeout(()=>ac.abort(),2500);
   fetch('https://cc.hawknesthammocks.ca/lp/d/uq-ca.json?t='+Date.now(),{signal:ac.signal,credentials:'omit',cache:'no-store'}).then(r=>r.ok?r.json():null).then(f=>{clearTimeout(t);
-    if(f&&typeof f.q==='number'&&f.q>=1&&Date.now()-Date.parse(f.updated)<9e5){uqOK=true;qrender();try{[[addonURL(q),'document'],['/bfcm-assets/addon/ca-uq-1.webp','image']].forEach(([h,a])=>{const l=document.createElement('link');l.rel='prefetch';l.href=h;l.as=a;document.head.appendChild(l)})}catch(e){}}}).catch(()=>{});
+    if(f&&typeof f.q==='number'&&f.q>=1&&Date.now()-Date.parse(f.updated)<9e5){uqOK=true;qrender();try{[[addonURL(q),'document'],['https://cc.hawknesthammocks.ca/lp/d/ca-uq/ca-uq-1.webp','image']].forEach(([h,a])=>{const l=document.createElement('link');l.rel='prefetch';l.href=h;l.as=a;document.head.appendChild(l)})}catch(e){}}}).catch(()=>{});
 }}catch(e){}
 /* ---- time (real deadline; ?now=ISO lets us preview) ---- */
 const qs=new URLSearchParams(location.search);
