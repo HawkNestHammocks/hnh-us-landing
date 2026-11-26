@@ -31,7 +31,12 @@ src="https://www.facebook.com/tr?id=654633620066866&ev=PageView&noscript=1"
 <link rel="apple-touch-icon" sizes="180x180" href="/bfcm-assets/fav/apple-touch-icon.png">
 <link rel="preload" href="/bfcm-assets/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/bfcm-assets/fonts/spacegrotesk.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/bfcm-assets/v-flyoff.webp" as="image">
+<link rel="preload" href="/bfcm-assets/v-flyoff.webp" as="image" fetchpriority="high">
+<link rel="preload" href="/bfcm-assets/fonts/spacemono.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://hawknesthammocks.ca" crossorigin>
+<link rel="preconnect" href="https://hawknesthammocks.ca">
+<link rel="preconnect" href="https://connect.facebook.net">
+<style>picture.pc{display:contents}</style>
 <style>
 @font-face{font-family:Anton;src:url(/bfcm-assets/fonts/anton.woff2) format("woff2");font-display:swap}
 @font-face{font-family:"Space Grotesk";src:url(/bfcm-assets/fonts/spacegrotesk.woff2) format("woff2");font-weight:300 700;font-display:swap}
@@ -495,7 +500,7 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
       <div>
         <div class="stage-hero">
           <div class="giant display" aria-hidden="true">BFCM</div>
-          <a class="hero-gc" href="#gift" aria-label="Free Christmas gift card with gift orders"><img src="xmas-gift-assets/card-front.jpg" alt="" width="900" height="1273"><span class="gctag">FREE gift card</span></a>
+          <a class="hero-gc" href="#gift" aria-label="Free Christmas gift card with gift orders"><picture class="pc"><source type="image/webp" srcset="xmas-gift-assets/card-front-360.webp"><img src="xmas-gift-assets/card-front.jpg" alt="" width="900" height="1273" decoding="async"></picture><span class="gctag">FREE gift card</span></a>
           <div class="hero-ham"><img src="/bfcm-assets/v-flyoff.webp" alt="Hawk Nest V.3 hammock tent with the rain fly off, showing the built-in bug net and arched poles" width="1400" height="424" fetchpriority="high"></div>
           <div class="floor"></div>
           <div class="chips"><span class="chip c1"><i></i>Bug net built in</span>
@@ -553,16 +558,16 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
         </div>
         <div class="gflat" aria-label="The gift card, front, inside and back">
           <a class="gflat-card gflat-front" href="xmas-gift-assets/card-front.jpg" data-zoom>
-            <img src="xmas-gift-assets/card-front.jpg" alt="Gift card front: Merry Christmas, Your Hawk Nest is on its way" width="900" height="1259" loading="lazy">
+            <picture class="pc"><source type="image/webp" srcset="xmas-gift-assets/card-front-600.webp 600w,xmas-gift-assets/card-front-900.webp 900w" sizes="(max-width:899px) 60vw,320px"><img src="xmas-gift-assets/card-front.jpg" alt="Gift card front: Merry Christmas, Your Hawk Nest is on its way" width="900" height="1259" loading="lazy" decoding="async"></picture>
             <span class="gbox-badge">Ships early</span>
             <span class="gflat-cap">Front</span>
           </a>
           <a class="gflat-card gflat-inside" href="xmas-gift-assets/card-inside.jpg" data-zoom>
-            <img src="xmas-gift-assets/card-inside.jpg" alt="Gift card inside: photos of the hammock, a note from Lukas, and space for the giver to write a message" width="1600" height="1120" loading="lazy">
+            <picture class="pc"><source type="image/webp" srcset="xmas-gift-assets/card-inside-800.webp 800w,xmas-gift-assets/card-inside-1600.webp 1600w" sizes="(max-width:899px) 100vw,600px"><img src="xmas-gift-assets/card-inside.jpg" alt="Gift card inside: photos of the hammock, a note from Lukas, and space for the giver to write a message" width="1600" height="1120" loading="lazy" decoding="async"></picture>
             <span class="gflat-cap">Inside</span>
           </a>
           <a class="gflat-card gflat-back" href="xmas-gift-assets/card-back.jpg" data-zoom>
-            <img src="xmas-gift-assets/card-back.jpg" alt="Gift card back: what is in the box" width="900" height="1260" loading="lazy">
+            <picture class="pc"><source type="image/webp" srcset="xmas-gift-assets/card-back-600.webp 600w,xmas-gift-assets/card-back-900.webp 900w" sizes="(max-width:899px) 60vw,320px"><img src="xmas-gift-assets/card-back.jpg" alt="Gift card back: what is in the box" width="900" height="1260" loading="lazy" decoding="async"></picture>
             <span class="gflat-cap">Back</span>
           </a>
         </div>
@@ -765,7 +770,7 @@ qrender();
 try{if(!/[?&]uq=off/.test(location.search)&&Date.now()<Date.parse('2026-11-30T23:59:59-08:00')){
   const ac=new AbortController(),t=setTimeout(()=>ac.abort(),2500);
   fetch(UQ_JS,{signal:ac.signal,credentials:'omit'}).then(r=>r.ok?r.json():null).then(j=>{clearTimeout(t);
-    if(j&&j.available===true&&j.variants&&j.variants.some(v=>v.id===53249433469225&&v.available)){uqOK=true;qrender()}}).catch(()=>{});
+    if(j&&j.available===true&&j.variants&&j.variants.some(v=>v.id===53249433469225&&v.available)){uqOK=true;qrender();try{[[addonURL(q),'document'],['/bfcm-assets/addon/uq-hero.webp','image']].forEach(([h,a])=>{const l=document.createElement('link');l.rel='prefetch';l.href=h;l.as=a;document.head.appendChild(l)})}catch(e){}}}).catch(()=>{});
 }}catch(e){}
 
 /* ---- time (real deadline; ?now=ISO lets us preview) ---- */
@@ -816,11 +821,11 @@ const VIEWS=[
   hs:[[62,57,'Sleeping-pad pocket','Slide your own pad into the pocket underneath. It stays put all night and keeps your back warm. Pad not included. Fits pads up to 28&Prime; wide.'],[47,40,'Stretch fabric','The pad pocket is stretch fabric, so it hugs your pad snugly.'],[30,33,'Rain fly','The fly drapes over the top; snap clips on its ends keep them from flapping in the wind.']]},
  {id:'door',m:'/bfcm-assets/ex/x2-door-r10-sq.webp',mhs:[[41, 36], [17, 41], [63, 32], [94, 46]],name:'Door open',img:'/bfcm-assets/ex/x2-door-r10.webp',th:'/bfcm-assets/ex/x2-door-r10-t.webp',kind:'cut',src:'real',cap:'<b>Door open.</b> Roll the fly back to get in, read, or watch the view.',
   hs:[[46,33,'Climb-in door','Big side opening, so getting in and out is easy.'],[29,39,'4 storage pockets','4 interior storage pockets: 2 larger ones, plus 2 small ones by your head.'],[62,22,'Rain fly overhead','Even with the door open, the fly still covers you from above.'],[89,46,'Straps &amp; clips','Strap ends clip in on both sides.']]},
- {id:'inside',m:'/bfcm-assets/ex/x8-inside-r8-sq.webp',mhs:[[50, 40], [55, 66]],name:'Inside',img:'/bfcm-assets/ex/x8-inside-g.webp',th:'/bfcm-assets/ex/x8-inside-g-t.webp',kind:'photo',src:'real',cap:'<b>Inside.</b> Zipped in for the night under the fly and bug net. Sleeping bag not included.',
+ {id:'inside',m:'/bfcm-assets/ex/x8-inside-r8-sq-o.webp',mhs:[[50, 40], [55, 66]],name:'Inside',img:'/bfcm-assets/ex/x8-inside-g.webp',th:'/bfcm-assets/ex/x8-inside-g-t.webp',kind:'photo',src:'real',cap:'<b>Inside.</b> Zipped in for the night under the fly and bug net. Sleeping bag not included.',
   hs:[[50,28,'Bug net all around','No-see-um mesh keeps bugs out while air flows through.'],[55,75,'Room for your sleeping bag','Spread out a full sleeping bag inside. Sleeping bag not included.']]},
  {id:'flyoff',m:'/bfcm-assets/ex/x4-flyoff-r8-sq.webp',mhs:[[74, 28], [36, 34], [80, 65], [94, 43]],name:'Fly off',img:'/bfcm-assets/ex/x4-flyoff-me.webp',th:'/bfcm-assets/ex/x4-flyoff-me-t.webp',kind:'cut',src:'real',cap:'<b>Fly off.</b> Just the bug net on clear nights. You can see straight through the mesh.',
   hs:[[63,28,'Arched poles','Poles lift the net up off your face.'],[44,34,'360° bug net','No-see-um mesh all the way around.'],[66,61,'Stakes &amp; guy lines','2 aluminum stakes and 2 elastic guy lines are included to hold it steady.'],[85,42,'Tree straps','Wrap the straps around two trees, clip in, and you\'re hanging.']]},
- {id:'ground',m:'/bfcm-assets/ex/x6-ground-r8-sq.webp',mhs:[[36, 49], [71, 47]],name:'Ground mode',img:'/bfcm-assets/ex/x6-ground-r2.webp',th:'/bfcm-assets/ex/x6-ground-r2-t.webp',kind:'photo',src:'real',cap:'<b>Ground mode.</b> No trees? Pitch it on the ground as a tent.',
+ {id:'ground',m:'/bfcm-assets/ex/x6-ground-r8-sq-o.webp',mhs:[[36, 49], [71, 47]],name:'Ground mode',img:'/bfcm-assets/ex/x6-ground-r2.webp',th:'/bfcm-assets/ex/x6-ground-r2-t.webp',kind:'photo',src:'real',cap:'<b>Ground mode.</b> No trees? Pitch it on the ground as a tent.',
   hs:[[42,76,'Hang it or ground it','The same shelter sets up on the ground when there are no trees around.'],[62,74,'Fly on the ground too','The fly and bug net work the same in ground mode.']]},
  {id:'bag',m:'/bfcm-assets/ex/x7-bag-r9-sq.webp',mhs:[[50, 17], [50, 48], [14, 80], [64, 77], [64, 89]],name:'In the box',img:'/bfcm-assets/ex/x7-bag-r2.webp',th:'/bfcm-assets/ex/x7-bag-r2-t.webp',kind:'cut',src:'real',cap:'<b>In the box.</b> Everything you need to hang it tonight.',
   hs:[[50,18,'Rain fly','Included.'],[50,41,'Hammock + bug net','Included.'],[35,84,'Carry bag','Waterproof carrying bag upgrade &mdash; free in this deal.'],[49,75,'Straps, stakes &amp; guy lines','2 tree straps, 2 aluminum stakes and 2 elastic guy lines are included.'],[62,87,'Poles','Spreader and arch poles included.']]}
@@ -830,7 +835,7 @@ let cur=0;
 VIEWS.forEach((v,i)=>{
   const el=document.createElement('div'); el.className='view'; el.dataset.i=i;
   const fr=document.createElement('div'); fr.className='frame';
-  fr.innerHTML='<picture><source media="(max-width:899px)" srcset="'+v.m+'"><img src="'+v.img+'" alt="'+v.name+' view of the Hawk Nest V.3" loading="'+(i<2?'eager':'lazy')+'" draggable="false"></picture>';
+  fr.innerHTML='<picture><source media="(max-width:899px)" srcset="'+v.m+'"><img src="'+v.img+'" alt="'+v.name+' view of the Hawk Nest V.3" loading="lazy" decoding="async" draggable="false"></picture>';
   v.hs.forEach((h,j)=>{const b=document.createElement('button');b.className='hs';b.style.setProperty('--x',h[0]+'%');b.style.setProperty('--y',h[1]+'%');if(v.mhs&&v.mhs[j]){b.style.setProperty('--mx',v.mhs[j][0]+'%');b.style.setProperty('--my',v.mhs[j][1]+'%')}b.innerHTML='<span>'+(j+1)+'</span>';b.setAttribute('aria-label',h[2]);
     b.onclick=e=>{e.stopPropagation();stage.querySelectorAll('.hs').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('tipH').textContent=h[2];document.getElementById('tipP').innerHTML=h[3];tip.classList.add('on')};fr.appendChild(b)});
   el.appendChild(fr); stage.insertBefore(el,stage.querySelector('.ex-nav'));
@@ -851,7 +856,9 @@ tip.querySelector('button').onclick=()=>{tip.classList.remove('on');stage.queryS
 stage.addEventListener('click',e=>{if(!e.target.closest('.hs,.ex-nav'))tip.querySelector('button').click()});
 let sx=null; stage.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
 stage.addEventListener('touchend',e=>{if(sx===null)return;if(JON){const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>45){dx<0?jgo(jstep+1):jgo(jstep-1,true)}return}const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>45)go(cur+(dx<0?1:-1),dx<0?1:-1);sx=null});
-addEventListener('load',()=>{const mob=matchMedia('(max-width:899px)').matches;VIEWS.forEach(v=>{const im=new Image();im.src=mob?v.m:v.img})});
+/* speed: warm the explorer photos only when the explorer is getting close, not on page load */
+(function(){let done=false;const warm=()=>{if(done)return;done=true;const mob=matchMedia('(max-width:899px)').matches;VIEWS.forEach(v=>{const im=new Image();im.decoding='async';im.src=mob?v.m:v.img})};
+ try{const ob=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){ob.disconnect();warm()}},{rootMargin:'1500px 0px'});ob.observe(document.getElementById('explorer')||stage)}catch(e){addEventListener('load',warm)}})();
 const start=VIEWS.findIndex(v=>location.hash==='#view-'+v.id); go(start>=0?start:0,1);
 if(qs.get('hs')!==null){const b=stage.querySelectorAll('.view.on .hs')[+qs.get('hs')||0]; if(b) setTimeout(()=>b.click(),50);}
 
