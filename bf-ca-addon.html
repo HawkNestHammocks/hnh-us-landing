@@ -13,7 +13,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '654633620066866');
 fbq('track', 'PageView');
-fbq('track', 'ViewContent', {content_name:'ThermoNest Underquilt Add-On (Canada)',content_type:'product',value:274.99,currency:'CAD'});
+fbq('track', 'ViewContent', {content_name:'ThermoNest Underquilt Add-On (Canada)',content_type:'product',value:191.99,currency:'CAD'});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=654633620066866&ev=PageView&noscript=1"
@@ -23,7 +23,7 @@ src="https://www.facebook.com/tr?id=654633620066866&ev=PageView&noscript=1"
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Add the ThermoNest Down Underquilt | Hawk Nest Hammocks</title>
-<meta name="description" content="Add the ThermoNest premium duck down underquilt to your Hawk Nest V.3 bundle. In stock in Canada, ships with your order. C$274.99 while stock lasts.">
+<meta name="description" content="Add the ThermoNest premium duck down underquilt to your Hawk Nest V.3 bundle. In stock in Canada, ships with your order. C$191.99 (regular C$274.99) while stock lasts.">
 <meta name="robots" content="noindex,nofollow"><!-- unlisted ad landing page: Canada Black Friday add-on step -->
 <meta name="theme-color" content="#0a0f24">
 <link rel="icon" type="image/png" sizes="32x32" href="/bfcm-assets/fav/favicon-32.png">
@@ -142,14 +142,14 @@ ul.ben li:before{content:"✓";display:grid;place-items:center;width:22px;height
       <div class="eyebrow mono">Canada Black Friday add-on · ThermoNest™</div>
       <h1 class="display">Add the ThermoNest <em>down underquilt</em></h1>
       <p class="sub">Made specifically for the Hawk Nest hammock. Proudly Canadian.</p>
-      <div class="price"><b data-now>$274.99</b><span class="pill" data-low hidden></span></div>
+      <div class="price"><del data-was>$274.99</del><b data-now>$191.99</b><span class="pill" data-save>SAVE $83</span><span class="pill" data-low hidden></span></div>
       <ul class="ben">
         <li>Premium duck down fill: lightweight and packable</li>
         <li>Full-length underquilt that hangs under your hammock</li>
         <li>Attaches to any Hawk Nest hammock model, with a 5-step setup guide in the photos</li>
       </ul>
       <p class="ship">In stock in Canada. Ships from Canada with your order.</p>
-      <div class="tot"><span>V.3 bundle <span data-bundle>$199</span> + underquilt <span data-now>$274.99</span></span><b data-total>$351.98</b></div>
+      <div class="tot"><span>V.3 bundle <span data-bundle>$199</span> + underquilt <span data-now>$191.99</span></span><b data-total>$390.99</b></div>
       <a class="cta" id="yes" href="#">Yes, add it →</a>
       <p class="wsl" data-wsl>While stock lasts.</p>
       <a class="no" id="no" href="#">No thanks, continue to checkout →</a>
@@ -161,8 +161,8 @@ ul.ben li:before{content:"✓";display:grid;place-items:center;width:22px;height
 (()=>{
 const VARIANTS=[53237762261289,53198306312489,53198306345257,46948621254953,46948623810857,47874384953641,49476259283241];
 const STICKER=50657455636777, UNIT=199, MAXQ=5;
-const UQ_VAR=50668306333993, UQ_PRICE=274.99; /* real CA quilt: 'NEW ThermoNest Premium Cold-Weather Underquilt', regular price, no discount */
-const UQ_JS='https://hawknesthammocks.ca/products/thermonest%E2%84%A2-premium-cold-weather-underquilt.js?country=CA';
+const UQ_VAR=53249433469225, UQ_PRICE=191.99, UQ_WAS=274.99; /* existing discounted add-on variant: price C$191.99, compare-at C$274.99 (both read from Shopify) */
+const UQ_JS='https://hawknesthammocks.ca/products/thermonest%E2%84%A2-cold-weather-underquilt-pre-order-add-on.js?country=CA';
 const FEED='https://cc.hawknesthammocks.ca/lp/d/uq-ca.json';
 const END=Date.parse('2026-11-27T23:59:59-08:00');
 const inc=new URLSearchParams(location.search);
@@ -176,6 +176,8 @@ document.getElementById('no').href=noURL; document.getElementById('yes').href=ye
 function render(left){
   const bundle=UNIT*q;
   $('[data-now]').forEach(e=>e.textContent=money(UQ_PRICE));
+  $('[data-was]').forEach(e=>e.textContent=money(UQ_WAS));
+  $('[data-save]').forEach(e=>e.textContent='SAVE '+money(Math.round(UQ_WAS-UQ_PRICE)));
   $('[data-bundle]').forEach(e=>e.textContent=money(bundle));
   $('[data-total]').forEach(e=>e.textContent=money(bundle+UQ_PRICE));
   document.getElementById('yes').textContent='Yes, add it \u2014 '+money(UQ_PRICE)+' \u2192';
@@ -195,6 +197,7 @@ Promise.all([
   const fresh=f&&typeof f.q==='number'&&Date.now()-Date.parse(f.updated)<9e5;
   if(!(fresh&&f.q>=1&&j&&j.available===true&&v&&v.available)) return gone();
   if(typeof v.price==='number'&&Math.abs(v.price/100-UQ_PRICE)>0.005) return gone();
+  if(typeof v.compare_at_price==='number'&&v.compare_at_price/100!==UQ_WAS) return gone();
   render(Math.floor(f.q));
   document.documentElement.classList.add('uq-ok');
 }).catch(()=>{clearTimeout(t);gone()});
