@@ -731,8 +731,14 @@ function cartURL(n){
   try{const inc=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','ttclid','ref'].forEach(k=>{const v=inc.get(k);if(v)u+='&'+k+'='+encodeURIComponent(v)})}catch(e){}
   return u;
 }
+function addonURL(n){
+  let u='/preview/bf-ca-addon.html?q='+n;
+  try{const inc=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','ttclid','ref'].forEach(k=>{const v=inc.get(k);if(v)u+='&'+k+'='+encodeURIComponent(v)})}catch(e){}
+  return u;
+}
+let uqOK=false;
 function qrender(){
-  const url=cartURL(q); document.querySelectorAll('[data-checkout]').forEach(a=>a.href=url);
+  const url=uqOK?addonURL(q):cartURL(q); document.querySelectorAll('[data-checkout]').forEach(a=>a.href=url);
   document.querySelectorAll('[data-qn]').forEach(e=>e.textContent=q);
   document.querySelectorAll('[data-qnote]').forEach(e=>e.textContent=(q*8)+' free products included');
   document.querySelectorAll('[data-q="-1"]').forEach(e=>e.disabled=q<=1);
@@ -741,7 +747,13 @@ function qrender(){
 }
 document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{q=Math.min(MAXQ,Math.max(1,q+ +b.dataset.q));qrender()});
 qrender();
-
+/* ThermoNest add-on step: only when the Canadian warehouse has the underquilt in stock. Shopify's public product JSON is NOT location-aware
+   (it counts the U.S. warehouse too), so read our small CA-warehouse feed (fail closed: missing, stale >15 min or 0 = straight to checkout). */
+try{if(!/[?&]uq=off/.test(location.search)&&Date.now()<Date.parse('2026-11-27T23:59:59-08:00')){
+  const ac=new AbortController(),t=setTimeout(()=>ac.abort(),2500);
+  fetch('https://cc.hawknesthammocks.ca/lp/d/uq-ca.json?t='+Date.now(),{signal:ac.signal,credentials:'omit',cache:'no-store'}).then(r=>r.ok?r.json():null).then(f=>{clearTimeout(t);
+    if(f&&typeof f.q==='number'&&f.q>=1&&Date.now()-Date.parse(f.updated)<9e5){uqOK=true;qrender();try{[[addonURL(q),'document'],['/bfcm-assets/addon/ca-uq-1.webp','image']].forEach(([h,a])=>{const l=document.createElement('link');l.rel='prefetch';l.href=h;l.as=a;document.head.appendChild(l)})}catch(e){}}}).catch(()=>{});
+}}catch(e){}
 /* ---- time (real deadline; ?now=ISO lets us preview) ---- */
 const qs=new URLSearchParams(location.search);
 const offset=qs.get('now')?(new Date(qs.get('now')).getTime()-Date.now()):0;
