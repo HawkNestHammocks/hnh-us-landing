@@ -687,11 +687,11 @@ try{if(!/[?&]uq=off/.test(location.search)&&Date.now()<Date.parse('2026-11-30T23
 const qs=new URLSearchParams(location.search);
 const offset=qs.get('now')?(new Date(qs.get('now')).getTime()-Date.now()):0;
 const now=()=>Date.now()+offset;
-/* Timing (Lukas, Oct 27): synced to the Meta ad set in Toronto time.
-   Starts Fri Nov 27 12:00 AM ET; countdown runs to Mon Nov 30 11:59 PM ET; "ENDS TONIGHT" on Nov 30 ET.
+/* Timing (Lukas t632u): sale is live now so ad traffic never sees a "starts in" state.
+   Countdown runs to Mon Nov 30 11:59 PM ET; "ENDS TONIGHT" on Nov 30 ET.
    Offer (and code BFCM2026) actually ends Mon Nov 30 11:59 PM PT: between the two the page stays
    buyable with a "final hours" message (no countdown reset), then switches to "ended". */
-const START=Date.parse('2026-11-27T00:00:00-05:00'), LAST=Date.parse('2026-11-30T00:00:00-05:00'),
+const START=Date.parse('2026-11-26T17:00:00-08:00'), LAST=Date.parse('2026-11-30T00:00:00-05:00'),
       END_ET=Date.parse('2026-11-30T23:59:59-05:00'), END=Date.parse('2026-11-30T23:59:59-08:00');
 const pad=n=>String(n).padStart(2,'0');
 function tick(){

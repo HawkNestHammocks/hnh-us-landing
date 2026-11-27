@@ -758,14 +758,14 @@ try{if(!/[?&]uq=off/.test(location.search)&&Date.now()<Date.parse('2026-11-27T23
 const qs=new URLSearchParams(location.search);
 const offset=qs.get('now')?(new Date(qs.get('now')).getTime()-Date.now()):0;
 const now=()=>Date.now()+offset;
-/* Timing (Lukas, t621u): ONE DAY ONLY. Fri Nov 27, 12:00 AM PT to 11:59:59 PM PT. ?now=ISO previews other times. */
-const START=Date.parse('2026-11-27T00:00:00-08:00'), END=Date.parse('2026-11-27T23:59:59-08:00'), LAST=Date.parse('2026-11-27T18:00:00-08:00');
+/* Timing (Lukas t621u / t632u): sale is live now so ad traffic never sees a "starts in" state. Ends Fri Nov 27, 11:59:59 PM PT. ?now=ISO previews other times. */
+const START=Date.parse('2026-11-26T15:30:00-08:00'), END=Date.parse('2026-11-27T23:59:59-08:00'), LAST=Date.parse('2026-11-27T18:00:00-08:00');
 const pad=n=>String(n).padStart(2,'0');
 function tick(){
   const t=now(); const bar=document.getElementById('barText'), clk=document.getElementById('barClock');
   let ms, label;
   if(t<START){ms=START-t;label='CANADIAN BLACK FRIDAY STARTS FRI NOV 27 · 12 AM PT';}
-  else if(t<=END){ms=END-t; label=t>=LAST?'📢 ENDS TONIGHT · 8 FREE PRODUCTS':'TODAY ONLY · 8 FREE PRODUCTS';}
+  else if(t<=END){ms=END-t; label=t>=LAST?'📢 ENDS TONIGHT · 8 FREE PRODUCTS':'LIVE NOW · 8 FREE PRODUCTS';}
   else{ms=0;label='THE CANADIAN BLACK FRIDAY DEAL HAS ENDED';}
   const d=Math.floor(ms/864e5),h=Math.floor(ms/36e5)%24,m=Math.floor(ms/6e4)%60,s=Math.floor(ms/1e3)%60;
   bar.textContent=label; clk.textContent=(d?d+'d ':'')+pad(h)+':'+pad(m)+':'+pad(s);
