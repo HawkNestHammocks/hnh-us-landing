@@ -1153,7 +1153,7 @@ if(document.readyState==='complete')setTimeout(go,300);else addEventListener('lo
 })();
 </script>
 
-<!-- HNH Crisp chat (t657u): always-visible sticky bar; in-bar chat button; native launcher hidden. Never hide or close chat on resize. -->
+<!-- HNH Crisp chat (t661u): always-visible sticky bar; in-bar chat button; native launcher hidden. Open on pointerup/touchend as well as click (do not preventDefault on touchstart). Never hide or close chat on resize. -->
 <style>
 /* Pulse + toast (needed on pages that did not already have them) */
 #pulse.pulse{position:absolute;left:50%;right:auto;bottom:calc(100% + 6px);transform:translateX(-50%);white-space:nowrap;max-width:calc(100vw - 16px);width:max-content;padding:5px 12px;border-radius:999px;background:rgba(10,15,36,.92);border:1px solid rgba(255,255,255,.18);font:700 12px/1.2 system-ui,-apple-system,sans-serif;color:#fff;box-shadow:0 8px 20px -8px rgba(0,0,0,.6);text-align:center;z-index:61}
@@ -1253,23 +1253,25 @@ window.CRISP_WEBSITE_ID="7c6aa760-45f6-4f71-890b-7d5dde112fb6";
 })();
 (function(){
   var open=false;
+  var wantOpen=false;
   var unread=0;
+  var lastOpen=0;
   function hideLauncher(){
+    if(open || wantOpen) return;
     try{ window.$crisp.push(["do","chat:hide"]); }catch(e){}
   }
+  function showOpen(){
+    try{
+      window.$crisp.push(["do","chat:show"]);
+      window.$crisp.push(["do","chat:open"]);
+    }catch(e){}
+  }
   function openChat(){
-    var n=0;
-    function tryOpen(){
-      if(!window.$crisp || typeof window.$crisp.push!=="function"){
-        if(n++<25) setTimeout(tryOpen, 120);
-        return;
-      }
-      try{
-        window.$crisp.push(["do","chat:show"]);
-        window.$crisp.push(["do","chat:open"]);
-      }catch(e){}
-    }
-    tryOpen();
+    var now=Date.now();
+    if(now-lastOpen<400) return;
+    lastOpen=now;
+    wantOpen=true;
+    showOpen();
   }
   function badge(){
     var el=document.querySelector("#hnhCrispBtn .hnh-crisp-badge");
@@ -1278,24 +1280,36 @@ window.CRISP_WEBSITE_ID="7c6aa760-45f6-4f71-890b-7d5dde112fb6";
     el.hidden=false;
     el.textContent=unread>9?"9+":String(unread);
   }
-  function onOpened(){ open=true; unread=0; badge(); }
-  function onClosed(){ open=false; hideLauncher(); badge(); }
-  window.$crisp.push(["on","session:loaded", function(){ if(!open) hideLauncher(); }]);
-  window.$crisp.push(["on","chat:opened", onOpened]);
-  window.$crisp.push(["on","chat:closed", onClosed]);
+  /* Do not overwrite window.$crisp after l.js has replaced the queue. */
+  window.$crisp.push(["on","session:loaded", function(){
+    if(wantOpen) showOpen();
+    else hideLauncher();
+  }]);
+  window.$crisp.push(["on","chat:opened", function(){ open=true; wantOpen=false; unread=0; badge(); }]);
+  window.$crisp.push(["on","chat:closed", function(){ open=false; wantOpen=false; hideLauncher(); badge(); }]);
   window.$crisp.push(["on","message:received", function(){ if(!open){ unread+=1; badge(); } }]);
   /* Never hide or close the chat on resize/visualViewport (mobile keyboard). */
   var btn=document.getElementById("hnhCrispBtn");
   if(btn){
-    function stop(e){ e.preventDefault(); e.stopPropagation(); }
-    ["pointerdown","touchstart","touchend","click"].forEach(function(ev){
-      btn.addEventListener(ev, function(e){
-        stop(e);
-        if(ev==="click") openChat();
-      });
+    /* Do not preventDefault on touchstart/pointerdown: that cancels the
+       synthetic click on mobile, so the chat never opened on phones. */
+    btn.addEventListener("click", function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      openChat();
     });
+    btn.addEventListener("pointerup", function(e){
+      e.stopPropagation();
+      if(e.pointerType==="mouse") return;
+      openChat();
+    });
+    btn.addEventListener("touchend", function(e){
+      e.stopPropagation();
+      openChat();
+    }, {passive:true});
   }
 })();
+
 </script>
 
 </body>
