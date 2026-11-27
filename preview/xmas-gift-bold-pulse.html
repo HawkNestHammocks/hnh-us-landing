@@ -1041,41 +1041,6 @@ function go(){hb();setTimeout(pc,2500);pf();setInterval(hb,3e4);setInterval(func
 if(document.readyState==='complete')setTimeout(go,300);else addEventListener('load',function(){if(window.requestIdleCallback)requestIdleCallback(go,{timeout:2500});else setTimeout(go,1500)});
 })();
 </script>
-<script>
-/* Real live counters: viewers = anonymous heartbeat sessions (last 3 min); order bubble and 24h count = real paid US orders
-   (first name + state only). Viewer count is the combined unique US+CA landing-page sessions. Hidden when data is stale or below the minimum (3). Nothing is invented. */
-(function(){
-var H='https://cc.hawknesthammocks.ca/lp/',VM=3,CM=10,DBG=false,
-pu=document.getElementById('pulse'),lv=document.getElementById('live'),tt=document.getElementById('ptoast'),ss,sid,V=null,F=null,beats=0,hbok='-';
-if(!window.fetch||!pu||!tt)return;
-try{ss=sessionStorage;sid=ss.getItem('hs');if(!sid){var a=new Uint8Array(12);crypto.getRandomValues(a);sid=Array.from(a,function(b){return('0'+b.toString(16)).slice(-2)}).join('');ss.setItem('hs',sid)}}catch(e){return}
-function J(u,f){fetch(H+u+'?t='+Date.now(),{credentials:'omit',cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(f).catch(function(){f(null)})}
-function ok(d,ms){return d&&Date.now()-Date.parse(d.updated)<ms}
-function draw(){var p=[];
-if(ok(V,12e4)&&V.n>=VM)p.push('\uD83D\uDC40 <b>'+Math.floor(V.n)+'</b> viewing now');
-if(ok(F,27e5)&&F.c24>=CM)p.push('\uD83D\uDD25 <b>'+Math.floor(F.c24)+'</b> claimed in 24h');
-if(DBG)p.push('<em>dbg hb:'+hbok+' v:'+(V?Math.floor(V.n)+'@'+Math.round((Date.now()-Date.parse(V.updated))/1e3)+'s':'none')+' f:'+(F?'ok':'none')+'</em>');
-pu.innerHTML=p.join('<i>\u00B7</i>');pu.hidden=!p.length;
-if(lv){var vs=ok(V,12e4)&&V.n>=VM;lv.innerHTML=vs?'<b>'+Math.floor(V.n)+'</b> viewing now':'';lv.hidden=!vs}var vn=document.getElementById('viewers');if(vn){var vs2=ok(V,12e4)&&V.n>=VM,bb=vn.querySelector('[data-vn]');if(bb)bb.textContent=vs2?Math.floor(V.n).toLocaleString('en-US'):'';vn.hidden=!vs2}}
-function hb(){if(document.visibilityState!=='visible')return;fetch(H+'b?s='+sid,{mode:'no-cors',keepalive:true,credentials:'omit',cache:'no-store'}).then(function(){hbok='sent'},function(){hbok='blocked'}).then(draw)}
-function pc(){var a=null,b=null,left=2;function done(){var aOk=ok(a,12e4),bOk=ok(b,12e4);if(!aOk&&!bOk){V=null;draw();return}var n=(aOk?Math.floor(a.n)||0:0)+(bOk?Math.floor(b.n)||0:0);var upd=aOk&&bOk?(Date.parse(a.updated)>=Date.parse(b.updated)?a.updated:b.updated):(aOk?a.updated:b.updated);V={n:n,updated:upd,window:180};draw()}function one(u,set){J(u,function(d){set(d);if(--left===0)done()})}one('d/count.json',function(d){a=d});one('d/count-ca.json',function(d){b=d})}
-function pf(){var a=null,b=null,left=2;function done(){var aOk=ok(a,27e5),bOk=ok(b,27e5);if(!aOk&&!bOk){F=null;draw();return}var c24=(aOk?Math.floor(a.c24)||0:0)+(bOk?Math.floor(b.c24)||0:0);var o24=(aOk?Math.floor(a.o24)||0:0)+(bOk?Math.floor(b.o24)||0:0);var ords=[];if(aOk&&a.orders)ords=ords.concat(a.orders);if(bOk&&b.orders)ords=ords.concat(b.orders);ords.sort(function(x,y){return Date.parse(y.t)-Date.parse(x.t)});var upd=aOk&&bOk?(Date.parse(a.updated)>=Date.parse(b.updated)?a.updated:b.updated):(aOk?a.updated:b.updated);F={c24:c24,o24:o24,orders:ords.slice(0,8),updated:upd};draw()}function one(u,set){J(u,function(d){set(d);if(--left===0)done()})}one('d/feed.json',function(d){a=d});one('d/feed-ca.json',function(d){b=d})}
-function ago(t){var m=Math.round((Date.now()-Date.parse(t))/6e4);return m<2?'just now':m<60?m+' min ago':m<120?'1 hr ago':Math.floor(m/60)+' hr ago'}
-function list(){return ok(F,27e5)&&F.orders?F.orders.filter(function(o){return /^[A-Za-z\u00C0-\u024F'-]{2,14}$/.test(o.n)&&/^[A-Za-z .]{2,30}$/.test(o.s)&&Date.now()-Date.parse(o.t)<432e5&&Date.now()>=Date.parse(o.t)}):[]}
-var t0=Date.now(),tries=0,tm;
-function close(){clearTimeout(tm);tt.classList.remove('on');setTimeout(function(){tt.hidden=true},350)}
-tt.addEventListener('click',close);
-function clear(top){var L=innerWidth-8-220,R=innerWidth-8,B=top+62,c=document.querySelectorAll('.cta,[data-checkout]');for(var i=0;i<c.length;i++){var r=c[i].getBoundingClientRect();if(r.width&&r.right>L&&r.left<R&&r.bottom>top&&r.top<B)return false}return true}
-function toast(){var n=+(ss.getItem('pt')||0),l=list();if(n>=2||!l[n]||tries++>90)return;
-var bar=document.querySelector('.bar'),top=(bar?Math.max(0,bar.getBoundingClientRect().bottom):0)+8;
-if(Date.now()-t0<15e3||document.visibilityState!=='visible'||!clear(top)){setTimeout(toast,2e3);return}
-var o=l[n];tt.style.top=top+'px';tt.textContent='';tt.appendChild(document.createTextNode(o.n+' in '+o.s+' claimed theirs'));var s=document.createElement('small');s.textContent=ago(o.t);tt.appendChild(s);
-ss.setItem('pt',n+1);tt.hidden=false;requestAnimationFrame(function(){tt.classList.add('on')});
-tm=setTimeout(function(){close();setTimeout(toast,25e3)},5e3)}
-function go(){hb();setTimeout(pc,2500);pf();setInterval(hb,3e4);setInterval(function(){if(document.visibilityState==='visible')pc()},3e4);setInterval(function(){if(document.visibilityState==='visible')pf()},3e5);setTimeout(toast,15e3)}
-if(document.readyState==='complete')setTimeout(go,300);else addEventListener('load',function(){if(window.requestIdleCallback)requestIdleCallback(go,{timeout:2500});else setTimeout(go,1500)});
-})();
-</script>
 <!-- HNH Crisp chat (t657u): always-visible sticky bar; in-bar chat button; native launcher hidden. Never hide or close chat on resize. -->
 <style>
 /* Pulse + toast (needed on pages that did not already have them) */
