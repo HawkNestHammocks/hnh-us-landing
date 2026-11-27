@@ -437,8 +437,6 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
           <a class="cta" href="#" data-checkout>Claim the BFCM deal →</a>
           <p class="fine">Pre-order · ships Feb 1 · 60-day money-back guarantee</p>
           <p class="urg">Every batch last year pre-sold out. The first 2027 run ships Feb 1.</p>
-          <p class="viewers" id="viewers" hidden aria-live="polite"><i aria-hidden="true"></i>👀 <b data-vn></b> people viewing this deal right now</p>
-          <p class="viewers" id="claimed" hidden aria-live="polite"><i aria-hidden="true" style="background:#3ddc84"></i>🔥 <b data-cn></b> claimed in 24h</p>
           <div class="stock" hidden aria-live="polite">
             <div class="stock-top"><span>BFCM orders &middot; ship Feb 1 <span class="sample">SAMPLE COUNT</span></span><em><span data-left>—</span> of 1,200 left</em></div>
             <div class="meter"><span data-meter></span></div>
@@ -646,7 +644,7 @@ footer{padding:30px 0 120px;text-align:center;font-size:12px;color:var(--muted);
 
 <footer>© 2026 Hawk Nest Hammocks Inc. · support@hawknesthammocks.ca<br>Pre-order: BFCM orders ship Feb 1. Free standard U.S. shipping.</footer>
 
-<div class="sticky" id="sticky"><div class="p"><b>$179.99</b><small>$429 value · ships Feb 1</small></div><a class="cta" href="#" data-checkout>Claim deal →</a></div>
+<div class="sticky on" id="sticky"><div class="p"><b>$179.99</b><small>$429 value · ships Feb 1</small></div><a class="cta" href="#" data-checkout>Claim deal →</a><button type="button" class="hnh-crisp-btn" id="hnhCrispBtn" aria-label="Chat with us" title="Chat with us"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="#fff" d="M4.5 4.8h15c.9 0 1.6.7 1.6 1.6v9.2c0 .9-.7 1.6-1.6 1.6H13l-3.7 3.2c-.5.4-1.3.1-1.3-.5v-2.7H4.5c-.9 0-1.6-.7-1.6-1.6V6.4c0-.9.7-1.6 1.6-1.6z"/></svg><span class="hnh-crisp-badge" hidden></span></button><div class="pulse" id="pulse" hidden></div></div><div class="ptoast" id="ptoast" role="status" aria-live="polite" hidden></div>
 
 <script>
 (()=>{
@@ -718,7 +716,7 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
 
 /* ---- sticky cta ---- */
 const sticky=document.getElementById('sticky'), heroCta=document.querySelector('.hero .cta');
-new IntersectionObserver(([e])=>sticky.classList.toggle('on',!e.isIntersecting)).observe(heroCta);
+sticky.classList.add('on');
 
 /* ---- parallax band ---- */
 const px=document.querySelector('[data-parallax]');
@@ -862,38 +860,127 @@ document.querySelectorAll('.stack-list .item[aria-controls]').forEach(function(i
   it.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}});
 });
 </script>
+
 <script>
-/* Real live viewer count: unique US+CA landing-page sessions in the last 3 min. Hidden below 3. Nothing is invented. */
+/* Real live counters: viewers = anonymous heartbeat sessions (last 3 min); order bubble and 24h count = real paid US orders
+   (first name + state only). Viewer count is the combined unique US+CA landing-page sessions. Hidden when data is stale or below the minimum (3). Nothing is invented. */
 (function(){
-var H='https://cc.hawknesthammocks.ca/lp/',VM=3,el=document.getElementById('viewers');
-if(!window.fetch||!el)return;
-var sid;
-try{sid=sessionStorage.getItem('hs');if(!sid){var a=new Uint8Array(12);crypto.getRandomValues(a);sid=Array.from(a,function(b){return('0'+b.toString(16)).slice(-2)}).join('');sessionStorage.setItem('hs',sid)}}catch(e){return}
+var H='https://cc.hawknesthammocks.ca/lp/',VM=3,CM=10,DBG=false,
+pu=document.getElementById('pulse'),lv=document.getElementById('live'),tt=document.getElementById('ptoast'),ss,sid,V=null,F=null,beats=0,hbok='-';
+if(!window.fetch||!pu||!tt)return;
+try{ss=sessionStorage;sid=ss.getItem('hs');if(!sid){var a=new Uint8Array(12);crypto.getRandomValues(a);sid=Array.from(a,function(b){return('0'+b.toString(16)).slice(-2)}).join('');ss.setItem('hs',sid)}}catch(e){return}
+function J(u,f){fetch(H+u+'?t='+Date.now(),{credentials:'omit',cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(f).catch(function(){f(null)})}
 function ok(d,ms){return d&&Date.now()-Date.parse(d.updated)<ms}
-function show(n,fresh){var on=fresh&&n>=VM,b=el.querySelector('[data-vn]');if(b)b.textContent=on?n.toLocaleString('en-US'):'';el.hidden=!on}
-function showC(n,fresh){var cl=document.getElementById('claimed');if(!cl)return;var on=fresh&&n>=10,b=cl.querySelector('[data-cn]');if(b)b.textContent=on?n.toLocaleString('en-US'):'';cl.hidden=!on}
-function hb(){if(document.visibilityState!=='visible')return;fetch(H+'b?s='+sid,{mode:'no-cors',keepalive:true,credentials:'omit',cache:'no-store'})}
-function pc(){var a=null,b=null,left=2;function done(){var aOk=ok(a,12e4),bOk=ok(b,12e4);show((aOk?Math.floor(a.n)||0:0)+(bOk?Math.floor(b.n)||0:0),aOk||bOk)}function one(u,set){fetch(H+u+'?t='+Date.now(),{credentials:'omit',cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){set(d);if(--left===0)done()}).catch(function(){set(null);if(--left===0)done()})}one('d/count.json',function(d){a=d});one('d/count-ca.json',function(d){b=d})}
-function pf(){var a=null,b=null,left=2;function done(){var aOk=ok(a,27e5),bOk=ok(b,27e5);showC((aOk?Math.floor(a.c24)||0:0)+(bOk?Math.floor(b.c24)||0:0),aOk||bOk)}function one(u,set){fetch(H+u+'?t='+Date.now(),{credentials:'omit',cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){set(d);if(--left===0)done()}).catch(function(){set(null);if(--left===0)done()})}one('d/feed.json',function(d){a=d});one('d/feed-ca.json',function(d){b=d})}
-function go(){hb();setTimeout(pc,2500);pf();setInterval(hb,3e4);setInterval(function(){if(document.visibilityState==='visible')pc()},3e4);setInterval(function(){if(document.visibilityState==='visible')pf()},3e5)}
-document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')hb()});
-if(document.readyState==='complete')setTimeout(go,300);else addEventListener('load',function(){setTimeout(go,800)});
+function draw(){var p=[];
+if(ok(V,12e4)&&V.n>=VM)p.push('\uD83D\uDC40 <b>'+Math.floor(V.n)+'</b> viewing now');
+if(ok(F,27e5)&&F.c24>=CM)p.push('\uD83D\uDD25 <b>'+Math.floor(F.c24)+'</b> claimed in 24h');
+if(DBG)p.push('<em>dbg hb:'+hbok+' v:'+(V?Math.floor(V.n)+'@'+Math.round((Date.now()-Date.parse(V.updated))/1e3)+'s':'none')+' f:'+(F?'ok':'none')+'</em>');
+pu.innerHTML=p.join('<i>\u00B7</i>');pu.hidden=!p.length;
+if(lv){var vs=ok(V,12e4)&&V.n>=VM;lv.innerHTML=vs?'<b>'+Math.floor(V.n)+'</b> viewing now':'';lv.hidden=!vs}var vn=document.getElementById('viewers');if(vn){var vs2=ok(V,12e4)&&V.n>=VM,bb=vn.querySelector('[data-vn]');if(bb)bb.textContent=vs2?Math.floor(V.n).toLocaleString('en-US'):'';vn.hidden=!vs2}}
+function hb(){if(document.visibilityState!=='visible')return;fetch(H+'b?s='+sid,{mode:'no-cors',keepalive:true,credentials:'omit',cache:'no-store'}).then(function(){hbok='sent'},function(){hbok='blocked'}).then(draw)}
+function pc(){var a=null,b=null,left=2;function done(){var aOk=ok(a,12e4),bOk=ok(b,12e4);if(!aOk&&!bOk){V=null;draw();return}var n=(aOk?Math.floor(a.n)||0:0)+(bOk?Math.floor(b.n)||0:0);var upd=aOk&&bOk?(Date.parse(a.updated)>=Date.parse(b.updated)?a.updated:b.updated):(aOk?a.updated:b.updated);V={n:n,updated:upd,window:180};draw()}function one(u,set){J(u,function(d){set(d);if(--left===0)done()})}one('d/count.json',function(d){a=d});one('d/count-ca.json',function(d){b=d})}
+function pf(){var a=null,b=null,left=2;function done(){var aOk=ok(a,27e5),bOk=ok(b,27e5);if(!aOk&&!bOk){F=null;draw();return}var c24=(aOk?Math.floor(a.c24)||0:0)+(bOk?Math.floor(b.c24)||0:0);var o24=(aOk?Math.floor(a.o24)||0:0)+(bOk?Math.floor(b.o24)||0:0);var ords=[];if(aOk&&a.orders)ords=ords.concat(a.orders);if(bOk&&b.orders)ords=ords.concat(b.orders);ords.sort(function(x,y){return Date.parse(y.t)-Date.parse(x.t)});var upd=aOk&&bOk?(Date.parse(a.updated)>=Date.parse(b.updated)?a.updated:b.updated):(aOk?a.updated:b.updated);F={c24:c24,o24:o24,orders:ords.slice(0,8),updated:upd};draw()}function one(u,set){J(u,function(d){set(d);if(--left===0)done()})}one('d/feed.json',function(d){a=d});one('d/feed-ca.json',function(d){b=d})}
+function ago(t){var m=Math.round((Date.now()-Date.parse(t))/6e4);return m<2?'just now':m<60?m+' min ago':m<120?'1 hr ago':Math.floor(m/60)+' hr ago'}
+function list(){return ok(F,27e5)&&F.orders?F.orders.filter(function(o){return /^[A-Za-z\u00C0-\u024F'-]{2,14}$/.test(o.n)&&/^[A-Za-z .]{2,30}$/.test(o.s)&&Date.now()-Date.parse(o.t)<432e5&&Date.now()>=Date.parse(o.t)}):[]}
+var t0=Date.now(),tries=0,tm;
+function close(){clearTimeout(tm);tt.classList.remove('on');setTimeout(function(){tt.hidden=true},350)}
+tt.addEventListener('click',close);
+function clear(top){var L=innerWidth-8-220,R=innerWidth-8,B=top+62,c=document.querySelectorAll('.cta,[data-checkout]');for(var i=0;i<c.length;i++){var r=c[i].getBoundingClientRect();if(r.width&&r.right>L&&r.left<R&&r.bottom>top&&r.top<B)return false}return true}
+function toast(){var n=+(ss.getItem('pt')||0),l=list();if(n>=2||!l[n]||tries++>90)return;
+var bar=document.querySelector('.bar'),top=(bar?Math.max(0,bar.getBoundingClientRect().bottom):0)+8;
+if(Date.now()-t0<15e3||document.visibilityState!=='visible'||!clear(top)){setTimeout(toast,2e3);return}
+var o=l[n];tt.style.top=top+'px';tt.textContent='';tt.appendChild(document.createTextNode(o.n+' in '+o.s+' claimed theirs'));var s=document.createElement('small');s.textContent=ago(o.t);tt.appendChild(s);
+ss.setItem('pt',n+1);tt.hidden=false;requestAnimationFrame(function(){tt.classList.add('on')});
+tm=setTimeout(function(){close();setTimeout(toast,25e3)},5e3)}
+function go(){hb();setTimeout(pc,2500);pf();setInterval(hb,3e4);setInterval(function(){if(document.visibilityState==='visible')pc()},3e4);setInterval(function(){if(document.visibilityState==='visible')pf()},3e5);setTimeout(toast,15e3)}
+if(document.readyState==='complete')setTimeout(go,300);else addEventListener('load',function(){if(window.requestIdleCallback)requestIdleCallback(go,{timeout:2500});else setTimeout(go,1500)});
 })();
 </script>
-<!-- HNH Crisp chat (t654u/t655u): native launcher. On mobile the sticky bar leaves a right-hand gap so the bubble sits beside Claim Deal, not over it. -->
+<!-- HNH Crisp chat (t657u): always-visible sticky bar; in-bar chat button; native launcher hidden. Never hide or close chat on resize. -->
 <style>
+/* Pulse + toast (needed on pages that did not already have them) */
+#pulse.pulse{position:absolute;left:50%;right:auto;bottom:calc(100% + 6px);transform:translateX(-50%);white-space:nowrap;max-width:calc(100vw - 16px);width:max-content;padding:5px 12px;border-radius:999px;background:rgba(10,15,36,.92);border:1px solid rgba(255,255,255,.18);font:700 12px/1.2 system-ui,-apple-system,sans-serif;color:#fff;box-shadow:0 8px 20px -8px rgba(0,0,0,.6);text-align:center;z-index:61}
+#pulse.pulse[hidden]{display:none}
+#pulse.pulse b{color:#ffb347}
+#pulse.pulse i{font-style:normal;margin:0 7px;opacity:.45}
+#pulse.pulse em{font-style:normal;font-weight:500;opacity:.7}
+#ptoast.ptoast{position:fixed;z-index:58;right:8px;top:72px;width:max-content;max-width:min(215px,calc(100vw - 16px));padding:8px 26px 8px 11px;border-radius:12px;background:rgba(10,15,36,.95);border:1px solid rgba(255,255,255,.2);border-right:3px solid #ff6b1a;color:#fff;font:600 12.5px/1.3 system-ui,-apple-system,sans-serif;box-shadow:0 10px 24px -10px rgba(0,0,0,.7);opacity:0;transform:translateY(-6px);transition:opacity .3s,transform .3s;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#ptoast.ptoast[hidden]{display:none}
+#ptoast.ptoast.on{opacity:1;transform:none}
+#ptoast.ptoast small{display:block;font-weight:500;font-size:11px;color:#a9b2d6;margin-top:1px}
+#ptoast.ptoast:after{content:"\00d7";position:absolute;right:8px;top:4px;font-size:17px;line-height:1;color:#a9b2d6}
+
+/* Always-visible sticky: price | Claim Deal | chat bubble, evenly spaced */
+#sticky.sticky{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between;
+  gap:12px !important;
+  transform:none !important;
+}
 @media (max-width:899px){
   #sticky.sticky{
-    right:calc(72px + max(8px, env(safe-area-inset-right, 0px))) !important;
+    right:max(8px, env(safe-area-inset-right, 0px)) !important;
+    left:max(8px, env(safe-area-inset-left, 0px)) !important;
+    width:auto !important;
+    max-width:none !important;
   }
-  /* Closed launcher only — never the open chat window */
-  #crisp-chatbox [aria-label="Open chat"][data-maximized="false"]{
-    bottom:calc(8px + env(safe-area-inset-bottom, 0px)) !important;
-    right:8px !important;
-    top:auto !important;
-    left:auto !important;
-    margin:0 !important;
+  #sticky.sticky .p{max-width:34% !important;flex:0 1 auto;min-width:0}
+}
+@media (min-width:900px){
+  #sticky.sticky{
+    left:50% !important;
+    right:auto !important;
+    width:560px !important;
+    max-width:560px !important;
+    transform:translate(-50%, 0) !important;
   }
+  #sticky.sticky .p{max-width:none !important}
+}
+
+/* In-bar chat button, styled to match this site's Crisp theme (orange) */
+#hnhCrispBtn.hnh-crisp-btn{
+  position:relative;
+  flex:0 0 48px;
+  box-sizing:border-box;
+  width:48px;
+  height:48px;
+  min-width:48px;
+  min-height:44px;
+  margin:0;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:#ec6800;
+  color:#fff;
+  box-shadow:0 4px 14px rgba(236,104,0,.45);
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  -webkit-tap-highlight-color:transparent;
+  z-index:2;
+}
+#hnhCrispBtn.hnh-crisp-btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+#hnhCrispBtn.hnh-crisp-btn svg{display:block;pointer-events:none}
+#hnhCrispBtn .hnh-crisp-badge{
+  position:absolute;top:-4px;right:-4px;
+  min-width:18px;height:18px;padding:0 5px;
+  border-radius:9px;background:#e5424b;color:#fff;
+  font:700 11px/18px system-ui,-apple-system,sans-serif;
+  text-align:center;
+  box-shadow:0 0 0 2px rgba(10,15,36,.82);
+  pointer-events:none;
+}
+#hnhCrispBtn .hnh-crisp-badge[hidden]{display:none !important}
+
+/* Hide the native minimized launcher only — never the open chat window */
+#crisp-chatbox [aria-label="Open chat"][data-maximized="false"],
+#crisp-chatbox [data-pop="minimized:open"]{
+  display:none !important;
+  pointer-events:none !important;
+  opacity:0 !important;
+  visibility:hidden !important;
 }
 </style>
 <script>
@@ -908,80 +995,48 @@ window.CRISP_WEBSITE_ID="7c6aa760-45f6-4f71-890b-7d5dde112fb6";
   document.getElementsByTagName("head")[0].appendChild(s);
 })();
 (function(){
-  var MQ="(max-width:899px)";
   var open=false;
-  var INSET=8;
-  var styled=null;
-  function mobile(){return window.matchMedia(MQ).matches}
-  /* Do not stopPropagation in capture phase: that blocks Crisp from receiving its own taps. */
-  function isSmallBox(r){ return r.width>=40 && r.width<=80 && r.height>=40 && r.height<=80; }
-  function launcher(){
-    var el=document.querySelector('#crisp-chatbox [aria-label="Open chat"], #crisp-chatbox [data-pop="minimized:open"]');
-    if(el) return el;
-    var nodes=document.querySelectorAll("#crisp-chatbox [role='button'], .crisp-client [role='button']");
-    var i,r;
-    for(i=0;i<nodes.length;i++){
-      r=nodes[i].getBoundingClientRect();
-      if(isSmallBox(r)) return nodes[i];
-    }
-    return null;
+  var unread=0;
+  function hideLauncher(){
+    try{ window.$crisp.push(["do","chat:hide"]); }catch(e){}
   }
-  function clearAlign(){
-    if(!styled) return;
-    try{
-      styled.style.removeProperty("bottom");
-      styled.style.removeProperty("right");
-      styled.style.removeProperty("left");
-      styled.style.removeProperty("top");
-      styled.style.removeProperty("margin");
-      styled.style.removeProperty("position");
-      styled.style.removeProperty("inset");
-    }catch(e){}
-    styled=null;
-  }
-  function align(){
-    if(open || !mobile()){ clearAlign(); return; }
-    var sticky=document.getElementById("sticky");
-    var el=launcher();
-    if(!el) return;
-    if(el.getAttribute("data-maximized")==="true"){ clearAlign(); return; }
-    var er=el.getBoundingClientRect();
-    if(!isSmallBox(er)) return;
-    var bottom=INSET;
-    if(sticky && sticky.classList.contains("on")){
-      var sr=sticky.getBoundingClientRect();
-      if(sr.height>20 && sr.bottom<=window.innerHeight+2 && sr.bottom>window.innerHeight-120){
-        bottom=Math.max(0, window.innerHeight-sr.bottom+(sr.height-er.height)/2);
-      }else{
-        bottom=Math.max(INSET, window.innerHeight-sr.bottom);
+  function openChat(){
+    var n=0;
+    function tryOpen(){
+      if(!window.$crisp || typeof window.$crisp.push!=="function"){
+        if(n++<25) setTimeout(tryOpen, 120);
+        return;
       }
+      try{
+        window.$crisp.push(["do","chat:show"]);
+        window.$crisp.push(["do","chat:open"]);
+      }catch(e){}
     }
-    el.style.setProperty("position","fixed","important");
-    el.style.setProperty("bottom", bottom+"px", "important");
-    el.style.setProperty("right", INSET+"px", "important");
-    el.style.setProperty("left","auto","important");
-    el.style.setProperty("top","auto","important");
-    el.style.setProperty("margin","0","important");
-    styled=el;
+    tryOpen();
   }
-  var alignTimer=null;
-  function requestAlign(){
-    if(open) return;
-    clearTimeout(alignTimer);
-    alignTimer=setTimeout(align, 60);
+  function badge(){
+    var el=document.querySelector("#hnhCrispBtn .hnh-crisp-badge");
+    if(!el) return;
+    if(!unread || open){ el.hidden=true; el.textContent=""; return; }
+    el.hidden=false;
+    el.textContent=unread>9?"9+":String(unread);
   }
-  function onOpen(){ open=true; clearTimeout(alignTimer); clearAlign(); }
-  function onClose(){ open=false; setTimeout(requestAlign, 80); }
-  window.$crisp.push(["on","session:loaded", function(){ requestAlign(); setTimeout(requestAlign, 400); }]);
-  window.$crisp.push(["on","chat:opened", onOpen]);
-  window.$crisp.push(["on","chat:closed", onClose]);
-  window.addEventListener("resize", function(){ if(!open) requestAlign(); });
-  if(window.visualViewport){
-    window.visualViewport.addEventListener("resize", function(){ if(!open) requestAlign(); });
-  }
-  var sticky=document.getElementById("sticky");
-  if(sticky && window.MutationObserver){
-    new MutationObserver(function(){ if(!open) requestAlign(); }).observe(sticky,{attributes:true,attributeFilter:["class","style"]});
+  function onOpened(){ open=true; unread=0; badge(); }
+  function onClosed(){ open=false; hideLauncher(); badge(); }
+  window.$crisp.push(["on","session:loaded", function(){ if(!open) hideLauncher(); }]);
+  window.$crisp.push(["on","chat:opened", onOpened]);
+  window.$crisp.push(["on","chat:closed", onClosed]);
+  window.$crisp.push(["on","message:received", function(){ if(!open){ unread+=1; badge(); } }]);
+  /* Never hide or close the chat on resize/visualViewport (mobile keyboard). */
+  var btn=document.getElementById("hnhCrispBtn");
+  if(btn){
+    function stop(e){ e.preventDefault(); e.stopPropagation(); }
+    ["pointerdown","touchstart","touchend","click"].forEach(function(ev){
+      btn.addEventListener(ev, function(e){
+        stop(e);
+        if(ev==="click") openChat();
+      });
+    });
   }
 })();
 </script>
