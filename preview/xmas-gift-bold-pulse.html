@@ -1043,49 +1043,111 @@ function go(){hb();setTimeout(pc,2500);pf();setInterval(hb,3e4);setInterval(func
 if(document.readyState==='complete')setTimeout(go,300);else addEventListener('load',function(){if(window.requestIdleCallback)requestIdleCallback(go,{timeout:2500});else setTimeout(go,1500)});
 })();
 </script>
-<!-- HNH Crisp chat (t650u/t651u): same inbox as hawknesthammocks.ca; on mobile the button sits to the right of Claim deal in the sticky bar. -->
+<!-- HNH Crisp chat (t654u/t655u): native launcher. On mobile the sticky bar leaves a right-hand gap so the bubble sits beside Claim Deal, not over it. -->
 <style>
-.hnh-crisp-btn{display:none;flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;margin:0;padding:0;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.12);color:#fff;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.hnh-crisp-btn svg{width:22px;height:22px;display:block}
-.hnh-crisp-btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
-@media(max-width:899px){
-  .hnh-crisp-btn{display:inline-flex}
-  .sticky .cta{flex:1 1 0;min-width:0}
-}
-@media(max-width:400px){
-  .hnh-crisp-btn{flex:0 0 40px;width:40px;height:40px;min-width:40px;min-height:40px;border-radius:12px}
-  .hnh-crisp-btn svg{width:20px;height:20px}
+@media (max-width:899px){
+  #sticky.sticky{
+    right:calc(72px + max(8px, env(safe-area-inset-right, 0px))) !important;
+  }
+  /* Closed launcher only — never the open chat window */
+  #crisp-chatbox [aria-label="Open chat"][data-maximized="false"]{
+    bottom:calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+    right:8px !important;
+    top:auto !important;
+    left:auto !important;
+    margin:0 !important;
+  }
 }
 </style>
 <script>
 window.$crisp=window.$crisp||[];
 window.CRISP_WEBSITE_ID="7c6aa760-45f6-4f71-890b-7d5dde112fb6";
-(function(){if(document.getElementById("hnh-crisp-ljs"))return;var s=document.createElement("script");s.id="hnh-crisp-ljs";s.src="https://client.crisp.chat/l.js";s.async=1;document.getElementsByTagName("head")[0].appendChild(s);})();
+(function(){
+  if(document.getElementById("hnh-crisp-ljs"))return;
+  var s=document.createElement("script");
+  s.id="hnh-crisp-ljs";
+  s.src="https://client.crisp.chat/l.js";
+  s.async=1;
+  document.getElementsByTagName("head")[0].appendChild(s);
+})();
 (function(){
   var MQ="(max-width:899px)";
+  var open=false;
+  var INSET=8;
+  var styled=null;
   function mobile(){return window.matchMedia(MQ).matches}
-  function hideBubble(){try{window.$crisp.push(["do","chat:hide"])}catch(e){}}
-  function placeBtn(){
-    var sticky=document.getElementById("sticky");
-    if(!sticky||document.getElementById("hnhCrispBtn"))return;
-    var btn=document.createElement("button");
-    btn.type="button";btn.id="hnhCrispBtn";btn.className="hnh-crisp-btn";
-    btn.setAttribute("aria-label","Chat with us");btn.title="Chat with us";
-    btn.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.75 3h10.5A2.75 2.75 0 0 1 20 5.75v8.5A2.75 2.75 0 0 1 17.25 17H13l-4 3.2A.75.75 0 0 1 7.75 19.6V17H6.75A2.75 2.75 0 0 1 4 14.25v-8.5A2.75 2.75 0 0 1 6.75 3Z"/></svg>';
-    var cta=sticky.querySelector("a.cta, .cta");
-    if(cta&&cta.parentNode===sticky)cta.insertAdjacentElement("afterend",btn);
-    else sticky.appendChild(btn);
-    btn.addEventListener("click",function(e){
-      e.preventDefault();e.stopPropagation();
-      try{window.$crisp.push(["do","chat:show"]);window.$crisp.push(["do","chat:open"])}catch(err){}
-    });
+  /* Do not stopPropagation in capture phase: that blocks Crisp from receiving its own taps. */
+  function isSmallBox(r){ return r.width>=40 && r.width<=80 && r.height>=40 && r.height<=80; }
+  function launcher(){
+    var el=document.querySelector('#crisp-chatbox [aria-label="Open chat"], #crisp-chatbox [data-pop="minimized:open"]');
+    if(el) return el;
+    var nodes=document.querySelectorAll("#crisp-chatbox [role='button'], .crisp-client [role='button']");
+    var i,r;
+    for(i=0;i<nodes.length;i++){
+      r=nodes[i].getBoundingClientRect();
+      if(isSmallBox(r)) return nodes[i];
+    }
+    return null;
   }
-  window.$crisp.push(["on","session:loaded",function(){if(mobile())hideBubble()}]);
-  window.$crisp.push(["on","chat:closed",function(){if(mobile())hideBubble()}]);
-  window.addEventListener("resize",function(){if(mobile())hideBubble()});
-  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",placeBtn);
-  else placeBtn();
+  function clearAlign(){
+    if(!styled) return;
+    try{
+      styled.style.removeProperty("bottom");
+      styled.style.removeProperty("right");
+      styled.style.removeProperty("left");
+      styled.style.removeProperty("top");
+      styled.style.removeProperty("margin");
+      styled.style.removeProperty("position");
+      styled.style.removeProperty("inset");
+    }catch(e){}
+    styled=null;
+  }
+  function align(){
+    if(open || !mobile()){ clearAlign(); return; }
+    var sticky=document.getElementById("sticky");
+    var el=launcher();
+    if(!el) return;
+    if(el.getAttribute("data-maximized")==="true"){ clearAlign(); return; }
+    var er=el.getBoundingClientRect();
+    if(!isSmallBox(er)) return;
+    var bottom=INSET;
+    if(sticky && sticky.classList.contains("on")){
+      var sr=sticky.getBoundingClientRect();
+      if(sr.height>20 && sr.bottom<=window.innerHeight+2 && sr.bottom>window.innerHeight-120){
+        bottom=Math.max(0, window.innerHeight-sr.bottom+(sr.height-er.height)/2);
+      }else{
+        bottom=Math.max(INSET, window.innerHeight-sr.bottom);
+      }
+    }
+    el.style.setProperty("position","fixed","important");
+    el.style.setProperty("bottom", bottom+"px", "important");
+    el.style.setProperty("right", INSET+"px", "important");
+    el.style.setProperty("left","auto","important");
+    el.style.setProperty("top","auto","important");
+    el.style.setProperty("margin","0","important");
+    styled=el;
+  }
+  var alignTimer=null;
+  function requestAlign(){
+    if(open) return;
+    clearTimeout(alignTimer);
+    alignTimer=setTimeout(align, 60);
+  }
+  function onOpen(){ open=true; clearTimeout(alignTimer); clearAlign(); }
+  function onClose(){ open=false; setTimeout(requestAlign, 80); }
+  window.$crisp.push(["on","session:loaded", function(){ requestAlign(); setTimeout(requestAlign, 400); }]);
+  window.$crisp.push(["on","chat:opened", onOpen]);
+  window.$crisp.push(["on","chat:closed", onClose]);
+  window.addEventListener("resize", function(){ if(!open) requestAlign(); });
+  if(window.visualViewport){
+    window.visualViewport.addEventListener("resize", function(){ if(!open) requestAlign(); });
+  }
+  var sticky=document.getElementById("sticky");
+  if(sticky && window.MutationObserver){
+    new MutationObserver(function(){ if(!open) requestAlign(); }).observe(sticky,{attributes:true,attributeFilter:["class","style"]});
+  }
 })();
 </script>
+
 </body>
 </html>
