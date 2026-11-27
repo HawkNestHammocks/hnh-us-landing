@@ -956,25 +956,19 @@ document.querySelectorAll('.stack-list .item[aria-controls]').forEach(function(i
 });
 </script>
 <script>
-/* Live viewer counter: real count of anonymous sessions seen in the last 4 min. Hidden unless an endpoint is set and the count is >= 5. */
+/* Real live viewer count: unique US+CA landing-page sessions in the last 3 min. Hidden below 3. Nothing is invented. */
 (function(){
-  var EP=''; /* set to the deployed counter URL, e.g. https://hnh-bfcm-viewers.<account>.workers.dev/ */
-  var MIN=5, el=document.getElementById('viewers');
-  /* Preview only: ?demo=viewers shows an example number so the design can be reviewed. Never shown without that parameter. */
-  if(el&&new URLSearchParams(location.search).get('demo')==='viewers'){el.querySelector('[data-vn]').textContent='42';el.hidden=false;return}
-  if(!EP||!el||!window.fetch||navigator.webdriver||/bot|crawl|spider|slurp|headless|lighthouse|preview/i.test(navigator.userAgent))return;
-  var k='hnh-vsid',id;
-  try{id=sessionStorage.getItem(k);if(!id){id=(crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2,14));sessionStorage.setItem(k,id)}}catch(e){return}
-  function ping(){
-    if(document.visibilityState==='hidden')return;
-    fetch(EP,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({s:id}),credentials:'omit',cache:'no-store'})
-      .then(function(r){return r.ok?r.json():null})
-      .then(function(d){var n=d&&typeof d.count==='number'?Math.floor(d.count):0;
-        if(n>=MIN){el.querySelector('[data-vn]').textContent=n.toLocaleString('en-US');el.hidden=false}else el.hidden=true})
-      .catch(function(){el.hidden=true});
-  }
-  ping();setInterval(ping,30000);
-  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')ping()});
+var H='https://cc.hawknesthammocks.ca/lp/',VM=3,el=document.getElementById('viewers');
+if(!window.fetch||!el)return;
+var sid;
+try{sid=sessionStorage.getItem('hs');if(!sid){var a=new Uint8Array(12);crypto.getRandomValues(a);sid=Array.from(a,function(b){return('0'+b.toString(16)).slice(-2)}).join('');sessionStorage.setItem('hs',sid)}}catch(e){return}
+function ok(d,ms){return d&&Date.now()-Date.parse(d.updated)<ms}
+function show(n,fresh){var on=fresh&&n>=VM,b=el.querySelector('[data-vn]');if(b)b.textContent=on?n.toLocaleString('en-US'):'';el.hidden=!on}
+function hb(){if(document.visibilityState!=='visible')return;fetch(H+'b?s='+sid,{mode:'no-cors',keepalive:true,credentials:'omit',cache:'no-store'})}
+function pc(){var a=null,b=null,left=2;function done(){var aOk=ok(a,12e4),bOk=ok(b,12e4);show((aOk?Math.floor(a.n)||0:0)+(bOk?Math.floor(b.n)||0:0),aOk||bOk)}function one(u,set){fetch(H+u+'?t='+Date.now(),{credentials:'omit',cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){set(d);if(--left===0)done()}).catch(function(){set(null);if(--left===0)done()})}one('d/count.json',function(d){a=d});one('d/count-ca.json',function(d){b=d})}
+function go(){hb();setTimeout(pc,2500);setInterval(hb,3e4);setInterval(function(){if(document.visibilityState==='visible')pc()},3e4)}
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')hb()});
+if(document.readyState==='complete')setTimeout(go,300);else addEventListener('load',function(){setTimeout(go,800)});
 })();
 </script>
 <script>
@@ -1002,25 +996,29 @@ document.querySelectorAll('.stack-list .item[aria-controls]').forEach(function(i
 })();
 </script>
 <script>
-/* Live claims counter (preview). Real Shopify order counts from a static JSON on this site,
-   refreshed by bfcm_live_counter.py on the ops server. Hidden unless the file is fresh (<45 min)
-   and the count is meaningful (>= MIN). Never shows an invented or demo number. */
+/* Real claimed-in-24h counter: paid US + Canada Shopify orders in the last 24 hours, summed. Hidden below 10 or if data is stale. Nothing is invented. */
 (function(){
-  var qp=new URLSearchParams(location.search), SRC=qp.get('lc')==='live'?'/bfcm-live.json':'/bfcm-live-preview.json', MIN=Math.max(1,+qp.get('lcmin')||25), FRESH=(+qp.get('lcfresh')||45)*60e3;
+  var H='https://cc.hawknesthammocks.ca/lp/',CM=Math.max(1,+(new URLSearchParams(location.search).get('c24min')||10));
   var els=document.querySelectorAll('[data-lc]'); if(!els.length||!window.fetch)return;
-  function show(d){
-    var ok=d&&typeof d.total==='number'&&d.total>=MIN&&(Date.now()-Date.parse(d.updated))<FRESH;
+  function ok(d,ms){return d&&Date.now()-Date.parse(d.updated)<ms}
+  function show(n,fresh){
+    var on=fresh&&n>=CM;
     els.forEach(function(el){
-      if(!ok){el.hidden=true;return}
-      el.querySelector('[data-lcn]').textContent=Math.floor(d.total).toLocaleString('en-US');
-      el.querySelector('[data-lcl]').textContent=String(d.sinceLabel||'').slice(0,40);
-      el.querySelector('[data-lch]').textContent=(d.lastHour>=3)?' · '+Math.floor(d.lastHour)+' in the last hour':'';
+      if(!on){el.hidden=true;return}
+      var b=el.querySelector('[data-lcn]'); if(b)b.textContent=n.toLocaleString('en-US');
+      var l=el.querySelector('[data-lcl]'); if(l)l.textContent=' in the last 24 hours';
+      var h=el.querySelector('[data-lch]'); if(h)h.textContent='';
       el.hidden=false;
     });
   }
-  function load(){fetch(SRC+'?t='+Math.floor(Date.now()/120000),{credentials:'omit'}).then(function(r){return r.ok?r.json():null}).then(show).catch(function(){show(null)})}
-  var go=function(){load();setInterval(function(){if(document.visibilityState==='visible')load()},300000)};
-  if(document.readyState==='complete')setTimeout(go,300);else addEventListener('load',function(){if(window.requestIdleCallback)requestIdleCallback(function(){go()},{timeout:2000});else setTimeout(go,1200)});
+  function pf(){
+    var a=null,b=null,left=2;
+    function done(){var aOk=ok(a,27e5),bOk=ok(b,27e5);show((aOk?Math.floor(a.c24)||0:0)+(bOk?Math.floor(b.c24)||0:0),aOk||bOk)}
+    function one(u,set){fetch(H+u+'?t='+Date.now(),{credentials:'omit',cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){set(d);if(--left===0)done()}).catch(function(){set(null);if(--left===0)done()})}
+    one('d/feed.json',function(d){a=d});one('d/feed-ca.json',function(d){b=d});
+  }
+  function go(){pf();setInterval(function(){if(document.visibilityState==='visible')pf()},3e5)}
+  if(document.readyState==='complete')setTimeout(go,300);else addEventListener('load',function(){setTimeout(go,800)});
 })();
 </script>
 <!-- HNH Crisp chat (t650u/t651u): same inbox as hawknesthammocks.ca; on mobile the button sits to the right of Claim deal in the sticky bar. -->

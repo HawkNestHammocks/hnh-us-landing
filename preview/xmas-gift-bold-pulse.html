@@ -982,28 +982,7 @@ document.querySelectorAll('.stack-list .item[aria-controls]').forEach(function(i
   it.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}});
 });
 </script>
-<script>
-/* Live viewer counter: real count of anonymous sessions seen in the last 4 min. Hidden unless an endpoint is set and the count is >= 5. */
-(function(){
-  var EP=''; /* set to the deployed counter URL, e.g. https://hnh-bfcm-viewers.<account>.workers.dev/ */
-  var MIN=5, el=document.getElementById('viewers');
-  /* Preview only: ?demo=viewers shows an example number so the design can be reviewed. Never shown without that parameter. */
-  if(el&&new URLSearchParams(location.search).get('demo')==='viewers'){el.querySelector('[data-vn]').textContent='42';el.hidden=false;return}
-  if(!EP||!el||!window.fetch||navigator.webdriver||/bot|crawl|spider|slurp|headless|lighthouse|preview/i.test(navigator.userAgent))return;
-  var k='hnh-vsid',id;
-  try{id=sessionStorage.getItem(k);if(!id){id=(crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2,14));sessionStorage.setItem(k,id)}}catch(e){return}
-  function ping(){
-    if(document.visibilityState==='hidden')return;
-    fetch(EP,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({s:id}),credentials:'omit',cache:'no-store'})
-      .then(function(r){return r.ok?r.json():null})
-      .then(function(d){var n=d&&typeof d.count==='number'?Math.floor(d.count):0;
-        if(n>=MIN){el.querySelector('[data-vn]').textContent=n.toLocaleString('en-US');el.hidden=false}else el.hidden=true})
-      .catch(function(){el.hidden=true});
-  }
-  ping();setInterval(ping,30000);
-  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')ping()});
-})();
-</script>
+
 <script>
 (()=>{
   const box=document.createElement('div');
@@ -1031,9 +1010,9 @@ document.querySelectorAll('.stack-list .item[aria-controls]').forEach(function(i
 <script>
 /* Real live counters (preview). Viewer count = anonymous heartbeat sessions (last 3 min) from our own endpoint;
    order bubble + 24h count = real paid US Max Value orders (first name + state only). Hidden when data is stale
-   or below the minimum; nothing is invented. Test: ?vmin=1&c24min=1 forces low minimums, &vdebug=1 shows a status line. */
+   or below the minimum (3); viewer count is the combined unique US+CA landing-page sessions; nothing is invented. Test: ?vmin=1&c24min=1 forces low minimums, &vdebug=1 shows a status line. */
 (function(){
-var H='https://cc.hawknesthammocks.ca/lp/',q=new URLSearchParams(location.search),VM=Math.max(1,+q.get('vmin')||10),CM=Math.max(1,+q.get('c24min')||10),DBG=q.get('vdebug')==='1',
+var H='https://cc.hawknesthammocks.ca/lp/',q=new URLSearchParams(location.search),VM=Math.max(1,+q.get('vmin')||3),CM=Math.max(1,+q.get('c24min')||10),DBG=q.get('vdebug')==='1',
 pu=document.getElementById('pulse'),lv=document.getElementById('live'),tt=document.getElementById('ptoast'),ss,sid,V=null,F=null,beats=0,hbok='-';
 if(!window.fetch||!pu||!tt)return;
 try{ss=sessionStorage;sid=ss.getItem('hs');if(!sid){var a=new Uint8Array(12);crypto.getRandomValues(a);sid=Array.from(a,function(b){return('0'+b.toString(16)).slice(-2)}).join('');ss.setItem('hs',sid)}}catch(e){return}
@@ -1044,10 +1023,10 @@ if(ok(V,12e4)&&V.n>=VM)p.push('\uD83D\uDC40 <b>'+Math.floor(V.n)+'</b> viewing n
 if(ok(F,27e5)&&F.c24>=CM)p.push('\uD83D\uDD25 <b>'+Math.floor(F.c24)+'</b> claimed in 24h');
 if(DBG)p.push('<em>dbg hb:'+hbok+' v:'+(V?Math.floor(V.n)+'@'+Math.round((Date.now()-Date.parse(V.updated))/1e3)+'s':'none')+' f:'+(F?'ok':'none')+'</em>');
 pu.innerHTML=p.join('<i>\u00B7</i>');pu.hidden=!p.length;
-if(lv){var vs=ok(V,12e4)&&V.n>=VM;lv.innerHTML=vs?'<b>'+Math.floor(V.n)+'</b> viewing now':'';lv.hidden=!vs}}
-function hb(){if(document.visibilityState!=='visible'||beats>=60)return;beats++;fetch(H+'b?s='+sid,{mode:'no-cors',keepalive:true,credentials:'omit',cache:'no-store'}).then(function(){hbok='sent'},function(){hbok='blocked'}).then(draw)}
-function pc(){J('d/count.json',function(d){V=d;draw()})}
-function pf(){J('d/feed.json',function(d){F=d;draw()})}
+if(lv){var vs=ok(V,12e4)&&V.n>=VM;lv.innerHTML=vs?'<b>'+Math.floor(V.n)+'</b> viewing now':'';lv.hidden=!vs}var vn=document.getElementById('viewers');if(vn){var vs2=ok(V,12e4)&&V.n>=VM,bb=vn.querySelector('[data-vn]');if(bb)bb.textContent=vs2?Math.floor(V.n).toLocaleString('en-US'):'';vn.hidden=!vs2}}
+function hb(){if(document.visibilityState!=='visible')return;fetch(H+'b?s='+sid,{mode:'no-cors',keepalive:true,credentials:'omit',cache:'no-store'}).then(function(){hbok='sent'},function(){hbok='blocked'}).then(draw)}
+function pc(){var a=null,b=null,left=2;function done(){var aOk=ok(a,12e4),bOk=ok(b,12e4);if(!aOk&&!bOk){V=null;draw();return}var n=(aOk?Math.floor(a.n)||0:0)+(bOk?Math.floor(b.n)||0:0);var upd=aOk&&bOk?(Date.parse(a.updated)>=Date.parse(b.updated)?a.updated:b.updated):(aOk?a.updated:b.updated);V={n:n,updated:upd,window:180};draw()}function one(u,set){J(u,function(d){set(d);if(--left===0)done()})}one('d/count.json',function(d){a=d});one('d/count-ca.json',function(d){b=d})}
+function pf(){var a=null,b=null,left=2;function done(){var aOk=ok(a,27e5),bOk=ok(b,27e5);if(!aOk&&!bOk){F=null;draw();return}var c24=(aOk?Math.floor(a.c24)||0:0)+(bOk?Math.floor(b.c24)||0:0);var o24=(aOk?Math.floor(a.o24)||0:0)+(bOk?Math.floor(b.o24)||0:0);var ords=[];if(aOk&&a.orders)ords=ords.concat(a.orders);if(bOk&&b.orders)ords=ords.concat(b.orders);ords.sort(function(x,y){return Date.parse(y.t)-Date.parse(x.t)});var upd=aOk&&bOk?(Date.parse(a.updated)>=Date.parse(b.updated)?a.updated:b.updated):(aOk?a.updated:b.updated);F={c24:c24,o24:o24,orders:ords.slice(0,8),updated:upd};draw()}function one(u,set){J(u,function(d){set(d);if(--left===0)done()})}one('d/feed.json',function(d){a=d});one('d/feed-ca.json',function(d){b=d})}
 function ago(t){var m=Math.round((Date.now()-Date.parse(t))/6e4);return m<2?'just now':m<60?m+' min ago':m<120?'1 hr ago':Math.floor(m/60)+' hr ago'}
 function list(){return ok(F,27e5)&&F.orders?F.orders.filter(function(o){return /^[A-Za-z\u00C0-\u024F'-]{2,14}$/.test(o.n)&&/^[A-Za-z .]{2,30}$/.test(o.s)&&Date.now()-Date.parse(o.t)<432e5&&Date.now()>=Date.parse(o.t)}):[]}
 var t0=Date.now(),tries=0,tm;
